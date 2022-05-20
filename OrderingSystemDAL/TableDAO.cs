@@ -11,7 +11,7 @@ namespace OrderingSystemDAL
     {
         public List<Table> GetAllTables()
         {
-            string query = "SELECT TableNumber, TableStatus FROM [TABLES]";
+            string query = "SELECT TableNumber, TableStatus FROM [dbo].[TABLE]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -25,8 +25,8 @@ namespace OrderingSystemDAL
             {
                 Table table = new Table()
                 {
-                    tableNumber = (int)dr["TableNumber"],
-                    tableStatus = (string)dr["TableStatus"],
+                    TableNumber = (int)dr["TableNumber"],
+                    TableStatus = (string)dr["TableStatus"],
                 };
                 tables.Add(table);
             }

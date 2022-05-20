@@ -4,7 +4,8 @@ namespace OrderingSystemModel
 {
     public class Table
     {
-        public int tableNumber { get; set; }
-        public string tableStatus { get; set; }
+        public int TableNumber { get; set; }
+        public string TableStatus { get; set; }
+
     }
 }
