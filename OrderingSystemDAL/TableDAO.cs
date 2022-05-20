@@ -18,7 +18,6 @@ namespace OrderingSystemDAL
 
         private List<Table> ReadTables(DataTable dataTable)
         {
-            //creating student list
 
             List<Table> tables = new List<Table>();
 
