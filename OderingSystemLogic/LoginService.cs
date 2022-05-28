@@ -8,13 +8,13 @@ namespace OrderingSystemLogic
 {
     public class LoginService
     {
-        LoginDAO DB_GetUser = new LoginDAO();
+        LoginDAO loginDB = new LoginDAO();
 
         public Employee GetUser(string username)
         {
             try
             {
-                Employee employee = DB_GetUser.GetUser(username);
+                Employee employee = loginDB.GetUser(username);
                 return employee;
             }
             catch (Exception)
