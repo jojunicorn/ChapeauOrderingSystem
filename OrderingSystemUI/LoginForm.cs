@@ -34,7 +34,7 @@ namespace OrderingSystemUI
 
                 if (employee.EmployeePosition == "waiter")
                 {
-                    WaiterUI waiter = new WaiterUI();
+                    WaiterUI waiter = new WaiterUI(employee);
                     waiter.Show();
                 }
                 else if (employee.EmployeePosition == "chef" )
