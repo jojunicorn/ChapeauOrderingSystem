@@ -14,14 +14,18 @@ namespace OrderingSystemUI
     {
         OrderProductService orderProductService = new OrderProductService();
         ProductService productService = new ProductService();
+        TableService tableService = new TableService();
+        OrderService orderService = new OrderService();
         
 
 
         int currentTable = 0;
-
-        public WaiterUI()
+        Employee currentEmployee = null;
+        Order currentOrder = null; 
+        public WaiterUI(Employee currentEmployee)
         {
             InitializeComponent();
+            this.currentEmployee = currentEmployee;
         }
 
         private void WaiterUI_Load(object sender, EventArgs e)
@@ -31,10 +35,15 @@ namespace OrderingSystemUI
             tabControl.ItemSize = new Size(0, 1);
             tabControl.SizeMode = TabSizeMode.Fixed;
 
-            if(currentTable > 0)
+            if (currentTable > 0)
             {
                 tableNumber.Text = $"TABLE #{tableNumber}";
             }
+
+            //testorder
+            List<Order> orders = orderService.GetOrders();
+            currentOrder = orders[0];
+            OrderOverview();
         }
         private void OrderOverview()
         {
@@ -44,21 +53,24 @@ namespace OrderingSystemUI
             {
                 listViewTableOrder.Items.Clear();
 
-                //List<OrderProduct> products = orderProductService.GetAllOrderProducts();
-                //foreach (OrderProduct product in products)
-                //{
+                List<OrderProduct> products = orderProductService.GetAllOrderProducts();
+                foreach (OrderProduct product in products)
+                {
+                    if (product.OrderNumber == currentOrder)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Text = product.ProductID.ProductID.ToString(); //count
+                        item.SubItems.Add(product.ProductID.ProductName);//product name
+                        item.SubItems.Add($"product.ProductID.Price.ToString()");//price
 
-                //    ListViewItem item = new ListViewItem();
-                //    item.Text = product.ProductID.ProductID.ToString(); //count
-                //    item.SubItems.Add(product.ProductID.ProductName);//product name
-                //    item.SubItems.Add($"product.ProductID.Price.ToString()");//price
+                        listViewTableOrder.Items.Add(item);
+                    }
 
-                //    listViewTableOrder.Items.Add(item);
-                //}
+                }
             }
             catch(Exception e)
             {
-                MessageBox.Show("Error occured: ");
+                MessageBox.Show("Error occured: ", e.Message) ;
             }
         }
 
