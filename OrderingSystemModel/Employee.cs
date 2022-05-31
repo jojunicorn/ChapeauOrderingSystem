@@ -10,7 +10,7 @@ namespace OrderingSystemModel
         public string EmployeeName { get; set; }
         public string EmployeePosition { get; set; }
         public string EmployeeUsername { get; set; }
-        public string EmployeePassword { get; set; }
+        public int EmployeePassword { get; set; }
 
        
     }

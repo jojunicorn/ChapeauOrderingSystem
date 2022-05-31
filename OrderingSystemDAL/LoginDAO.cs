@@ -11,7 +11,7 @@ namespace OrderingSystemDAL
     {
         public Employee GetUser(string username)
         {
-            string query = $"SELECT [EmployeNumber], [EmployeeName], [EmployeeUsername], [Password], [EmployeePosition] FROM EMPLOYEE where EmployeeUsername = @Username ";
+            string query = $"SELECT [EmployeNumber], [EmployeeName], [EmployeeUsername], [EmployeePassword], [EmployeePosition] FROM EMPLOYEE where EmployeeUsername = @Username ";
             SqlParameter[] sqlParameter = new SqlParameter[1];
             sqlParameter[0] = new SqlParameter("@Username", username);
             return ReadTable(ExecuteSelectQuery(query, sqlParameter));
@@ -28,7 +28,7 @@ namespace OrderingSystemDAL
                 employee.EmployeeName = (string)item["EmployeeName"];
                 employee.EmployeePosition = (string)item["EmployeePosition"];
                 employee.EmployeeUsername = (string)item["EmployeeUsername"];
-                employee.EmployeePassword = (string)item["EmployeePassword"];
+                employee.EmployeePassword = (int)item["EmployeePassword"];
 
             }
             return employee;
