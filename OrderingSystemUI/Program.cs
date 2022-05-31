@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OrderingSystemLogic;
+using OrderingSystemModel;
 
 namespace OrderingSystemUI
 {
@@ -17,7 +19,8 @@ namespace OrderingSystemUI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WaiterUI());
+            Employee employee = null;
+            Application.Run(new WaiterUI(employee));
         }
     }
 }
