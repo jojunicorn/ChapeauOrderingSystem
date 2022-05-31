@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace OrderingSystemDAL
 {
-    public class ChefDAO : BaseDAO
+    public class BarmanDAO: BaseDAO
     {
         public List<OrderProduct> GetAllOrders()
         {
@@ -36,5 +36,6 @@ namespace OrderingSystemDAL
 
             return orderProducts;
         }
+
     }
 }

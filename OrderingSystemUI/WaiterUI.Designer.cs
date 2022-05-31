@@ -77,28 +77,31 @@ namespace OrderingSystemUI
             this.tabControl.Controls.Add(this.tabPage6);
             this.tabControl.Controls.Add(this.tabPage7);
             this.tabControl.Controls.Add(this.tabPage8);
-            this.tabControl.Location = new System.Drawing.Point(1, 47);
+            this.tabControl.Location = new System.Drawing.Point(1, 59);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(421, 723);
+            this.tabControl.Size = new System.Drawing.Size(526, 904);
             this.tabControl.TabIndex = 0;
             // 
             // tableViewTab1
             // 
-            this.tableViewTab1.Location = new System.Drawing.Point(4, 29);
+            this.tableViewTab1.Location = new System.Drawing.Point(4, 34);
+            this.tableViewTab1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableViewTab1.Name = "tableViewTab1";
-            this.tableViewTab1.Padding = new System.Windows.Forms.Padding(3);
-            this.tableViewTab1.Size = new System.Drawing.Size(413, 690);
+            this.tableViewTab1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableViewTab1.Size = new System.Drawing.Size(518, 866);
             this.tableViewTab1.TabIndex = 0;
             this.tableViewTab1.Text = "TableView";
             this.tableViewTab1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(413, 690);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Size = new System.Drawing.Size(518, 866);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "TableView";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -112,10 +115,11 @@ namespace OrderingSystemUI
             this.tableOrderOverviewTab.Controls.Add(this.btnDinner);
             this.tableOrderOverviewTab.Controls.Add(this.btnLunch);
             this.tableOrderOverviewTab.Controls.Add(this.listViewTableOrder);
-            this.tableOrderOverviewTab.Location = new System.Drawing.Point(4, 29);
+            this.tableOrderOverviewTab.Location = new System.Drawing.Point(4, 34);
+            this.tableOrderOverviewTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableOrderOverviewTab.Name = "tableOrderOverviewTab";
-            this.tableOrderOverviewTab.Padding = new System.Windows.Forms.Padding(3);
-            this.tableOrderOverviewTab.Size = new System.Drawing.Size(413, 690);
+            this.tableOrderOverviewTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableOrderOverviewTab.Size = new System.Drawing.Size(518, 866);
             this.tableOrderOverviewTab.TabIndex = 2;
             this.tableOrderOverviewTab.Text = "TableOrderVIew";
             this.tableOrderOverviewTab.UseVisualStyleBackColor = true;
@@ -124,9 +128,10 @@ namespace OrderingSystemUI
             // 
             this.lblVAT.AutoSize = true;
             this.lblVAT.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblVAT.Location = new System.Drawing.Point(237, 591);
+            this.lblVAT.Location = new System.Drawing.Point(296, 739);
+            this.lblVAT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVAT.Name = "lblVAT";
-            this.lblVAT.Size = new System.Drawing.Size(58, 28);
+            this.lblVAT.Size = new System.Drawing.Size(68, 32);
             this.lblVAT.TabIndex = 6;
             this.lblVAT.Text = "VAT: ";
             // 
@@ -134,9 +139,10 @@ namespace OrderingSystemUI
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotal.Location = new System.Drawing.Point(237, 563);
+            this.lblTotal.Location = new System.Drawing.Point(296, 704);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(80, 28);
+            this.lblTotal.Size = new System.Drawing.Size(95, 32);
             this.lblTotal.TabIndex = 5;
             this.lblTotal.Text = "TOTAL: ";
             // 
@@ -144,9 +150,10 @@ namespace OrderingSystemUI
             // 
             this.btnPay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnPay.ForeColor = System.Drawing.Color.Black;
-            this.btnPay.Location = new System.Drawing.Point(314, 634);
+            this.btnPay.Location = new System.Drawing.Point(392, 792);
+            this.btnPay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(90, 50);
+            this.btnPay.Size = new System.Drawing.Size(112, 62);
             this.btnPay.TabIndex = 4;
             this.btnPay.Text = "PAY";
             this.btnPay.UseVisualStyleBackColor = false;
@@ -154,9 +161,10 @@ namespace OrderingSystemUI
             // btnDrinks
             // 
             this.btnDrinks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDrinks.Location = new System.Drawing.Point(287, 6);
+            this.btnDrinks.Location = new System.Drawing.Point(359, 8);
+            this.btnDrinks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDrinks.Name = "btnDrinks";
-            this.btnDrinks.Size = new System.Drawing.Size(120, 50);
+            this.btnDrinks.Size = new System.Drawing.Size(150, 62);
             this.btnDrinks.TabIndex = 3;
             this.btnDrinks.Text = "DRINKS";
             this.btnDrinks.UseVisualStyleBackColor = false;
@@ -164,9 +172,10 @@ namespace OrderingSystemUI
             // btnDinner
             // 
             this.btnDinner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDinner.Location = new System.Drawing.Point(147, 6);
+            this.btnDinner.Location = new System.Drawing.Point(184, 8);
+            this.btnDinner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDinner.Name = "btnDinner";
-            this.btnDinner.Size = new System.Drawing.Size(120, 50);
+            this.btnDinner.Size = new System.Drawing.Size(150, 62);
             this.btnDinner.TabIndex = 2;
             this.btnDinner.Text = "DINNER";
             this.btnDinner.UseVisualStyleBackColor = false;
@@ -174,9 +183,10 @@ namespace OrderingSystemUI
             // btnLunch
             // 
             this.btnLunch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnLunch.Location = new System.Drawing.Point(7, 6);
+            this.btnLunch.Location = new System.Drawing.Point(9, 8);
+            this.btnLunch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLunch.Name = "btnLunch";
-            this.btnLunch.Size = new System.Drawing.Size(120, 50);
+            this.btnLunch.Size = new System.Drawing.Size(150, 62);
             this.btnLunch.TabIndex = 1;
             this.btnLunch.Text = "LUNCH";
             this.btnLunch.UseVisualStyleBackColor = false;
@@ -189,9 +199,10 @@ namespace OrderingSystemUI
             this.Price});
             this.listViewTableOrder.FullRowSelect = true;
             this.listViewTableOrder.HideSelection = false;
-            this.listViewTableOrder.Location = new System.Drawing.Point(7, 69);
+            this.listViewTableOrder.Location = new System.Drawing.Point(9, 86);
+            this.listViewTableOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listViewTableOrder.Name = "listViewTableOrder";
-            this.listViewTableOrder.Size = new System.Drawing.Size(400, 487);
+            this.listViewTableOrder.Size = new System.Drawing.Size(499, 608);
             this.listViewTableOrder.TabIndex = 0;
             this.listViewTableOrder.UseCompatibleStateImageBehavior = false;
             // 
@@ -216,27 +227,30 @@ namespace OrderingSystemUI
             this.addOrderView.Controls.Add(this.btnDrinksMenu);
             this.addOrderView.Controls.Add(this.btnDinnerMenu);
             this.addOrderView.Controls.Add(this.btnLunchMenu);
-            this.addOrderView.Location = new System.Drawing.Point(4, 29);
+            this.addOrderView.Location = new System.Drawing.Point(4, 34);
+            this.addOrderView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addOrderView.Name = "addOrderView";
-            this.addOrderView.Padding = new System.Windows.Forms.Padding(3);
-            this.addOrderView.Size = new System.Drawing.Size(413, 690);
+            this.addOrderView.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addOrderView.Size = new System.Drawing.Size(518, 866);
             this.addOrderView.TabIndex = 3;
             this.addOrderView.Text = "AddOrderViewLunch";
             this.addOrderView.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelMenu
             // 
-            this.flowLayoutPanelMenu.Location = new System.Drawing.Point(43, 83);
+            this.flowLayoutPanelMenu.Location = new System.Drawing.Point(54, 104);
+            this.flowLayoutPanelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
-            this.flowLayoutPanelMenu.Size = new System.Drawing.Size(332, 330);
+            this.flowLayoutPanelMenu.Size = new System.Drawing.Size(415, 412);
             this.flowLayoutPanelMenu.TabIndex = 5;
             // 
             // btnDrinksMenu
             // 
             this.btnDrinksMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDrinksMenu.Location = new System.Drawing.Point(287, 6);
+            this.btnDrinksMenu.Location = new System.Drawing.Point(359, 8);
+            this.btnDrinksMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDrinksMenu.Name = "btnDrinksMenu";
-            this.btnDrinksMenu.Size = new System.Drawing.Size(120, 50);
+            this.btnDrinksMenu.Size = new System.Drawing.Size(150, 62);
             this.btnDrinksMenu.TabIndex = 4;
             this.btnDrinksMenu.Text = "DRINKS";
             this.btnDrinksMenu.UseVisualStyleBackColor = false;
@@ -244,9 +258,10 @@ namespace OrderingSystemUI
             // btnDinnerMenu
             // 
             this.btnDinnerMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDinnerMenu.Location = new System.Drawing.Point(147, 6);
+            this.btnDinnerMenu.Location = new System.Drawing.Point(184, 8);
+            this.btnDinnerMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDinnerMenu.Name = "btnDinnerMenu";
-            this.btnDinnerMenu.Size = new System.Drawing.Size(120, 50);
+            this.btnDinnerMenu.Size = new System.Drawing.Size(150, 62);
             this.btnDinnerMenu.TabIndex = 3;
             this.btnDinnerMenu.Text = "DINNER";
             this.btnDinnerMenu.UseVisualStyleBackColor = false;
@@ -254,38 +269,42 @@ namespace OrderingSystemUI
             // btnLunchMenu
             // 
             this.btnLunchMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnLunchMenu.Location = new System.Drawing.Point(7, 6);
+            this.btnLunchMenu.Location = new System.Drawing.Point(9, 8);
+            this.btnLunchMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLunchMenu.Name = "btnLunchMenu";
-            this.btnLunchMenu.Size = new System.Drawing.Size(120, 50);
+            this.btnLunchMenu.Size = new System.Drawing.Size(150, 62);
             this.btnLunchMenu.TabIndex = 2;
             this.btnLunchMenu.Text = "LUNCH";
             this.btnLunchMenu.UseVisualStyleBackColor = false;
             // 
             // tabPage5
             // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 29);
+            this.tabPage5.Location = new System.Drawing.Point(4, 34);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(413, 690);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Size = new System.Drawing.Size(518, 866);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "AddOrderViewDinner";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 29);
+            this.tabPage6.Location = new System.Drawing.Point(4, 34);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(413, 690);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage6.Size = new System.Drawing.Size(518, 866);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "AddOrderViewDrinks";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // tabPage7
             // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 29);
+            this.tabPage7.Location = new System.Drawing.Point(4, 34);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(413, 690);
+            this.tabPage7.Size = new System.Drawing.Size(518, 866);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
@@ -293,19 +312,21 @@ namespace OrderingSystemUI
             // 
             this.tabPage8.Controls.Add(this.button1);
             this.tabPage8.Controls.Add(this.pictureBox2);
-            this.tabPage8.Location = new System.Drawing.Point(4, 29);
+            this.tabPage8.Location = new System.Drawing.Point(4, 34);
+            this.tabPage8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(413, 690);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage8.Size = new System.Drawing.Size(518, 866);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "TableView";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(301, 15);
+            this.button1.Location = new System.Drawing.Point(376, 19);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.Size = new System.Drawing.Size(118, 36);
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -314,17 +335,19 @@ namespace OrderingSystemUI
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(97, 56);
+            this.pictureBox2.Size = new System.Drawing.Size(121, 70);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
             // btnEmployeeName
             // 
             this.btnEmployeeName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnEmployeeName.Location = new System.Drawing.Point(319, 12);
+            this.btnEmployeeName.Location = new System.Drawing.Point(399, 15);
+            this.btnEmployeeName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEmployeeName.Name = "btnEmployeeName";
-            this.btnEmployeeName.Size = new System.Drawing.Size(94, 29);
+            this.btnEmployeeName.Size = new System.Drawing.Size(118, 36);
             this.btnEmployeeName.TabIndex = 1;
             this.btnEmployeeName.UseVisualStyleBackColor = false;
             // 
@@ -332,8 +355,9 @@ namespace OrderingSystemUI
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(1, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(97, 56);
+            this.pictureBox3.Size = new System.Drawing.Size(121, 70);
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
             // 
@@ -342,22 +366,24 @@ namespace OrderingSystemUI
             this.tableNumber.AutoSize = true;
             this.tableNumber.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tableNumber.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tableNumber.Location = new System.Drawing.Point(152, 13);
+            this.tableNumber.Location = new System.Drawing.Point(190, 16);
+            this.tableNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tableNumber.Name = "tableNumber";
-            this.tableNumber.Size = new System.Drawing.Size(121, 35);
+            this.tableNumber.Size = new System.Drawing.Size(143, 41);
             this.tableNumber.TabIndex = 2;
             this.tableNumber.Text = "Table #...";
             // 
             // WaiterUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(425, 772);
+            this.ClientSize = new System.Drawing.Size(531, 965);
             this.Controls.Add(this.tableNumber);
             this.Controls.Add(this.btnEmployeeName);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.tabControl);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "WaiterUI";
             this.Text = "WaiterUI";
             this.Load += new System.EventHandler(this.WaiterUI_Load);

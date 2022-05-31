@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderingSystemLogic", "Oder
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderingSystemModel", "OrderingSystemModel\OrderingSystemModel.csproj", "{17C2658C-CA8C-4789-B574-4A11DC9793DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenView", "KitchenView\KitchenView.csproj", "{3C5AABC5-F5BB-4715-A86F-28B70208347D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{17C2658C-CA8C-4789-B574-4A11DC9793DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17C2658C-CA8C-4789-B574-4A11DC9793DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17C2658C-CA8C-4789-B574-4A11DC9793DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C5AABC5-F5BB-4715-A86F-28B70208347D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C5AABC5-F5BB-4715-A86F-28B70208347D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C5AABC5-F5BB-4715-A86F-28B70208347D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C5AABC5-F5BB-4715-A86F-28B70208347D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -30,7 +30,7 @@ namespace OrderingSystemUI
         private void InitializeComponent()
         {
             this.lbl_Orders = new System.Windows.Forms.Label();
-            this.listView_Orders_BarView = new System.Windows.Forms.ListView();
+            this.listViewOrdersBarView = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Initialized = new System.Windows.Forms.Button();
             this.btn_inProgress = new System.Windows.Forms.Button();
@@ -49,20 +49,20 @@ namespace OrderingSystemUI
             this.lbl_Orders.TabIndex = 1;
             this.lbl_Orders.Text = "Orders";
             // 
-            // listView_Orders_BarView
+            // listViewOrdersBarView
             // 
-            this.listView_Orders_BarView.HideSelection = false;
-            this.listView_Orders_BarView.Location = new System.Drawing.Point(18, 118);
-            this.listView_Orders_BarView.Name = "listView_Orders_BarView";
-            this.listView_Orders_BarView.Size = new System.Drawing.Size(413, 311);
-            this.listView_Orders_BarView.TabIndex = 2;
-            this.listView_Orders_BarView.UseCompatibleStateImageBehavior = false;
+            this.listViewOrdersBarView.HideSelection = false;
+            this.listViewOrdersBarView.Location = new System.Drawing.Point(18, 118);
+            this.listViewOrdersBarView.Name = "listViewOrdersBarView";
+            this.listViewOrdersBarView.Size = new System.Drawing.Size(413, 311);
+            this.listViewOrdersBarView.TabIndex = 2;
+            this.listViewOrdersBarView.UseCompatibleStateImageBehavior = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(572, 132);
+            this.label1.Location = new System.Drawing.Point(555, 131);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 25);
             this.label1.TabIndex = 5;
@@ -106,11 +106,11 @@ namespace OrderingSystemUI
             // 
             // txt_Status
             // 
-            this.txt_Status.Location = new System.Drawing.Point(438, 118);
+            this.txt_Status.Location = new System.Drawing.Point(435, 118);
             this.txt_Status.MinimumSize = new System.Drawing.Size(350, 50);
             this.txt_Status.Name = "txt_Status";
-            this.txt_Status.Size = new System.Drawing.Size(350, 50);
-            this.txt_Status.TabIndex = 10;
+            this.txt_Status.Size = new System.Drawing.Size(350, 31);
+            this.txt_Status.TabIndex = 14;
             // 
             // BarmanUI
             // 
@@ -121,12 +121,13 @@ namespace OrderingSystemUI
             this.Controls.Add(this.btn_inProgress);
             this.Controls.Add(this.btn_Initialized);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listView_Orders_BarView);
+            this.Controls.Add(this.listViewOrdersBarView);
             this.Controls.Add(this.lbl_Orders);
             this.Controls.Add(this.txt_Orders);
             this.Controls.Add(this.txt_Status);
             this.Name = "BarmanUI";
             this.Text = "BarmanUI";
+            this.Load += new System.EventHandler(this.BarmanUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,7 +135,7 @@ namespace OrderingSystemUI
 
         #endregion
         private System.Windows.Forms.Label lbl_Orders;
-        private System.Windows.Forms.ListView listView_Orders_BarView;
+        private System.Windows.Forms.ListView listViewOrdersBarView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_Initialized;
         private System.Windows.Forms.Button btn_inProgress;
