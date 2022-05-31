@@ -89,6 +89,7 @@ namespace OrderingSystemLogic
                 }
             }
         }
+
         public List<Product> GetProducts()
         {
             return allProducts;

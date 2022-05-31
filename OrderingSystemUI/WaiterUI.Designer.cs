@@ -31,31 +31,36 @@ namespace OrderingSystemUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WaiterUI));
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnEmployeeName = new System.Windows.Forms.Button();
+            this.tableViewTab1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tableOrderOverviewTab = new System.Windows.Forms.TabPage();
+            this.lblVAT = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.btnPay = new System.Windows.Forms.Button();
+            this.btnDrinks = new System.Windows.Forms.Button();
+            this.btnDinner = new System.Windows.Forms.Button();
+            this.btnLunch = new System.Windows.Forms.Button();
+            this.listViewTableOrder = new System.Windows.Forms.ListView();
+            this.count = new System.Windows.Forms.ColumnHeader();
+            this.itemName = new System.Windows.Forms.ColumnHeader();
+            this.Price = new System.Windows.Forms.ColumnHeader();
+            this.addOrderView = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelMenu = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnDrinksMenu = new System.Windows.Forms.Button();
+            this.btnDinnerMenu = new System.Windows.Forms.Button();
+            this.btnLunchMenu = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnEmployeeName = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
-            this.listViewTableOrder = new System.Windows.Forms.ListView();
-            this.count = new System.Windows.Forms.ColumnHeader();
-            this.itemName = new System.Windows.Forms.ColumnHeader();
-            this.Price = new System.Windows.Forms.ColumnHeader();
-            this.btnLunch = new System.Windows.Forms.Button();
-            this.btnDinner = new System.Windows.Forms.Button();
-            this.btnDrinks = new System.Windows.Forms.Button();
-            this.btnPay = new System.Windows.Forms.Button();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.lblVAT = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tableOrderOverviewTab.SuspendLayout();
+            this.addOrderView.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -64,10 +69,10 @@ namespace OrderingSystemUI
             // tabControl
             // 
             this.tabControl.AccessibleName = "TableView";
-            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tableViewTab1);
             this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Controls.Add(this.tabPage3);
-            this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.Controls.Add(this.tableOrderOverviewTab);
+            this.tabControl.Controls.Add(this.addOrderView);
             this.tabControl.Controls.Add(this.tabPage5);
             this.tabControl.Controls.Add(this.tabPage6);
             this.tabControl.Controls.Add(this.tabPage7);
@@ -78,139 +83,103 @@ namespace OrderingSystemUI
             this.tabControl.Size = new System.Drawing.Size(421, 723);
             this.tabControl.TabIndex = 0;
             // 
-            // tabPage1
+            // tableViewTab1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(413, 690);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "TableView";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // btnEmployeeName
-            // 
-            this.btnEmployeeName.Location = new System.Drawing.Point(319, 12);
-            this.btnEmployeeName.Name = "btnEmployeeName";
-            this.btnEmployeeName.Size = new System.Drawing.Size(94, 29);
-            this.btnEmployeeName.TabIndex = 1;
-            this.btnEmployeeName.Text = "button1";
-            this.btnEmployeeName.UseVisualStyleBackColor = true;
+            this.tableViewTab1.Location = new System.Drawing.Point(4, 29);
+            this.tableViewTab1.Name = "tableViewTab1";
+            this.tableViewTab1.Padding = new System.Windows.Forms.Padding(3);
+            this.tableViewTab1.Size = new System.Drawing.Size(413, 690);
+            this.tableViewTab1.TabIndex = 0;
+            this.tableViewTab1.Text = "TableView";
+            this.tableViewTab1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(413, 673);
+            this.tabPage2.Size = new System.Drawing.Size(413, 690);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "TableView";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // tableOrderOverviewTab
             // 
-            this.tabPage3.Controls.Add(this.lblVAT);
-            this.tabPage3.Controls.Add(this.lblTotal);
-            this.tabPage3.Controls.Add(this.btnPay);
-            this.tabPage3.Controls.Add(this.btnDrinks);
-            this.tabPage3.Controls.Add(this.btnDinner);
-            this.tabPage3.Controls.Add(this.btnLunch);
-            this.tabPage3.Controls.Add(this.listViewTableOrder);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(413, 690);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "TableOrderVIew";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tableOrderOverviewTab.Controls.Add(this.lblVAT);
+            this.tableOrderOverviewTab.Controls.Add(this.lblTotal);
+            this.tableOrderOverviewTab.Controls.Add(this.btnPay);
+            this.tableOrderOverviewTab.Controls.Add(this.btnDrinks);
+            this.tableOrderOverviewTab.Controls.Add(this.btnDinner);
+            this.tableOrderOverviewTab.Controls.Add(this.btnLunch);
+            this.tableOrderOverviewTab.Controls.Add(this.listViewTableOrder);
+            this.tableOrderOverviewTab.Location = new System.Drawing.Point(4, 29);
+            this.tableOrderOverviewTab.Name = "tableOrderOverviewTab";
+            this.tableOrderOverviewTab.Padding = new System.Windows.Forms.Padding(3);
+            this.tableOrderOverviewTab.Size = new System.Drawing.Size(413, 690);
+            this.tableOrderOverviewTab.TabIndex = 2;
+            this.tableOrderOverviewTab.Text = "TableOrderVIew";
+            this.tableOrderOverviewTab.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
+            // lblVAT
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(413, 673);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "AddOrderViewLunch";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.lblVAT.AutoSize = true;
+            this.lblVAT.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblVAT.Location = new System.Drawing.Point(237, 591);
+            this.lblVAT.Name = "lblVAT";
+            this.lblVAT.Size = new System.Drawing.Size(58, 28);
+            this.lblVAT.TabIndex = 6;
+            this.lblVAT.Text = "VAT: ";
             // 
-            // tabPage5
+            // lblTotal
             // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 29);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(413, 673);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "AddOrderViewDinner";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotal.Location = new System.Drawing.Point(237, 563);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(80, 28);
+            this.lblTotal.TabIndex = 5;
+            this.lblTotal.Text = "TOTAL: ";
             // 
-            // tabPage6
+            // btnPay
             // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 29);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(413, 673);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "AddOrderViewDrinks";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.btnPay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnPay.ForeColor = System.Drawing.Color.Black;
+            this.btnPay.Location = new System.Drawing.Point(314, 634);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(90, 50);
+            this.btnPay.TabIndex = 4;
+            this.btnPay.Text = "PAY";
+            this.btnPay.UseVisualStyleBackColor = false;
             // 
-            // tabPage7
+            // btnDrinks
             // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 29);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(413, 673);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.UseVisualStyleBackColor = true;
+            this.btnDrinks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnDrinks.Location = new System.Drawing.Point(287, 6);
+            this.btnDrinks.Name = "btnDrinks";
+            this.btnDrinks.Size = new System.Drawing.Size(120, 50);
+            this.btnDrinks.TabIndex = 3;
+            this.btnDrinks.Text = "DRINKS";
+            this.btnDrinks.UseVisualStyleBackColor = false;
             // 
-            // tabPage8
+            // btnDinner
             // 
-            this.tabPage8.Controls.Add(this.button1);
-            this.tabPage8.Controls.Add(this.pictureBox2);
-            this.tabPage8.Location = new System.Drawing.Point(4, 29);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(413, 673);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Text = "TableView";
-            this.tabPage8.UseVisualStyleBackColor = true;
+            this.btnDinner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnDinner.Location = new System.Drawing.Point(147, 6);
+            this.btnDinner.Name = "btnDinner";
+            this.btnDinner.Size = new System.Drawing.Size(120, 50);
+            this.btnDinner.TabIndex = 2;
+            this.btnDinner.Text = "DINNER";
+            this.btnDinner.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnLunch
             // 
-            this.button1.Location = new System.Drawing.Point(301, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(97, 56);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(97, 56);
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
-            // 
-            // tableNumber
-            // 
-            this.tableNumber.AutoSize = true;
-            this.tableNumber.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tableNumber.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tableNumber.Location = new System.Drawing.Point(152, 13);
-            this.tableNumber.Name = "tableNumber";
-            this.tableNumber.Size = new System.Drawing.Size(121, 35);
-            this.tableNumber.TabIndex = 2;
-            this.tableNumber.Text = "Table #...";
+            this.btnLunch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnLunch.Location = new System.Drawing.Point(7, 6);
+            this.btnLunch.Name = "btnLunch";
+            this.btnLunch.Size = new System.Drawing.Size(120, 50);
+            this.btnLunch.TabIndex = 1;
+            this.btnLunch.Text = "LUNCH";
+            this.btnLunch.UseVisualStyleBackColor = false;
             // 
             // listViewTableOrder
             // 
@@ -241,71 +210,149 @@ namespace OrderingSystemUI
             this.Price.Text = "Price";
             this.Price.Width = 50;
             // 
-            // btnLunch
+            // addOrderView
             // 
-            this.btnLunch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnLunch.Location = new System.Drawing.Point(7, 6);
-            this.btnLunch.Name = "btnLunch";
-            this.btnLunch.Size = new System.Drawing.Size(120, 50);
-            this.btnLunch.TabIndex = 1;
-            this.btnLunch.Text = "LUNCH";
-            this.btnLunch.UseVisualStyleBackColor = false;
+            this.addOrderView.Controls.Add(this.flowLayoutPanelMenu);
+            this.addOrderView.Controls.Add(this.btnDrinksMenu);
+            this.addOrderView.Controls.Add(this.btnDinnerMenu);
+            this.addOrderView.Controls.Add(this.btnLunchMenu);
+            this.addOrderView.Location = new System.Drawing.Point(4, 29);
+            this.addOrderView.Name = "addOrderView";
+            this.addOrderView.Padding = new System.Windows.Forms.Padding(3);
+            this.addOrderView.Size = new System.Drawing.Size(413, 690);
+            this.addOrderView.TabIndex = 3;
+            this.addOrderView.Text = "AddOrderViewLunch";
+            this.addOrderView.UseVisualStyleBackColor = true;
             // 
-            // btnDinner
+            // flowLayoutPanelMenu
             // 
-            this.btnDinner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDinner.Location = new System.Drawing.Point(147, 6);
-            this.btnDinner.Name = "btnDinner";
-            this.btnDinner.Size = new System.Drawing.Size(120, 50);
-            this.btnDinner.TabIndex = 2;
-            this.btnDinner.Text = "DINNER";
-            this.btnDinner.UseVisualStyleBackColor = false;
+            this.flowLayoutPanelMenu.Location = new System.Drawing.Point(43, 83);
+            this.flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
+            this.flowLayoutPanelMenu.Size = new System.Drawing.Size(332, 330);
+            this.flowLayoutPanelMenu.TabIndex = 5;
             // 
-            // btnDrinks
+            // btnDrinksMenu
             // 
-            this.btnDrinks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDrinks.Location = new System.Drawing.Point(287, 6);
-            this.btnDrinks.Name = "btnDrinks";
-            this.btnDrinks.Size = new System.Drawing.Size(120, 50);
-            this.btnDrinks.TabIndex = 3;
-            this.btnDrinks.Text = "DRINKS";
-            this.btnDrinks.UseVisualStyleBackColor = false;
+            this.btnDrinksMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnDrinksMenu.Location = new System.Drawing.Point(287, 6);
+            this.btnDrinksMenu.Name = "btnDrinksMenu";
+            this.btnDrinksMenu.Size = new System.Drawing.Size(120, 50);
+            this.btnDrinksMenu.TabIndex = 4;
+            this.btnDrinksMenu.Text = "DRINKS";
+            this.btnDrinksMenu.UseVisualStyleBackColor = false;
             // 
-            // btnPay
+            // btnDinnerMenu
             // 
-            this.btnPay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnPay.ForeColor = System.Drawing.Color.Black;
-            this.btnPay.Location = new System.Drawing.Point(314, 634);
-            this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(90, 50);
-            this.btnPay.TabIndex = 4;
-            this.btnPay.Text = "PAY";
-            this.btnPay.UseVisualStyleBackColor = false;
+            this.btnDinnerMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnDinnerMenu.Location = new System.Drawing.Point(147, 6);
+            this.btnDinnerMenu.Name = "btnDinnerMenu";
+            this.btnDinnerMenu.Size = new System.Drawing.Size(120, 50);
+            this.btnDinnerMenu.TabIndex = 3;
+            this.btnDinnerMenu.Text = "DINNER";
+            this.btnDinnerMenu.UseVisualStyleBackColor = false;
             // 
-            // lblTotal
+            // btnLunchMenu
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotal.Location = new System.Drawing.Point(237, 563);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(80, 28);
-            this.lblTotal.TabIndex = 5;
-            this.lblTotal.Text = "TOTAL: ";
+            this.btnLunchMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnLunchMenu.Location = new System.Drawing.Point(7, 6);
+            this.btnLunchMenu.Name = "btnLunchMenu";
+            this.btnLunchMenu.Size = new System.Drawing.Size(120, 50);
+            this.btnLunchMenu.TabIndex = 2;
+            this.btnLunchMenu.Text = "LUNCH";
+            this.btnLunchMenu.UseVisualStyleBackColor = false;
             // 
-            // lblVAT
+            // tabPage5
             // 
-            this.lblVAT.AutoSize = true;
-            this.lblVAT.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblVAT.Location = new System.Drawing.Point(237, 591);
-            this.lblVAT.Name = "lblVAT";
-            this.lblVAT.Size = new System.Drawing.Size(58, 28);
-            this.lblVAT.TabIndex = 6;
-            this.lblVAT.Text = "VAT: ";
+            this.tabPage5.Location = new System.Drawing.Point(4, 29);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(413, 690);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "AddOrderViewDinner";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Location = new System.Drawing.Point(4, 29);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(413, 690);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "AddOrderViewDrinks";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 29);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(413, 690);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.button1);
+            this.tabPage8.Controls.Add(this.pictureBox2);
+            this.tabPage8.Location = new System.Drawing.Point(4, 29);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(413, 690);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "TableView";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(301, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(97, 56);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnEmployeeName
+            // 
+            this.btnEmployeeName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnEmployeeName.Location = new System.Drawing.Point(319, 12);
+            this.btnEmployeeName.Name = "btnEmployeeName";
+            this.btnEmployeeName.Size = new System.Drawing.Size(94, 29);
+            this.btnEmployeeName.TabIndex = 1;
+            this.btnEmployeeName.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(1, 2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(97, 56);
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
+            // 
+            // tableNumber
+            // 
+            this.tableNumber.AutoSize = true;
+            this.tableNumber.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tableNumber.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.tableNumber.Location = new System.Drawing.Point(152, 13);
+            this.tableNumber.Name = "tableNumber";
+            this.tableNumber.Size = new System.Drawing.Size(121, 35);
+            this.tableNumber.TabIndex = 2;
+            this.tableNumber.Text = "Table #...";
             // 
             // WaiterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(425, 772);
             this.Controls.Add(this.tableNumber);
             this.Controls.Add(this.btnEmployeeName);
@@ -315,8 +362,9 @@ namespace OrderingSystemUI
             this.Text = "WaiterUI";
             this.Load += new System.EventHandler(this.WaiterUI_Load);
             this.tabControl.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.tableOrderOverviewTab.ResumeLayout(false);
+            this.tableOrderOverviewTab.PerformLayout();
+            this.addOrderView.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -328,10 +376,10 @@ namespace OrderingSystemUI
         #endregion
 
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tableViewTab1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tableOrderOverviewTab;
+        private System.Windows.Forms.TabPage addOrderView;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Button btnEmployeeName;
@@ -351,5 +399,9 @@ namespace OrderingSystemUI
         private System.Windows.Forms.ColumnHeader Price;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label tableNumber;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMenu;
+        private System.Windows.Forms.Button btnDrinksMenu;
+        private System.Windows.Forms.Button btnDinnerMenu;
+        private System.Windows.Forms.Button btnLunchMenu;
     }
 }
