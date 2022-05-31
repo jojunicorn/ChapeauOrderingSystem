@@ -11,7 +11,7 @@ namespace OrderingSystemDAL
     {
         public List<OrderProduct> GetAllOrderProducts()
         {
-            string query = "SELECT ItemId, OrderNumber, ProductId, Comment, OrderTime FROM [dbo].[ORDERPRODUCT]";
+            string query = "SELECT ItemId, OrderNumber, ProductId, Comment, OrderTime FROM [dbo].[ORDERPRODUCTS]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -26,8 +26,8 @@ namespace OrderingSystemDAL
                 OrderProduct orderProduct = new OrderProduct()
                 {
                     ItemID = (int)dr["ItemId"],
-                    OrderNumber = (Order)dr["OrderNumber"],
-                    ProductID = (Product)dr["ProductId"],
+                    OrderNumber = (int)dr["OrderNumber"],
+                    ProductID = (int)dr["ProductId"],
                     Comment = (string)dr["Comment"],
                     OrderTime = (DateTime)dr["OrderTime"],
                 };

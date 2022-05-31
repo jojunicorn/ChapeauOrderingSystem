@@ -45,7 +45,13 @@ namespace OrderingSystemUI
             this.itemName = new System.Windows.Forms.ColumnHeader();
             this.Price = new System.Windows.Forms.ColumnHeader();
             this.addOrderView = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblOrder = new System.Windows.Forms.Label();
+            this.listViewOrderSummary = new System.Windows.Forms.ListView();
+            this.CHCount = new System.Windows.Forms.ColumnHeader();
+            this.CHItemname = new System.Windows.Forms.ColumnHeader();
             this.flowLayoutPanelMenu = new System.Windows.Forms.FlowLayoutPanel();
+            this.listViewAddOrder = new System.Windows.Forms.ListView();
             this.btnDrinksMenu = new System.Windows.Forms.Button();
             this.btnDinnerMenu = new System.Windows.Forms.Button();
             this.btnLunchMenu = new System.Windows.Forms.Button();
@@ -56,12 +62,10 @@ namespace OrderingSystemUI
             this.btnEmployeeName = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
-            this.listViewOrderSummary = new System.Windows.Forms.ListView();
-            this.lblOrder = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tableOrderOverviewTab.SuspendLayout();
             this.addOrderView.SuspendLayout();
+            this.flowLayoutPanelMenu.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -94,16 +98,17 @@ namespace OrderingSystemUI
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.White;
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(413, 690);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "TableView";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tableOrderOverviewTab
             // 
+            this.tableOrderOverviewTab.BackColor = System.Drawing.Color.White;
             this.tableOrderOverviewTab.Controls.Add(this.lblVAT);
             this.tableOrderOverviewTab.Controls.Add(this.lblTotal);
             this.tableOrderOverviewTab.Controls.Add(this.btnPay);
@@ -117,7 +122,6 @@ namespace OrderingSystemUI
             this.tableOrderOverviewTab.Size = new System.Drawing.Size(413, 690);
             this.tableOrderOverviewTab.TabIndex = 2;
             this.tableOrderOverviewTab.Text = "TableOrderVIew";
-            this.tableOrderOverviewTab.UseVisualStyleBackColor = true;
             // 
             // lblVAT
             // 
@@ -159,6 +163,7 @@ namespace OrderingSystemUI
             this.btnDrinks.TabIndex = 3;
             this.btnDrinks.Text = "DRINKS";
             this.btnDrinks.UseVisualStyleBackColor = false;
+            this.btnDrinks.Click += new System.EventHandler(this.btnDrinks_Click);
             // 
             // btnDinner
             // 
@@ -169,6 +174,7 @@ namespace OrderingSystemUI
             this.btnDinner.TabIndex = 2;
             this.btnDinner.Text = "DINNER";
             this.btnDinner.UseVisualStyleBackColor = false;
+            this.btnDinner.Click += new System.EventHandler(this.btnDinner_Click);
             // 
             // btnLunch
             // 
@@ -179,6 +185,7 @@ namespace OrderingSystemUI
             this.btnLunch.TabIndex = 1;
             this.btnLunch.Text = "LUNCH";
             this.btnLunch.UseVisualStyleBackColor = false;
+            this.btnLunch.Click += new System.EventHandler(this.btnLunch_Click);
             // 
             // listViewTableOrder
             // 
@@ -188,26 +195,28 @@ namespace OrderingSystemUI
             this.Price});
             this.listViewTableOrder.FullRowSelect = true;
             this.listViewTableOrder.HideSelection = false;
-            this.listViewTableOrder.Location = new System.Drawing.Point(7, 69);
+            this.listViewTableOrder.Location = new System.Drawing.Point(7, 62);
             this.listViewTableOrder.Name = "listViewTableOrder";
-            this.listViewTableOrder.Size = new System.Drawing.Size(400, 487);
+            this.listViewTableOrder.Size = new System.Drawing.Size(400, 494);
             this.listViewTableOrder.TabIndex = 0;
             this.listViewTableOrder.UseCompatibleStateImageBehavior = false;
+            this.listViewTableOrder.View = System.Windows.Forms.View.Details;
             // 
             // count
             // 
+            this.count.Tag = "count";
             this.count.Text = "count";
-            this.count.Width = 20;
+            this.count.Width = 40;
             // 
             // itemName
             // 
-            this.itemName.Text = "ItemName";
-            this.itemName.Width = 200;
+            this.itemName.Text = "Product Name";
+            this.itemName.Width = 270;
             // 
             // Price
             // 
             this.Price.Text = "Price";
-            this.Price.Width = 50;
+            this.Price.Width = 80;
             // 
             // addOrderView
             // 
@@ -226,12 +235,63 @@ namespace OrderingSystemUI
             this.addOrderView.Text = "AddOrderViewLunch";
             this.addOrderView.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(301, 646);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(106, 38);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "ADD";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // lblOrder
+            // 
+            this.lblOrder.AutoSize = true;
+            this.lblOrder.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblOrder.Location = new System.Drawing.Point(6, 411);
+            this.lblOrder.Name = "lblOrder";
+            this.lblOrder.Size = new System.Drawing.Size(59, 17);
+            this.lblOrder.TabIndex = 7;
+            this.lblOrder.Text = "ORDER: ";
+            // 
+            // listViewOrderSummary
+            // 
+            this.listViewOrderSummary.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.CHCount,
+            this.CHItemname});
+            this.listViewOrderSummary.HideSelection = false;
+            this.listViewOrderSummary.Location = new System.Drawing.Point(7, 431);
+            this.listViewOrderSummary.Name = "listViewOrderSummary";
+            this.listViewOrderSummary.Size = new System.Drawing.Size(400, 211);
+            this.listViewOrderSummary.TabIndex = 6;
+            this.listViewOrderSummary.UseCompatibleStateImageBehavior = false;
+            // 
+            // CHCount
+            // 
+            this.CHCount.Text = "Count";
+            // 
+            // CHItemname
+            // 
+            this.CHItemname.Text = "Name";
+            // 
             // flowLayoutPanelMenu
             // 
+            this.flowLayoutPanelMenu.Controls.Add(this.listViewAddOrder);
             this.flowLayoutPanelMenu.Location = new System.Drawing.Point(7, 62);
             this.flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
             this.flowLayoutPanelMenu.Size = new System.Drawing.Size(400, 346);
             this.flowLayoutPanelMenu.TabIndex = 5;
+            // 
+            // listViewAddOrder
+            // 
+            this.listViewAddOrder.HideSelection = false;
+            this.listViewAddOrder.Location = new System.Drawing.Point(3, 3);
+            this.listViewAddOrder.Name = "listViewAddOrder";
+            this.listViewAddOrder.Size = new System.Drawing.Size(364, 305);
+            this.listViewAddOrder.TabIndex = 0;
+            this.listViewAddOrder.UseCompatibleStateImageBehavior = false;
             // 
             // btnDrinksMenu
             // 
@@ -331,36 +391,6 @@ namespace OrderingSystemUI
             this.tableNumber.TabIndex = 2;
             this.tableNumber.Text = "Table #...";
             // 
-            // listViewOrderSummary
-            // 
-            this.listViewOrderSummary.HideSelection = false;
-            this.listViewOrderSummary.Location = new System.Drawing.Point(7, 431);
-            this.listViewOrderSummary.Name = "listViewOrderSummary";
-            this.listViewOrderSummary.Size = new System.Drawing.Size(400, 211);
-            this.listViewOrderSummary.TabIndex = 6;
-            this.listViewOrderSummary.UseCompatibleStateImageBehavior = false;
-            // 
-            // lblOrder
-            // 
-            this.lblOrder.AutoSize = true;
-            this.lblOrder.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblOrder.Location = new System.Drawing.Point(6, 411);
-            this.lblOrder.Name = "lblOrder";
-            this.lblOrder.Size = new System.Drawing.Size(59, 17);
-            this.lblOrder.TabIndex = 7;
-            this.lblOrder.Text = "ORDER: ";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(301, 646);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 38);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "ADD";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
             // WaiterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -379,6 +409,7 @@ namespace OrderingSystemUI
             this.tableOrderOverviewTab.PerformLayout();
             this.addOrderView.ResumeLayout(false);
             this.addOrderView.PerformLayout();
+            this.flowLayoutPanelMenu.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -418,5 +449,8 @@ namespace OrderingSystemUI
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblOrder;
         private System.Windows.Forms.ListView listViewOrderSummary;
+        private System.Windows.Forms.ColumnHeader CHCount;
+        private System.Windows.Forms.ColumnHeader CHItemname;
+        private System.Windows.Forms.ListView listViewAddOrder;
     }
 }

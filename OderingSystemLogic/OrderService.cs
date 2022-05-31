@@ -19,5 +19,9 @@ namespace OrderingSystemLogic
         {
             return orderDao.GetAllOrders();
         }
+        public Order GetOrder(int orderNumber)
+        {
+            return orderDao.GetOrder(orderNumber);
+        }
     }
 }
