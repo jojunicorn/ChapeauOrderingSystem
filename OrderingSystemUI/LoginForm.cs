@@ -29,24 +29,20 @@ namespace OrderingSystemUI
 
             employee = loginService.GetUser(txtUsername.Text);
 
-            if (employee.EmployeeUsername == txtUsername.Text && employee.EmployeePassword == txtPassword.Text)
+            if (employee.EmployeeUsername == txtUsername.Text && employee.EmployeePassword == int.Parse(txtPassword.Text))
             {
 
-                if (employee.EmployeePosition == "waiter")
+                if (employee.EmployeePosition == "waiter" || employee.EmployeePosition == "manager")
                 {
-                    WaiterUI waiter = new WaiterUI();
+                    WaiterUI waiter = new WaiterUI(employee);
                     waiter.Show();
                 }
-                else if (employee.EmployeePosition == "chef" )
+                else if (employee.EmployeePosition == "chef" || employee.EmployeePosition == "bartender")
                 {
-                    //KitchenUI kitchen = new KitchenUI();
+                    //KitchenUI kitchen = new KitchenUI(employee);
                     // kitchen.Show();
                 }
-                else if (employee.EmployeePosition == "bartender" )
-                {
-                    //BarUI kitchen = new BarUI();
-                   // bar.Show();
-                }
+               
             }
 
             else

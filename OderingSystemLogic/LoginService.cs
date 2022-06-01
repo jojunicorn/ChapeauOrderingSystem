@@ -8,11 +8,18 @@ namespace OrderingSystemLogic
 {
     public class LoginService
     {
-        LoginDAO loginDB = new LoginDAO();
+        //LoginDAO loginDB = new LoginDAO();
+
+        private LoginDAO loginDB;
+
+        public LoginService()
+        {
+            loginDB = new LoginDAO();
+        }
 
         public Employee GetUser(string username)
         {
-            try
+           /* try
             {
                 Employee employee = loginDB.GetUser(username);
                 return employee;
@@ -21,7 +28,9 @@ namespace OrderingSystemLogic
             {
 
                 throw new Exception("The system couldn't connect to the database");
-            }
+            }*/
+
+            return loginDB.GetUser(username);
         }
     }
 }

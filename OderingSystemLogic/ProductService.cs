@@ -47,11 +47,48 @@ namespace OrderingSystemLogic
             drinksHot = new List<Product>();
             GetCategoriesAndTypes();
         }
+        public Product GetProduct(int productId)
+        {
+            return productDao.GetProduct(productId);
+        }
+        public List<Product> GetLunchProducts()
+        {
+            foreach (Product product in allProducts)
+            {
+                if (product.ProductCategory == 1)
+                {
+                    lunchProducts.Add(product);
+                }
+            }
+            return lunchProducts;
+        }
+        public List<Product> GetDinnerProducts()
+        {
+            foreach (Product product in allProducts)
+            {
+                if (product.ProductCategory == 2)
+                {
+                    dinnerProducts.Add(product);
+                }
+            }
+            return dinnerProducts;
+        }
+        public List<Product> GetDrinkProducts()
+        {
+            foreach (Product product in allProducts)
+            {
+                if (product.ProductCategory == 3)
+                {
+                    drinkProducts.Add(product);
+                }
+            }
+            return drinkProducts;
+        }
         private void GetCategoriesAndTypes()
         {
             foreach (Product product in allProducts)
             {
-                if (product.ProductCategory.CategoryID == 1)
+                if (product.ProductCategory == 1)
                 {
                     lunchProducts.Add(product);
                     if (product.ProductType == "starters")
@@ -61,7 +98,7 @@ namespace OrderingSystemLogic
                     else if (product.ProductType == "deserts")
                         lunchDeserts.Add(product);
                 }
-                else if (product.ProductCategory.CategoryID == 2)
+                else if (product.ProductCategory == 2)
                 {
                     dinnerProducts.Add(product);
                     if (product.ProductType == "starters")
@@ -73,7 +110,7 @@ namespace OrderingSystemLogic
                     else if (product.ProductType == "deserts")
                         dinnerDeserts.Add(product);
                 }
-                else if (product.ProductCategory.CategoryID == 3)
+                else if (product.ProductCategory == 3)
                 {
                     drinkProducts.Add(product);
                     if (product.ProductType == "soft drinks")
@@ -89,6 +126,7 @@ namespace OrderingSystemLogic
                 }
             }
         }
+
         public List<Product> GetProducts()
         {
             return allProducts;

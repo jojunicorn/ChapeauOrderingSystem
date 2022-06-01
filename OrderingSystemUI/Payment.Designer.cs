@@ -37,10 +37,33 @@
             this.ClientSize = new System.Drawing.Size(750, 450);
             this.Name = "Payment";
             this.Text = "Form1";
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.SuspendLayout();
+            // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(387, 163);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(151, 121);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // Payment
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listView1);
+            this.Name = "Payment";
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Payment_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ListView listView1;
     }
 }

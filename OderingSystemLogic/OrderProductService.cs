@@ -15,10 +15,11 @@ namespace OrderingSystemLogic
             orderProductDao = new OrderProductsDAO();
         }
 
-        public List<OrderProduct> GetTables()
+        public List<OrderProduct> GetAllOrderProducts()
         {
             return orderProductDao.GetAllOrderProducts();
 
         }
+        
     }
 }
