@@ -137,5 +137,10 @@ namespace OrderingSystemUI
             ListViewGroup hotDrinks = new ListViewGroup("Hot Drinks", HorizontalAlignment.Center);
 
         }
+
+        private void lbl_contents_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
