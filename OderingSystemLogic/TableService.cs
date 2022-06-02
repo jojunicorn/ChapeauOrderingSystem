@@ -27,5 +27,10 @@ namespace OrderingSystemLogic
         {
             return tabledao.GetTable(tableNumber);
         }
+
+        public void ChangeTableStatus(int tableNumber, string tableStatus)
+        {
+            tabledao.ChangeTableStatus(tableNumber, tableStatus);
+        }
     }
 }

@@ -34,6 +34,15 @@ namespace OrderingSystemDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        public void ChangeTableStatus(int tableNumber, string tableStatus)
+        {
+            string query = "UPDATE [dbo].[TABLE] SET TableStatus = @TableStatus WHERE TableNumber = @TableNumber";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@TableNumber", tableNumber);
+            sqlParameters[1] = new SqlParameter("@TableStatus", tableStatus);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         private List<Table> ReadTables(DataTable dataTable)
         {
 

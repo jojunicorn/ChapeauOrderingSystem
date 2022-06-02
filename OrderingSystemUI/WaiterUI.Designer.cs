@@ -52,6 +52,7 @@ namespace OrderingSystemUI
             this.btnTable2 = new System.Windows.Forms.Button();
             this.btnTable1 = new System.Windows.Forms.Button();
             this.tableOrderOverviewTab = new System.Windows.Forms.TabPage();
+            this.lblDisplayVAT = new System.Windows.Forms.Label();
             this.lblDisplayTotal = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
@@ -96,7 +97,6 @@ namespace OrderingSystemUI
             this.btnEmployeeName = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
-            this.lblDisplayVAT = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tableViewTab.SuspendLayout();
             this.pnlTableStatus.SuspendLayout();
@@ -366,6 +366,15 @@ namespace OrderingSystemUI
             this.tableOrderOverviewTab.Size = new System.Drawing.Size(413, 690);
             this.tableOrderOverviewTab.TabIndex = 2;
             this.tableOrderOverviewTab.Text = "TableOrderVIew";
+            // 
+            // lblDisplayVAT
+            // 
+            this.lblDisplayVAT.AutoSize = true;
+            this.lblDisplayVAT.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDisplayVAT.Location = new System.Drawing.Point(345, 591);
+            this.lblDisplayVAT.Name = "lblDisplayVAT";
+            this.lblDisplayVAT.Size = new System.Drawing.Size(0, 28);
+            this.lblDisplayVAT.TabIndex = 10;
             // 
             // lblDisplayTotal
             // 
@@ -830,15 +839,6 @@ namespace OrderingSystemUI
             this.tableNumber.TabIndex = 2;
             this.tableNumber.Text = "Table #...";
             this.tableNumber.Click += new System.EventHandler(this.tableNumber_Click);
-            // 
-            // lblDisplayVAT
-            // 
-            this.lblDisplayVAT.AutoSize = true;
-            this.lblDisplayVAT.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDisplayVAT.Location = new System.Drawing.Point(345, 591);
-            this.lblDisplayVAT.Name = "lblDisplayVAT";
-            this.lblDisplayVAT.Size = new System.Drawing.Size(0, 28);
-            this.lblDisplayVAT.TabIndex = 10;
             // 
             // WaiterUI
             // 

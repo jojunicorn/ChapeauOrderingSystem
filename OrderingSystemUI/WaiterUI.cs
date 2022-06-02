@@ -29,6 +29,8 @@ namespace OrderingSystemUI
         OrderProduct currentOrderItem = null;
 
         Product selectedProduct = null;
+
+        Button tableButton = null;
         public WaiterUI(Employee currentEmployee)
         {
             InitializeComponent();
@@ -44,7 +46,8 @@ namespace OrderingSystemUI
             tabControl.ItemSize = new Size(0, 1);
             tabControl.SizeMode = TabSizeMode.Fixed;
 
-            //btnEmployeeName.Text = "";  //currentEmployee.EmployeeName;
+            SetTablesColor();
+
             btnEmployeeName.Text = currentEmployee.EmployeeName;
 
             tabControl.SelectedTab = tableViewTab;
@@ -283,30 +286,34 @@ namespace OrderingSystemUI
         private void btnTable1_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
-            ChangeStatus(1);
             currentTable = tableService.GetTable(1);
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            ChangeStatus(currentTable.TableNumber, tableButton);
             pnlTableStatus.Hide();
         }
 
-        public void ChangeStatus(int tableNumber)
+        public void ChangeStatus(int tableNumber, Button btn)
         {
             lblTableNumber.Text = tableNumber.ToString();
             Table table = tableService.GetTable(tableNumber);
+            string tableStatus;
+            
 
             if (RBfree.Checked)
             {
-                table.TableStatus = "free";
-                btnTable1.BackColor = Color.PaleGreen;
+                tableStatus = "free";
+                tableService.ChangeTableStatus(tableNumber, tableStatus);
+                btn.BackColor = Color.PaleGreen;
             }
             else if (RBoccupied.Checked)
             {
-                table.TableStatus = "occupied";
-                btnTable1.BackColor = Color.FromArgb(255, 128, 0);
+                tableStatus = "occupied";
+                tableService.ChangeTableStatus(tableNumber, tableStatus);
+                btn.BackColor = Color.FromArgb(255, 128, 0);
 
 
                 //code for creating new order every time a table is newly occupied so a new group of people can order with that ordernumber
@@ -320,9 +327,34 @@ namespace OrderingSystemUI
             }
             else if (RBreserved.Checked)
             {
-                table.TableStatus = "reserved";
-                btnTable1.BackColor = Color.DarkGray;
+                tableStatus = "reserved";
+                tableService.ChangeTableStatus(tableNumber, tableStatus);
+                btn.BackColor = Color.DarkGray;
             }
+        }
+
+        public void SetTablesColor()
+        {
+            TableColor(tableService.GetTable(1), btnTable1);
+            TableColor(tableService.GetTable(2), btnTable2); 
+            TableColor(tableService.GetTable(3), btnTable3); 
+            TableColor(tableService.GetTable(4), btnTable4); 
+            TableColor(tableService.GetTable(5), btnTable5); 
+            TableColor(tableService.GetTable(6), btnTable6); 
+            TableColor(tableService.GetTable(7), btnTable7);
+            TableColor(tableService.GetTable(8), btnTable8); 
+            TableColor(tableService.GetTable(9), btnTable9);
+            TableColor(tableService.GetTable(10), btnTable10);
+        }
+
+        public void TableColor(Table table, Button btn)
+        {
+            if (table.TableStatus == "free")
+                btn.BackColor = Color.PaleGreen;
+            else if (table.TableStatus == "occupied")
+                btn.BackColor = Color.FromArgb(255, 128, 0);
+            else if (table.TableStatus == "reserved")
+                btn.BackColor = Color.DarkGray;
         }
 
         private void btnGoToTable_Click(object sender, EventArgs e)
@@ -336,7 +368,6 @@ namespace OrderingSystemUI
         private void btnTable2_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
-            ChangeStatus(2);
             currentTable = tableService.GetTable(2);
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
@@ -344,64 +375,65 @@ namespace OrderingSystemUI
         private void btnTable3_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
-            ChangeStatus(3);
             currentTable = tableService.GetTable(3);
+            tableButton = btnTable3;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
 
         private void btnTable4_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
-            ChangeStatus(4);
             currentTable = tableService.GetTable(4);
+            tableButton = btnTable4;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
+            
         }
 
         private void btnTable5_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
-            ChangeStatus(5);
             currentTable = tableService.GetTable(5);
+            tableButton = btnTable5;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
 
         private void btnTable6_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
-            ChangeStatus(6);
             currentTable = tableService.GetTable(6);
+            tableButton = btnTable6;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
 
         private void btnTable7_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
-            ChangeStatus(7);
             currentTable = tableService.GetTable(7);
+            tableButton = btnTable7;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
 
         private void btnTable8_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
-            ChangeStatus(8);
             currentTable = tableService.GetTable(8);
+            tableButton = btnTable8;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
 
         private void btnTable9_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
-            ChangeStatus(9);
             currentTable = tableService.GetTable(9);
+            tableButton = btnTable9;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
 
         private void btnTable10_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
-            ChangeStatus(10);
             currentTable = tableService.GetTable(10);
+            tableButton = btnTable10;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
 
@@ -418,6 +450,9 @@ namespace OrderingSystemUI
             {
                 return;
             }
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+            
         }
 
         private void tableNumber_Click(object sender, EventArgs e)
