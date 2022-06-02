@@ -13,5 +13,6 @@ namespace OrderingSystemModel
         public string Comment { get; set; }
         public DateTime OrderTime { get; set; }
         public int Count { get; set; }
+        public string Status { get; set; }
     }
 }

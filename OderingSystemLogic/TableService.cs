@@ -19,7 +19,10 @@ namespace OrderingSystemLogic
             return tabledao.GetAllTables();
 
         }
-
+        public void UpdateTableWithCurrentOrder(Table table, int orderNumber)
+        {
+            tabledao.UpdateTableWithCurrentOrder(table, orderNumber);
+        }
         public Table GetTable(int tableNumber)
         {
             return tabledao.GetTable(tableNumber);

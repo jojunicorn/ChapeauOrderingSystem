@@ -29,7 +29,7 @@ namespace OrderingSystemLogic
         public ProductService()
         {
             productDao = new ProductDAO();
-            allProducts = productDao.GetAllProducts();
+            allProducts = new List<Product>();
             lunchProducts = new List<Product>();
             dinnerProducts = new List<Product>();
             drinkProducts = new List<Product>();
@@ -47,12 +47,18 @@ namespace OrderingSystemLogic
             drinksHot = new List<Product>();
             GetCategoriesAndTypes();
         }
+        public List<Product> GetAllProducts()
+        {
+           return productDao.GetAllProducts();
+        }
         public Product GetProduct(int productId)
         {
             return productDao.GetProduct(productId);
         }
         public List<Product> GetLunchProducts()
         {
+            allProducts = GetAllProducts();
+
             foreach (Product product in allProducts)
             {
                 if (product.ProductCategory == 1)
@@ -64,17 +70,21 @@ namespace OrderingSystemLogic
         }
         public List<Product> GetDinnerProducts()
         {
+            allProducts = GetAllProducts();
             foreach (Product product in allProducts)
             {
                 if (product.ProductCategory == 2)
                 {
                     dinnerProducts.Add(product);
                 }
+                else continue;
             }
             return dinnerProducts;
         }
         public List<Product> GetDrinkProducts()
         {
+            allProducts = GetAllProducts();
+
             foreach (Product product in allProducts)
             {
                 if (product.ProductCategory == 3)

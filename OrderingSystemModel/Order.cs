@@ -8,6 +8,7 @@ namespace OrderingSystemModel
     { 
         public int OrderNumber { get; set; }
         public int EmployeeNumber { get; set; } //employee
-        public int TableNumber { get; set; } //table
+        public DateTime OrderTime { get; set; }
+        //public int TableNumber { get; set; } //table
     }
 }

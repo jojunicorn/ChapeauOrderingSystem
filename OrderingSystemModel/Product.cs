@@ -14,5 +14,8 @@ namespace OrderingSystemModel
         public int Stock { get; set; }
         public int ProductCategory { get; set; }
 
+
+        public string Status { get; set; }
+
     }
 }

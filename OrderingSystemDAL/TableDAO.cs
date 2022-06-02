@@ -11,17 +11,27 @@ namespace OrderingSystemDAL
     {
         public List<Table> GetAllTables()
         {
-            string query = "SELECT TableNumber, TableStatus FROM [dbo].[TABLE]";
+            string query = "SELECT TableNumber, TableStatus, OrderNumber FROM [dbo].[TABLE]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public Table GetTable(int tableNumber)
         {
-            string query = "SELECT TableNumber, TableStatus FROM TABLE WHERE TableNumber = @TableNumber";
+            string query = "SELECT TableNumber, TableStatus, OrderNumber FROM [dbo].[TABLE] WHERE TableNumber = @TableNumber";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[1] = new SqlParameter("@TableNumber", tableNumber);
+            sqlParameters[0] = new SqlParameter("@TableNumber", tableNumber);
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public void UpdateTableWithCurrentOrder(Table table,int orderNumber)
+        {
+            string query = ("UPDATE [dbo].[TABLE] SET OrderNumber = @orderNumber" + "WHERE TableNumber = @tableNumber");
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@orderNumber", orderNumber);
+            sqlParameters[1] = new SqlParameter("@tableNumber", table.TableNumber);
+
+            ExecuteEditQuery(query, sqlParameters);
         }
 
         private List<Table> ReadTables(DataTable dataTable)
@@ -35,6 +45,7 @@ namespace OrderingSystemDAL
                 {
                     TableNumber = (int)dr["TableNumber"],
                     TableStatus = (string)dr["TableStatus"],
+                    CurrentOrder = (int)dr["OrderNumber"],
                 };
                 tables.Add(table);
             }
@@ -50,8 +61,11 @@ namespace OrderingSystemDAL
             {
                 table.TableNumber = (int)dr["TableNumber"];
                 table.TableStatus = (string)dr["TableStatus"];
+                table.CurrentOrder = (int)dr["OrderNumber"];
+
             }
             return table;
         }
     }
+    
 }

@@ -29,6 +29,8 @@ namespace OrderingSystemUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WaiterUI));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tableViewTab = new System.Windows.Forms.TabPage();
@@ -49,8 +51,10 @@ namespace OrderingSystemUI
             this.btnTable3 = new System.Windows.Forms.Button();
             this.btnTable2 = new System.Windows.Forms.Button();
             this.btnTable1 = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableOrderOverviewTab = new System.Windows.Forms.TabPage();
+            this.lblDisplayTotal = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.lblVAT = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnPay = new System.Windows.Forms.Button();
@@ -62,13 +66,14 @@ namespace OrderingSystemUI
             this.itemName = new System.Windows.Forms.ColumnHeader();
             this.Price = new System.Windows.Forms.ColumnHeader();
             this.addOrderView = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.listViewAddOrder = new System.Windows.Forms.ListView();
+            this.chName = new System.Windows.Forms.ColumnHeader();
+            this.chPrice = new System.Windows.Forms.ColumnHeader();
+            this.btnAddOrder = new System.Windows.Forms.Button();
             this.lblOrder = new System.Windows.Forms.Label();
             this.listViewOrderSummary = new System.Windows.Forms.ListView();
             this.CHCount = new System.Windows.Forms.ColumnHeader();
             this.CHItemname = new System.Windows.Forms.ColumnHeader();
-            this.flowLayoutPanelMenu = new System.Windows.Forms.FlowLayoutPanel();
-            this.listViewAddOrder = new System.Windows.Forms.ListView();
             this.btnDrinksMenu = new System.Windows.Forms.Button();
             this.btnDinnerMenu = new System.Windows.Forms.Button();
             this.btnLunchMenu = new System.Windows.Forms.Button();
@@ -91,13 +96,12 @@ namespace OrderingSystemUI
             this.btnEmployeeName = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
-            this.lblEmployee = new System.Windows.Forms.Label();
+            this.lblDisplayVAT = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tableViewTab.SuspendLayout();
             this.pnlTableStatus.SuspendLayout();
             this.tableOrderOverviewTab.SuspendLayout();
             this.addOrderView.SuspendLayout();
-            this.flowLayoutPanelMenu.SuspendLayout();
             this.tabPagePayment.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -108,7 +112,6 @@ namespace OrderingSystemUI
             // 
             this.tabControl.AccessibleName = "TableView";
             this.tabControl.Controls.Add(this.tableViewTab);
-            this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tableOrderOverviewTab);
             this.tabControl.Controls.Add(this.addOrderView);
             this.tabControl.Controls.Add(this.tabPagePayment);
@@ -343,19 +346,13 @@ namespace OrderingSystemUI
             this.btnTable1.UseVisualStyleBackColor = false;
             this.btnTable1.Click += new System.EventHandler(this.btnTable1_Click);
             // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.White;
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(413, 690);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "TableView";
-            // 
             // tableOrderOverviewTab
             // 
             this.tableOrderOverviewTab.BackColor = System.Drawing.Color.White;
+            this.tableOrderOverviewTab.Controls.Add(this.lblDisplayVAT);
+            this.tableOrderOverviewTab.Controls.Add(this.lblDisplayTotal);
+            this.tableOrderOverviewTab.Controls.Add(this.btnEdit);
+            this.tableOrderOverviewTab.Controls.Add(this.btnRemove);
             this.tableOrderOverviewTab.Controls.Add(this.lblVAT);
             this.tableOrderOverviewTab.Controls.Add(this.lblTotal);
             this.tableOrderOverviewTab.Controls.Add(this.btnPay);
@@ -369,6 +366,35 @@ namespace OrderingSystemUI
             this.tableOrderOverviewTab.Size = new System.Drawing.Size(413, 690);
             this.tableOrderOverviewTab.TabIndex = 2;
             this.tableOrderOverviewTab.Text = "TableOrderVIew";
+            // 
+            // lblDisplayTotal
+            // 
+            this.lblDisplayTotal.AutoSize = true;
+            this.lblDisplayTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDisplayTotal.Location = new System.Drawing.Point(323, 563);
+            this.lblDisplayTotal.Name = "lblDisplayTotal";
+            this.lblDisplayTotal.Size = new System.Drawing.Size(0, 28);
+            this.lblDisplayTotal.TabIndex = 9;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(122, 654);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(94, 29);
+            this.btnEdit.TabIndex = 8;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(8, 654);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(94, 29);
+            this.btnRemove.TabIndex = 7;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // lblVAT
             // 
@@ -448,6 +474,7 @@ namespace OrderingSystemUI
             this.listViewTableOrder.TabIndex = 0;
             this.listViewTableOrder.UseCompatibleStateImageBehavior = false;
             this.listViewTableOrder.View = System.Windows.Forms.View.Details;
+            this.listViewTableOrder.SelectedIndexChanged += new System.EventHandler(this.listViewTableOrder_SelectedIndexChanged);
             // 
             // count
             // 
@@ -467,10 +494,10 @@ namespace OrderingSystemUI
             // 
             // addOrderView
             // 
-            this.addOrderView.Controls.Add(this.button2);
+            this.addOrderView.Controls.Add(this.listViewAddOrder);
+            this.addOrderView.Controls.Add(this.btnAddOrder);
             this.addOrderView.Controls.Add(this.lblOrder);
             this.addOrderView.Controls.Add(this.listViewOrderSummary);
-            this.addOrderView.Controls.Add(this.flowLayoutPanelMenu);
             this.addOrderView.Controls.Add(this.btnDrinksMenu);
             this.addOrderView.Controls.Add(this.btnDinnerMenu);
             this.addOrderView.Controls.Add(this.btnLunchMenu);
@@ -479,19 +506,47 @@ namespace OrderingSystemUI
             this.addOrderView.Padding = new System.Windows.Forms.Padding(3);
             this.addOrderView.Size = new System.Drawing.Size(413, 690);
             this.addOrderView.TabIndex = 3;
-            this.addOrderView.Text = "AddOrderViewLunch";
+            this.addOrderView.Text = "AddOrderView";
             this.addOrderView.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // listViewAddOrder
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(301, 646);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 38);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "ADD";
-            this.button2.UseVisualStyleBackColor = false;
+            this.listViewAddOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chName,
+            this.chPrice});
+            this.listViewAddOrder.HideSelection = false;
+            this.listViewAddOrder.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2});
+            this.listViewAddOrder.Location = new System.Drawing.Point(7, 62);
+            this.listViewAddOrder.Name = "listViewAddOrder";
+            this.listViewAddOrder.Size = new System.Drawing.Size(400, 346);
+            this.listViewAddOrder.TabIndex = 9;
+            this.listViewAddOrder.UseCompatibleStateImageBehavior = false;
+            this.listViewAddOrder.View = System.Windows.Forms.View.Details;
+            this.listViewAddOrder.SelectedIndexChanged += new System.EventHandler(this.listViewAddOrder_SelectedIndexChanged);
+            // 
+            // chName
+            // 
+            this.chName.Text = "Product Name";
+            this.chName.Width = 350;
+            // 
+            // chPrice
+            // 
+            this.chPrice.Text = "Price";
+            this.chPrice.Width = 50;
+            // 
+            // btnAddOrder
+            // 
+            this.btnAddOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnAddOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddOrder.Location = new System.Drawing.Point(301, 646);
+            this.btnAddOrder.Name = "btnAddOrder";
+            this.btnAddOrder.Size = new System.Drawing.Size(106, 38);
+            this.btnAddOrder.TabIndex = 8;
+            this.btnAddOrder.Text = "ADD";
+            this.btnAddOrder.UseVisualStyleBackColor = false;
+            this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
             // 
             // lblOrder
             // 
@@ -514,31 +569,17 @@ namespace OrderingSystemUI
             this.listViewOrderSummary.Size = new System.Drawing.Size(400, 211);
             this.listViewOrderSummary.TabIndex = 6;
             this.listViewOrderSummary.UseCompatibleStateImageBehavior = false;
+            this.listViewOrderSummary.View = System.Windows.Forms.View.Details;
             // 
             // CHCount
             // 
             this.CHCount.Text = "Count";
+            this.CHCount.Width = 50;
             // 
             // CHItemname
             // 
             this.CHItemname.Text = "Name";
-            // 
-            // flowLayoutPanelMenu
-            // 
-            this.flowLayoutPanelMenu.Controls.Add(this.listViewAddOrder);
-            this.flowLayoutPanelMenu.Location = new System.Drawing.Point(7, 62);
-            this.flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
-            this.flowLayoutPanelMenu.Size = new System.Drawing.Size(400, 346);
-            this.flowLayoutPanelMenu.TabIndex = 5;
-            // 
-            // listViewAddOrder
-            // 
-            this.listViewAddOrder.HideSelection = false;
-            this.listViewAddOrder.Location = new System.Drawing.Point(3, 3);
-            this.listViewAddOrder.Name = "listViewAddOrder";
-            this.listViewAddOrder.Size = new System.Drawing.Size(364, 305);
-            this.listViewAddOrder.TabIndex = 0;
-            this.listViewAddOrder.UseCompatibleStateImageBehavior = false;
+            this.CHItemname.Width = 350;
             // 
             // btnDrinksMenu
             // 
@@ -549,6 +590,7 @@ namespace OrderingSystemUI
             this.btnDrinksMenu.TabIndex = 4;
             this.btnDrinksMenu.Text = "DRINKS";
             this.btnDrinksMenu.UseVisualStyleBackColor = false;
+            this.btnDrinksMenu.Click += new System.EventHandler(this.btnDrinksMenu_Click);
             // 
             // btnDinnerMenu
             // 
@@ -559,6 +601,7 @@ namespace OrderingSystemUI
             this.btnDinnerMenu.TabIndex = 3;
             this.btnDinnerMenu.Text = "DINNER";
             this.btnDinnerMenu.UseVisualStyleBackColor = false;
+            this.btnDinnerMenu.Click += new System.EventHandler(this.btnDinnerMenu_Click);
             // 
             // btnLunchMenu
             // 
@@ -569,6 +612,7 @@ namespace OrderingSystemUI
             this.btnLunchMenu.TabIndex = 2;
             this.btnLunchMenu.Text = "LUNCH";
             this.btnLunchMenu.UseVisualStyleBackColor = false;
+            this.btnLunchMenu.Click += new System.EventHandler(this.btnLunchMenu_Click);
             // 
             // tabPagePayment
             // 
@@ -764,6 +808,7 @@ namespace OrderingSystemUI
             this.btnEmployeeName.Size = new System.Drawing.Size(94, 29);
             this.btnEmployeeName.TabIndex = 1;
             this.btnEmployeeName.UseVisualStyleBackColor = false;
+            this.btnEmployeeName.Click += new System.EventHandler(this.btnEmployeeName_Click);
             // 
             // pictureBox3
             // 
@@ -784,17 +829,16 @@ namespace OrderingSystemUI
             this.tableNumber.Size = new System.Drawing.Size(121, 35);
             this.tableNumber.TabIndex = 2;
             this.tableNumber.Text = "Table #...";
+            this.tableNumber.Click += new System.EventHandler(this.tableNumber_Click);
             // 
-            // lblEmployee
+            // lblDisplayVAT
             // 
-            this.lblEmployee.AutoSize = true;
-            this.lblEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblEmployee.ForeColor = System.Drawing.Color.White;
-            this.lblEmployee.Location = new System.Drawing.Point(290, 16);
-            this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(12, 20);
-            this.lblEmployee.TabIndex = 3;
-            this.lblEmployee.Text = ".";
+            this.lblDisplayVAT.AutoSize = true;
+            this.lblDisplayVAT.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDisplayVAT.Location = new System.Drawing.Point(345, 591);
+            this.lblDisplayVAT.Name = "lblDisplayVAT";
+            this.lblDisplayVAT.Size = new System.Drawing.Size(0, 28);
+            this.lblDisplayVAT.TabIndex = 10;
             // 
             // WaiterUI
             // 
@@ -802,7 +846,6 @@ namespace OrderingSystemUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(425, 772);
-            this.Controls.Add(this.lblEmployee);
             this.Controls.Add(this.tableNumber);
             this.Controls.Add(this.btnEmployeeName);
             this.Controls.Add(this.pictureBox3);
@@ -818,7 +861,6 @@ namespace OrderingSystemUI
             this.tableOrderOverviewTab.PerformLayout();
             this.addOrderView.ResumeLayout(false);
             this.addOrderView.PerformLayout();
-            this.flowLayoutPanelMenu.ResumeLayout(false);
             this.tabPagePayment.ResumeLayout(false);
             this.tabPagePayment.PerformLayout();
             this.tabPage8.ResumeLayout(false);
@@ -833,7 +875,6 @@ namespace OrderingSystemUI
 
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tableViewTab;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tableOrderOverviewTab;
         private System.Windows.Forms.TabPage addOrderView;
         private System.Windows.Forms.Button btnEmployeeName;
@@ -853,16 +894,14 @@ namespace OrderingSystemUI
         private System.Windows.Forms.ColumnHeader Price;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label tableNumber;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMenu;
         private System.Windows.Forms.Button btnDrinksMenu;
         private System.Windows.Forms.Button btnDinnerMenu;
         private System.Windows.Forms.Button btnLunchMenu;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddOrder;
         private System.Windows.Forms.Label lblOrder;
         private System.Windows.Forms.ListView listViewOrderSummary;
         private System.Windows.Forms.ColumnHeader CHCount;
         private System.Windows.Forms.ColumnHeader CHItemname;
-        private System.Windows.Forms.ListView listViewAddOrder;
         private System.Windows.Forms.Label lbl_bill;
         private System.Windows.Forms.Label lbl_vat_amount;
         private System.Windows.Forms.Label lbl_VAT;
@@ -875,7 +914,6 @@ namespace OrderingSystemUI
         private System.Windows.Forms.Label lbl_total;
         private System.Windows.Forms.Label lbl_contents;
         private System.Windows.Forms.Button btn_payment;
-        private System.Windows.Forms.Label lblEmployee;
         private System.Windows.Forms.Button btnTable10;
         private System.Windows.Forms.Button btnTable9;
         private System.Windows.Forms.Button btnTable8;
@@ -893,5 +931,12 @@ namespace OrderingSystemUI
         private System.Windows.Forms.RadioButton RBoccupied;
         private System.Windows.Forms.RadioButton RBfree;
         private System.Windows.Forms.Label lblTableNumber;
+        private System.Windows.Forms.ListView listViewAddOrder;
+        private System.Windows.Forms.ColumnHeader chName;
+        private System.Windows.Forms.ColumnHeader chPrice;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label lblDisplayTotal;
+        private System.Windows.Forms.Label lblDisplayVAT;
     }
 }

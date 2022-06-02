@@ -11,7 +11,7 @@ namespace OrderingSystemDAL
         string query = "";
         public List<Order> GetAllOrders()
         {
-            query = "SELECT OrderNumber, EmployeNumber, TableNumber FROM [dbo].[ORDER]";
+            query = "SELECT OrderNumber, EmployeeNumber FROM [dbo].[ORDER]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -19,7 +19,7 @@ namespace OrderingSystemDAL
         {
             try
             {
-                query = "SELECT OrderNumber, EmployeNumber, TableNumber FROM [dbo].[ORDER] WHERE OrderNumber = @orderNumber;";
+                query = "SELECT OrderNumber, EmployeeNumber FROM [dbo].[ORDER] WHERE OrderNumber = @orderNumber;";
 
                 SqlParameter[] sqlParameters = new SqlParameter[1];
                 sqlParameters[0] = new SqlParameter("@orderNumber", orderNumber);
@@ -33,6 +33,18 @@ namespace OrderingSystemDAL
                 throw ex;
             }
         }
+        public int CreateNewOrder(Order order)
+        {
+            query = "INSERT INTO [dbo].[ORDER] VALUES (@employeeNumber, GetDate());";
+
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@employeeNumber", order.EmployeeNumber);
+
+
+            ExecuteEditQuery(query, sqlParameters);
+
+            return GetAllOrders().Count;
+        }
 
         private List<Order> ReadTables(DataTable dataTable)
         {
@@ -44,8 +56,8 @@ namespace OrderingSystemDAL
                 Order order = new Order()
                 {
                     OrderNumber = (int)dr["OrderNumber"],
-                    EmployeeNumber = (int)dr["EmployeNumber"],
-                    TableNumber = (int)dr["TableNumber"],
+                    EmployeeNumber = (int)dr["EmployeeNumber"],
+                    //TableNumber = (int)dr["TableNumber"],
                 };
                 orders.Add(order);
             }
@@ -54,15 +66,26 @@ namespace OrderingSystemDAL
         private Order ReadTable(DataTable dataTable)
         {
 
-            DataRow dataRow = dataTable.Rows[0];
+            //DataRow dataRow = dataTable.Rows[2];
 
-            Order order = new Order()
+            //Order order = new Order()
+            //{
+            //    OrderNumber = (int)dataRow["OrderNumber"],
+            //    EmployeeNumber = (int)dataRow["EmployeNumber"],
+            //    //TableNumber = (int)dataRow["TableNumber"],
+            //};
+
+            //return order;
+
+
+            Order order = new Order();
+
+            foreach (DataRow dr in dataTable.Rows)
             {
-                OrderNumber = (int)dataRow["OrderNumber"],
-                EmployeeNumber = (int)dataRow["EmployeNumber"],
-                TableNumber = (int)dataRow["TableNumber"],
-            };
+                order.OrderNumber = (int)dr["OrderNumber"];
+                order.EmployeeNumber = (int)dr["EmployeeNumber"];
 
+            }
             return order;
         }
     }

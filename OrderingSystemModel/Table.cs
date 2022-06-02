@@ -7,5 +7,6 @@ namespace OrderingSystemModel
         public int TableNumber { get; set; }
         public string TableStatus { get; set; }
 
+        public int CurrentOrder { get; set; }
     }
 }
