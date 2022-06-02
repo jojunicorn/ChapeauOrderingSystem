@@ -19,5 +19,10 @@ namespace OrderingSystemLogic
             return tabledao.GetAllTables();
 
         }
+
+        public Table GetTable(int tableNumber)
+        {
+            return tabledao.GetTable(tableNumber);
+        }
     }
 }

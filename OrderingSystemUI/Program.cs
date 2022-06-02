@@ -20,8 +20,8 @@ namespace OrderingSystemUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Employee employee = null;
-            Application.Run(new WaiterUI(employee));
-            //Application.Run(new LoginForm());
+            //Application.Run(new WaiterUI(employee));
+            Application.Run(new LoginForm());
         }
     }
 }

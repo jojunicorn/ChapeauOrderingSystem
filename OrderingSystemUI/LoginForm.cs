@@ -36,11 +36,13 @@ namespace OrderingSystemUI
                 {
                     WaiterUI waiter = new WaiterUI(employee);
                     waiter.Show();
+                    Hide();
                 }
                 else if (employee.EmployeePosition == "chef" || employee.EmployeePosition == "bartender")
                 {
                     //KitchenUI kitchen = new KitchenUI(employee);
                     // kitchen.Show();
+                    //Hide();
                 }
                
             }

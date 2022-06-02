@@ -31,7 +31,24 @@ namespace OrderingSystemUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WaiterUI));
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tableViewTab1 = new System.Windows.Forms.TabPage();
+            this.tableViewTab = new System.Windows.Forms.TabPage();
+            this.pnlTableStatus = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnGoToTable = new System.Windows.Forms.Button();
+            this.RBreserved = new System.Windows.Forms.RadioButton();
+            this.RBoccupied = new System.Windows.Forms.RadioButton();
+            this.RBfree = new System.Windows.Forms.RadioButton();
+            this.lblTableNumber = new System.Windows.Forms.Label();
+            this.btnTable10 = new System.Windows.Forms.Button();
+            this.btnTable9 = new System.Windows.Forms.Button();
+            this.btnTable8 = new System.Windows.Forms.Button();
+            this.btnTable7 = new System.Windows.Forms.Button();
+            this.btnTable6 = new System.Windows.Forms.Button();
+            this.btnTable5 = new System.Windows.Forms.Button();
+            this.btnTable4 = new System.Windows.Forms.Button();
+            this.btnTable3 = new System.Windows.Forms.Button();
+            this.btnTable2 = new System.Windows.Forms.Button();
+            this.btnTable1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableOrderOverviewTab = new System.Windows.Forms.TabPage();
             this.lblVAT = new System.Windows.Forms.Label();
@@ -56,25 +73,28 @@ namespace OrderingSystemUI
             this.btnDinnerMenu = new System.Windows.Forms.Button();
             this.btnLunchMenu = new System.Windows.Forms.Button();
             this.tabPagePayment = new System.Windows.Forms.TabPage();
+            this.btn_payment = new System.Windows.Forms.Button();
+            this.lbl_vat_amount = new System.Windows.Forms.Label();
+            this.lbl_VAT = new System.Windows.Forms.Label();
+            this.lbl_price1 = new System.Windows.Forms.Label();
+            this.lbl_price2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_VISA = new System.Windows.Forms.Button();
+            this.btn_DEBIT = new System.Windows.Forms.Button();
+            this.lbl_crditCardType = new System.Windows.Forms.Label();
+            this.lbl_total = new System.Windows.Forms.Label();
+            this.lbl_contents = new System.Windows.Forms.Label();
+            this.lbl_bill = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnEmployeeName = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
-            this.lbl_bill = new System.Windows.Forms.Label();
-            this.lbl_contents = new System.Windows.Forms.Label();
-            this.lbl_total = new System.Windows.Forms.Label();
-            this.lbl_crditCardType = new System.Windows.Forms.Label();
-            this.btn_DEBIT = new System.Windows.Forms.Button();
-            this.btn_VISA = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbl_price2 = new System.Windows.Forms.Label();
-            this.lbl_price1 = new System.Windows.Forms.Label();
-            this.lbl_VAT = new System.Windows.Forms.Label();
-            this.lbl_vat_amount = new System.Windows.Forms.Label();
-            this.btn_payment = new System.Windows.Forms.Button();
+            this.lblEmployee = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
+            this.tableViewTab.SuspendLayout();
+            this.pnlTableStatus.SuspendLayout();
             this.tableOrderOverviewTab.SuspendLayout();
             this.addOrderView.SuspendLayout();
             this.flowLayoutPanelMenu.SuspendLayout();
@@ -87,38 +107,249 @@ namespace OrderingSystemUI
             // tabControl
             // 
             this.tabControl.AccessibleName = "TableView";
-            this.tabControl.Controls.Add(this.tableViewTab1);
+            this.tabControl.Controls.Add(this.tableViewTab);
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tableOrderOverviewTab);
             this.tabControl.Controls.Add(this.addOrderView);
             this.tabControl.Controls.Add(this.tabPagePayment);
             this.tabControl.Controls.Add(this.tabPage8);
-            this.tabControl.Location = new System.Drawing.Point(1, 59);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl.Location = new System.Drawing.Point(1, 47);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(526, 904);
+            this.tabControl.Size = new System.Drawing.Size(421, 723);
             this.tabControl.TabIndex = 0;
             // 
-            // tableViewTab1
+            // tableViewTab
             // 
-            this.tableViewTab1.Location = new System.Drawing.Point(4, 34);
-            this.tableViewTab1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tableViewTab1.Name = "tableViewTab1";
-            this.tableViewTab1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tableViewTab1.Size = new System.Drawing.Size(518, 866);
-            this.tableViewTab1.TabIndex = 0;
-            this.tableViewTab1.Text = "TableView";
-            this.tableViewTab1.UseVisualStyleBackColor = true;
+            this.tableViewTab.Controls.Add(this.pnlTableStatus);
+            this.tableViewTab.Controls.Add(this.btnTable10);
+            this.tableViewTab.Controls.Add(this.btnTable9);
+            this.tableViewTab.Controls.Add(this.btnTable8);
+            this.tableViewTab.Controls.Add(this.btnTable7);
+            this.tableViewTab.Controls.Add(this.btnTable6);
+            this.tableViewTab.Controls.Add(this.btnTable5);
+            this.tableViewTab.Controls.Add(this.btnTable4);
+            this.tableViewTab.Controls.Add(this.btnTable3);
+            this.tableViewTab.Controls.Add(this.btnTable2);
+            this.tableViewTab.Controls.Add(this.btnTable1);
+            this.tableViewTab.Location = new System.Drawing.Point(4, 29);
+            this.tableViewTab.Name = "tableViewTab";
+            this.tableViewTab.Padding = new System.Windows.Forms.Padding(3);
+            this.tableViewTab.Size = new System.Drawing.Size(413, 690);
+            this.tableViewTab.TabIndex = 0;
+            this.tableViewTab.Text = "TableView";
+            this.tableViewTab.UseVisualStyleBackColor = true;
+            // 
+            // pnlTableStatus
+            // 
+            this.pnlTableStatus.Controls.Add(this.btnBack);
+            this.pnlTableStatus.Controls.Add(this.btnGoToTable);
+            this.pnlTableStatus.Controls.Add(this.RBreserved);
+            this.pnlTableStatus.Controls.Add(this.RBoccupied);
+            this.pnlTableStatus.Controls.Add(this.RBfree);
+            this.pnlTableStatus.Controls.Add(this.lblTableNumber);
+            this.pnlTableStatus.Location = new System.Drawing.Point(20, 82);
+            this.pnlTableStatus.Name = "pnlTableStatus";
+            this.pnlTableStatus.Size = new System.Drawing.Size(370, 587);
+            this.pnlTableStatus.TabIndex = 10;
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnBack.Location = new System.Drawing.Point(0, 500);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(94, 29);
+            this.btnBack.TabIndex = 5;
+            this.btnBack.Text = "BACK";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnGoToTable
+            // 
+            this.btnGoToTable.BackColor = System.Drawing.Color.White;
+            this.btnGoToTable.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnGoToTable.Location = new System.Drawing.Point(112, 368);
+            this.btnGoToTable.Name = "btnGoToTable";
+            this.btnGoToTable.Size = new System.Drawing.Size(146, 43);
+            this.btnGoToTable.TabIndex = 4;
+            this.btnGoToTable.Text = "Go to table";
+            this.btnGoToTable.UseVisualStyleBackColor = false;
+            this.btnGoToTable.Click += new System.EventHandler(this.btnGoToTable_Click);
+            // 
+            // RBreserved
+            // 
+            this.RBreserved.AutoSize = true;
+            this.RBreserved.BackColor = System.Drawing.Color.DarkGray;
+            this.RBreserved.Location = new System.Drawing.Point(243, 277);
+            this.RBreserved.Name = "RBreserved";
+            this.RBreserved.Size = new System.Drawing.Size(100, 24);
+            this.RBreserved.TabIndex = 3;
+            this.RBreserved.TabStop = true;
+            this.RBreserved.Text = "RESERVED";
+            this.RBreserved.UseVisualStyleBackColor = false;
+            // 
+            // RBoccupied
+            // 
+            this.RBoccupied.AutoSize = true;
+            this.RBoccupied.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.RBoccupied.Location = new System.Drawing.Point(124, 277);
+            this.RBoccupied.Name = "RBoccupied";
+            this.RBoccupied.Size = new System.Drawing.Size(100, 24);
+            this.RBoccupied.TabIndex = 2;
+            this.RBoccupied.TabStop = true;
+            this.RBoccupied.Text = "OCCUPIED";
+            this.RBoccupied.UseVisualStyleBackColor = false;
+            // 
+            // RBfree
+            // 
+            this.RBfree.AutoSize = true;
+            this.RBfree.BackColor = System.Drawing.Color.PaleGreen;
+            this.RBfree.Location = new System.Drawing.Point(36, 277);
+            this.RBfree.Name = "RBfree";
+            this.RBfree.Size = new System.Drawing.Size(62, 24);
+            this.RBfree.TabIndex = 1;
+            this.RBfree.TabStop = true;
+            this.RBfree.Text = "FREE";
+            this.RBfree.UseVisualStyleBackColor = false;
+            // 
+            // lblTableNumber
+            // 
+            this.lblTableNumber.AutoSize = true;
+            this.lblTableNumber.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTableNumber.Location = new System.Drawing.Point(126, 141);
+            this.lblTableNumber.Name = "lblTableNumber";
+            this.lblTableNumber.Size = new System.Drawing.Size(98, 38);
+            this.lblTableNumber.TabIndex = 0;
+            this.lblTableNumber.Text = "TABLE";
+            // 
+            // btnTable10
+            // 
+            this.btnTable10.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnTable10.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTable10.Location = new System.Drawing.Point(252, 482);
+            this.btnTable10.Name = "btnTable10";
+            this.btnTable10.Size = new System.Drawing.Size(79, 73);
+            this.btnTable10.TabIndex = 9;
+            this.btnTable10.Text = "10";
+            this.btnTable10.UseVisualStyleBackColor = false;
+            this.btnTable10.Click += new System.EventHandler(this.btnTable10_Click);
+            // 
+            // btnTable9
+            // 
+            this.btnTable9.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnTable9.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTable9.Location = new System.Drawing.Point(82, 482);
+            this.btnTable9.Name = "btnTable9";
+            this.btnTable9.Size = new System.Drawing.Size(79, 73);
+            this.btnTable9.TabIndex = 8;
+            this.btnTable9.Text = "9";
+            this.btnTable9.UseVisualStyleBackColor = false;
+            this.btnTable9.Click += new System.EventHandler(this.btnTable9_Click);
+            // 
+            // btnTable8
+            // 
+            this.btnTable8.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnTable8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTable8.Location = new System.Drawing.Point(252, 389);
+            this.btnTable8.Name = "btnTable8";
+            this.btnTable8.Size = new System.Drawing.Size(79, 73);
+            this.btnTable8.TabIndex = 7;
+            this.btnTable8.Text = "8";
+            this.btnTable8.UseVisualStyleBackColor = false;
+            this.btnTable8.Click += new System.EventHandler(this.btnTable8_Click);
+            // 
+            // btnTable7
+            // 
+            this.btnTable7.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnTable7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTable7.Location = new System.Drawing.Point(82, 390);
+            this.btnTable7.Name = "btnTable7";
+            this.btnTable7.Size = new System.Drawing.Size(79, 73);
+            this.btnTable7.TabIndex = 6;
+            this.btnTable7.Text = "7";
+            this.btnTable7.UseVisualStyleBackColor = false;
+            this.btnTable7.Click += new System.EventHandler(this.btnTable7_Click);
+            // 
+            // btnTable6
+            // 
+            this.btnTable6.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnTable6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTable6.Location = new System.Drawing.Point(252, 296);
+            this.btnTable6.Name = "btnTable6";
+            this.btnTable6.Size = new System.Drawing.Size(79, 73);
+            this.btnTable6.TabIndex = 5;
+            this.btnTable6.Text = "6";
+            this.btnTable6.UseVisualStyleBackColor = false;
+            this.btnTable6.Click += new System.EventHandler(this.btnTable6_Click);
+            // 
+            // btnTable5
+            // 
+            this.btnTable5.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnTable5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTable5.Location = new System.Drawing.Point(82, 296);
+            this.btnTable5.Name = "btnTable5";
+            this.btnTable5.Size = new System.Drawing.Size(79, 73);
+            this.btnTable5.TabIndex = 4;
+            this.btnTable5.Text = "5";
+            this.btnTable5.UseVisualStyleBackColor = false;
+            this.btnTable5.Click += new System.EventHandler(this.btnTable5_Click);
+            // 
+            // btnTable4
+            // 
+            this.btnTable4.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnTable4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTable4.Location = new System.Drawing.Point(252, 203);
+            this.btnTable4.Name = "btnTable4";
+            this.btnTable4.Size = new System.Drawing.Size(79, 73);
+            this.btnTable4.TabIndex = 3;
+            this.btnTable4.Text = "4";
+            this.btnTable4.UseVisualStyleBackColor = false;
+            this.btnTable4.Click += new System.EventHandler(this.btnTable4_Click);
+            // 
+            // btnTable3
+            // 
+            this.btnTable3.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnTable3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTable3.Location = new System.Drawing.Point(82, 203);
+            this.btnTable3.Name = "btnTable3";
+            this.btnTable3.Size = new System.Drawing.Size(79, 73);
+            this.btnTable3.TabIndex = 2;
+            this.btnTable3.Text = "3";
+            this.btnTable3.UseVisualStyleBackColor = false;
+            this.btnTable3.Click += new System.EventHandler(this.btnTable3_Click);
+            // 
+            // btnTable2
+            // 
+            this.btnTable2.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnTable2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTable2.Location = new System.Drawing.Point(252, 113);
+            this.btnTable2.Name = "btnTable2";
+            this.btnTable2.Size = new System.Drawing.Size(79, 73);
+            this.btnTable2.TabIndex = 1;
+            this.btnTable2.Text = "2";
+            this.btnTable2.UseVisualStyleBackColor = false;
+            this.btnTable2.Click += new System.EventHandler(this.btnTable2_Click);
+            // 
+            // btnTable1
+            // 
+            this.btnTable1.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnTable1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTable1.Location = new System.Drawing.Point(82, 113);
+            this.btnTable1.Name = "btnTable1";
+            this.btnTable1.Size = new System.Drawing.Size(79, 73);
+            this.btnTable1.TabIndex = 0;
+            this.btnTable1.Text = "1";
+            this.btnTable1.UseVisualStyleBackColor = false;
+            this.btnTable1.Click += new System.EventHandler(this.btnTable1_Click);
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage2.Size = new System.Drawing.Size(518, 866);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(413, 690);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "TableView";
             // 
@@ -132,11 +363,10 @@ namespace OrderingSystemUI
             this.tableOrderOverviewTab.Controls.Add(this.btnDinner);
             this.tableOrderOverviewTab.Controls.Add(this.btnLunch);
             this.tableOrderOverviewTab.Controls.Add(this.listViewTableOrder);
-            this.tableOrderOverviewTab.Location = new System.Drawing.Point(4, 34);
-            this.tableOrderOverviewTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableOrderOverviewTab.Location = new System.Drawing.Point(4, 29);
             this.tableOrderOverviewTab.Name = "tableOrderOverviewTab";
-            this.tableOrderOverviewTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tableOrderOverviewTab.Size = new System.Drawing.Size(518, 866);
+            this.tableOrderOverviewTab.Padding = new System.Windows.Forms.Padding(3);
+            this.tableOrderOverviewTab.Size = new System.Drawing.Size(413, 690);
             this.tableOrderOverviewTab.TabIndex = 2;
             this.tableOrderOverviewTab.Text = "TableOrderVIew";
             // 
@@ -144,10 +374,9 @@ namespace OrderingSystemUI
             // 
             this.lblVAT.AutoSize = true;
             this.lblVAT.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblVAT.Location = new System.Drawing.Point(296, 739);
-            this.lblVAT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVAT.Location = new System.Drawing.Point(237, 591);
             this.lblVAT.Name = "lblVAT";
-            this.lblVAT.Size = new System.Drawing.Size(68, 32);
+            this.lblVAT.Size = new System.Drawing.Size(58, 28);
             this.lblVAT.TabIndex = 6;
             this.lblVAT.Text = "VAT: ";
             // 
@@ -155,10 +384,9 @@ namespace OrderingSystemUI
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotal.Location = new System.Drawing.Point(296, 704);
-            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotal.Location = new System.Drawing.Point(237, 563);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(95, 32);
+            this.lblTotal.Size = new System.Drawing.Size(80, 28);
             this.lblTotal.TabIndex = 5;
             this.lblTotal.Text = "TOTAL: ";
             // 
@@ -166,10 +394,9 @@ namespace OrderingSystemUI
             // 
             this.btnPay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnPay.ForeColor = System.Drawing.Color.Black;
-            this.btnPay.Location = new System.Drawing.Point(392, 792);
-            this.btnPay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPay.Location = new System.Drawing.Point(314, 634);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(112, 62);
+            this.btnPay.Size = new System.Drawing.Size(90, 50);
             this.btnPay.TabIndex = 4;
             this.btnPay.Text = "PAY";
             this.btnPay.UseVisualStyleBackColor = false;
@@ -177,10 +404,9 @@ namespace OrderingSystemUI
             // btnDrinks
             // 
             this.btnDrinks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDrinks.Location = new System.Drawing.Point(359, 8);
-            this.btnDrinks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDrinks.Location = new System.Drawing.Point(287, 6);
             this.btnDrinks.Name = "btnDrinks";
-            this.btnDrinks.Size = new System.Drawing.Size(150, 62);
+            this.btnDrinks.Size = new System.Drawing.Size(120, 50);
             this.btnDrinks.TabIndex = 3;
             this.btnDrinks.Text = "DRINKS";
             this.btnDrinks.UseVisualStyleBackColor = false;
@@ -189,10 +415,9 @@ namespace OrderingSystemUI
             // btnDinner
             // 
             this.btnDinner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDinner.Location = new System.Drawing.Point(184, 8);
-            this.btnDinner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDinner.Location = new System.Drawing.Point(147, 6);
             this.btnDinner.Name = "btnDinner";
-            this.btnDinner.Size = new System.Drawing.Size(150, 62);
+            this.btnDinner.Size = new System.Drawing.Size(120, 50);
             this.btnDinner.TabIndex = 2;
             this.btnDinner.Text = "DINNER";
             this.btnDinner.UseVisualStyleBackColor = false;
@@ -201,10 +426,9 @@ namespace OrderingSystemUI
             // btnLunch
             // 
             this.btnLunch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnLunch.Location = new System.Drawing.Point(9, 8);
-            this.btnLunch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLunch.Location = new System.Drawing.Point(7, 6);
             this.btnLunch.Name = "btnLunch";
-            this.btnLunch.Size = new System.Drawing.Size(150, 62);
+            this.btnLunch.Size = new System.Drawing.Size(120, 50);
             this.btnLunch.TabIndex = 1;
             this.btnLunch.Text = "LUNCH";
             this.btnLunch.UseVisualStyleBackColor = false;
@@ -218,10 +442,9 @@ namespace OrderingSystemUI
             this.Price});
             this.listViewTableOrder.FullRowSelect = true;
             this.listViewTableOrder.HideSelection = false;
-            this.listViewTableOrder.Location = new System.Drawing.Point(9, 78);
-            this.listViewTableOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listViewTableOrder.Location = new System.Drawing.Point(7, 62);
             this.listViewTableOrder.Name = "listViewTableOrder";
-            this.listViewTableOrder.Size = new System.Drawing.Size(499, 616);
+            this.listViewTableOrder.Size = new System.Drawing.Size(400, 494);
             this.listViewTableOrder.TabIndex = 0;
             this.listViewTableOrder.UseCompatibleStateImageBehavior = false;
             this.listViewTableOrder.View = System.Windows.Forms.View.Details;
@@ -251,11 +474,10 @@ namespace OrderingSystemUI
             this.addOrderView.Controls.Add(this.btnDrinksMenu);
             this.addOrderView.Controls.Add(this.btnDinnerMenu);
             this.addOrderView.Controls.Add(this.btnLunchMenu);
-            this.addOrderView.Location = new System.Drawing.Point(4, 34);
-            this.addOrderView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addOrderView.Location = new System.Drawing.Point(4, 29);
             this.addOrderView.Name = "addOrderView";
-            this.addOrderView.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.addOrderView.Size = new System.Drawing.Size(518, 866);
+            this.addOrderView.Padding = new System.Windows.Forms.Padding(3);
+            this.addOrderView.Size = new System.Drawing.Size(413, 690);
             this.addOrderView.TabIndex = 3;
             this.addOrderView.Text = "AddOrderViewLunch";
             this.addOrderView.UseVisualStyleBackColor = true;
@@ -264,10 +486,9 @@ namespace OrderingSystemUI
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(376, 808);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(301, 646);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 48);
+            this.button2.Size = new System.Drawing.Size(106, 38);
             this.button2.TabIndex = 8;
             this.button2.Text = "ADD";
             this.button2.UseVisualStyleBackColor = false;
@@ -276,10 +497,9 @@ namespace OrderingSystemUI
             // 
             this.lblOrder.AutoSize = true;
             this.lblOrder.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblOrder.Location = new System.Drawing.Point(8, 514);
-            this.lblOrder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblOrder.Location = new System.Drawing.Point(6, 411);
             this.lblOrder.Name = "lblOrder";
-            this.lblOrder.Size = new System.Drawing.Size(71, 21);
+            this.lblOrder.Size = new System.Drawing.Size(59, 17);
             this.lblOrder.TabIndex = 7;
             this.lblOrder.Text = "ORDER: ";
             // 
@@ -289,10 +509,9 @@ namespace OrderingSystemUI
             this.CHCount,
             this.CHItemname});
             this.listViewOrderSummary.HideSelection = false;
-            this.listViewOrderSummary.Location = new System.Drawing.Point(9, 539);
-            this.listViewOrderSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listViewOrderSummary.Location = new System.Drawing.Point(7, 431);
             this.listViewOrderSummary.Name = "listViewOrderSummary";
-            this.listViewOrderSummary.Size = new System.Drawing.Size(499, 263);
+            this.listViewOrderSummary.Size = new System.Drawing.Size(400, 211);
             this.listViewOrderSummary.TabIndex = 6;
             this.listViewOrderSummary.UseCompatibleStateImageBehavior = false;
             // 
@@ -307,29 +526,26 @@ namespace OrderingSystemUI
             // flowLayoutPanelMenu
             // 
             this.flowLayoutPanelMenu.Controls.Add(this.listViewAddOrder);
-            this.flowLayoutPanelMenu.Location = new System.Drawing.Point(9, 78);
-            this.flowLayoutPanelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanelMenu.Location = new System.Drawing.Point(7, 62);
             this.flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
-            this.flowLayoutPanelMenu.Size = new System.Drawing.Size(500, 432);
+            this.flowLayoutPanelMenu.Size = new System.Drawing.Size(400, 346);
             this.flowLayoutPanelMenu.TabIndex = 5;
             // 
             // listViewAddOrder
             // 
             this.listViewAddOrder.HideSelection = false;
-            this.listViewAddOrder.Location = new System.Drawing.Point(4, 4);
-            this.listViewAddOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listViewAddOrder.Location = new System.Drawing.Point(3, 3);
             this.listViewAddOrder.Name = "listViewAddOrder";
-            this.listViewAddOrder.Size = new System.Drawing.Size(454, 380);
+            this.listViewAddOrder.Size = new System.Drawing.Size(364, 305);
             this.listViewAddOrder.TabIndex = 0;
             this.listViewAddOrder.UseCompatibleStateImageBehavior = false;
             // 
             // btnDrinksMenu
             // 
             this.btnDrinksMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDrinksMenu.Location = new System.Drawing.Point(359, 8);
-            this.btnDrinksMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDrinksMenu.Location = new System.Drawing.Point(287, 6);
             this.btnDrinksMenu.Name = "btnDrinksMenu";
-            this.btnDrinksMenu.Size = new System.Drawing.Size(150, 62);
+            this.btnDrinksMenu.Size = new System.Drawing.Size(120, 50);
             this.btnDrinksMenu.TabIndex = 4;
             this.btnDrinksMenu.Text = "DRINKS";
             this.btnDrinksMenu.UseVisualStyleBackColor = false;
@@ -337,10 +553,9 @@ namespace OrderingSystemUI
             // btnDinnerMenu
             // 
             this.btnDinnerMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDinnerMenu.Location = new System.Drawing.Point(184, 8);
-            this.btnDinnerMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDinnerMenu.Location = new System.Drawing.Point(147, 6);
             this.btnDinnerMenu.Name = "btnDinnerMenu";
-            this.btnDinnerMenu.Size = new System.Drawing.Size(150, 62);
+            this.btnDinnerMenu.Size = new System.Drawing.Size(120, 50);
             this.btnDinnerMenu.TabIndex = 3;
             this.btnDinnerMenu.Text = "DINNER";
             this.btnDinnerMenu.UseVisualStyleBackColor = false;
@@ -348,10 +563,9 @@ namespace OrderingSystemUI
             // btnLunchMenu
             // 
             this.btnLunchMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnLunchMenu.Location = new System.Drawing.Point(9, 8);
-            this.btnLunchMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLunchMenu.Location = new System.Drawing.Point(7, 6);
             this.btnLunchMenu.Name = "btnLunchMenu";
-            this.btnLunchMenu.Size = new System.Drawing.Size(150, 62);
+            this.btnLunchMenu.Size = new System.Drawing.Size(120, 50);
             this.btnLunchMenu.TabIndex = 2;
             this.btnLunchMenu.Text = "LUNCH";
             this.btnLunchMenu.UseVisualStyleBackColor = false;
@@ -370,33 +584,165 @@ namespace OrderingSystemUI
             this.tabPagePayment.Controls.Add(this.lbl_total);
             this.tabPagePayment.Controls.Add(this.lbl_contents);
             this.tabPagePayment.Controls.Add(this.lbl_bill);
-            this.tabPagePayment.Location = new System.Drawing.Point(4, 34);
-            this.tabPagePayment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPagePayment.Location = new System.Drawing.Point(4, 29);
             this.tabPagePayment.Name = "tabPagePayment";
-            this.tabPagePayment.Size = new System.Drawing.Size(518, 866);
+            this.tabPagePayment.Size = new System.Drawing.Size(413, 690);
             this.tabPagePayment.TabIndex = 6;
             this.tabPagePayment.Text = "Payment";
             this.tabPagePayment.UseVisualStyleBackColor = true;
+            // 
+            // btn_payment
+            // 
+            this.btn_payment.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btn_payment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_payment.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_payment.Location = new System.Drawing.Point(14, 587);
+            this.btn_payment.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_payment.Name = "btn_payment";
+            this.btn_payment.Size = new System.Drawing.Size(377, 43);
+            this.btn_payment.TabIndex = 13;
+            this.btn_payment.Text = "PROCEED TO PAYMENT";
+            this.btn_payment.UseVisualStyleBackColor = false;
+            // 
+            // lbl_vat_amount
+            // 
+            this.lbl_vat_amount.AutoSize = true;
+            this.lbl_vat_amount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_vat_amount.Location = new System.Drawing.Point(301, 534);
+            this.lbl_vat_amount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_vat_amount.Name = "lbl_vat_amount";
+            this.lbl_vat_amount.Size = new System.Drawing.Size(98, 23);
+            this.lbl_vat_amount.TabIndex = 12;
+            this.lbl_vat_amount.Text = "vat amount";
+            // 
+            // lbl_VAT
+            // 
+            this.lbl_VAT.AutoSize = true;
+            this.lbl_VAT.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_VAT.Location = new System.Drawing.Point(14, 534);
+            this.lbl_VAT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_VAT.Name = "lbl_VAT";
+            this.lbl_VAT.Size = new System.Drawing.Size(43, 23);
+            this.lbl_VAT.TabIndex = 11;
+            this.lbl_VAT.Text = "VAT:";
+            // 
+            // lbl_price1
+            // 
+            this.lbl_price1.AutoSize = true;
+            this.lbl_price1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_price1.Location = new System.Drawing.Point(346, 314);
+            this.lbl_price1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_price1.Name = "lbl_price1";
+            this.lbl_price1.Size = new System.Drawing.Size(47, 23);
+            this.lbl_price1.TabIndex = 10;
+            this.lbl_price1.Text = "price";
+            // 
+            // lbl_price2
+            // 
+            this.lbl_price2.AutoSize = true;
+            this.lbl_price2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_price2.Location = new System.Drawing.Point(346, 498);
+            this.lbl_price2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_price2.Name = "lbl_price2";
+            this.lbl_price2.Size = new System.Drawing.Size(47, 23);
+            this.lbl_price2.TabIndex = 9;
+            this.lbl_price2.Text = "price";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(14, 498);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 23);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "ORDER PRICE:";
+            // 
+            // btn_VISA
+            // 
+            this.btn_VISA.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_VISA.Location = new System.Drawing.Point(262, 414);
+            this.btn_VISA.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_VISA.Name = "btn_VISA";
+            this.btn_VISA.Size = new System.Drawing.Size(128, 27);
+            this.btn_VISA.TabIndex = 7;
+            this.btn_VISA.Text = "VISA/AMEX";
+            this.btn_VISA.UseVisualStyleBackColor = true;
+            // 
+            // btn_DEBIT
+            // 
+            this.btn_DEBIT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_DEBIT.Location = new System.Drawing.Point(14, 414);
+            this.btn_DEBIT.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_DEBIT.Name = "btn_DEBIT";
+            this.btn_DEBIT.Size = new System.Drawing.Size(128, 27);
+            this.btn_DEBIT.TabIndex = 6;
+            this.btn_DEBIT.Text = "DEBIT";
+            this.btn_DEBIT.UseVisualStyleBackColor = true;
+            // 
+            // lbl_crditCardType
+            // 
+            this.lbl_crditCardType.AutoSize = true;
+            this.lbl_crditCardType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_crditCardType.Location = new System.Drawing.Point(14, 368);
+            this.lbl_crditCardType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_crditCardType.Name = "lbl_crditCardType";
+            this.lbl_crditCardType.Size = new System.Drawing.Size(233, 23);
+            this.lbl_crditCardType.TabIndex = 5;
+            this.lbl_crditCardType.Text = "CHOOSE CREDIT CARD TYPE:";
+            // 
+            // lbl_total
+            // 
+            this.lbl_total.AutoSize = true;
+            this.lbl_total.Font = new System.Drawing.Font("Segoe UI Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_total.Location = new System.Drawing.Point(14, 314);
+            this.lbl_total.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_total.Name = "lbl_total";
+            this.lbl_total.Size = new System.Drawing.Size(72, 23);
+            this.lbl_total.TabIndex = 3;
+            this.lbl_total.Text = "TOTAL:";
+            // 
+            // lbl_contents
+            // 
+            this.lbl_contents.AutoSize = true;
+            this.lbl_contents.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_contents.Location = new System.Drawing.Point(14, 164);
+            this.lbl_contents.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_contents.Name = "lbl_contents";
+            this.lbl_contents.Size = new System.Drawing.Size(125, 23);
+            this.lbl_contents.TabIndex = 1;
+            this.lbl_contents.Text = "Order contents";
+            this.lbl_contents.Click += new System.EventHandler(this.lbl_contents_Click);
+            // 
+            // lbl_bill
+            // 
+            this.lbl_bill.AutoSize = true;
+            this.lbl_bill.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_bill.Location = new System.Drawing.Point(6, 10);
+            this.lbl_bill.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_bill.Name = "lbl_bill";
+            this.lbl_bill.Size = new System.Drawing.Size(87, 46);
+            this.lbl_bill.TabIndex = 0;
+            this.lbl_bill.Text = "BILL";
             // 
             // tabPage8
             // 
             this.tabPage8.Controls.Add(this.button1);
             this.tabPage8.Controls.Add(this.pictureBox2);
-            this.tabPage8.Location = new System.Drawing.Point(4, 34);
-            this.tabPage8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage8.Location = new System.Drawing.Point(4, 29);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage8.Size = new System.Drawing.Size(518, 866);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(413, 690);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "TableView";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(376, 19);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(301, 15);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 36);
+            this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -405,19 +751,17 @@ namespace OrderingSystemUI
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(121, 70);
+            this.pictureBox2.Size = new System.Drawing.Size(97, 56);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
             // btnEmployeeName
             // 
             this.btnEmployeeName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnEmployeeName.Location = new System.Drawing.Point(399, 15);
-            this.btnEmployeeName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEmployeeName.Location = new System.Drawing.Point(319, 12);
             this.btnEmployeeName.Name = "btnEmployeeName";
-            this.btnEmployeeName.Size = new System.Drawing.Size(118, 36);
+            this.btnEmployeeName.Size = new System.Drawing.Size(94, 29);
             this.btnEmployeeName.TabIndex = 1;
             this.btnEmployeeName.UseVisualStyleBackColor = false;
             // 
@@ -425,9 +769,8 @@ namespace OrderingSystemUI
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(1, 2);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(121, 70);
+            this.pictureBox3.Size = new System.Drawing.Size(97, 56);
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
             // 
@@ -436,151 +779,41 @@ namespace OrderingSystemUI
             this.tableNumber.AutoSize = true;
             this.tableNumber.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tableNumber.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tableNumber.Location = new System.Drawing.Point(190, 16);
-            this.tableNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.tableNumber.Location = new System.Drawing.Point(152, 13);
             this.tableNumber.Name = "tableNumber";
-            this.tableNumber.Size = new System.Drawing.Size(143, 41);
+            this.tableNumber.Size = new System.Drawing.Size(121, 35);
             this.tableNumber.TabIndex = 2;
             this.tableNumber.Text = "Table #...";
             // 
-            // lbl_bill
+            // lblEmployee
             // 
-            this.lbl_bill.AutoSize = true;
-            this.lbl_bill.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_bill.Location = new System.Drawing.Point(7, 13);
-            this.lbl_bill.Name = "lbl_bill";
-            this.lbl_bill.Size = new System.Drawing.Size(102, 54);
-            this.lbl_bill.TabIndex = 0;
-            this.lbl_bill.Text = "BILL";
-            // 
-            // lbl_contents
-            // 
-            this.lbl_contents.AutoSize = true;
-            this.lbl_contents.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_contents.Location = new System.Drawing.Point(17, 205);
-            this.lbl_contents.Name = "lbl_contents";
-            this.lbl_contents.Size = new System.Drawing.Size(143, 28);
-            this.lbl_contents.TabIndex = 1;
-            this.lbl_contents.Text = "Order contents";
-            this.lbl_contents.Click += new System.EventHandler(this.lbl_contents_Click);
-            // 
-            // lbl_total
-            // 
-            this.lbl_total.AutoSize = true;
-            this.lbl_total.Font = new System.Drawing.Font("Segoe UI Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_total.Location = new System.Drawing.Point(17, 392);
-            this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(85, 28);
-            this.lbl_total.TabIndex = 3;
-            this.lbl_total.Text = "TOTAL:";
-            // 
-            // lbl_crditCardType
-            // 
-            this.lbl_crditCardType.AutoSize = true;
-            this.lbl_crditCardType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_crditCardType.Location = new System.Drawing.Point(17, 460);
-            this.lbl_crditCardType.Name = "lbl_crditCardType";
-            this.lbl_crditCardType.Size = new System.Drawing.Size(264, 28);
-            this.lbl_crditCardType.TabIndex = 5;
-            this.lbl_crditCardType.Text = "CHOOSE CREDIT CARD TYPE:";
-            // 
-            // btn_DEBIT
-            // 
-            this.btn_DEBIT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_DEBIT.Location = new System.Drawing.Point(17, 517);
-            this.btn_DEBIT.Name = "btn_DEBIT";
-            this.btn_DEBIT.Size = new System.Drawing.Size(160, 34);
-            this.btn_DEBIT.TabIndex = 6;
-            this.btn_DEBIT.Text = "DEBIT";
-            this.btn_DEBIT.UseVisualStyleBackColor = true;
-            // 
-            // btn_VISA
-            // 
-            this.btn_VISA.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_VISA.Location = new System.Drawing.Point(328, 517);
-            this.btn_VISA.Name = "btn_VISA";
-            this.btn_VISA.Size = new System.Drawing.Size(160, 34);
-            this.btn_VISA.TabIndex = 7;
-            this.btn_VISA.Text = "VISA/AMEX";
-            this.btn_VISA.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(17, 622);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 28);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "ORDER PRICE:";
-            // 
-            // lbl_price2
-            // 
-            this.lbl_price2.AutoSize = true;
-            this.lbl_price2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_price2.Location = new System.Drawing.Point(433, 622);
-            this.lbl_price2.Name = "lbl_price2";
-            this.lbl_price2.Size = new System.Drawing.Size(55, 28);
-            this.lbl_price2.TabIndex = 9;
-            this.lbl_price2.Text = "price";
-            // 
-            // lbl_price1
-            // 
-            this.lbl_price1.AutoSize = true;
-            this.lbl_price1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_price1.Location = new System.Drawing.Point(433, 392);
-            this.lbl_price1.Name = "lbl_price1";
-            this.lbl_price1.Size = new System.Drawing.Size(55, 28);
-            this.lbl_price1.TabIndex = 10;
-            this.lbl_price1.Text = "price";
-            // 
-            // lbl_VAT
-            // 
-            this.lbl_VAT.AutoSize = true;
-            this.lbl_VAT.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_VAT.Location = new System.Drawing.Point(17, 668);
-            this.lbl_VAT.Name = "lbl_VAT";
-            this.lbl_VAT.Size = new System.Drawing.Size(49, 28);
-            this.lbl_VAT.TabIndex = 11;
-            this.lbl_VAT.Text = "VAT:";
-            // 
-            // lbl_vat_amount
-            // 
-            this.lbl_vat_amount.AutoSize = true;
-            this.lbl_vat_amount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_vat_amount.Location = new System.Drawing.Point(376, 668);
-            this.lbl_vat_amount.Name = "lbl_vat_amount";
-            this.lbl_vat_amount.Size = new System.Drawing.Size(112, 28);
-            this.lbl_vat_amount.TabIndex = 12;
-            this.lbl_vat_amount.Text = "vat amount";
-            // 
-            // btn_payment
-            // 
-            this.btn_payment.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.btn_payment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_payment.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_payment.Location = new System.Drawing.Point(17, 734);
-            this.btn_payment.Name = "btn_payment";
-            this.btn_payment.Size = new System.Drawing.Size(471, 54);
-            this.btn_payment.TabIndex = 13;
-            this.btn_payment.Text = "PROCEED TO PAYMENT";
-            this.btn_payment.UseVisualStyleBackColor = false;
+            this.lblEmployee.AutoSize = true;
+            this.lblEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblEmployee.ForeColor = System.Drawing.Color.White;
+            this.lblEmployee.Location = new System.Drawing.Point(290, 16);
+            this.lblEmployee.Name = "lblEmployee";
+            this.lblEmployee.Size = new System.Drawing.Size(12, 20);
+            this.lblEmployee.TabIndex = 3;
+            this.lblEmployee.Text = ".";
             // 
             // WaiterUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(531, 965);
+            this.ClientSize = new System.Drawing.Size(425, 772);
+            this.Controls.Add(this.lblEmployee);
             this.Controls.Add(this.tableNumber);
             this.Controls.Add(this.btnEmployeeName);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.tabControl);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "WaiterUI";
             this.Text = "WaiterUI";
             this.Load += new System.EventHandler(this.WaiterUI_Load);
             this.tabControl.ResumeLayout(false);
+            this.tableViewTab.ResumeLayout(false);
+            this.pnlTableStatus.ResumeLayout(false);
+            this.pnlTableStatus.PerformLayout();
             this.tableOrderOverviewTab.ResumeLayout(false);
             this.tableOrderOverviewTab.PerformLayout();
             this.addOrderView.ResumeLayout(false);
@@ -599,7 +832,7 @@ namespace OrderingSystemUI
         #endregion
 
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tableViewTab1;
+        private System.Windows.Forms.TabPage tableViewTab;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tableOrderOverviewTab;
         private System.Windows.Forms.TabPage addOrderView;
@@ -642,5 +875,23 @@ namespace OrderingSystemUI
         private System.Windows.Forms.Label lbl_total;
         private System.Windows.Forms.Label lbl_contents;
         private System.Windows.Forms.Button btn_payment;
+        private System.Windows.Forms.Label lblEmployee;
+        private System.Windows.Forms.Button btnTable10;
+        private System.Windows.Forms.Button btnTable9;
+        private System.Windows.Forms.Button btnTable8;
+        private System.Windows.Forms.Button btnTable7;
+        private System.Windows.Forms.Button btnTable6;
+        private System.Windows.Forms.Button btnTable5;
+        private System.Windows.Forms.Button btnTable4;
+        private System.Windows.Forms.Button btnTable3;
+        private System.Windows.Forms.Button btnTable2;
+        private System.Windows.Forms.Button btnTable1;
+        private System.Windows.Forms.Panel pnlTableStatus;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnGoToTable;
+        private System.Windows.Forms.RadioButton RBreserved;
+        private System.Windows.Forms.RadioButton RBoccupied;
+        private System.Windows.Forms.RadioButton RBfree;
+        private System.Windows.Forms.Label lblTableNumber;
     }
 }

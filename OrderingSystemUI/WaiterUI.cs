@@ -36,6 +36,7 @@ namespace OrderingSystemUI
             tabControl.SizeMode = TabSizeMode.Fixed;
 
             btnEmployeeName.Text = "";//currentEmployee.EmployeeName;
+            lblEmployee.Text = currentEmployee.EmployeeName;
 
             currentOrder = orderService.GetOrder(1);
             currentTable = 1; ///for test
@@ -43,8 +44,12 @@ namespace OrderingSystemUI
             {
                 tableNumber.Text = $"TABLE #{currentTable}";
             }
+           
+            //tabControl.SelectedTab = tableViewTab;
 
             OrderOverview();
+            pnlTableStatus.Hide();
+            
         }
         private void OrderOverview()
         {
@@ -141,6 +146,118 @@ namespace OrderingSystemUI
         private void lbl_contents_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTable1_Click(object sender, EventArgs e)
+        {
+            pnlTableStatus.Show();
+            ChangeStatus(1);
+            currentTable = 1;
+            lblTableNumber.Text = "TABLE " + currentTable.ToString();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            pnlTableStatus.Hide();
+        }
+
+        public void ChangeStatus(int tableNumber)
+        {
+            lblTableNumber.Text = tableNumber.ToString();
+            Table table = tableService.GetTable(tableNumber);
+
+            if (RBfree.Checked)
+            {
+                table.TableStatus = "free";
+                btnTable1.BackColor = Color.PaleGreen;
+            }
+            else if (RBoccupied.Checked)
+            {
+                table.TableStatus = "occupied";
+                btnTable1.BackColor = Color.FromArgb(255, 128, 0);
+            }
+            else if (RBreserved.Checked)
+            {
+                table.TableStatus = "reserved";
+                btnTable1.BackColor = Color.DarkGray;
+            }
+        }
+
+        private void btnGoToTable_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedTab = addOrderView;
+        }
+
+        private void btnTable2_Click(object sender, EventArgs e)
+        {
+            pnlTableStatus.Show();
+            ChangeStatus(2);
+            currentTable = 2;
+            lblTableNumber.Text = "TABLE " + currentTable.ToString();
+        }
+
+        private void btnTable3_Click(object sender, EventArgs e)
+        {
+            pnlTableStatus.Show();
+            ChangeStatus(3);
+            currentTable = 3;
+            lblTableNumber.Text = "TABLE " + currentTable.ToString();
+        }
+
+        private void btnTable4_Click(object sender, EventArgs e)
+        {
+            pnlTableStatus.Show();
+            ChangeStatus(4);
+            currentTable = 4;
+            lblTableNumber.Text = "TABLE " + currentTable.ToString();
+        }
+
+        private void btnTable5_Click(object sender, EventArgs e)
+        {
+            pnlTableStatus.Show();
+            ChangeStatus(5);
+            currentTable = 5;
+            lblTableNumber.Text = "TABLE " + currentTable.ToString();
+        }
+
+        private void btnTable6_Click(object sender, EventArgs e)
+        {
+            pnlTableStatus.Show();
+            ChangeStatus(6);
+            currentTable = 6;
+            lblTableNumber.Text = "TABLE " + currentTable.ToString();
+        }
+
+        private void btnTable7_Click(object sender, EventArgs e)
+        {
+            pnlTableStatus.Show();
+            ChangeStatus(7);
+            currentTable = 7;
+            lblTableNumber.Text = "TABLE " + currentTable.ToString();
+        }
+
+        private void btnTable8_Click(object sender, EventArgs e)
+        {
+            pnlTableStatus.Show();
+            ChangeStatus(8);
+            currentTable = 8;
+            lblTableNumber.Text = "TABLE " + currentTable.ToString();
+        }
+
+        private void btnTable9_Click(object sender, EventArgs e)
+        {
+            pnlTableStatus.Show();
+            ChangeStatus(9);
+            currentTable = 9;
+            lblTableNumber.Text = "TABLE " + currentTable.ToString();
+        }
+
+        private void btnTable10_Click(object sender, EventArgs e)
+        {
+            pnlTableStatus.Show();
+            ChangeStatus(10);
+            currentTable = 10;
+            lblTableNumber.Text = "TABLE " + currentTable.ToString();
         }
     }
 }
