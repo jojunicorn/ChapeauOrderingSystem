@@ -67,6 +67,10 @@ namespace OrderingSystemUI
             this.itemName = new System.Windows.Forms.ColumnHeader();
             this.Price = new System.Windows.Forms.ColumnHeader();
             this.addOrderView = new System.Windows.Forms.TabPage();
+            this.btnComment = new System.Windows.Forms.Button();
+            this.pnlComment = new System.Windows.Forms.Panel();
+            this.btnAddComment = new System.Windows.Forms.Button();
+            this.txtboxComment = new System.Windows.Forms.TextBox();
             this.listViewAddOrder = new System.Windows.Forms.ListView();
             this.chName = new System.Windows.Forms.ColumnHeader();
             this.chPrice = new System.Windows.Forms.ColumnHeader();
@@ -95,18 +99,20 @@ namespace OrderingSystemUI
             this.btnEmployeeName = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
-            this.pnlComment = new System.Windows.Forms.Panel();
-            this.txtboxComment = new System.Windows.Forms.TextBox();
-            this.btnAddComment = new System.Windows.Forms.Button();
-            this.btnComment = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tableViewTab.SuspendLayout();
             this.pnlTableStatus.SuspendLayout();
             this.tableOrderOverviewTab.SuspendLayout();
             this.addOrderView.SuspendLayout();
+            this.pnlComment.SuspendLayout();
             this.tabPagePayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.pnlComment.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -126,6 +132,12 @@ namespace OrderingSystemUI
             // tableViewTab
             // 
             this.tableViewTab.Controls.Add(this.pnlTableStatus);
+            this.tableViewTab.Controls.Add(this.label7);
+            this.tableViewTab.Controls.Add(this.label6);
+            this.tableViewTab.Controls.Add(this.label5);
+            this.tableViewTab.Controls.Add(this.label4);
+            this.tableViewTab.Controls.Add(this.label3);
+            this.tableViewTab.Controls.Add(this.label2);
             this.tableViewTab.Controls.Add(this.btnTable10);
             this.tableViewTab.Controls.Add(this.btnTable9);
             this.tableViewTab.Controls.Add(this.btnTable8);
@@ -152,9 +164,9 @@ namespace OrderingSystemUI
             this.pnlTableStatus.Controls.Add(this.RBoccupied);
             this.pnlTableStatus.Controls.Add(this.RBfree);
             this.pnlTableStatus.Controls.Add(this.lblTableNumber);
-            this.pnlTableStatus.Location = new System.Drawing.Point(20, 82);
+            this.pnlTableStatus.Location = new System.Drawing.Point(19, 84);
             this.pnlTableStatus.Name = "pnlTableStatus";
-            this.pnlTableStatus.Size = new System.Drawing.Size(370, 587);
+            this.pnlTableStatus.Size = new System.Drawing.Size(374, 587);
             this.pnlTableStatus.TabIndex = 10;
             // 
             // btnBack
@@ -231,7 +243,7 @@ namespace OrderingSystemUI
             // 
             this.btnTable10.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable10.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable10.Location = new System.Drawing.Point(252, 482);
+            this.btnTable10.Location = new System.Drawing.Point(252, 453);
             this.btnTable10.Name = "btnTable10";
             this.btnTable10.Size = new System.Drawing.Size(79, 73);
             this.btnTable10.TabIndex = 9;
@@ -243,7 +255,7 @@ namespace OrderingSystemUI
             // 
             this.btnTable9.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable9.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable9.Location = new System.Drawing.Point(82, 482);
+            this.btnTable9.Location = new System.Drawing.Point(82, 453);
             this.btnTable9.Name = "btnTable9";
             this.btnTable9.Size = new System.Drawing.Size(79, 73);
             this.btnTable9.TabIndex = 8;
@@ -255,7 +267,7 @@ namespace OrderingSystemUI
             // 
             this.btnTable8.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable8.Location = new System.Drawing.Point(252, 389);
+            this.btnTable8.Location = new System.Drawing.Point(252, 360);
             this.btnTable8.Name = "btnTable8";
             this.btnTable8.Size = new System.Drawing.Size(79, 73);
             this.btnTable8.TabIndex = 7;
@@ -267,7 +279,7 @@ namespace OrderingSystemUI
             // 
             this.btnTable7.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable7.Location = new System.Drawing.Point(82, 390);
+            this.btnTable7.Location = new System.Drawing.Point(82, 361);
             this.btnTable7.Name = "btnTable7";
             this.btnTable7.Size = new System.Drawing.Size(79, 73);
             this.btnTable7.TabIndex = 6;
@@ -279,7 +291,7 @@ namespace OrderingSystemUI
             // 
             this.btnTable6.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable6.Location = new System.Drawing.Point(252, 296);
+            this.btnTable6.Location = new System.Drawing.Point(252, 267);
             this.btnTable6.Name = "btnTable6";
             this.btnTable6.Size = new System.Drawing.Size(79, 73);
             this.btnTable6.TabIndex = 5;
@@ -291,7 +303,7 @@ namespace OrderingSystemUI
             // 
             this.btnTable5.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable5.Location = new System.Drawing.Point(82, 296);
+            this.btnTable5.Location = new System.Drawing.Point(82, 267);
             this.btnTable5.Name = "btnTable5";
             this.btnTable5.Size = new System.Drawing.Size(79, 73);
             this.btnTable5.TabIndex = 4;
@@ -303,7 +315,7 @@ namespace OrderingSystemUI
             // 
             this.btnTable4.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable4.Location = new System.Drawing.Point(252, 203);
+            this.btnTable4.Location = new System.Drawing.Point(252, 174);
             this.btnTable4.Name = "btnTable4";
             this.btnTable4.Size = new System.Drawing.Size(79, 73);
             this.btnTable4.TabIndex = 3;
@@ -315,7 +327,7 @@ namespace OrderingSystemUI
             // 
             this.btnTable3.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable3.Location = new System.Drawing.Point(82, 203);
+            this.btnTable3.Location = new System.Drawing.Point(82, 174);
             this.btnTable3.Name = "btnTable3";
             this.btnTable3.Size = new System.Drawing.Size(79, 73);
             this.btnTable3.TabIndex = 2;
@@ -327,7 +339,7 @@ namespace OrderingSystemUI
             // 
             this.btnTable2.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable2.Location = new System.Drawing.Point(252, 113);
+            this.btnTable2.Location = new System.Drawing.Point(252, 84);
             this.btnTable2.Name = "btnTable2";
             this.btnTable2.Size = new System.Drawing.Size(79, 73);
             this.btnTable2.TabIndex = 1;
@@ -339,7 +351,7 @@ namespace OrderingSystemUI
             // 
             this.btnTable1.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable1.Location = new System.Drawing.Point(82, 113);
+            this.btnTable1.Location = new System.Drawing.Point(82, 84);
             this.btnTable1.Name = "btnTable1";
             this.btnTable1.Size = new System.Drawing.Size(79, 73);
             this.btnTable1.TabIndex = 0;
@@ -520,6 +532,41 @@ namespace OrderingSystemUI
             this.addOrderView.TabIndex = 3;
             this.addOrderView.Text = "AddOrderView";
             this.addOrderView.UseVisualStyleBackColor = true;
+            // 
+            // btnComment
+            // 
+            this.btnComment.Location = new System.Drawing.Point(8, 649);
+            this.btnComment.Name = "btnComment";
+            this.btnComment.Size = new System.Drawing.Size(94, 29);
+            this.btnComment.TabIndex = 11;
+            this.btnComment.Text = "Comment";
+            this.btnComment.UseVisualStyleBackColor = true;
+            // 
+            // pnlComment
+            // 
+            this.pnlComment.Controls.Add(this.btnAddComment);
+            this.pnlComment.Controls.Add(this.txtboxComment);
+            this.pnlComment.Location = new System.Drawing.Point(99, 489);
+            this.pnlComment.Name = "pnlComment";
+            this.pnlComment.Size = new System.Drawing.Size(250, 125);
+            this.pnlComment.TabIndex = 10;
+            // 
+            // btnAddComment
+            // 
+            this.btnAddComment.Location = new System.Drawing.Point(85, 85);
+            this.btnAddComment.Name = "btnAddComment";
+            this.btnAddComment.Size = new System.Drawing.Size(94, 29);
+            this.btnAddComment.TabIndex = 1;
+            this.btnAddComment.Text = "Add";
+            this.btnAddComment.UseVisualStyleBackColor = true;
+            // 
+            // txtboxComment
+            // 
+            this.txtboxComment.Location = new System.Drawing.Point(85, 51);
+            this.txtboxComment.Name = "txtboxComment";
+            this.txtboxComment.Size = new System.Drawing.Size(125, 27);
+            this.txtboxComment.TabIndex = 0;
+            this.txtboxComment.Text = "Comment...";
             // 
             // listViewAddOrder
             // 
@@ -823,40 +870,71 @@ namespace OrderingSystemUI
             this.tableNumber.Text = "Table #...";
             this.tableNumber.Click += new System.EventHandler(this.tableNumber_Click);
             // 
-            // pnlComment
+            // label2
             // 
-            this.pnlComment.Controls.Add(this.btnAddComment);
-            this.pnlComment.Controls.Add(this.txtboxComment);
-            this.pnlComment.Location = new System.Drawing.Point(99, 489);
-            this.pnlComment.Name = "pnlComment";
-            this.pnlComment.Size = new System.Drawing.Size(250, 125);
-            this.pnlComment.TabIndex = 10;
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.PaleGreen;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.PaleGreen;
+            this.label2.Location = new System.Drawing.Point(101, 619);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 25);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "M";
             // 
-            // txtboxComment
+            // label3
             // 
-            this.txtboxComment.Location = new System.Drawing.Point(85, 51);
-            this.txtboxComment.Name = "txtboxComment";
-            this.txtboxComment.Size = new System.Drawing.Size(125, 27);
-            this.txtboxComment.TabIndex = 0;
-            this.txtboxComment.Text = "Comment...";
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(191, 619);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 25);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "M";
             // 
-            // btnAddComment
+            // label4
             // 
-            this.btnAddComment.Location = new System.Drawing.Point(85, 85);
-            this.btnAddComment.Name = "btnAddComment";
-            this.btnAddComment.Size = new System.Drawing.Size(94, 29);
-            this.btnAddComment.TabIndex = 1;
-            this.btnAddComment.Text = "Add";
-            this.btnAddComment.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.DarkGray;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.DarkGray;
+            this.label4.Location = new System.Drawing.Point(284, 619);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 25);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "M";
             // 
-            // btnComment
+            // label5
             // 
-            this.btnComment.Location = new System.Drawing.Point(8, 649);
-            this.btnComment.Name = "btnComment";
-            this.btnComment.Size = new System.Drawing.Size(94, 29);
-            this.btnComment.TabIndex = 11;
-            this.btnComment.Text = "Comment";
-            this.btnComment.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(82, 654);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "   FREE";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(173, 654);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 17);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "OCCUPIED";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(262, 654);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 17);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "RESERVED";
             // 
             // WaiterUI
             // 
@@ -873,17 +951,18 @@ namespace OrderingSystemUI
             this.Load += new System.EventHandler(this.WaiterUI_Load);
             this.tabControl.ResumeLayout(false);
             this.tableViewTab.ResumeLayout(false);
+            this.tableViewTab.PerformLayout();
             this.pnlTableStatus.ResumeLayout(false);
             this.pnlTableStatus.PerformLayout();
             this.tableOrderOverviewTab.ResumeLayout(false);
             this.tableOrderOverviewTab.PerformLayout();
             this.addOrderView.ResumeLayout(false);
             this.addOrderView.PerformLayout();
+            this.pnlComment.ResumeLayout(false);
+            this.pnlComment.PerformLayout();
             this.tabPagePayment.ResumeLayout(false);
             this.tabPagePayment.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.pnlComment.ResumeLayout(false);
-            this.pnlComment.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -958,5 +1037,11 @@ namespace OrderingSystemUI
         private System.Windows.Forms.Button btnAddComment;
         private System.Windows.Forms.TextBox txtboxComment;
         private System.Windows.Forms.Button btnComment;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

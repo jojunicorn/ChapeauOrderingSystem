@@ -16,7 +16,10 @@ namespace OrderingSystemUI
         public LoginForm()
         {
             InitializeComponent();
+            txtPassword.PasswordChar = '*';
+
         }
+
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -38,7 +41,7 @@ namespace OrderingSystemUI
                     waiter.Show();
                     Hide();
                 }
-                //else if (employee.EmployeePosition == "chef"|| employee.EmployeePosition == "bartender")
+
                 //added form for each employee to display the orders for bar and kitchen
 
                 else if (employee.EmployeePosition == "bartender") 

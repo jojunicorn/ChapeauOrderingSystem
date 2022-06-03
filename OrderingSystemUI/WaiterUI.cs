@@ -308,6 +308,9 @@ namespace OrderingSystemUI
         {
             ChangeStatus(currentTable.TableNumber, tableButton);
             pnlTableStatus.Hide();
+            RBfree.Checked = false;
+            RBoccupied.Checked = false;
+            RBreserved.Checked = false;
         }
 
         public void ChangeStatus(int tableNumber, Button btn)
@@ -373,16 +376,20 @@ namespace OrderingSystemUI
 
         private void btnGoToTable_Click(object sender, EventArgs e)
         {
-            //tabControl.SelectedTab = addOrderView;
+            ChangeStatus(currentTable.TableNumber, tableButton);
             tableNumber.Text = "TABLE " + currentTable.TableNumber;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             OrderOverview();
+            RBfree.Checked = false;
+            RBoccupied.Checked = false;
+            RBreserved.Checked = false;
         }
 
         private void btnTable2_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(2);
+            tableButton = btnTable2;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
@@ -467,14 +474,15 @@ namespace OrderingSystemUI
             {
                 //log out and go back to login form
                 //?currentEmployee == null;
+                LoginForm loginForm = new LoginForm();
+                loginForm.ShowDialog();
                 this.Close();
             }
             else
             {
                 return;
             }
-            LoginForm loginForm = new LoginForm();
-            loginForm.ShowDialog();
+            
 
         }
 
