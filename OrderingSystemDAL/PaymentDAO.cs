@@ -17,10 +17,24 @@ namespace OrderingSystemDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        //public Payment GetPayment(int orderNumber)
-        //{
-           //is this class needed?
-        //}
+        public Payment GetPayment(int orderNumber)
+        {
+            try
+            {
+                query = "SELECT PaymentID, PaymentAmount, OrderNumber, Tip, CustomerComment FROM [dbo].[PAYMENT] WHERE OrderNumber = @orderNumber;";
+
+                SqlParameter[] sqlParameters = new SqlParameter[1];
+                sqlParameters[0] = new SqlParameter("@orderNumber", orderNumber);
+
+                Payment payment = ReadTable(ExecuteSelectQuery(query, sqlParameters));
+
+                return payment;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         private List<Payment> ReadTables(DataTable dataTable)
         {
 
