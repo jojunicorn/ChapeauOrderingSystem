@@ -39,7 +39,7 @@ namespace OrderingSystemDAL
 
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@employeeNumber", order.EmployeeNumber);
-
+            //sqlParameters[0] = new SqlParameter("@date", order.EmployeeNumber);
 
             ExecuteEditQuery(query, sqlParameters);
 

@@ -317,13 +317,13 @@ namespace OrderingSystemUI
 
 
                 //code for creating new order every time a table is newly occupied so a new group of people can order with that ordernumber
-                Order newOrder = new Order();
-                newOrder.EmployeeNumber = currentEmployee.EmployeNumber;
-                newOrder.OrderTime = DateTime.Now;
-                int newCurrentOrder = orderService.CreateNewOrder(newOrder);
-                currentTable.CurrentOrder = newCurrentOrder;
-                tableService.UpdateTableWithCurrentOrder(currentTable, newCurrentOrder);
-                MessageBox.Show("a new order has been creates");
+                //Order newOrder = new Order();
+                //newOrder.EmployeeNumber = currentEmployee.EmployeNumber;
+                //newOrder.OrderTime = DateTime.Now;
+                //int newCurrentOrder = orderService.CreateNewOrder(newOrder);
+                //currentTable.CurrentOrder = newCurrentOrder;
+                //tableService.UpdateTableWithCurrentOrder(currentTable, currentTable.CurrentOrder);
+                //MessageBox.Show("a new order has been creates");
             }
             else if (RBreserved.Checked)
             {
@@ -474,6 +474,11 @@ namespace OrderingSystemUI
         private void listViewAddOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListViewItem selectedItem = listViewAddOrder.SelectedItems[0];
+
+
+            //if selected code is > 0
+
+            //....
 
             //if (listViewAddOrder.SelectedItems.Count > 1)
             //{
