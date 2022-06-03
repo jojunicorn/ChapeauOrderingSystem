@@ -10,6 +10,19 @@ namespace OrderingSystemLogic
     {
         private PaymentDAO paymentDao;
 
-        
+        public PaymentService()
+        {
+            paymentDao = new PaymentDAO();
+        }
+
+        public List<Payment>GetPayment()
+        {
+            return paymentDao.GetPayment();
+        }
+       // public Payment GetPayment(int orderNumber)
+        //{
+            //return paymentDao.GetPayment(orderNumber);
+            //shows as an error
+       // }
     }
 }
