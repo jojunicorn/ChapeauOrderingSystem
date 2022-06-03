@@ -22,6 +22,7 @@ namespace OrderingSystemUI
 
 
         List<Product> addingNewOrdersList;
+        List<int> alreadyPrinted = new List<int>();
 
         Table currentTable = null;
         Employee currentEmployee = null;
@@ -29,6 +30,7 @@ namespace OrderingSystemUI
         OrderProduct currentOrderItem = null;
 
         Product selectedProduct = null;
+        Product selectedProductsOnAddList = null;
 
         Button tableButton = null;
         public WaiterUI(Employee currentEmployee)
@@ -52,12 +54,6 @@ namespace OrderingSystemUI
 
             tabControl.SelectedTab = tableViewTab;
 
-
-            //currentOrder = orderService.GetOrder(2);
-            //currentTable = tableService.GetTable(1); ///for test
-
-
-            //OrderOverview();
             pnlTableStatus.Hide();
 
         }
@@ -112,7 +108,7 @@ namespace OrderingSystemUI
                         //    Console.ForegroundColor = ConsoleColor.DarkYellow;
                         //else if (product.Status == "served")
                         //    Console.ForegroundColor = ConsoleColor.Green;
-                            ListViewItem item = new ListViewItem();
+                        ListViewItem item = new ListViewItem();
                         item.Text = $"{count} x"; //count
                         item.SubItems.Add(product.ProductName);//product name
                         item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
@@ -124,9 +120,9 @@ namespace OrderingSystemUI
                         alreadyPrinted.Add(product.ProductID);
 
                 }
-                lblDisplayTotal.Text = "€ "+ total.ToString("0.00");
+                lblDisplayTotal.Text = "€ " + total.ToString("0.00");
                 lblDisplayVAT.Text = vat.ToString("0.00");
-                
+
             }
             catch (Exception e)
             {
@@ -137,30 +133,47 @@ namespace OrderingSystemUI
         private void btnLunch_Click(object sender, EventArgs e)
         {
             LunchMenuDisplay();
+            btnAddComment.Hide();
+            pnlComment.Hide();
         }
 
         private void btnDinner_Click(object sender, EventArgs e)
         {
             DinnerMenuDisplay();
+            btnAddComment.Hide();
+            pnlComment.Hide();
+
         }
 
         private void btnDrinks_Click(object sender, EventArgs e)
         {
             DrinksMenuDisplay();
+            btnAddComment.Hide();
+            pnlComment.Hide();
+
 
         }
         private void btnDinnerMenu_Click(object sender, EventArgs e)
         {
             DinnerMenuDisplay();
+            btnAddComment.Hide();
+            pnlComment.Hide();
+
         }
         private void btnLunchMenu_Click(object sender, EventArgs e)
         {
             LunchMenuDisplay();
+            btnAddComment.Hide();
+            pnlComment.Hide();
+
         }
 
         private void btnDrinksMenu_Click(object sender, EventArgs e)
         {
             DrinksMenuDisplay();
+            btnAddComment.Hide();
+            pnlComment.Hide();
+
         }
 
         private void LunchMenuDisplay()
@@ -287,6 +300,7 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(1);
+            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
 
@@ -301,7 +315,7 @@ namespace OrderingSystemUI
             lblTableNumber.Text = tableNumber.ToString();
             Table table = tableService.GetTable(tableNumber);
             string tableStatus;
-            
+
 
             if (RBfree.Checked)
             {
@@ -336,13 +350,13 @@ namespace OrderingSystemUI
         public void SetTablesColor()
         {
             TableColor(tableService.GetTable(1), btnTable1);
-            TableColor(tableService.GetTable(2), btnTable2); 
-            TableColor(tableService.GetTable(3), btnTable3); 
-            TableColor(tableService.GetTable(4), btnTable4); 
-            TableColor(tableService.GetTable(5), btnTable5); 
-            TableColor(tableService.GetTable(6), btnTable6); 
+            TableColor(tableService.GetTable(2), btnTable2);
+            TableColor(tableService.GetTable(3), btnTable3);
+            TableColor(tableService.GetTable(4), btnTable4);
+            TableColor(tableService.GetTable(5), btnTable5);
+            TableColor(tableService.GetTable(6), btnTable6);
             TableColor(tableService.GetTable(7), btnTable7);
-            TableColor(tableService.GetTable(8), btnTable8); 
+            TableColor(tableService.GetTable(8), btnTable8);
             TableColor(tableService.GetTable(9), btnTable9);
             TableColor(tableService.GetTable(10), btnTable10);
         }
@@ -369,6 +383,7 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(2);
+            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
 
@@ -376,6 +391,7 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(3);
+            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable3;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
@@ -384,15 +400,17 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(4);
+            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable4;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
-            
+
         }
 
         private void btnTable5_Click(object sender, EventArgs e)
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(5);
+            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable5;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
@@ -401,6 +419,7 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(6);
+            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable6;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
@@ -409,6 +428,7 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(7);
+            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable7;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
@@ -417,6 +437,7 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(8);
+            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable8;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
@@ -425,6 +446,7 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(9);
+            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable9;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
@@ -433,6 +455,7 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(10);
+            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable10;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
@@ -452,7 +475,7 @@ namespace OrderingSystemUI
             }
             LoginForm loginForm = new LoginForm();
             loginForm.ShowDialog();
-            
+
         }
 
         private void tableNumber_Click(object sender, EventArgs e)
@@ -473,49 +496,44 @@ namespace OrderingSystemUI
 
         private void listViewAddOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListViewItem selectedItem = listViewAddOrder.SelectedItems[0];
 
-
-            //if selected code is > 0
-
-            //....
-
-            //if (listViewAddOrder.SelectedItems.Count > 1)
-            //{
-            //    listViewAddOrder.SelectedItems.Clear();
-            //    listViewAddOrder_SelectedIndexChanged(sender,e);
-            //}
-
-            selectedProduct = TagReplacement(productService.GetAllProducts(), selectedItem);
-            addingNewOrdersList.Add(selectedProduct);
-
-            List<int> alreadyPrinted = new List<int>();
-
-            foreach (Product product in addingNewOrdersList)
+            if (listViewAddOrder.SelectedItems.Count > 0)
             {
 
-                int count = 0;
-                foreach (Product p in addingNewOrdersList)
+                ListViewItem selectedItem = listViewAddOrder.SelectedItems[0];
+                selectedProduct = TagReplacement(productService.GetAllProducts(), selectedItem);
+                addingNewOrdersList.Add(selectedProduct);
+
+                listViewOrderSummary.Items.Clear();
+                alreadyPrinted = new List<int>();
+
+                foreach (Product product in addingNewOrdersList)
                 {
-                    if (p.ProductID == product.ProductID)
+                    int count = 0;
+                    foreach (Product p in addingNewOrdersList)
                     {
-                        count++;
-                        //productsForThisOrder.Remove(product);
+                        if (p.ProductID == product.ProductID)
+                        {
+                            count++;
+                        }
                     }
-                }
 
-                if (!alreadyPrinted.Contains(product.ProductID))
-                {
                     ListViewItem item = new ListViewItem();
-                    item.Text = $"{count} x"; //count
-                    item.SubItems.Add(product.ProductName);//product name
 
-                    listViewOrderSummary.Items.Add(item);
+
+
+                    if (!alreadyPrinted.Contains(product.ProductID))
+                    {
+                        item.Text = $"{count} x"; //count
+                        item.SubItems.Add(product.ProductName);//product name
+                        listViewOrderSummary.Items.Add(item);
+                    }
+                    alreadyPrinted.Add(product.ProductID);
+                    listViewAddOrder.SelectedItems.Clear();
                 }
-
-                alreadyPrinted.Add(product.ProductID);
             }
         }
+
 
         private Product TagReplacement(List<Product> products, ListViewItem item)
         {
@@ -537,7 +555,9 @@ namespace OrderingSystemUI
                 foreach (Product product in addingNewOrdersList)
                 {
                     orderProductService.AddOrderItem(currentOrder.OrderNumber, product.ProductID, "", DateTime.Now, "in preparation");
-                    product.Stock--;
+                    //edit stock in db
+                    int newStock = product.Stock--;
+                    productService.EditStock(product.ProductID, newStock);
                 }
 
             }
@@ -568,11 +588,39 @@ namespace OrderingSystemUI
         {
             btnRemove.Show();
             btnEdit.Show();
-            ListViewItem selectedItem = listViewAddOrder.SelectedItems[0];
-            currentOrderItem = (OrderProduct)selectedItem.Tag;
+            if (listViewTableOrder.SelectedItems.Count > 0)
+            {
 
-            if (listViewTableOrder.SelectedItems.Count > 1) btnEdit.Hide();
+                ListViewItem selectedItem = listViewTableOrder.SelectedItems[0];
+                Product currentProduct = TagReplacement(productService.GetAllProducts(), selectedItem);
+                currentOrderItem = orderProductService.GetOrderProduct(currentOrder.OrderNumber, currentProduct.ProductID);
 
+                if (listViewTableOrder.SelectedItems.Count > 1) btnEdit.Hide();
+            }
+
+
+        }
+
+        private void listViewOrderSummary_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewOrderSummary.SelectedItems.Count > 0)
+            {
+                btnAddComment.Show();
+                ListViewItem selectedItem = listViewOrderSummary.SelectedItems[0];
+                selectedProductsOnAddList = TagReplacement(productService.GetAllProducts(), selectedItem);
+
+            }
+        }
+
+        private void btnComment_Click(object sender, EventArgs e)
+        {
+            pnlComment.Show();
+        }
+
+        private void btnAddComment_Click(object sender, EventArgs e)
+        {
+            string comment = txtboxComment.Text;
+            orderProductService.GetOrderProduct(currentOrder.OrderNumber, selectedProductsOnAddList.ProductID).Comment = comment;
         }
     }
 }

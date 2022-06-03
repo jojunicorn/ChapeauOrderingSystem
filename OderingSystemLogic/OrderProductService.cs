@@ -9,7 +9,10 @@ namespace OrderingSystemLogic
     public class OrderProductService
     {
         private OrderProductsDAO orderProductDao;
-
+        public OrderProduct GetOrderProduct(int orderNumber, int productNumber)
+        {
+            return orderProductDao.GetOrderProduct(orderNumber, productNumber);
+        }
         public void RemoveOrderItem(int productId, int orderId)
         {
             orderProductDao.RemoveOrderItem(productId, orderId);

@@ -17,6 +17,19 @@ namespace OrderingSystemDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public OrderProduct GetOrderProduct(int orderNumber, int productNumber)
+        {
+            query = "SELECT ItemId, OrderNumber, ProductId, Comment, OrderTime, OrderStatus FROM [dbo].[ORDERPRODUCTS] WHERE OrderNumber = @orderNumber AND ProductId = @productId;";
+
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@orderNumber", orderNumber);
+            sqlParameters[0] = new SqlParameter("@productId", productNumber);
+
+
+            OrderProduct order = ReadTable(ExecuteSelectQuery(query, sqlParameters));
+
+            return order;
+        }
         public void AddOrderItem(int orderNumber, int productId, string comment, DateTime time, string status)
         {
 
@@ -31,7 +44,7 @@ namespace OrderingSystemDAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
-        
+
         public void RemoveOrderItem(int productId, int orderId)
         {
             query = "DELETE [dbo].[ORDERPRODUCTS] WHERE OrderNumber=@orderNumber AND ProductId=@productId;";
@@ -63,6 +76,24 @@ namespace OrderingSystemDAL
                 orderProducts.Add(orderProduct);
             }
             return orderProducts;
+        }
+        private OrderProduct ReadTable(DataTable dataTable)
+        {
+
+            OrderProduct orderProduct = new OrderProduct();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                orderProduct.ItemID = (int)dr["ItemId"];
+                orderProduct.OrderNumber = (int)dr["OrderNumber"];
+                orderProduct.ProductID = (int)dr["ProductId"];
+                orderProduct.Comment = (string)dr["Comment"];
+                orderProduct.OrderTime = (DateTime)dr["OrderTime"];
+                orderProduct.Status = (string)dr["OrderStatus"];
+
+
+            }
+            return orderProduct;
         }
     }
 }

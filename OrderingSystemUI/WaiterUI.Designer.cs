@@ -95,6 +95,10 @@ namespace OrderingSystemUI
             this.btnEmployeeName = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
+            this.pnlComment = new System.Windows.Forms.Panel();
+            this.txtboxComment = new System.Windows.Forms.TextBox();
+            this.btnAddComment = new System.Windows.Forms.Button();
+            this.btnComment = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tableViewTab.SuspendLayout();
             this.pnlTableStatus.SuspendLayout();
@@ -102,6 +106,7 @@ namespace OrderingSystemUI
             this.addOrderView.SuspendLayout();
             this.tabPagePayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.pnlComment.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -499,6 +504,8 @@ namespace OrderingSystemUI
             // 
             // addOrderView
             // 
+            this.addOrderView.Controls.Add(this.btnComment);
+            this.addOrderView.Controls.Add(this.pnlComment);
             this.addOrderView.Controls.Add(this.listViewAddOrder);
             this.addOrderView.Controls.Add(this.btnAddOrder);
             this.addOrderView.Controls.Add(this.lblOrder);
@@ -816,6 +823,41 @@ namespace OrderingSystemUI
             this.tableNumber.Text = "Table #...";
             this.tableNumber.Click += new System.EventHandler(this.tableNumber_Click);
             // 
+            // pnlComment
+            // 
+            this.pnlComment.Controls.Add(this.btnAddComment);
+            this.pnlComment.Controls.Add(this.txtboxComment);
+            this.pnlComment.Location = new System.Drawing.Point(99, 489);
+            this.pnlComment.Name = "pnlComment";
+            this.pnlComment.Size = new System.Drawing.Size(250, 125);
+            this.pnlComment.TabIndex = 10;
+            // 
+            // txtboxComment
+            // 
+            this.txtboxComment.Location = new System.Drawing.Point(85, 51);
+            this.txtboxComment.Name = "txtboxComment";
+            this.txtboxComment.Size = new System.Drawing.Size(125, 27);
+            this.txtboxComment.TabIndex = 0;
+            this.txtboxComment.Text = "Comment...";
+            // 
+            // btnAddComment
+            // 
+            this.btnAddComment.Location = new System.Drawing.Point(85, 85);
+            this.btnAddComment.Name = "btnAddComment";
+            this.btnAddComment.Size = new System.Drawing.Size(94, 29);
+            this.btnAddComment.TabIndex = 1;
+            this.btnAddComment.Text = "Add";
+            this.btnAddComment.UseVisualStyleBackColor = true;
+            // 
+            // btnComment
+            // 
+            this.btnComment.Location = new System.Drawing.Point(8, 649);
+            this.btnComment.Name = "btnComment";
+            this.btnComment.Size = new System.Drawing.Size(94, 29);
+            this.btnComment.TabIndex = 11;
+            this.btnComment.Text = "Comment";
+            this.btnComment.UseVisualStyleBackColor = true;
+            // 
             // WaiterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -840,6 +882,8 @@ namespace OrderingSystemUI
             this.tabPagePayment.ResumeLayout(false);
             this.tabPagePayment.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.pnlComment.ResumeLayout(false);
+            this.pnlComment.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -910,5 +954,9 @@ namespace OrderingSystemUI
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label lblDisplayTotal;
         private System.Windows.Forms.Label lblDisplayVAT;
+        private System.Windows.Forms.Panel pnlComment;
+        private System.Windows.Forms.Button btnAddComment;
+        private System.Windows.Forms.TextBox txtboxComment;
+        private System.Windows.Forms.Button btnComment;
     }
 }

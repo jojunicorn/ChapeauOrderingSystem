@@ -34,6 +34,17 @@ namespace OrderingSystemDAL
                 throw ex;
             }
         }
+        public void EditStock(int productId, int newStock)
+        {
+            query = "UPDATE [dbo].[PRODUCT] SET ProductStock=@productStock WHERE ProductId=@productId;";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+
+            sqlParameters[0] = new SqlParameter("@productId", productId);
+            sqlParameters[1] = new SqlParameter("@productStock", newStock);
+
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
 
         private List<Product> ReadTables(DataTable dataTable)
         {

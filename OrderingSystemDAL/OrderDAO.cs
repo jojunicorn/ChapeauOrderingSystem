@@ -66,18 +66,6 @@ namespace OrderingSystemDAL
         private Order ReadTable(DataTable dataTable)
         {
 
-            //DataRow dataRow = dataTable.Rows[2];
-
-            //Order order = new Order()
-            //{
-            //    OrderNumber = (int)dataRow["OrderNumber"],
-            //    EmployeeNumber = (int)dataRow["EmployeNumber"],
-            //    //TableNumber = (int)dataRow["TableNumber"],
-            //};
-
-            //return order;
-
-
             Order order = new Order();
 
             foreach (DataRow dr in dataTable.Rows)
