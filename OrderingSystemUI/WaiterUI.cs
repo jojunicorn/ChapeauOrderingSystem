@@ -459,7 +459,9 @@ namespace OrderingSystemUI
         {
             DialogResult result = MessageBox.Show("Are you sure you want to discontinue the current process?", $"Going to table view", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
-            {               
+            {
+                currentTable = null;
+                tableNumber.Text = "TABLE#...";
                 pnlTableStatus.Hide();
                 tabControl.SelectedTab = tableViewTab;
             }
