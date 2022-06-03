@@ -10,6 +10,9 @@ namespace OrderingSystemModel
 
         public int OrderNumber { get; set; } // convert to order
         public int ProductID { get; set; } //convert to order
+
+        //added field from Product for use in listView
+        public string ProductName { get; set; }
         public string Comment { get; set; }
         public DateTime OrderTime { get; set; }
         public int Count { get; set; }

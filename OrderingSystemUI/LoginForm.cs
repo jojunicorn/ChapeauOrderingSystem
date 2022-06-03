@@ -38,11 +38,20 @@ namespace OrderingSystemUI
                     waiter.Show();
                     Hide();
                 }
-                else if (employee.EmployeePosition == "chef" || employee.EmployeePosition == "bartender")
+                //else if (employee.EmployeePosition == "chef"|| employee.EmployeePosition == "bartender")
+                //added form for each employee to display the orders for bar and kitchen
+
+                else if (employee.EmployeePosition == "bartender") 
                 {
-                    //KitchenUI kitchen = new KitchenUI(employee);
-                    // kitchen.Show();
-                    //Hide();
+                    BarmanUI barman = new BarmanUI(employee);
+                    barman.Show();
+                    Hide();
+                }
+                else 
+                {
+                    ChefUI chef = new ChefUI(employee);
+                    chef.Show();
+                    Hide();
                 }
                
             }
@@ -51,6 +60,11 @@ namespace OrderingSystemUI
             {
                 MessageBox.Show("Username or password is not correct please try again!");
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
