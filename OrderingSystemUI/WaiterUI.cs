@@ -44,22 +44,22 @@ namespace OrderingSystemUI
         private void WaiterUI_Load(object sender, EventArgs e)
         {
             //Disables tabs in tabcontrol
-            tabControl.Appearance = TabAppearance.FlatButtons;
-            tabControl.ItemSize = new Size(0, 1);
-            tabControl.SizeMode = TabSizeMode.Fixed;
+            pnlPayment.Appearance = TabAppearance.FlatButtons;
+            pnlPayment.ItemSize = new Size(0, 1);
+            pnlPayment.SizeMode = TabSizeMode.Fixed;
 
             SetTablesColor();
 
             btnEmployeeName.Text = currentEmployee.EmployeeName;
 
-            tabControl.SelectedTab = tableViewTab;
+            pnlPayment.SelectedTab = tableViewTabCommentQ;
 
             pnlTableStatus.Hide();
 
         }
         private void OrderOverview()
         {
-            tabControl.SelectedTab = tableOrderOverviewTab;
+            pnlPayment.SelectedTab = tableOrderOverviewTab;
             btnRemove.Hide();
             btnEdit.Hide();
 
@@ -178,7 +178,7 @@ namespace OrderingSystemUI
 
         private void LunchMenuDisplay()
         {
-            tabControl.SelectedTab = addOrderView;
+            pnlPayment.SelectedTab = addOrderView;
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
             //List groups
@@ -212,7 +212,7 @@ namespace OrderingSystemUI
         }
         private void DinnerMenuDisplay()
         {
-            tabControl.SelectedTab = addOrderView;
+            pnlPayment.SelectedTab = addOrderView;
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
 
@@ -250,7 +250,7 @@ namespace OrderingSystemUI
         }
         private void DrinksMenuDisplay()
         {
-            tabControl.SelectedTab = addOrderView;
+            pnlPayment.SelectedTab = addOrderView;
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
 
@@ -494,7 +494,7 @@ namespace OrderingSystemUI
                 currentTable = null;
                 tableNumber.Text = "TABLE#...";
                 pnlTableStatus.Hide();
-                tabControl.SelectedTab = tableViewTab;
+                pnlPayment.SelectedTab = tableViewTabCommentQ;
             }
             else
             {
@@ -630,7 +630,48 @@ namespace OrderingSystemUI
             string comment = txtboxComment.Text;
             orderProductService.GetOrderProduct(currentOrder.OrderNumber, selectedProductsOnAddList.ProductID).Comment = comment;
         }
+
+        //PAYMENT UI
+
+        //navigate to Payment UI
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            tableOrderOverviewTab.Hide();
+            tabPagePayment.Show();
+
+        }
+        
+        private void radioBtn_DEBIT_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        //navigate to Payment Overview
+        private void btn_payment_Click(object sender, EventArgs e)
+        {
+            tabPagePayment.Hide();
+            tabPagePaymentView.Show();
+        }
+
+        private void btn_SetAmountPaid_Click(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void btn_Pay_Click(object sender, EventArgs e)
+        {
+            tabPagePaymentView.Hide();
+            tabPageAnyComments.Show();
+        }
     }
-}
+
+    }
+
 
 
