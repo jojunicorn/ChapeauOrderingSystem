@@ -26,7 +26,7 @@ namespace OrderingSystemDAL
 
         public void UpdateTableWithCurrentOrder(Table table,int orderNumber)
         {
-            string query = ("UPDATE [dbo].[TABLE] SET OrderNumber = @orderNumber" + "WHERE TableNumber = @tableNumber");
+            string query = ("UPDATE [dbo].[TABLE] SET OrderNumber = @orderNumber" + " WHERE TableNumber = @tableNumber");
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@orderNumber", orderNumber);
             sqlParameters[1] = new SqlParameter("@tableNumber", table.TableNumber);

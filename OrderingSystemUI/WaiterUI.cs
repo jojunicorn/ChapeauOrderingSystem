@@ -27,7 +27,7 @@ namespace OrderingSystemUI
         Table currentTable = null;
         Employee currentEmployee = null;
         Order currentOrder = null;
-        OrderProduct currentOrderItem = null;
+        OrderProduct currentOrderItem;
 
         Product selectedProduct = null;
         Product selectedProductsOnAddList = null;
@@ -48,6 +48,7 @@ namespace OrderingSystemUI
             pnlPayment.ItemSize = new Size(0, 1);
             pnlPayment.SizeMode = TabSizeMode.Fixed;
 
+            currentOrderItem = null;
             SetTablesColor();
 
             btnEmployeeName.Text = currentEmployee.EmployeeName;
@@ -74,13 +75,12 @@ namespace OrderingSystemUI
 
                 foreach (OrderProduct orderProduct in products)
                 {
-                    //Order order = orderService.GetOrder(currentTable.CurrentOrder);
                     Order order = orderService.GetOrder(currentOrder.OrderNumber);
                     Product product = productService.GetProduct(orderProduct.ProductID);
 
-                    if (order.OrderNumber == currentOrder.OrderNumber)
+                    if (orderProduct.OrderNumber == currentOrder.OrderNumber)
                     {
-                        //product.Status = orderProduct.Status;
+                        product.Status = orderProduct.Status;
                         productsForThisOrder.Add(product);
                     }
 
@@ -98,23 +98,25 @@ namespace OrderingSystemUI
                         if (p.ProductID == product.ProductID)
                         {
                             count++;
-                            //productsForThisOrder.Remove(product);
                         }
                     }
 
                     if (!alreadyPrinted.Contains(product.ProductID))
                     {
-                        //if (product.Status == "prepared")
-                        //    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        //else if (product.Status == "served")
-                        //    Console.ForegroundColor = ConsoleColor.Green;
+
+
                         ListViewItem item = new ListViewItem();
+
+                        if (product.Status == "prepared")
+                           item.BackColor  = Color.Orange;
+                        else if (product.Status == "served")
+                            item.BackColor = Color.Green;
+
                         item.Text = $"{count} x"; //count
                         item.SubItems.Add(product.ProductName);//product name
                         item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
-
+                        item.Tag = product;
                         listViewTableOrder.Items.Add(item);
-                        //Console.ResetColor();
                     }
                     if (count > 1)
                         alreadyPrinted.Add(product.ProductID);
@@ -134,14 +136,12 @@ namespace OrderingSystemUI
         {
             LunchMenuDisplay();
             btnAddComment.Hide();
-            pnlComment.Hide();
         }
 
         private void btnDinner_Click(object sender, EventArgs e)
         {
             DinnerMenuDisplay();
             btnAddComment.Hide();
-            pnlComment.Hide();
 
         }
 
@@ -149,22 +149,17 @@ namespace OrderingSystemUI
         {
             DrinksMenuDisplay();
             btnAddComment.Hide();
-            pnlComment.Hide();
-
-
         }
         private void btnDinnerMenu_Click(object sender, EventArgs e)
         {
             DinnerMenuDisplay();
             btnAddComment.Hide();
-            pnlComment.Hide();
 
         }
         private void btnLunchMenu_Click(object sender, EventArgs e)
         {
             LunchMenuDisplay();
             btnAddComment.Hide();
-            pnlComment.Hide();
 
         }
 
@@ -172,7 +167,6 @@ namespace OrderingSystemUI
         {
             DrinksMenuDisplay();
             btnAddComment.Hide();
-            pnlComment.Hide();
 
         }
 
@@ -181,6 +175,8 @@ namespace OrderingSystemUI
             pnlPayment.SelectedTab = addOrderView;
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
+            btnComment.Hide();
+
             //List groups
 
             ListViewGroup lunchStarters = new ListViewGroup("Starters", HorizontalAlignment.Center);
@@ -200,6 +196,7 @@ namespace OrderingSystemUI
                 else throw new ArgumentException("Mistake in the database with the menu");
 
                 ListViewItem item = new ListViewItem(product.ProductName, group);
+                item.Tag = product;
                 //item.Text = product.ProductName;
                 //item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
 
@@ -215,6 +212,8 @@ namespace OrderingSystemUI
             pnlPayment.SelectedTab = addOrderView;
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
+            btnComment.Hide();
+
 
             //List groups
             ListViewGroup dinnerStarters = new ListViewGroup("Starters", HorizontalAlignment.Center);
@@ -239,6 +238,7 @@ namespace OrderingSystemUI
                 ListViewItem item = new ListViewItem(product.ProductName, group);
                 //item.Text = product.ProductName;
                 //item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
+                item.Tag = product;
 
                 listViewAddOrder.Items.Add(item);
 
@@ -253,7 +253,7 @@ namespace OrderingSystemUI
             pnlPayment.SelectedTab = addOrderView;
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
-
+            btnComment.Hide();
             //List groups
             ListViewGroup softDrinks = new ListViewGroup("Soft Drinks", HorizontalAlignment.Center);
             ListViewGroup beers = new ListViewGroup("Beers", HorizontalAlignment.Center);
@@ -280,6 +280,7 @@ namespace OrderingSystemUI
                 ListViewItem item = new ListViewItem(product.ProductName, group);
                 //item.Text = product.ProductName;
                 //item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
+                item.Tag = product;
 
                 listViewAddOrder.Items.Add(item);
 
@@ -334,13 +335,13 @@ namespace OrderingSystemUI
 
 
                 //code for creating new order every time a table is newly occupied so a new group of people can order with that ordernumber
-                //Order newOrder = new Order();
-                //newOrder.EmployeeNumber = currentEmployee.EmployeNumber;
-                //newOrder.OrderTime = DateTime.Now;
-                //int newCurrentOrder = orderService.CreateNewOrder(newOrder);
-                //currentTable.CurrentOrder = newCurrentOrder;
-                //tableService.UpdateTableWithCurrentOrder(currentTable, currentTable.CurrentOrder);
-                //MessageBox.Show("a new order has been creates");
+                Order newOrder = new Order();
+                newOrder.EmployeeNumber = currentEmployee.EmployeNumber;
+                newOrder.OrderTime = DateTime.Now;
+                int newCurrentOrder = orderService.CreateNewOrder(newOrder);
+                currentTable.CurrentOrder = newCurrentOrder;
+                tableService.UpdateTableWithCurrentOrder(currentTable, currentTable.CurrentOrder);
+                MessageBox.Show("a new order has been creates");
             }
             else if (RBreserved.Checked)
             {
@@ -505,47 +506,40 @@ namespace OrderingSystemUI
             if (listViewAddOrder.SelectedItems.Count > 0)
             {
                 ListViewItem selectedItem = listViewAddOrder.SelectedItems[0];
-                selectedProduct = TagReplacement(productService.GetAllProducts(), selectedItem);
+                selectedProduct = (Product)selectedItem.Tag; 
                 addingNewOrdersList.Add(selectedProduct);
 
-                listViewOrderSummary.Items.Clear();
-                alreadyPrinted = new List<int>();
-
-                foreach (Product product in addingNewOrdersList)
-                {
-                    int count = 0;
-                    foreach (Product p in addingNewOrdersList)
-                    {
-                        if (p.ProductID == product.ProductID)
-                        {
-                            count++;
-                        }
-                    }
-
-                    ListViewItem item = new ListViewItem();
-
-                    if (!alreadyPrinted.Contains(product.ProductID))
-                    {
-                        item.Text = $"{count} x"; //count
-                        item.SubItems.Add(product.ProductName);//product name
-                        listViewOrderSummary.Items.Add(item);
-                    }
-                    alreadyPrinted.Add(product.ProductID);
-                    listViewAddOrder.SelectedItems.Clear();
-                }
+                DisplaySelectedItemsForOrder();
             }
         }
-
-
-        private Product TagReplacement(List<Product> products, ListViewItem item)
+        private void DisplaySelectedItemsForOrder()
         {
+            listViewOrderSummary.Items.Clear();
+            alreadyPrinted = new List<int>();
 
-            foreach (Product product in products)
+            foreach (Product product in addingNewOrdersList)
             {
-                if (item.Text == product.ProductName)
-                    return product;
+                int count = 0;
+                foreach (Product p in addingNewOrdersList)
+                {
+                    if (p.ProductID == product.ProductID)
+                    {
+                        count++;
+                    }
+                }
+
+                ListViewItem item = new ListViewItem();
+
+                if (!alreadyPrinted.Contains(product.ProductID))
+                {
+                    item.Text = $"{count} x"; //count
+                    item.SubItems.Add(product.ProductName);//product name
+                    listViewOrderSummary.Items.Add(item);
+                }
+                item.Tag = product;
+                alreadyPrinted.Add(product.ProductID);
+                listViewAddOrder.SelectedItems.Clear();
             }
-            throw new Exception();
         }
 
 
@@ -560,9 +554,11 @@ namespace OrderingSystemUI
                     //edit stock in db
                     int newStock = product.Stock--;
                     productService.EditStock(product.ProductID, newStock);
+                    addingNewOrdersList.Remove(product);
                 }
 
             }
+
             OrderOverview();
         }
 
@@ -573,6 +569,7 @@ namespace OrderingSystemUI
             if (result == DialogResult.OK)
             {
                 orderProductService.RemoveOrderItem(currentOrderItem.ProductID, currentOrderItem.OrderNumber);
+                OrderOverview();
             }
             else
             {
@@ -594,7 +591,7 @@ namespace OrderingSystemUI
             {
 
                 ListViewItem selectedItem = listViewTableOrder.SelectedItems[0];
-                Product currentProduct = TagReplacement(productService.GetAllProducts(), selectedItem);
+                Product currentProduct = (Product)selectedItem.Tag;
                 currentOrderItem = orderProductService.GetOrderProduct(currentOrder.OrderNumber, currentProduct.ProductID);
 
                 if (listViewTableOrder.SelectedItems.Count > 1) btnEdit.Hide();
@@ -603,26 +600,16 @@ namespace OrderingSystemUI
 
         }
 
-        private void listViewOrderSummary_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listViewOrderSummary.SelectedItems.Count > 0)
-            {
-                btnAddComment.Show();
-                ListViewItem selectedItem = listViewOrderSummary.SelectedItems[0];
-                selectedProductsOnAddList = TagReplacement(productService.GetAllProducts(), selectedItem);
-
-            }
-        }
-
         private void btnComment_Click(object sender, EventArgs e)
         {
-            pnlComment.Show();
+            tabPageCommentProdcut.Show();
         }
 
         private void btnAddComment_Click(object sender, EventArgs e)
         {
-            string comment = txtboxComment.Text;
-            orderProductService.GetOrderProduct(currentOrder.OrderNumber, selectedProductsOnAddList.ProductID).Comment = comment;
+            string comment = txtComment.Text;
+            OrderProduct product = orderProductService.GetOrderProduct(currentOrder.OrderNumber, selectedProductsOnAddList.ProductID);
+            product.Comment = comment;
         }
 
 
@@ -817,6 +804,18 @@ namespace OrderingSystemUI
         {
 
         }
+
+        private void listViewOrderSummary_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnComment.Show();
+
+            if (listViewOrderSummary.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = listViewOrderSummary.SelectedItems[0];
+                selectedProductsOnAddList = (Product)selectedItem.Tag;
+            }
+        }
+
     }
 }
 

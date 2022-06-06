@@ -47,6 +47,7 @@ namespace OrderingSystemLogic
             drinksHot = new List<Product>();
             GetCategoriesAndTypes();
         }
+
         public void EditStock(int productId, int newStock)
         {
             productDao.EditStock(productId, newStock);

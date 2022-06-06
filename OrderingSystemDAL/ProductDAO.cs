@@ -16,6 +16,7 @@ namespace OrderingSystemDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+
         public Product GetProduct(int productId)
         {
             try
@@ -40,7 +41,7 @@ namespace OrderingSystemDAL
             SqlParameter[] sqlParameters = new SqlParameter[2];
 
             sqlParameters[0] = new SqlParameter("@productId", productId);
-            sqlParameters[1] = new SqlParameter("@productStock", newStock);
+            sqlParameters[1] = new SqlParameter("@productStock", 50);
 
 
             ExecuteEditQuery(query, sqlParameters);

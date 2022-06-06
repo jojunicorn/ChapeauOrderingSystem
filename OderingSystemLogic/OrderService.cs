@@ -18,7 +18,7 @@ namespace OrderingSystemLogic
         { return orderDao.GetAllOrders(); }
         public int CreateNewOrder(Order order)
         {
-            return CreateNewOrder(order);
+            return orderDao.CreateNewOrder(order);
         }
 
         public List<Order> GetOrders()

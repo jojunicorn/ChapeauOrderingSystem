@@ -13,6 +13,10 @@ namespace OrderingSystemLogic
         {
             return orderProductDao.GetOrderProduct(orderNumber, productNumber);
         }
+        public void AddComment(int itemId, string comment)
+        {
+            orderProductDao.AddComment(itemId, comment);
+        }
         public void RemoveOrderItem(int productId, int orderId)
         {
             orderProductDao.RemoveOrderItem(productId, orderId);

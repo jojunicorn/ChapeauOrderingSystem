@@ -23,12 +23,23 @@ namespace OrderingSystemDAL
 
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@orderNumber", orderNumber);
-            sqlParameters[0] = new SqlParameter("@productId", productNumber);
+            sqlParameters[1] = new SqlParameter("@productId", productNumber);
 
 
             OrderProduct order = ReadTable(ExecuteSelectQuery(query, sqlParameters));
 
             return order;
+        }
+        public void AddComment(int itemId, string comment)
+        {
+            query = "UPDATE [dbo].[ORDERPRODUCTS] SET Comment=@comment WHERE ItemId=@itemId;";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+
+            sqlParameters[0] = new SqlParameter("@comment", comment);
+            sqlParameters[1] = new SqlParameter("@itemId", itemId);
+
+
+            ExecuteEditQuery(query, sqlParameters);
         }
         public void AddOrderItem(int orderNumber, int productId, string comment, DateTime time, string status)
         {
@@ -80,20 +91,20 @@ namespace OrderingSystemDAL
         private OrderProduct ReadTable(DataTable dataTable)
         {
 
-            OrderProduct orderProduct = new OrderProduct();
+            DataRow dataRow = dataTable.Rows[0];
 
-            foreach (DataRow dr in dataTable.Rows)
+            OrderProduct product = new OrderProduct()
             {
-                orderProduct.ItemID = (int)dr["ItemId"];
-                orderProduct.OrderNumber = (int)dr["OrderNumber"];
-                orderProduct.ProductID = (int)dr["ProductId"];
-                orderProduct.Comment = (string)dr["Comment"];
-                orderProduct.OrderTime = (DateTime)dr["OrderTime"];
-                orderProduct.Status = (string)dr["OrderStatus"];
+                ItemID = (int)dataRow["ItemId"],
+                OrderNumber = (int)dataRow["OrderNumber"],
+                ProductID = (int)dataRow["ProductId"],
+                Comment = (string)dataRow["Comment"],
+                OrderTime = (DateTime)dataRow["OrderTime"],
+                Status = (string)dataRow["OrderStatus"],
+            };
 
+            return product;
 
-            }
-            return orderProduct;
         }
     }
 }

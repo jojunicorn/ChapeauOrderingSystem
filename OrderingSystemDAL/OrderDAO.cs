@@ -35,11 +35,11 @@ namespace OrderingSystemDAL
         }
         public int CreateNewOrder(Order order)
         {
-            query = "INSERT INTO [dbo].[ORDER] VALUES (@employeeNumber, GetDate());";
+            query = "INSERT INTO [dbo].[ORDER] VALUES (@orderTime, @employeeNumber);";
 
-            SqlParameter[] sqlParameters = new SqlParameter[1];
+            SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@employeeNumber", order.EmployeeNumber);
-            //sqlParameters[0] = new SqlParameter("@date", order.EmployeeNumber);
+            sqlParameters[1] = new SqlParameter("@orderTime", order.OrderTime);
 
             ExecuteEditQuery(query, sqlParameters);
 
