@@ -631,6 +631,8 @@ namespace OrderingSystemUI
             orderProductService.GetOrderProduct(currentOrder.OrderNumber, selectedProductsOnAddList.ProductID).Comment = comment;
         }
 
+
+
         //PAYMENT UI
 
         //navigate to Payment UI
@@ -640,34 +642,97 @@ namespace OrderingSystemUI
             tabPagePayment.Show();
 
         }
-        
         private void radioBtn_DEBIT_CheckedChanged(object sender, EventArgs e)
         {
             
         }
-
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            
+           
         }
-
-        //navigate to Payment Overview
+        //navigate to "PAYMENT OVERVIEW"
         private void btn_payment_Click(object sender, EventArgs e)
         {
+            if (!radioBtn_CASH.Checked && !radioBtn_DEBIT.Checked && !radioBtn_VISA.Checked)
+            {
+                MessageBox.Show("To continue, please select payment type");
+                return;
+            }
+            lbl_HasBeenAdded.Hide();
             tabPagePayment.Hide();
             tabPagePaymentView.Show();
         }
-
         private void btn_SetAmountPaid_Click(object sender, EventArgs e)
         {
          
         }
-
+        //navigate to "ANY COMMENTS?" page
         private void btn_Pay_Click(object sender, EventArgs e)
         {
+            if (txtBox_amountPaid.Text == "")
+            {
+                MessageBox.Show("To continue the payment, you must fill in the amount paid by the customer!");
+                return;
+            }
             tabPagePaymentView.Hide();
             tabPageAnyComments.Show();
+        }
+        private void lbl9_Click(object sender, EventArgs e)
+        {
+
+        }
+        //actions for "ANY COMMENTS?"
+        private void btn_AddComment_Click(object sender, EventArgs e)
+        {
+            tabPageAnyComments.Hide();
+            tabPageCustomerComment.Show();
+        }
+        //navigate to "SETTLE THE BILL" page
+        private void btn_cntinuePayment_Click(object sender, EventArgs e)
+        {
+            tabPageAnyComments.Hide();
+            tabPageSettledBill.Show();
+        }
+        //navigate to "SETTLE THE BILL" page
+        private void btn_Confirm_Click(object sender, EventArgs e)
+        {
+            if (txtBox_Comment.Text == "")
+            {
+                MessageBox.Show("To continue, please fill in the comment section!");
+                return;
+            }
+            tabPageCustomerComment.Hide();
+            tabPageSettledBill.Show();
+        }
+        //show label "TIP HAS BEEN ADDED" after adding change as a tip
+        private void btn_changeAsTip_Click(object sender, EventArgs e)
+        {
+            lbl_HasBeenAdded.Show();
+            btn_changeAsTip.Hide();
+            lbl5.Hide();
+            txtBox_CustomTip.Hide();
+            btn_SetTip.Hide();
+        }
+       
+        private void label_HasBeenAdded_Click(object sender, EventArgs e)
+        {
+
+        }
+        //show label "TIP HAS BEEN ADDED" setting a customized tip
+        private void btn_SetTip_Click(object sender, EventArgs e)
+        {
+            lbl_HasBeenAdded.Show();
+            btn_changeAsTip.Hide();
+            lbl5.Hide();
+            txtBox_CustomTip.Hide();
+            btn_SetTip.Hide();
+        }
+        //go back from "COMMENTS" to "SETTLE THE BILL"
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            tabPageCustomerComment.Hide();
+            tabPagePaymentView.Show();
         }
     }
 
