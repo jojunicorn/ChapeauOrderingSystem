@@ -482,8 +482,6 @@ namespace OrderingSystemUI
             {
                 return;
             }
-            
-
         }
 
         private void tableNumber_Click(object sender, EventArgs e)
@@ -504,10 +502,8 @@ namespace OrderingSystemUI
 
         private void listViewAddOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (listViewAddOrder.SelectedItems.Count > 0)
             {
-
                 ListViewItem selectedItem = listViewAddOrder.SelectedItems[0];
                 selectedProduct = TagReplacement(productService.GetAllProducts(), selectedItem);
                 addingNewOrdersList.Add(selectedProduct);
@@ -527,8 +523,6 @@ namespace OrderingSystemUI
                     }
 
                     ListViewItem item = new ListViewItem();
-
-
 
                     if (!alreadyPrinted.Contains(product.ProductID))
                     {
@@ -635,22 +629,95 @@ namespace OrderingSystemUI
 
         //PAYMENT UI
 
+        //method for displaying list of orders & price & VAT
+        private void PaymentOrderOverview()
+        {
+            pnlPayment.SelectedTab = tabPagePayment;
+           
+            try
+            {
+                listViewTableOrder.Items.Clear();
+
+                List<OrderProduct> products = orderProductService.GetAllOrderProducts();
+
+                List<Product> productsForThisOrder = new List<Product>();
+                List<int> alreadyPrinted = new List<int>();
+
+                foreach (OrderProduct orderProduct in products)
+                {
+                    Order order = orderService.GetOrder(currentOrder.OrderNumber);
+                    Product product = productService.GetProduct(orderProduct.ProductID);
+
+                    if (order.OrderNumber == currentOrder.OrderNumber)
+                    {
+                        productsForThisOrder.Add(product);
+                    }
+                }
+                float total = 0;
+                float vat = 0;
+
+                foreach (Product product in productsForThisOrder)
+                {
+                    total += product.Price;
+                    vat = vat + product.Price * product.VAT;
+                    int count = 0;
+                    foreach (Product p in productsForThisOrder)
+                    {
+                        if (p.ProductID == product.ProductID)
+                        {
+                            count++;
+                        }
+                    }
+
+                    if (!alreadyPrinted.Contains(product.ProductID))
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Text = $"{count} x"; //count
+                        item.SubItems.Add(product.ProductName);//product name
+                        item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
+
+                        listViewPaymentOrder.Items.Add(item);
+                    }
+                    if (count > 1)
+                        alreadyPrinted.Add(product.ProductID);
+
+                }
+                //display price
+                lbl_price1.Text = "€ " + total.ToString("0.00");
+                lbl_price2.Text = "€ " + total.ToString("0.00");
+                lbl_price3.Text = "€ " + total.ToString("0.00");
+                lbl_price4.Text = "€ " + total.ToString("0.00");
+
+                //calculate change
+               // int price = Int32.Parse(lbl_price3.Text);
+               // int amountPaid = Int32.Parse(txtBox_amountPaid.Text);
+
+               // int change = amountPaid - price;
+                //lbl_change.Text = "€ " + change.ToString("0.00");
+
+
+                //display vat
+                lbl_vat_amount.Text = vat.ToString("0.00");
+                lbl_vat_amount2.Text = vat.ToString("0.00");
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error occured: ", e.Message);
+            }
+        }
         //navigate to Payment UI
         private void btnPay_Click(object sender, EventArgs e)
         {
             tableOrderOverviewTab.Hide();
             tabPagePayment.Show();
+            PaymentOrderOverview();
 
         }
         private void radioBtn_DEBIT_CheckedChanged(object sender, EventArgs e)
         {
             
-        }
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-           
-        }
+        }    
         //navigate to "PAYMENT OVERVIEW"
         private void btn_payment_Click(object sender, EventArgs e)
         {
@@ -663,9 +730,11 @@ namespace OrderingSystemUI
             tabPagePayment.Hide();
             tabPagePaymentView.Show();
         }
+       
         private void btn_SetAmountPaid_Click(object sender, EventArgs e)
         {
-         
+            //PaymentOrderOverview();
+
         }
         //navigate to "ANY COMMENTS?" page
         private void btn_Pay_Click(object sender, EventArgs e)
@@ -697,6 +766,12 @@ namespace OrderingSystemUI
         //navigate to "SETTLE THE BILL" page
         private void btn_Confirm_Click(object sender, EventArgs e)
         {
+            //store comment in database
+            string comment = txtBox_Comment.Text;
+            //??
+           // orderProductService.GetOrderProduct(currentOrder.OrderNumber, selectedProductsOnAddList.ProductID).Comment = comment;
+
+
             if (txtBox_Comment.Text == "")
             {
                 MessageBox.Show("To continue, please fill in the comment section!");
@@ -714,7 +789,6 @@ namespace OrderingSystemUI
             txtBox_CustomTip.Hide();
             btn_SetTip.Hide();
         }
-       
         private void label_HasBeenAdded_Click(object sender, EventArgs e)
         {
 
@@ -734,9 +808,17 @@ namespace OrderingSystemUI
             tabPageCustomerComment.Hide();
             tabPagePaymentView.Show();
         }
-    }
 
+        private void listViewPaymentOrder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void txtBox_Comment_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
+}
 
 
 

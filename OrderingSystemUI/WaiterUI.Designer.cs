@@ -36,7 +36,7 @@ namespace OrderingSystemUI
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
             this.tabPagePayment = new System.Windows.Forms.TabPage();
-            this.listViewPymntTable = new System.Windows.Forms.ListView();
+            this.listViewPaymentOrder = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
@@ -109,6 +109,7 @@ namespace OrderingSystemUI
             this.btnTable1 = new System.Windows.Forms.Button();
             this.pnlPayment = new System.Windows.Forms.TabControl();
             this.tabPagePaymentView = new System.Windows.Forms.TabPage();
+            this.lbl_price3 = new System.Windows.Forms.Label();
             this.lbl_HasBeenAdded = new System.Windows.Forms.Label();
             this.btn_Pay = new System.Windows.Forms.Button();
             this.btn_SetTip = new System.Windows.Forms.Button();
@@ -127,12 +128,21 @@ namespace OrderingSystemUI
             this.btn_AddComment = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPageCustomerComment = new System.Windows.Forms.TabPage();
+            this.btn_back = new System.Windows.Forms.Button();
             this.btn_Confirm = new System.Windows.Forms.Button();
             this.txtBox_Comment = new System.Windows.Forms.TextBox();
             this.lbl9 = new System.Windows.Forms.Label();
             this.tabPageSettledBill = new System.Windows.Forms.TabPage();
+            this.lbl_tip2 = new System.Windows.Forms.Label();
+            this.lbl_tip = new System.Windows.Forms.Label();
+            this.lbl_amount_paid = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lbl_vat_amount2 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lbl_price4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.btn_back = new System.Windows.Forms.Button();
+            this.lbl_change = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPagePayment.SuspendLayout();
             this.addOrderView.SuspendLayout();
@@ -184,7 +194,7 @@ namespace OrderingSystemUI
             // tabPagePayment
             // 
             this.tabPagePayment.BackColor = System.Drawing.Color.White;
-            this.tabPagePayment.Controls.Add(this.listViewPymntTable);
+            this.tabPagePayment.Controls.Add(this.listViewPaymentOrder);
             this.tabPagePayment.Controls.Add(this.radioBtn_CASH);
             this.tabPagePayment.Controls.Add(this.radioBtn_VISA);
             this.tabPagePayment.Controls.Add(this.radioBtn_DEBIT);
@@ -204,22 +214,22 @@ namespace OrderingSystemUI
             this.tabPagePayment.TabIndex = 6;
             this.tabPagePayment.Text = "Payment";
             // 
-            // listViewPymntTable
+            // listViewPaymentOrder
             // 
-            this.listViewPymntTable.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewPaymentOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.listViewPymntTable.FullRowSelect = true;
-            this.listViewPymntTable.HideSelection = false;
-            this.listViewPymntTable.Location = new System.Drawing.Point(8, 70);
-            this.listViewPymntTable.Margin = new System.Windows.Forms.Padding(4);
-            this.listViewPymntTable.Name = "listViewPymntTable";
-            this.listViewPymntTable.Size = new System.Drawing.Size(499, 302);
-            this.listViewPymntTable.TabIndex = 17;
-            this.listViewPymntTable.UseCompatibleStateImageBehavior = false;
-            this.listViewPymntTable.View = System.Windows.Forms.View.Details;
-            this.listViewPymntTable.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.listViewPaymentOrder.FullRowSelect = true;
+            this.listViewPaymentOrder.HideSelection = false;
+            this.listViewPaymentOrder.Location = new System.Drawing.Point(18, 70);
+            this.listViewPaymentOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.listViewPaymentOrder.Name = "listViewPaymentOrder";
+            this.listViewPaymentOrder.Size = new System.Drawing.Size(480, 309);
+            this.listViewPaymentOrder.TabIndex = 17;
+            this.listViewPaymentOrder.UseCompatibleStateImageBehavior = false;
+            this.listViewPaymentOrder.View = System.Windows.Forms.View.Details;
+            this.listViewPaymentOrder.SelectedIndexChanged += new System.EventHandler(this.listViewPaymentOrder_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -280,7 +290,7 @@ namespace OrderingSystemUI
             this.btn_payment.Location = new System.Drawing.Point(18, 734);
             this.btn_payment.Margin = new System.Windows.Forms.Padding(2);
             this.btn_payment.Name = "btn_payment";
-            this.btn_payment.Size = new System.Drawing.Size(471, 54);
+            this.btn_payment.Size = new System.Drawing.Size(480, 54);
             this.btn_payment.TabIndex = 13;
             this.btn_payment.Text = "PROCEED TO PAYMENT";
             this.btn_payment.UseVisualStyleBackColor = false;
@@ -290,12 +300,11 @@ namespace OrderingSystemUI
             // 
             this.lbl_vat_amount.AutoSize = true;
             this.lbl_vat_amount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_vat_amount.Location = new System.Drawing.Point(376, 668);
+            this.lbl_vat_amount.Location = new System.Drawing.Point(404, 668);
             this.lbl_vat_amount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_vat_amount.Name = "lbl_vat_amount";
-            this.lbl_vat_amount.Size = new System.Drawing.Size(112, 28);
+            this.lbl_vat_amount.Size = new System.Drawing.Size(0, 28);
             this.lbl_vat_amount.TabIndex = 12;
-            this.lbl_vat_amount.Text = "vat amount";
             // 
             // lbl_VAT
             // 
@@ -311,24 +320,22 @@ namespace OrderingSystemUI
             // lbl_price1
             // 
             this.lbl_price1.AutoSize = true;
-            this.lbl_price1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_price1.Location = new System.Drawing.Point(432, 392);
+            this.lbl_price1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_price1.Location = new System.Drawing.Point(395, 392);
             this.lbl_price1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_price1.Name = "lbl_price1";
-            this.lbl_price1.Size = new System.Drawing.Size(55, 28);
+            this.lbl_price1.Size = new System.Drawing.Size(0, 30);
             this.lbl_price1.TabIndex = 10;
-            this.lbl_price1.Text = "price";
             // 
             // lbl_price2
             // 
             this.lbl_price2.AutoSize = true;
             this.lbl_price2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_price2.Location = new System.Drawing.Point(432, 622);
+            this.lbl_price2.Location = new System.Drawing.Point(401, 622);
             this.lbl_price2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_price2.Name = "lbl_price2";
-            this.lbl_price2.Size = new System.Drawing.Size(55, 28);
+            this.lbl_price2.Size = new System.Drawing.Size(0, 28);
             this.lbl_price2.TabIndex = 9;
-            this.lbl_price2.Text = "price";
             // 
             // label1
             // 
@@ -1054,6 +1061,8 @@ namespace OrderingSystemUI
             // tabPagePaymentView
             // 
             this.tabPagePaymentView.BackColor = System.Drawing.Color.White;
+            this.tabPagePaymentView.Controls.Add(this.lbl_change);
+            this.tabPagePaymentView.Controls.Add(this.lbl_price3);
             this.tabPagePaymentView.Controls.Add(this.lbl_HasBeenAdded);
             this.tabPagePaymentView.Controls.Add(this.btn_Pay);
             this.tabPagePaymentView.Controls.Add(this.btn_SetTip);
@@ -1073,6 +1082,16 @@ namespace OrderingSystemUI
             this.tabPagePaymentView.Size = new System.Drawing.Size(518, 866);
             this.tabPagePaymentView.TabIndex = 8;
             this.tabPagePaymentView.Text = "PaymentView";
+            // 
+            // lbl_price3
+            // 
+            this.lbl_price3.AutoSize = true;
+            this.lbl_price3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_price3.Location = new System.Drawing.Point(353, 105);
+            this.lbl_price3.Name = "lbl_price3";
+            this.lbl_price3.Size = new System.Drawing.Size(55, 28);
+            this.lbl_price3.TabIndex = 14;
+            this.lbl_price3.Text = "price";
             // 
             // lbl_HasBeenAdded
             // 
@@ -1276,6 +1295,19 @@ namespace OrderingSystemUI
             this.tabPageCustomerComment.TabIndex = 10;
             this.tabPageCustomerComment.Text = "CustomersComment";
             // 
+            // btn_back
+            // 
+            this.btn_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_back.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_back.Location = new System.Drawing.Point(393, 7);
+            this.btn_back.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_back.Name = "btn_back";
+            this.btn_back.Size = new System.Drawing.Size(118, 36);
+            this.btn_back.TabIndex = 3;
+            this.btn_back.Text = "BACK";
+            this.btn_back.UseVisualStyleBackColor = false;
+            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
+            // 
             // btn_Confirm
             // 
             this.btn_Confirm.BackColor = System.Drawing.Color.LightGreen;
@@ -1296,6 +1328,7 @@ namespace OrderingSystemUI
             this.txtBox_Comment.Name = "txtBox_Comment";
             this.txtBox_Comment.Size = new System.Drawing.Size(428, 358);
             this.txtBox_Comment.TabIndex = 4;
+            this.txtBox_Comment.TextChanged += new System.EventHandler(this.txtBox_Comment_TextChanged);
             // 
             // lbl9
             // 
@@ -1312,6 +1345,14 @@ namespace OrderingSystemUI
             // tabPageSettledBill
             // 
             this.tabPageSettledBill.BackColor = System.Drawing.Color.White;
+            this.tabPageSettledBill.Controls.Add(this.lbl_tip2);
+            this.tabPageSettledBill.Controls.Add(this.lbl_tip);
+            this.tabPageSettledBill.Controls.Add(this.lbl_amount_paid);
+            this.tabPageSettledBill.Controls.Add(this.label12);
+            this.tabPageSettledBill.Controls.Add(this.lbl_vat_amount2);
+            this.tabPageSettledBill.Controls.Add(this.label11);
+            this.tabPageSettledBill.Controls.Add(this.lbl_price4);
+            this.tabPageSettledBill.Controls.Add(this.label10);
             this.tabPageSettledBill.Controls.Add(this.label9);
             this.tabPageSettledBill.Location = new System.Drawing.Point(4, 34);
             this.tabPageSettledBill.Name = "tabPageSettledBill";
@@ -1319,6 +1360,86 @@ namespace OrderingSystemUI
             this.tabPageSettledBill.Size = new System.Drawing.Size(518, 866);
             this.tabPageSettledBill.TabIndex = 11;
             this.tabPageSettledBill.Text = "Settled_bill";
+            // 
+            // lbl_tip2
+            // 
+            this.lbl_tip2.AutoSize = true;
+            this.lbl_tip2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_tip2.Location = new System.Drawing.Point(382, 429);
+            this.lbl_tip2.Name = "lbl_tip2";
+            this.lbl_tip2.Size = new System.Drawing.Size(20, 28);
+            this.lbl_tip2.TabIndex = 12;
+            this.lbl_tip2.Text = "-";
+            // 
+            // lbl_tip
+            // 
+            this.lbl_tip.AutoSize = true;
+            this.lbl_tip.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_tip.Location = new System.Drawing.Point(84, 429);
+            this.lbl_tip.Name = "lbl_tip";
+            this.lbl_tip.Size = new System.Drawing.Size(42, 28);
+            this.lbl_tip.TabIndex = 11;
+            this.lbl_tip.Text = "TIP:";
+            // 
+            // lbl_amount_paid
+            // 
+            this.lbl_amount_paid.AutoSize = true;
+            this.lbl_amount_paid.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_amount_paid.Location = new System.Drawing.Point(364, 379);
+            this.lbl_amount_paid.Name = "lbl_amount_paid";
+            this.lbl_amount_paid.Size = new System.Drawing.Size(51, 28);
+            this.lbl_amount_paid.TabIndex = 10;
+            this.lbl_amount_paid.Text = "paid";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(84, 379);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(148, 28);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "AMOUNT PAID:";
+            // 
+            // lbl_vat_amount2
+            // 
+            this.lbl_vat_amount2.AutoSize = true;
+            this.lbl_vat_amount2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_vat_amount2.Location = new System.Drawing.Point(370, 335);
+            this.lbl_vat_amount2.Name = "lbl_vat_amount2";
+            this.lbl_vat_amount2.Size = new System.Drawing.Size(45, 28);
+            this.lbl_vat_amount2.TabIndex = 8;
+            this.lbl_vat_amount2.Text = "VAT";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(84, 335);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(49, 28);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "VAT:";
+            // 
+            // lbl_price4
+            // 
+            this.lbl_price4.AutoSize = true;
+            this.lbl_price4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_price4.Location = new System.Drawing.Point(364, 288);
+            this.lbl_price4.Name = "lbl_price4";
+            this.lbl_price4.Size = new System.Drawing.Size(55, 28);
+            this.lbl_price4.TabIndex = 6;
+            this.lbl_price4.Text = "price";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(84, 288);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(134, 28);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "ORDER PRICE:";
             // 
             // label9
             // 
@@ -1333,18 +1454,15 @@ namespace OrderingSystemUI
             this.label9.Text = "THE BILL HAS BEEN\r\n SETTLED!";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btn_back
+            // lbl_change
             // 
-            this.btn_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_back.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_back.Location = new System.Drawing.Point(393, 7);
-            this.btn_back.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(118, 36);
-            this.btn_back.TabIndex = 3;
-            this.btn_back.Text = "BACK";
-            this.btn_back.UseVisualStyleBackColor = false;
-            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
+            this.lbl_change.AutoSize = true;
+            this.lbl_change.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_change.Location = new System.Drawing.Point(353, 304);
+            this.lbl_change.Name = "lbl_change";
+            this.lbl_change.Size = new System.Drawing.Size(75, 28);
+            this.lbl_change.TabIndex = 15;
+            this.lbl_change.Text = "change";
             // 
             // WaiterUI
             // 
@@ -1460,10 +1578,6 @@ namespace OrderingSystemUI
         private System.Windows.Forms.RadioButton radioBtn_CASH;
         private System.Windows.Forms.RadioButton radioBtn_VISA;
         private System.Windows.Forms.RadioButton radioBtn_DEBIT;
-        private System.Windows.Forms.ListView listViewPymntTable;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.TabPage tabPagePaymentView;
         private System.Windows.Forms.Button btn_SetAmountPaid;
         private System.Windows.Forms.TextBox txtBox_amountPaid;
@@ -1489,5 +1603,19 @@ namespace OrderingSystemUI
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lbl_HasBeenAdded;
         private System.Windows.Forms.Button btn_back;
+        private System.Windows.Forms.ListView listViewPaymentOrder;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Label lbl_price3;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lbl_price4;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbl_tip2;
+        private System.Windows.Forms.Label lbl_tip;
+        private System.Windows.Forms.Label lbl_amount_paid;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbl_vat_amount2;
+        private System.Windows.Forms.Label lbl_change;
     }
 }
