@@ -19,10 +19,13 @@ namespace OrderingSystemLogic
         {
             return paymentDao.GetPayment();
         }
-       public Payment GetPayment(int orderNumber)
+       public Payment GetPayment(int OrderNumber)
        {
-            return paymentDao.GetPayment(orderNumber);
+            return paymentDao.GetPayment(OrderNumber);
        }
-        
+       public void AddComment(int OrderNumber, string CustomerComment)
+       {
+           paymentDao.AddComment(OrderNumber, CustomerComment);
+       }
     }
 }

@@ -30,8 +30,8 @@ namespace OrderingSystemUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WaiterUI));
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.btnEmployeeName = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
@@ -106,6 +106,7 @@ namespace OrderingSystemUI
             this.btnTable1 = new System.Windows.Forms.Button();
             this.pnlPayment = new System.Windows.Forms.TabControl();
             this.tabPagePaymentView = new System.Windows.Forms.TabPage();
+            this.lbl_tip3 = new System.Windows.Forms.Label();
             this.lbl_change = new System.Windows.Forms.Label();
             this.lbl_price3 = new System.Windows.Forms.Label();
             this.lbl_HasBeenAdded = new System.Windows.Forms.Label();
@@ -141,8 +142,8 @@ namespace OrderingSystemUI
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPageCommentProdcut = new System.Windows.Forms.TabPage();
-            this.txtComment = new System.Windows.Forms.TextBox();
             this.btnAddComment = new System.Windows.Forms.Button();
+            this.txtComment = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPagePayment.SuspendLayout();
             this.addOrderView.SuspendLayout();
@@ -160,9 +161,10 @@ namespace OrderingSystemUI
             // btnEmployeeName
             // 
             this.btnEmployeeName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnEmployeeName.Location = new System.Drawing.Point(319, 12);
+            this.btnEmployeeName.Location = new System.Drawing.Point(399, 15);
+            this.btnEmployeeName.Margin = new System.Windows.Forms.Padding(4);
             this.btnEmployeeName.Name = "btnEmployeeName";
-            this.btnEmployeeName.Size = new System.Drawing.Size(94, 29);
+            this.btnEmployeeName.Size = new System.Drawing.Size(118, 36);
             this.btnEmployeeName.TabIndex = 1;
             this.btnEmployeeName.UseVisualStyleBackColor = false;
             this.btnEmployeeName.Click += new System.EventHandler(this.btnEmployeeName_Click);
@@ -171,8 +173,9 @@ namespace OrderingSystemUI
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(1, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(97, 56);
+            this.pictureBox3.Size = new System.Drawing.Size(121, 70);
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
             // 
@@ -181,9 +184,10 @@ namespace OrderingSystemUI
             this.tableNumber.AutoSize = true;
             this.tableNumber.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tableNumber.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tableNumber.Location = new System.Drawing.Point(152, 13);
+            this.tableNumber.Location = new System.Drawing.Point(190, 16);
+            this.tableNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tableNumber.Name = "tableNumber";
-            this.tableNumber.Size = new System.Drawing.Size(121, 35);
+            this.tableNumber.Size = new System.Drawing.Size(143, 41);
             this.tableNumber.TabIndex = 2;
             this.tableNumber.Text = "Table #...";
             this.tableNumber.Click += new System.EventHandler(this.tableNumber_Click);
@@ -204,9 +208,10 @@ namespace OrderingSystemUI
             this.tabPagePayment.Controls.Add(this.lbl_crditCardType);
             this.tabPagePayment.Controls.Add(this.lbl_total);
             this.tabPagePayment.Controls.Add(this.lbl_bill);
-            this.tabPagePayment.Location = new System.Drawing.Point(4, 29);
+            this.tabPagePayment.Location = new System.Drawing.Point(4, 34);
+            this.tabPagePayment.Margin = new System.Windows.Forms.Padding(4);
             this.tabPagePayment.Name = "tabPagePayment";
-            this.tabPagePayment.Size = new System.Drawing.Size(413, 690);
+            this.tabPagePayment.Size = new System.Drawing.Size(518, 866);
             this.tabPagePayment.TabIndex = 6;
             this.tabPagePayment.Text = "Payment";
             // 
@@ -218,9 +223,10 @@ namespace OrderingSystemUI
             this.columnHeader3});
             this.listViewPaymentOrder.FullRowSelect = true;
             this.listViewPaymentOrder.HideSelection = false;
-            this.listViewPaymentOrder.Location = new System.Drawing.Point(14, 56);
+            this.listViewPaymentOrder.Location = new System.Drawing.Point(18, 70);
+            this.listViewPaymentOrder.Margin = new System.Windows.Forms.Padding(4);
             this.listViewPaymentOrder.Name = "listViewPaymentOrder";
-            this.listViewPaymentOrder.Size = new System.Drawing.Size(385, 248);
+            this.listViewPaymentOrder.Size = new System.Drawing.Size(480, 309);
             this.listViewPaymentOrder.TabIndex = 17;
             this.listViewPaymentOrder.UseCompatibleStateImageBehavior = false;
             this.listViewPaymentOrder.View = System.Windows.Forms.View.Details;
@@ -245,10 +251,10 @@ namespace OrderingSystemUI
             // radioBtn_CASH
             // 
             this.radioBtn_CASH.AutoSize = true;
-            this.radioBtn_CASH.Location = new System.Drawing.Point(323, 423);
+            this.radioBtn_CASH.Location = new System.Drawing.Point(404, 529);
             this.radioBtn_CASH.Margin = new System.Windows.Forms.Padding(2);
             this.radioBtn_CASH.Name = "radioBtn_CASH";
-            this.radioBtn_CASH.Size = new System.Drawing.Size(68, 24);
+            this.radioBtn_CASH.Size = new System.Drawing.Size(83, 29);
             this.radioBtn_CASH.TabIndex = 16;
             this.radioBtn_CASH.TabStop = true;
             this.radioBtn_CASH.Text = "CASH";
@@ -257,10 +263,10 @@ namespace OrderingSystemUI
             // radioBtn_VISA
             // 
             this.radioBtn_VISA.AutoSize = true;
-            this.radioBtn_VISA.Location = new System.Drawing.Point(158, 423);
+            this.radioBtn_VISA.Location = new System.Drawing.Point(198, 529);
             this.radioBtn_VISA.Margin = new System.Windows.Forms.Padding(2);
             this.radioBtn_VISA.Name = "radioBtn_VISA";
-            this.radioBtn_VISA.Size = new System.Drawing.Size(107, 24);
+            this.radioBtn_VISA.Size = new System.Drawing.Size(130, 29);
             this.radioBtn_VISA.TabIndex = 15;
             this.radioBtn_VISA.TabStop = true;
             this.radioBtn_VISA.Text = "VISA/AMEX";
@@ -270,10 +276,10 @@ namespace OrderingSystemUI
             // 
             this.radioBtn_DEBIT.AutoSize = true;
             this.radioBtn_DEBIT.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.radioBtn_DEBIT.Location = new System.Drawing.Point(22, 423);
+            this.radioBtn_DEBIT.Location = new System.Drawing.Point(28, 529);
             this.radioBtn_DEBIT.Margin = new System.Windows.Forms.Padding(2);
             this.radioBtn_DEBIT.Name = "radioBtn_DEBIT";
-            this.radioBtn_DEBIT.Size = new System.Drawing.Size(70, 24);
+            this.radioBtn_DEBIT.Size = new System.Drawing.Size(83, 29);
             this.radioBtn_DEBIT.TabIndex = 14;
             this.radioBtn_DEBIT.TabStop = true;
             this.radioBtn_DEBIT.Text = "DEBIT";
@@ -285,10 +291,10 @@ namespace OrderingSystemUI
             this.btn_payment.BackColor = System.Drawing.Color.LightGreen;
             this.btn_payment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_payment.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_payment.Location = new System.Drawing.Point(14, 587);
+            this.btn_payment.Location = new System.Drawing.Point(18, 734);
             this.btn_payment.Margin = new System.Windows.Forms.Padding(2);
             this.btn_payment.Name = "btn_payment";
-            this.btn_payment.Size = new System.Drawing.Size(384, 43);
+            this.btn_payment.Size = new System.Drawing.Size(480, 54);
             this.btn_payment.TabIndex = 13;
             this.btn_payment.Text = "PROCEED TO PAYMENT";
             this.btn_payment.UseVisualStyleBackColor = false;
@@ -298,20 +304,20 @@ namespace OrderingSystemUI
             // 
             this.lbl_vat_amount.AutoSize = true;
             this.lbl_vat_amount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_vat_amount.Location = new System.Drawing.Point(323, 534);
+            this.lbl_vat_amount.Location = new System.Drawing.Point(404, 668);
             this.lbl_vat_amount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_vat_amount.Name = "lbl_vat_amount";
-            this.lbl_vat_amount.Size = new System.Drawing.Size(0, 23);
+            this.lbl_vat_amount.Size = new System.Drawing.Size(0, 28);
             this.lbl_vat_amount.TabIndex = 12;
             // 
             // lbl_VAT
             // 
             this.lbl_VAT.AutoSize = true;
             this.lbl_VAT.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_VAT.Location = new System.Drawing.Point(14, 534);
+            this.lbl_VAT.Location = new System.Drawing.Point(18, 668);
             this.lbl_VAT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_VAT.Name = "lbl_VAT";
-            this.lbl_VAT.Size = new System.Drawing.Size(43, 23);
+            this.lbl_VAT.Size = new System.Drawing.Size(49, 28);
             this.lbl_VAT.TabIndex = 11;
             this.lbl_VAT.Text = "VAT:";
             // 
@@ -319,30 +325,30 @@ namespace OrderingSystemUI
             // 
             this.lbl_price1.AutoSize = true;
             this.lbl_price1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_price1.Location = new System.Drawing.Point(316, 314);
+            this.lbl_price1.Location = new System.Drawing.Point(395, 392);
             this.lbl_price1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_price1.Name = "lbl_price1";
-            this.lbl_price1.Size = new System.Drawing.Size(0, 25);
+            this.lbl_price1.Size = new System.Drawing.Size(0, 30);
             this.lbl_price1.TabIndex = 10;
             // 
             // lbl_price2
             // 
             this.lbl_price2.AutoSize = true;
             this.lbl_price2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_price2.Location = new System.Drawing.Point(321, 498);
+            this.lbl_price2.Location = new System.Drawing.Point(401, 622);
             this.lbl_price2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_price2.Name = "lbl_price2";
-            this.lbl_price2.Size = new System.Drawing.Size(0, 23);
+            this.lbl_price2.Size = new System.Drawing.Size(0, 28);
             this.lbl_price2.TabIndex = 9;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(14, 498);
+            this.label1.Location = new System.Drawing.Point(18, 622);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 23);
+            this.label1.Size = new System.Drawing.Size(134, 28);
             this.label1.TabIndex = 8;
             this.label1.Text = "ORDER PRICE:";
             // 
@@ -350,10 +356,10 @@ namespace OrderingSystemUI
             // 
             this.lbl_crditCardType.AutoSize = true;
             this.lbl_crditCardType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_crditCardType.Location = new System.Drawing.Point(14, 368);
+            this.lbl_crditCardType.Location = new System.Drawing.Point(18, 460);
             this.lbl_crditCardType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_crditCardType.Name = "lbl_crditCardType";
-            this.lbl_crditCardType.Size = new System.Drawing.Size(202, 23);
+            this.lbl_crditCardType.Size = new System.Drawing.Size(231, 28);
             this.lbl_crditCardType.TabIndex = 5;
             this.lbl_crditCardType.Text = "CHOOSE PAYMENT TYPE:";
             // 
@@ -361,10 +367,10 @@ namespace OrderingSystemUI
             // 
             this.lbl_total.AutoSize = true;
             this.lbl_total.Font = new System.Drawing.Font("Segoe UI Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_total.Location = new System.Drawing.Point(14, 314);
+            this.lbl_total.Location = new System.Drawing.Point(18, 392);
             this.lbl_total.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(72, 23);
+            this.lbl_total.Size = new System.Drawing.Size(85, 28);
             this.lbl_total.TabIndex = 3;
             this.lbl_total.Text = "TOTAL:";
             // 
@@ -372,10 +378,10 @@ namespace OrderingSystemUI
             // 
             this.lbl_bill.AutoSize = true;
             this.lbl_bill.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_bill.Location = new System.Drawing.Point(6, 10);
+            this.lbl_bill.Location = new System.Drawing.Point(8, 12);
             this.lbl_bill.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_bill.Name = "lbl_bill";
-            this.lbl_bill.Size = new System.Drawing.Size(87, 46);
+            this.lbl_bill.Size = new System.Drawing.Size(102, 54);
             this.lbl_bill.TabIndex = 0;
             this.lbl_bill.Text = "BILL";
             // 
@@ -389,19 +395,21 @@ namespace OrderingSystemUI
             this.addOrderView.Controls.Add(this.btnDrinksMenu);
             this.addOrderView.Controls.Add(this.btnDinnerMenu);
             this.addOrderView.Controls.Add(this.btnLunchMenu);
-            this.addOrderView.Location = new System.Drawing.Point(4, 29);
+            this.addOrderView.Location = new System.Drawing.Point(4, 34);
+            this.addOrderView.Margin = new System.Windows.Forms.Padding(4);
             this.addOrderView.Name = "addOrderView";
-            this.addOrderView.Padding = new System.Windows.Forms.Padding(3);
-            this.addOrderView.Size = new System.Drawing.Size(413, 690);
+            this.addOrderView.Padding = new System.Windows.Forms.Padding(4);
+            this.addOrderView.Size = new System.Drawing.Size(518, 866);
             this.addOrderView.TabIndex = 3;
             this.addOrderView.Text = "AddOrderView";
             this.addOrderView.UseVisualStyleBackColor = true;
             // 
             // btnComment
             // 
-            this.btnComment.Location = new System.Drawing.Point(8, 649);
+            this.btnComment.Location = new System.Drawing.Point(10, 811);
+            this.btnComment.Margin = new System.Windows.Forms.Padding(4);
             this.btnComment.Name = "btnComment";
-            this.btnComment.Size = new System.Drawing.Size(94, 29);
+            this.btnComment.Size = new System.Drawing.Size(118, 36);
             this.btnComment.TabIndex = 11;
             this.btnComment.Text = "Comment";
             this.btnComment.UseVisualStyleBackColor = true;
@@ -413,11 +421,12 @@ namespace OrderingSystemUI
             this.chPrice});
             this.listViewAddOrder.HideSelection = false;
             this.listViewAddOrder.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3,
-            listViewItem4});
-            this.listViewAddOrder.Location = new System.Drawing.Point(7, 62);
+            listViewItem1,
+            listViewItem2});
+            this.listViewAddOrder.Location = new System.Drawing.Point(9, 78);
+            this.listViewAddOrder.Margin = new System.Windows.Forms.Padding(4);
             this.listViewAddOrder.Name = "listViewAddOrder";
-            this.listViewAddOrder.Size = new System.Drawing.Size(400, 346);
+            this.listViewAddOrder.Size = new System.Drawing.Size(499, 432);
             this.listViewAddOrder.TabIndex = 9;
             this.listViewAddOrder.UseCompatibleStateImageBehavior = false;
             this.listViewAddOrder.View = System.Windows.Forms.View.Details;
@@ -437,9 +446,10 @@ namespace OrderingSystemUI
             // 
             this.btnAddOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnAddOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddOrder.Location = new System.Drawing.Point(301, 646);
+            this.btnAddOrder.Location = new System.Drawing.Point(376, 808);
+            this.btnAddOrder.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddOrder.Name = "btnAddOrder";
-            this.btnAddOrder.Size = new System.Drawing.Size(106, 38);
+            this.btnAddOrder.Size = new System.Drawing.Size(132, 48);
             this.btnAddOrder.TabIndex = 8;
             this.btnAddOrder.Text = "ADD";
             this.btnAddOrder.UseVisualStyleBackColor = false;
@@ -449,9 +459,10 @@ namespace OrderingSystemUI
             // 
             this.lblOrder.AutoSize = true;
             this.lblOrder.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblOrder.Location = new System.Drawing.Point(6, 411);
+            this.lblOrder.Location = new System.Drawing.Point(8, 514);
+            this.lblOrder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrder.Name = "lblOrder";
-            this.lblOrder.Size = new System.Drawing.Size(59, 17);
+            this.lblOrder.Size = new System.Drawing.Size(71, 21);
             this.lblOrder.TabIndex = 7;
             this.lblOrder.Text = "ORDER: ";
             // 
@@ -462,10 +473,11 @@ namespace OrderingSystemUI
             this.CHItemname});
             this.listViewOrderSummary.FullRowSelect = true;
             this.listViewOrderSummary.HideSelection = false;
-            this.listViewOrderSummary.Location = new System.Drawing.Point(7, 431);
+            this.listViewOrderSummary.Location = new System.Drawing.Point(9, 539);
+            this.listViewOrderSummary.Margin = new System.Windows.Forms.Padding(4);
             this.listViewOrderSummary.MultiSelect = false;
             this.listViewOrderSummary.Name = "listViewOrderSummary";
-            this.listViewOrderSummary.Size = new System.Drawing.Size(400, 211);
+            this.listViewOrderSummary.Size = new System.Drawing.Size(499, 263);
             this.listViewOrderSummary.TabIndex = 6;
             this.listViewOrderSummary.UseCompatibleStateImageBehavior = false;
             this.listViewOrderSummary.View = System.Windows.Forms.View.Details;
@@ -484,9 +496,10 @@ namespace OrderingSystemUI
             // btnDrinksMenu
             // 
             this.btnDrinksMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDrinksMenu.Location = new System.Drawing.Point(287, 6);
+            this.btnDrinksMenu.Location = new System.Drawing.Point(359, 8);
+            this.btnDrinksMenu.Margin = new System.Windows.Forms.Padding(4);
             this.btnDrinksMenu.Name = "btnDrinksMenu";
-            this.btnDrinksMenu.Size = new System.Drawing.Size(120, 50);
+            this.btnDrinksMenu.Size = new System.Drawing.Size(150, 62);
             this.btnDrinksMenu.TabIndex = 4;
             this.btnDrinksMenu.Text = "DRINKS";
             this.btnDrinksMenu.UseVisualStyleBackColor = false;
@@ -495,9 +508,10 @@ namespace OrderingSystemUI
             // btnDinnerMenu
             // 
             this.btnDinnerMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDinnerMenu.Location = new System.Drawing.Point(147, 6);
+            this.btnDinnerMenu.Location = new System.Drawing.Point(184, 8);
+            this.btnDinnerMenu.Margin = new System.Windows.Forms.Padding(4);
             this.btnDinnerMenu.Name = "btnDinnerMenu";
-            this.btnDinnerMenu.Size = new System.Drawing.Size(120, 50);
+            this.btnDinnerMenu.Size = new System.Drawing.Size(150, 62);
             this.btnDinnerMenu.TabIndex = 3;
             this.btnDinnerMenu.Text = "DINNER";
             this.btnDinnerMenu.UseVisualStyleBackColor = false;
@@ -506,9 +520,10 @@ namespace OrderingSystemUI
             // btnLunchMenu
             // 
             this.btnLunchMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnLunchMenu.Location = new System.Drawing.Point(7, 6);
+            this.btnLunchMenu.Location = new System.Drawing.Point(9, 8);
+            this.btnLunchMenu.Margin = new System.Windows.Forms.Padding(4);
             this.btnLunchMenu.Name = "btnLunchMenu";
-            this.btnLunchMenu.Size = new System.Drawing.Size(120, 50);
+            this.btnLunchMenu.Size = new System.Drawing.Size(150, 62);
             this.btnLunchMenu.TabIndex = 2;
             this.btnLunchMenu.Text = "LUNCH";
             this.btnLunchMenu.UseVisualStyleBackColor = false;
@@ -528,10 +543,11 @@ namespace OrderingSystemUI
             this.tableOrderOverviewTab.Controls.Add(this.btnDinner);
             this.tableOrderOverviewTab.Controls.Add(this.btnLunch);
             this.tableOrderOverviewTab.Controls.Add(this.listViewTableOrder);
-            this.tableOrderOverviewTab.Location = new System.Drawing.Point(4, 29);
+            this.tableOrderOverviewTab.Location = new System.Drawing.Point(4, 34);
+            this.tableOrderOverviewTab.Margin = new System.Windows.Forms.Padding(4);
             this.tableOrderOverviewTab.Name = "tableOrderOverviewTab";
-            this.tableOrderOverviewTab.Padding = new System.Windows.Forms.Padding(3);
-            this.tableOrderOverviewTab.Size = new System.Drawing.Size(413, 690);
+            this.tableOrderOverviewTab.Padding = new System.Windows.Forms.Padding(4);
+            this.tableOrderOverviewTab.Size = new System.Drawing.Size(518, 866);
             this.tableOrderOverviewTab.TabIndex = 2;
             this.tableOrderOverviewTab.Text = "TableOrderVIew";
             // 
@@ -539,25 +555,28 @@ namespace OrderingSystemUI
             // 
             this.lblDisplayVAT.AutoSize = true;
             this.lblDisplayVAT.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDisplayVAT.Location = new System.Drawing.Point(345, 591);
+            this.lblDisplayVAT.Location = new System.Drawing.Point(431, 739);
+            this.lblDisplayVAT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDisplayVAT.Name = "lblDisplayVAT";
-            this.lblDisplayVAT.Size = new System.Drawing.Size(0, 28);
+            this.lblDisplayVAT.Size = new System.Drawing.Size(0, 32);
             this.lblDisplayVAT.TabIndex = 10;
             // 
             // lblDisplayTotal
             // 
             this.lblDisplayTotal.AutoSize = true;
             this.lblDisplayTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDisplayTotal.Location = new System.Drawing.Point(323, 563);
+            this.lblDisplayTotal.Location = new System.Drawing.Point(404, 704);
+            this.lblDisplayTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDisplayTotal.Name = "lblDisplayTotal";
-            this.lblDisplayTotal.Size = new System.Drawing.Size(0, 28);
+            this.lblDisplayTotal.Size = new System.Drawing.Size(0, 32);
             this.lblDisplayTotal.TabIndex = 9;
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(122, 654);
+            this.btnEdit.Location = new System.Drawing.Point(152, 818);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(94, 29);
+            this.btnEdit.Size = new System.Drawing.Size(118, 36);
             this.btnEdit.TabIndex = 8;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -565,9 +584,10 @@ namespace OrderingSystemUI
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(8, 654);
+            this.btnRemove.Location = new System.Drawing.Point(10, 818);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(94, 29);
+            this.btnRemove.Size = new System.Drawing.Size(118, 36);
             this.btnRemove.TabIndex = 7;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -577,9 +597,10 @@ namespace OrderingSystemUI
             // 
             this.lblVAT.AutoSize = true;
             this.lblVAT.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblVAT.Location = new System.Drawing.Point(237, 591);
+            this.lblVAT.Location = new System.Drawing.Point(296, 739);
+            this.lblVAT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVAT.Name = "lblVAT";
-            this.lblVAT.Size = new System.Drawing.Size(58, 28);
+            this.lblVAT.Size = new System.Drawing.Size(68, 32);
             this.lblVAT.TabIndex = 6;
             this.lblVAT.Text = "VAT: ";
             // 
@@ -587,9 +608,10 @@ namespace OrderingSystemUI
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotal.Location = new System.Drawing.Point(237, 563);
+            this.lblTotal.Location = new System.Drawing.Point(296, 704);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(80, 28);
+            this.lblTotal.Size = new System.Drawing.Size(95, 32);
             this.lblTotal.TabIndex = 5;
             this.lblTotal.Text = "TOTAL: ";
             // 
@@ -597,9 +619,10 @@ namespace OrderingSystemUI
             // 
             this.btnPay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnPay.ForeColor = System.Drawing.Color.Black;
-            this.btnPay.Location = new System.Drawing.Point(314, 634);
+            this.btnPay.Location = new System.Drawing.Point(392, 792);
+            this.btnPay.Margin = new System.Windows.Forms.Padding(4);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(90, 50);
+            this.btnPay.Size = new System.Drawing.Size(112, 62);
             this.btnPay.TabIndex = 4;
             this.btnPay.Text = "PAY";
             this.btnPay.UseVisualStyleBackColor = false;
@@ -608,9 +631,10 @@ namespace OrderingSystemUI
             // btnDrinks
             // 
             this.btnDrinks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDrinks.Location = new System.Drawing.Point(287, 6);
+            this.btnDrinks.Location = new System.Drawing.Point(359, 8);
+            this.btnDrinks.Margin = new System.Windows.Forms.Padding(4);
             this.btnDrinks.Name = "btnDrinks";
-            this.btnDrinks.Size = new System.Drawing.Size(120, 50);
+            this.btnDrinks.Size = new System.Drawing.Size(150, 62);
             this.btnDrinks.TabIndex = 3;
             this.btnDrinks.Text = "DRINKS";
             this.btnDrinks.UseVisualStyleBackColor = false;
@@ -619,9 +643,10 @@ namespace OrderingSystemUI
             // btnDinner
             // 
             this.btnDinner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnDinner.Location = new System.Drawing.Point(147, 6);
+            this.btnDinner.Location = new System.Drawing.Point(184, 8);
+            this.btnDinner.Margin = new System.Windows.Forms.Padding(4);
             this.btnDinner.Name = "btnDinner";
-            this.btnDinner.Size = new System.Drawing.Size(120, 50);
+            this.btnDinner.Size = new System.Drawing.Size(150, 62);
             this.btnDinner.TabIndex = 2;
             this.btnDinner.Text = "DINNER";
             this.btnDinner.UseVisualStyleBackColor = false;
@@ -630,9 +655,10 @@ namespace OrderingSystemUI
             // btnLunch
             // 
             this.btnLunch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnLunch.Location = new System.Drawing.Point(7, 6);
+            this.btnLunch.Location = new System.Drawing.Point(9, 8);
+            this.btnLunch.Margin = new System.Windows.Forms.Padding(4);
             this.btnLunch.Name = "btnLunch";
-            this.btnLunch.Size = new System.Drawing.Size(120, 50);
+            this.btnLunch.Size = new System.Drawing.Size(150, 62);
             this.btnLunch.TabIndex = 1;
             this.btnLunch.Text = "LUNCH";
             this.btnLunch.UseVisualStyleBackColor = false;
@@ -646,9 +672,10 @@ namespace OrderingSystemUI
             this.Price});
             this.listViewTableOrder.FullRowSelect = true;
             this.listViewTableOrder.HideSelection = false;
-            this.listViewTableOrder.Location = new System.Drawing.Point(7, 62);
+            this.listViewTableOrder.Location = new System.Drawing.Point(9, 78);
+            this.listViewTableOrder.Margin = new System.Windows.Forms.Padding(4);
             this.listViewTableOrder.Name = "listViewTableOrder";
-            this.listViewTableOrder.Size = new System.Drawing.Size(400, 494);
+            this.listViewTableOrder.Size = new System.Drawing.Size(499, 616);
             this.listViewTableOrder.TabIndex = 0;
             this.listViewTableOrder.UseCompatibleStateImageBehavior = false;
             this.listViewTableOrder.View = System.Windows.Forms.View.Details;
@@ -691,10 +718,11 @@ namespace OrderingSystemUI
             this.tableViewTabCommentQ.Controls.Add(this.btnTable3);
             this.tableViewTabCommentQ.Controls.Add(this.btnTable2);
             this.tableViewTabCommentQ.Controls.Add(this.btnTable1);
-            this.tableViewTabCommentQ.Location = new System.Drawing.Point(4, 29);
+            this.tableViewTabCommentQ.Location = new System.Drawing.Point(4, 34);
+            this.tableViewTabCommentQ.Margin = new System.Windows.Forms.Padding(4);
             this.tableViewTabCommentQ.Name = "tableViewTabCommentQ";
-            this.tableViewTabCommentQ.Padding = new System.Windows.Forms.Padding(3);
-            this.tableViewTabCommentQ.Size = new System.Drawing.Size(413, 690);
+            this.tableViewTabCommentQ.Padding = new System.Windows.Forms.Padding(4);
+            this.tableViewTabCommentQ.Size = new System.Drawing.Size(518, 866);
             this.tableViewTabCommentQ.TabIndex = 0;
             this.tableViewTabCommentQ.Text = "TableView";
             // 
@@ -706,18 +734,20 @@ namespace OrderingSystemUI
             this.pnlTableStatus.Controls.Add(this.RBoccupied);
             this.pnlTableStatus.Controls.Add(this.RBfree);
             this.pnlTableStatus.Controls.Add(this.lblTableNumber);
-            this.pnlTableStatus.Location = new System.Drawing.Point(19, 84);
+            this.pnlTableStatus.Location = new System.Drawing.Point(24, 105);
+            this.pnlTableStatus.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTableStatus.Name = "pnlTableStatus";
-            this.pnlTableStatus.Size = new System.Drawing.Size(374, 587);
+            this.pnlTableStatus.Size = new System.Drawing.Size(468, 734);
             this.pnlTableStatus.TabIndex = 10;
             // 
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(0, 500);
+            this.btnBack.Location = new System.Drawing.Point(0, 625);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(94, 29);
+            this.btnBack.Size = new System.Drawing.Size(118, 36);
             this.btnBack.TabIndex = 5;
             this.btnBack.Text = "BACK";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -727,9 +757,10 @@ namespace OrderingSystemUI
             // 
             this.btnGoToTable.BackColor = System.Drawing.Color.White;
             this.btnGoToTable.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnGoToTable.Location = new System.Drawing.Point(112, 368);
+            this.btnGoToTable.Location = new System.Drawing.Point(140, 460);
+            this.btnGoToTable.Margin = new System.Windows.Forms.Padding(4);
             this.btnGoToTable.Name = "btnGoToTable";
-            this.btnGoToTable.Size = new System.Drawing.Size(146, 43);
+            this.btnGoToTable.Size = new System.Drawing.Size(182, 54);
             this.btnGoToTable.TabIndex = 4;
             this.btnGoToTable.Text = "Go to table";
             this.btnGoToTable.UseVisualStyleBackColor = false;
@@ -739,9 +770,10 @@ namespace OrderingSystemUI
             // 
             this.RBreserved.AutoSize = true;
             this.RBreserved.BackColor = System.Drawing.Color.DarkGray;
-            this.RBreserved.Location = new System.Drawing.Point(243, 277);
+            this.RBreserved.Location = new System.Drawing.Point(304, 346);
+            this.RBreserved.Margin = new System.Windows.Forms.Padding(4);
             this.RBreserved.Name = "RBreserved";
-            this.RBreserved.Size = new System.Drawing.Size(100, 24);
+            this.RBreserved.Size = new System.Drawing.Size(120, 29);
             this.RBreserved.TabIndex = 3;
             this.RBreserved.TabStop = true;
             this.RBreserved.Text = "RESERVED";
@@ -751,9 +783,10 @@ namespace OrderingSystemUI
             // 
             this.RBoccupied.AutoSize = true;
             this.RBoccupied.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.RBoccupied.Location = new System.Drawing.Point(124, 277);
+            this.RBoccupied.Location = new System.Drawing.Point(155, 346);
+            this.RBoccupied.Margin = new System.Windows.Forms.Padding(4);
             this.RBoccupied.Name = "RBoccupied";
-            this.RBoccupied.Size = new System.Drawing.Size(100, 24);
+            this.RBoccupied.Size = new System.Drawing.Size(122, 29);
             this.RBoccupied.TabIndex = 2;
             this.RBoccupied.TabStop = true;
             this.RBoccupied.Text = "OCCUPIED";
@@ -763,9 +796,10 @@ namespace OrderingSystemUI
             // 
             this.RBfree.AutoSize = true;
             this.RBfree.BackColor = System.Drawing.Color.PaleGreen;
-            this.RBfree.Location = new System.Drawing.Point(36, 277);
+            this.RBfree.Location = new System.Drawing.Point(45, 346);
+            this.RBfree.Margin = new System.Windows.Forms.Padding(4);
             this.RBfree.Name = "RBfree";
-            this.RBfree.Size = new System.Drawing.Size(62, 24);
+            this.RBfree.Size = new System.Drawing.Size(75, 29);
             this.RBfree.TabIndex = 1;
             this.RBfree.TabStop = true;
             this.RBfree.Text = "FREE";
@@ -775,9 +809,10 @@ namespace OrderingSystemUI
             // 
             this.lblTableNumber.AutoSize = true;
             this.lblTableNumber.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTableNumber.Location = new System.Drawing.Point(126, 141);
+            this.lblTableNumber.Location = new System.Drawing.Point(158, 176);
+            this.lblTableNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTableNumber.Name = "lblTableNumber";
-            this.lblTableNumber.Size = new System.Drawing.Size(98, 38);
+            this.lblTableNumber.Size = new System.Drawing.Size(116, 45);
             this.lblTableNumber.TabIndex = 0;
             this.lblTableNumber.Text = "TABLE";
             // 
@@ -785,9 +820,10 @@ namespace OrderingSystemUI
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(262, 654);
+            this.label7.Location = new System.Drawing.Point(328, 818);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 17);
+            this.label7.Size = new System.Drawing.Size(84, 21);
             this.label7.TabIndex = 15;
             this.label7.Text = "RESERVED";
             // 
@@ -795,9 +831,10 @@ namespace OrderingSystemUI
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(173, 654);
+            this.label6.Location = new System.Drawing.Point(216, 818);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 17);
+            this.label6.Size = new System.Drawing.Size(85, 21);
             this.label6.TabIndex = 14;
             this.label6.Text = "OCCUPIED";
             // 
@@ -805,9 +842,10 @@ namespace OrderingSystemUI
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(82, 654);
+            this.label5.Location = new System.Drawing.Point(102, 818);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 17);
+            this.label5.Size = new System.Drawing.Size(56, 21);
             this.label5.TabIndex = 13;
             this.label5.Text = "   FREE";
             // 
@@ -817,9 +855,10 @@ namespace OrderingSystemUI
             this.label4.BackColor = System.Drawing.Color.DarkGray;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.DarkGray;
-            this.label4.Location = new System.Drawing.Point(284, 619);
+            this.label4.Location = new System.Drawing.Point(355, 774);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 25);
+            this.label4.Size = new System.Drawing.Size(34, 30);
             this.label4.TabIndex = 12;
             this.label4.Text = "M";
             // 
@@ -829,9 +868,10 @@ namespace OrderingSystemUI
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(191, 619);
+            this.label3.Location = new System.Drawing.Point(239, 774);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 25);
+            this.label3.Size = new System.Drawing.Size(34, 30);
             this.label3.TabIndex = 11;
             this.label3.Text = "M";
             // 
@@ -841,9 +881,10 @@ namespace OrderingSystemUI
             this.label2.BackColor = System.Drawing.Color.PaleGreen;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.PaleGreen;
-            this.label2.Location = new System.Drawing.Point(101, 619);
+            this.label2.Location = new System.Drawing.Point(126, 774);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 25);
+            this.label2.Size = new System.Drawing.Size(34, 30);
             this.label2.TabIndex = 6;
             this.label2.Text = "M";
             // 
@@ -851,9 +892,10 @@ namespace OrderingSystemUI
             // 
             this.btnTable10.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable10.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable10.Location = new System.Drawing.Point(252, 453);
+            this.btnTable10.Location = new System.Drawing.Point(315, 566);
+            this.btnTable10.Margin = new System.Windows.Forms.Padding(4);
             this.btnTable10.Name = "btnTable10";
-            this.btnTable10.Size = new System.Drawing.Size(79, 73);
+            this.btnTable10.Size = new System.Drawing.Size(99, 91);
             this.btnTable10.TabIndex = 9;
             this.btnTable10.Text = "10";
             this.btnTable10.UseVisualStyleBackColor = false;
@@ -863,9 +905,10 @@ namespace OrderingSystemUI
             // 
             this.btnTable9.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable9.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable9.Location = new System.Drawing.Point(82, 453);
+            this.btnTable9.Location = new System.Drawing.Point(102, 566);
+            this.btnTable9.Margin = new System.Windows.Forms.Padding(4);
             this.btnTable9.Name = "btnTable9";
-            this.btnTable9.Size = new System.Drawing.Size(79, 73);
+            this.btnTable9.Size = new System.Drawing.Size(99, 91);
             this.btnTable9.TabIndex = 8;
             this.btnTable9.Text = "9";
             this.btnTable9.UseVisualStyleBackColor = false;
@@ -875,9 +918,10 @@ namespace OrderingSystemUI
             // 
             this.btnTable8.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable8.Location = new System.Drawing.Point(252, 360);
+            this.btnTable8.Location = new System.Drawing.Point(315, 450);
+            this.btnTable8.Margin = new System.Windows.Forms.Padding(4);
             this.btnTable8.Name = "btnTable8";
-            this.btnTable8.Size = new System.Drawing.Size(79, 73);
+            this.btnTable8.Size = new System.Drawing.Size(99, 91);
             this.btnTable8.TabIndex = 7;
             this.btnTable8.Text = "8";
             this.btnTable8.UseVisualStyleBackColor = false;
@@ -887,9 +931,10 @@ namespace OrderingSystemUI
             // 
             this.btnTable7.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable7.Location = new System.Drawing.Point(82, 361);
+            this.btnTable7.Location = new System.Drawing.Point(102, 451);
+            this.btnTable7.Margin = new System.Windows.Forms.Padding(4);
             this.btnTable7.Name = "btnTable7";
-            this.btnTable7.Size = new System.Drawing.Size(79, 73);
+            this.btnTable7.Size = new System.Drawing.Size(99, 91);
             this.btnTable7.TabIndex = 6;
             this.btnTable7.Text = "7";
             this.btnTable7.UseVisualStyleBackColor = false;
@@ -899,9 +944,10 @@ namespace OrderingSystemUI
             // 
             this.btnTable6.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable6.Location = new System.Drawing.Point(252, 267);
+            this.btnTable6.Location = new System.Drawing.Point(315, 334);
+            this.btnTable6.Margin = new System.Windows.Forms.Padding(4);
             this.btnTable6.Name = "btnTable6";
-            this.btnTable6.Size = new System.Drawing.Size(79, 73);
+            this.btnTable6.Size = new System.Drawing.Size(99, 91);
             this.btnTable6.TabIndex = 5;
             this.btnTable6.Text = "6";
             this.btnTable6.UseVisualStyleBackColor = false;
@@ -911,9 +957,10 @@ namespace OrderingSystemUI
             // 
             this.btnTable5.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable5.Location = new System.Drawing.Point(82, 267);
+            this.btnTable5.Location = new System.Drawing.Point(102, 334);
+            this.btnTable5.Margin = new System.Windows.Forms.Padding(4);
             this.btnTable5.Name = "btnTable5";
-            this.btnTable5.Size = new System.Drawing.Size(79, 73);
+            this.btnTable5.Size = new System.Drawing.Size(99, 91);
             this.btnTable5.TabIndex = 4;
             this.btnTable5.Text = "5";
             this.btnTable5.UseVisualStyleBackColor = false;
@@ -923,9 +970,10 @@ namespace OrderingSystemUI
             // 
             this.btnTable4.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable4.Location = new System.Drawing.Point(252, 174);
+            this.btnTable4.Location = new System.Drawing.Point(315, 218);
+            this.btnTable4.Margin = new System.Windows.Forms.Padding(4);
             this.btnTable4.Name = "btnTable4";
-            this.btnTable4.Size = new System.Drawing.Size(79, 73);
+            this.btnTable4.Size = new System.Drawing.Size(99, 91);
             this.btnTable4.TabIndex = 3;
             this.btnTable4.Text = "4";
             this.btnTable4.UseVisualStyleBackColor = false;
@@ -935,9 +983,10 @@ namespace OrderingSystemUI
             // 
             this.btnTable3.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable3.Location = new System.Drawing.Point(82, 174);
+            this.btnTable3.Location = new System.Drawing.Point(102, 218);
+            this.btnTable3.Margin = new System.Windows.Forms.Padding(4);
             this.btnTable3.Name = "btnTable3";
-            this.btnTable3.Size = new System.Drawing.Size(79, 73);
+            this.btnTable3.Size = new System.Drawing.Size(99, 91);
             this.btnTable3.TabIndex = 2;
             this.btnTable3.Text = "3";
             this.btnTable3.UseVisualStyleBackColor = false;
@@ -947,9 +996,10 @@ namespace OrderingSystemUI
             // 
             this.btnTable2.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable2.Location = new System.Drawing.Point(252, 84);
+            this.btnTable2.Location = new System.Drawing.Point(315, 105);
+            this.btnTable2.Margin = new System.Windows.Forms.Padding(4);
             this.btnTable2.Name = "btnTable2";
-            this.btnTable2.Size = new System.Drawing.Size(79, 73);
+            this.btnTable2.Size = new System.Drawing.Size(99, 91);
             this.btnTable2.TabIndex = 1;
             this.btnTable2.Text = "2";
             this.btnTable2.UseVisualStyleBackColor = false;
@@ -959,9 +1009,10 @@ namespace OrderingSystemUI
             // 
             this.btnTable1.BackColor = System.Drawing.Color.PaleGreen;
             this.btnTable1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTable1.Location = new System.Drawing.Point(82, 84);
+            this.btnTable1.Location = new System.Drawing.Point(102, 105);
+            this.btnTable1.Margin = new System.Windows.Forms.Padding(4);
             this.btnTable1.Name = "btnTable1";
-            this.btnTable1.Size = new System.Drawing.Size(79, 73);
+            this.btnTable1.Size = new System.Drawing.Size(99, 91);
             this.btnTable1.TabIndex = 0;
             this.btnTable1.Text = "1";
             this.btnTable1.UseVisualStyleBackColor = false;
@@ -979,15 +1030,17 @@ namespace OrderingSystemUI
             this.pnlPayment.Controls.Add(this.tabPageCustomerComment);
             this.pnlPayment.Controls.Add(this.tabPageSettledBill);
             this.pnlPayment.Controls.Add(this.tabPageCommentProdcut);
-            this.pnlPayment.Location = new System.Drawing.Point(1, 47);
+            this.pnlPayment.Location = new System.Drawing.Point(1, 59);
+            this.pnlPayment.Margin = new System.Windows.Forms.Padding(4);
             this.pnlPayment.Name = "pnlPayment";
             this.pnlPayment.SelectedIndex = 0;
-            this.pnlPayment.Size = new System.Drawing.Size(421, 723);
+            this.pnlPayment.Size = new System.Drawing.Size(526, 904);
             this.pnlPayment.TabIndex = 0;
             // 
             // tabPagePaymentView
             // 
             this.tabPagePaymentView.BackColor = System.Drawing.Color.White;
+            this.tabPagePaymentView.Controls.Add(this.lbl_tip3);
             this.tabPagePaymentView.Controls.Add(this.lbl_change);
             this.tabPagePaymentView.Controls.Add(this.lbl_price3);
             this.tabPagePaymentView.Controls.Add(this.lbl_HasBeenAdded);
@@ -1003,22 +1056,33 @@ namespace OrderingSystemUI
             this.tabPagePaymentView.Controls.Add(this.lbl2);
             this.tabPagePaymentView.Controls.Add(this.lbl1);
             this.tabPagePaymentView.Controls.Add(this.lbl_Payment);
-            this.tabPagePaymentView.Location = new System.Drawing.Point(4, 29);
+            this.tabPagePaymentView.Location = new System.Drawing.Point(4, 34);
             this.tabPagePaymentView.Margin = new System.Windows.Forms.Padding(2);
             this.tabPagePaymentView.Name = "tabPagePaymentView";
             this.tabPagePaymentView.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPagePaymentView.Size = new System.Drawing.Size(413, 690);
+            this.tabPagePaymentView.Size = new System.Drawing.Size(518, 866);
             this.tabPagePaymentView.TabIndex = 8;
             this.tabPagePaymentView.Text = "PaymentView";
+            // 
+            // lbl_tip3
+            // 
+            this.lbl_tip3.AutoSize = true;
+            this.lbl_tip3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_tip3.Location = new System.Drawing.Point(352, 380);
+            this.lbl_tip3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_tip3.Name = "lbl_tip3";
+            this.lbl_tip3.Size = new System.Drawing.Size(20, 28);
+            this.lbl_tip3.TabIndex = 16;
+            this.lbl_tip3.Text = "-";
             // 
             // lbl_change
             // 
             this.lbl_change.AutoSize = true;
             this.lbl_change.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_change.Location = new System.Drawing.Point(282, 243);
+            this.lbl_change.Location = new System.Drawing.Point(352, 304);
             this.lbl_change.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_change.Name = "lbl_change";
-            this.lbl_change.Size = new System.Drawing.Size(66, 23);
+            this.lbl_change.Size = new System.Drawing.Size(75, 28);
             this.lbl_change.TabIndex = 15;
             this.lbl_change.Text = "change";
             // 
@@ -1026,10 +1090,10 @@ namespace OrderingSystemUI
             // 
             this.lbl_price3.AutoSize = true;
             this.lbl_price3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_price3.Location = new System.Drawing.Point(282, 84);
+            this.lbl_price3.Location = new System.Drawing.Point(352, 105);
             this.lbl_price3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_price3.Name = "lbl_price3";
-            this.lbl_price3.Size = new System.Drawing.Size(47, 23);
+            this.lbl_price3.Size = new System.Drawing.Size(55, 28);
             this.lbl_price3.TabIndex = 14;
             this.lbl_price3.Text = "price";
             // 
@@ -1038,10 +1102,10 @@ namespace OrderingSystemUI
             this.lbl_HasBeenAdded.AutoSize = true;
             this.lbl_HasBeenAdded.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_HasBeenAdded.ForeColor = System.Drawing.Color.LightGreen;
-            this.lbl_HasBeenAdded.Location = new System.Drawing.Point(14, 342);
+            this.lbl_HasBeenAdded.Location = new System.Drawing.Point(18, 428);
             this.lbl_HasBeenAdded.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_HasBeenAdded.Name = "lbl_HasBeenAdded";
-            this.lbl_HasBeenAdded.Size = new System.Drawing.Size(173, 25);
+            this.lbl_HasBeenAdded.Size = new System.Drawing.Size(199, 30);
             this.lbl_HasBeenAdded.TabIndex = 13;
             this.lbl_HasBeenAdded.Text = "HAS BEEN ADDED";
             this.lbl_HasBeenAdded.Click += new System.EventHandler(this.label_HasBeenAdded_Click);
@@ -1051,10 +1115,10 @@ namespace OrderingSystemUI
             this.btn_Pay.BackColor = System.Drawing.Color.Orange;
             this.btn_Pay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Pay.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Pay.Location = new System.Drawing.Point(14, 540);
+            this.btn_Pay.Location = new System.Drawing.Point(18, 675);
             this.btn_Pay.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Pay.Name = "btn_Pay";
-            this.btn_Pay.Size = new System.Drawing.Size(388, 46);
+            this.btn_Pay.Size = new System.Drawing.Size(485, 58);
             this.btn_Pay.TabIndex = 12;
             this.btn_Pay.Text = "PAY";
             this.btn_Pay.UseVisualStyleBackColor = false;
@@ -1064,10 +1128,10 @@ namespace OrderingSystemUI
             // 
             this.btn_SetTip.BackColor = System.Drawing.Color.LightGreen;
             this.btn_SetTip.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_SetTip.Location = new System.Drawing.Point(313, 451);
+            this.btn_SetTip.Location = new System.Drawing.Point(391, 564);
             this.btn_SetTip.Margin = new System.Windows.Forms.Padding(2);
             this.btn_SetTip.Name = "btn_SetTip";
-            this.btn_SetTip.Size = new System.Drawing.Size(90, 27);
+            this.btn_SetTip.Size = new System.Drawing.Size(112, 34);
             this.btn_SetTip.TabIndex = 11;
             this.btn_SetTip.Text = "SET";
             this.btn_SetTip.UseVisualStyleBackColor = false;
@@ -1075,20 +1139,20 @@ namespace OrderingSystemUI
             // 
             // txtBox_CustomTip
             // 
-            this.txtBox_CustomTip.Location = new System.Drawing.Point(282, 406);
+            this.txtBox_CustomTip.Location = new System.Drawing.Point(352, 508);
             this.txtBox_CustomTip.Margin = new System.Windows.Forms.Padding(2);
             this.txtBox_CustomTip.Name = "txtBox_CustomTip";
-            this.txtBox_CustomTip.Size = new System.Drawing.Size(121, 27);
+            this.txtBox_CustomTip.Size = new System.Drawing.Size(150, 31);
             this.txtBox_CustomTip.TabIndex = 10;
             // 
             // lbl5
             // 
             this.lbl5.AutoSize = true;
             this.lbl5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl5.Location = new System.Drawing.Point(14, 406);
+            this.lbl5.Location = new System.Drawing.Point(18, 508);
             this.lbl5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl5.Name = "lbl5";
-            this.lbl5.Size = new System.Drawing.Size(111, 23);
+            this.lbl5.Size = new System.Drawing.Size(126, 28);
             this.lbl5.TabIndex = 9;
             this.lbl5.Text = "CUSTOM TIP:";
             // 
@@ -1096,10 +1160,10 @@ namespace OrderingSystemUI
             // 
             this.btn_changeAsTip.BackColor = System.Drawing.Color.LightGreen;
             this.btn_changeAsTip.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_changeAsTip.Location = new System.Drawing.Point(14, 350);
+            this.btn_changeAsTip.Location = new System.Drawing.Point(18, 438);
             this.btn_changeAsTip.Margin = new System.Windows.Forms.Padding(2);
             this.btn_changeAsTip.Name = "btn_changeAsTip";
-            this.btn_changeAsTip.Size = new System.Drawing.Size(388, 34);
+            this.btn_changeAsTip.Size = new System.Drawing.Size(485, 42);
             this.btn_changeAsTip.TabIndex = 8;
             this.btn_changeAsTip.Text = "ADD CHANGE AS A TIP";
             this.btn_changeAsTip.UseVisualStyleBackColor = false;
@@ -1109,10 +1173,10 @@ namespace OrderingSystemUI
             // 
             this.lbl4.AutoSize = true;
             this.lbl4.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl4.Location = new System.Drawing.Point(14, 304);
+            this.lbl4.Location = new System.Drawing.Point(18, 380);
             this.lbl4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl4.Name = "lbl4";
-            this.lbl4.Size = new System.Drawing.Size(51, 32);
+            this.lbl4.Size = new System.Drawing.Size(59, 38);
             this.lbl4.TabIndex = 7;
             this.lbl4.Text = "TIP";
             // 
@@ -1120,10 +1184,10 @@ namespace OrderingSystemUI
             // 
             this.lbl3.AutoSize = true;
             this.lbl3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl3.Location = new System.Drawing.Point(14, 243);
+            this.lbl3.Location = new System.Drawing.Point(18, 304);
             this.lbl3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl3.Name = "lbl3";
-            this.lbl3.Size = new System.Drawing.Size(82, 23);
+            this.lbl3.Size = new System.Drawing.Size(94, 28);
             this.lbl3.TabIndex = 6;
             this.lbl3.Text = "CHANGE:";
             // 
@@ -1131,10 +1195,10 @@ namespace OrderingSystemUI
             // 
             this.btn_SetAmountPaid.BackColor = System.Drawing.Color.LightGreen;
             this.btn_SetAmountPaid.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_SetAmountPaid.Location = new System.Drawing.Point(313, 170);
+            this.btn_SetAmountPaid.Location = new System.Drawing.Point(391, 212);
             this.btn_SetAmountPaid.Margin = new System.Windows.Forms.Padding(2);
             this.btn_SetAmountPaid.Name = "btn_SetAmountPaid";
-            this.btn_SetAmountPaid.Size = new System.Drawing.Size(90, 27);
+            this.btn_SetAmountPaid.Size = new System.Drawing.Size(112, 34);
             this.btn_SetAmountPaid.TabIndex = 5;
             this.btn_SetAmountPaid.Text = "SET";
             this.btn_SetAmountPaid.UseVisualStyleBackColor = false;
@@ -1142,20 +1206,20 @@ namespace OrderingSystemUI
             // 
             // txtBox_amountPaid
             // 
-            this.txtBox_amountPaid.Location = new System.Drawing.Point(282, 132);
+            this.txtBox_amountPaid.Location = new System.Drawing.Point(352, 165);
             this.txtBox_amountPaid.Margin = new System.Windows.Forms.Padding(2);
             this.txtBox_amountPaid.Name = "txtBox_amountPaid";
-            this.txtBox_amountPaid.Size = new System.Drawing.Size(121, 27);
+            this.txtBox_amountPaid.Size = new System.Drawing.Size(150, 31);
             this.txtBox_amountPaid.TabIndex = 4;
             // 
             // lbl2
             // 
             this.lbl2.AutoSize = true;
             this.lbl2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl2.Location = new System.Drawing.Point(14, 132);
+            this.lbl2.Location = new System.Drawing.Point(18, 165);
             this.lbl2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(129, 23);
+            this.lbl2.Size = new System.Drawing.Size(148, 28);
             this.lbl2.TabIndex = 3;
             this.lbl2.Text = "AMOUNT PAID:";
             // 
@@ -1163,10 +1227,10 @@ namespace OrderingSystemUI
             // 
             this.lbl1.AutoSize = true;
             this.lbl1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl1.Location = new System.Drawing.Point(14, 84);
+            this.lbl1.Location = new System.Drawing.Point(18, 105);
             this.lbl1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(118, 23);
+            this.lbl1.Size = new System.Drawing.Size(134, 28);
             this.lbl1.TabIndex = 2;
             this.lbl1.Text = "ORDER PRICE:";
             // 
@@ -1174,10 +1238,10 @@ namespace OrderingSystemUI
             // 
             this.lbl_Payment.AutoSize = true;
             this.lbl_Payment.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Payment.Location = new System.Drawing.Point(6, 10);
+            this.lbl_Payment.Location = new System.Drawing.Point(8, 12);
             this.lbl_Payment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Payment.Name = "lbl_Payment";
-            this.lbl_Payment.Size = new System.Drawing.Size(179, 46);
+            this.lbl_Payment.Size = new System.Drawing.Size(209, 54);
             this.lbl_Payment.TabIndex = 1;
             this.lbl_Payment.Text = "PAYMENT";
             // 
@@ -1187,11 +1251,11 @@ namespace OrderingSystemUI
             this.tabPageAnyComments.Controls.Add(this.btn_cntinuePayment);
             this.tabPageAnyComments.Controls.Add(this.btn_AddComment);
             this.tabPageAnyComments.Controls.Add(this.label8);
-            this.tabPageAnyComments.Location = new System.Drawing.Point(4, 29);
+            this.tabPageAnyComments.Location = new System.Drawing.Point(4, 34);
             this.tabPageAnyComments.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageAnyComments.Name = "tabPageAnyComments";
             this.tabPageAnyComments.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageAnyComments.Size = new System.Drawing.Size(413, 690);
+            this.tabPageAnyComments.Size = new System.Drawing.Size(518, 866);
             this.tabPageAnyComments.TabIndex = 9;
             this.tabPageAnyComments.Text = "AnyComments?";
             // 
@@ -1200,10 +1264,10 @@ namespace OrderingSystemUI
             this.btn_cntinuePayment.BackColor = System.Drawing.Color.LightGreen;
             this.btn_cntinuePayment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_cntinuePayment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_cntinuePayment.Location = new System.Drawing.Point(14, 313);
+            this.btn_cntinuePayment.Location = new System.Drawing.Point(18, 391);
             this.btn_cntinuePayment.Margin = new System.Windows.Forms.Padding(2);
             this.btn_cntinuePayment.Name = "btn_cntinuePayment";
-            this.btn_cntinuePayment.Size = new System.Drawing.Size(388, 46);
+            this.btn_cntinuePayment.Size = new System.Drawing.Size(485, 58);
             this.btn_cntinuePayment.TabIndex = 14;
             this.btn_cntinuePayment.Text = "CONTINUE WITH PAYMENT";
             this.btn_cntinuePayment.UseVisualStyleBackColor = false;
@@ -1214,10 +1278,10 @@ namespace OrderingSystemUI
             this.btn_AddComment.BackColor = System.Drawing.Color.Orange;
             this.btn_AddComment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_AddComment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_AddComment.Location = new System.Drawing.Point(14, 244);
+            this.btn_AddComment.Location = new System.Drawing.Point(18, 305);
             this.btn_AddComment.Margin = new System.Windows.Forms.Padding(2);
             this.btn_AddComment.Name = "btn_AddComment";
-            this.btn_AddComment.Size = new System.Drawing.Size(388, 46);
+            this.btn_AddComment.Size = new System.Drawing.Size(485, 58);
             this.btn_AddComment.TabIndex = 13;
             this.btn_AddComment.Text = "ADD A COMMENT";
             this.btn_AddComment.UseVisualStyleBackColor = false;
@@ -1227,10 +1291,10 @@ namespace OrderingSystemUI
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(80, 178);
+            this.label8.Location = new System.Drawing.Point(100, 222);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(273, 46);
+            this.label8.Size = new System.Drawing.Size(323, 54);
             this.label8.TabIndex = 2;
             this.label8.Text = "Any comments?";
             // 
@@ -1241,11 +1305,11 @@ namespace OrderingSystemUI
             this.tabPageCustomerComment.Controls.Add(this.btn_Confirm);
             this.tabPageCustomerComment.Controls.Add(this.txtBox_Comment);
             this.tabPageCustomerComment.Controls.Add(this.lbl9);
-            this.tabPageCustomerComment.Location = new System.Drawing.Point(4, 29);
+            this.tabPageCustomerComment.Location = new System.Drawing.Point(4, 34);
             this.tabPageCustomerComment.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageCustomerComment.Name = "tabPageCustomerComment";
             this.tabPageCustomerComment.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageCustomerComment.Size = new System.Drawing.Size(413, 690);
+            this.tabPageCustomerComment.Size = new System.Drawing.Size(518, 866);
             this.tabPageCustomerComment.TabIndex = 10;
             this.tabPageCustomerComment.Text = "CustomersComment";
             // 
@@ -1253,9 +1317,10 @@ namespace OrderingSystemUI
             // 
             this.btn_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btn_back.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_back.Location = new System.Drawing.Point(314, 6);
+            this.btn_back.Location = new System.Drawing.Point(392, 8);
+            this.btn_back.Margin = new System.Windows.Forms.Padding(4);
             this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(94, 29);
+            this.btn_back.Size = new System.Drawing.Size(118, 36);
             this.btn_back.TabIndex = 3;
             this.btn_back.Text = "BACK";
             this.btn_back.UseVisualStyleBackColor = false;
@@ -1266,10 +1331,10 @@ namespace OrderingSystemUI
             this.btn_Confirm.BackColor = System.Drawing.Color.LightGreen;
             this.btn_Confirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Confirm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Confirm.Location = new System.Drawing.Point(31, 442);
+            this.btn_Confirm.Location = new System.Drawing.Point(39, 552);
             this.btn_Confirm.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Confirm.Name = "btn_Confirm";
-            this.btn_Confirm.Size = new System.Drawing.Size(342, 46);
+            this.btn_Confirm.Size = new System.Drawing.Size(428, 58);
             this.btn_Confirm.TabIndex = 15;
             this.btn_Confirm.Text = "CONFIRM";
             this.btn_Confirm.UseVisualStyleBackColor = false;
@@ -1277,11 +1342,11 @@ namespace OrderingSystemUI
             // 
             // txtBox_Comment
             // 
-            this.txtBox_Comment.Location = new System.Drawing.Point(31, 124);
+            this.txtBox_Comment.Location = new System.Drawing.Point(39, 155);
             this.txtBox_Comment.Margin = new System.Windows.Forms.Padding(2);
             this.txtBox_Comment.Multiline = true;
             this.txtBox_Comment.Name = "txtBox_Comment";
-            this.txtBox_Comment.Size = new System.Drawing.Size(343, 287);
+            this.txtBox_Comment.Size = new System.Drawing.Size(428, 358);
             this.txtBox_Comment.TabIndex = 4;
             this.txtBox_Comment.TextChanged += new System.EventHandler(this.txtBox_Comment_TextChanged);
             // 
@@ -1289,10 +1354,10 @@ namespace OrderingSystemUI
             // 
             this.lbl9.AutoSize = true;
             this.lbl9.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl9.Location = new System.Drawing.Point(31, 62);
+            this.lbl9.Location = new System.Drawing.Point(39, 78);
             this.lbl9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl9.Name = "lbl9";
-            this.lbl9.Size = new System.Drawing.Size(372, 32);
+            this.lbl9.Size = new System.Drawing.Size(428, 38);
             this.lbl9.TabIndex = 3;
             this.lbl9.Text = "Type customers comment here:";
             this.lbl9.Click += new System.EventHandler(this.lbl9_Click);
@@ -1309,11 +1374,11 @@ namespace OrderingSystemUI
             this.tabPageSettledBill.Controls.Add(this.lbl_price4);
             this.tabPageSettledBill.Controls.Add(this.label10);
             this.tabPageSettledBill.Controls.Add(this.label9);
-            this.tabPageSettledBill.Location = new System.Drawing.Point(4, 29);
+            this.tabPageSettledBill.Location = new System.Drawing.Point(4, 34);
             this.tabPageSettledBill.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageSettledBill.Name = "tabPageSettledBill";
             this.tabPageSettledBill.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageSettledBill.Size = new System.Drawing.Size(413, 690);
+            this.tabPageSettledBill.Size = new System.Drawing.Size(518, 866);
             this.tabPageSettledBill.TabIndex = 11;
             this.tabPageSettledBill.Text = "Settled_bill";
             // 
@@ -1321,10 +1386,10 @@ namespace OrderingSystemUI
             // 
             this.lbl_tip2.AutoSize = true;
             this.lbl_tip2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_tip2.Location = new System.Drawing.Point(306, 343);
+            this.lbl_tip2.Location = new System.Drawing.Point(382, 429);
             this.lbl_tip2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_tip2.Name = "lbl_tip2";
-            this.lbl_tip2.Size = new System.Drawing.Size(17, 23);
+            this.lbl_tip2.Size = new System.Drawing.Size(20, 28);
             this.lbl_tip2.TabIndex = 12;
             this.lbl_tip2.Text = "-";
             // 
@@ -1332,10 +1397,10 @@ namespace OrderingSystemUI
             // 
             this.lbl_tip.AutoSize = true;
             this.lbl_tip.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_tip.Location = new System.Drawing.Point(67, 343);
+            this.lbl_tip.Location = new System.Drawing.Point(84, 429);
             this.lbl_tip.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_tip.Name = "lbl_tip";
-            this.lbl_tip.Size = new System.Drawing.Size(38, 23);
+            this.lbl_tip.Size = new System.Drawing.Size(42, 28);
             this.lbl_tip.TabIndex = 11;
             this.lbl_tip.Text = "TIP:";
             // 
@@ -1343,10 +1408,10 @@ namespace OrderingSystemUI
             // 
             this.lbl_amount_paid.AutoSize = true;
             this.lbl_amount_paid.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_amount_paid.Location = new System.Drawing.Point(291, 303);
+            this.lbl_amount_paid.Location = new System.Drawing.Point(364, 379);
             this.lbl_amount_paid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_amount_paid.Name = "lbl_amount_paid";
-            this.lbl_amount_paid.Size = new System.Drawing.Size(43, 23);
+            this.lbl_amount_paid.Size = new System.Drawing.Size(51, 28);
             this.lbl_amount_paid.TabIndex = 10;
             this.lbl_amount_paid.Text = "paid";
             // 
@@ -1354,10 +1419,10 @@ namespace OrderingSystemUI
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(67, 303);
+            this.label12.Location = new System.Drawing.Point(84, 379);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(129, 23);
+            this.label12.Size = new System.Drawing.Size(148, 28);
             this.label12.TabIndex = 9;
             this.label12.Text = "AMOUNT PAID:";
             // 
@@ -1365,10 +1430,10 @@ namespace OrderingSystemUI
             // 
             this.lbl_vat_amount2.AutoSize = true;
             this.lbl_vat_amount2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_vat_amount2.Location = new System.Drawing.Point(296, 268);
+            this.lbl_vat_amount2.Location = new System.Drawing.Point(370, 335);
             this.lbl_vat_amount2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_vat_amount2.Name = "lbl_vat_amount2";
-            this.lbl_vat_amount2.Size = new System.Drawing.Size(39, 23);
+            this.lbl_vat_amount2.Size = new System.Drawing.Size(45, 28);
             this.lbl_vat_amount2.TabIndex = 8;
             this.lbl_vat_amount2.Text = "VAT";
             // 
@@ -1376,10 +1441,10 @@ namespace OrderingSystemUI
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(67, 268);
+            this.label11.Location = new System.Drawing.Point(84, 335);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(43, 23);
+            this.label11.Size = new System.Drawing.Size(49, 28);
             this.label11.TabIndex = 7;
             this.label11.Text = "VAT:";
             // 
@@ -1387,10 +1452,10 @@ namespace OrderingSystemUI
             // 
             this.lbl_price4.AutoSize = true;
             this.lbl_price4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_price4.Location = new System.Drawing.Point(291, 230);
+            this.lbl_price4.Location = new System.Drawing.Point(364, 288);
             this.lbl_price4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_price4.Name = "lbl_price4";
-            this.lbl_price4.Size = new System.Drawing.Size(47, 23);
+            this.lbl_price4.Size = new System.Drawing.Size(55, 28);
             this.lbl_price4.TabIndex = 6;
             this.lbl_price4.Text = "price";
             // 
@@ -1398,10 +1463,10 @@ namespace OrderingSystemUI
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(67, 230);
+            this.label10.Location = new System.Drawing.Point(84, 288);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(118, 23);
+            this.label10.Size = new System.Drawing.Size(134, 28);
             this.label10.TabIndex = 5;
             this.label10.Text = "ORDER PRICE:";
             // 
@@ -1410,10 +1475,10 @@ namespace OrderingSystemUI
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.LightGreen;
-            this.label9.Location = new System.Drawing.Point(67, 114);
+            this.label9.Location = new System.Drawing.Point(84, 142);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(294, 82);
+            this.label9.Size = new System.Drawing.Size(350, 96);
             this.label9.TabIndex = 4;
             this.label9.Text = "THE BILL HAS BEEN\r\n SETTLED!";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1422,41 +1487,45 @@ namespace OrderingSystemUI
             // 
             this.tabPageCommentProdcut.Controls.Add(this.btnAddComment);
             this.tabPageCommentProdcut.Controls.Add(this.txtComment);
-            this.tabPageCommentProdcut.Location = new System.Drawing.Point(4, 29);
+            this.tabPageCommentProdcut.Location = new System.Drawing.Point(4, 34);
+            this.tabPageCommentProdcut.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageCommentProdcut.Name = "tabPageCommentProdcut";
-            this.tabPageCommentProdcut.Size = new System.Drawing.Size(413, 690);
+            this.tabPageCommentProdcut.Size = new System.Drawing.Size(518, 866);
             this.tabPageCommentProdcut.TabIndex = 12;
             this.tabPageCommentProdcut.Text = "Comment";
             this.tabPageCommentProdcut.UseVisualStyleBackColor = true;
             // 
-            // txtComment
-            // 
-            this.txtComment.Location = new System.Drawing.Point(40, 208);
-            this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(338, 27);
-            this.txtComment.TabIndex = 1;
-            this.txtComment.Text = "Comment...";
-            // 
             // btnAddComment
             // 
             this.btnAddComment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnAddComment.Location = new System.Drawing.Point(159, 331);
+            this.btnAddComment.Location = new System.Drawing.Point(199, 414);
+            this.btnAddComment.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddComment.Name = "btnAddComment";
-            this.btnAddComment.Size = new System.Drawing.Size(94, 29);
+            this.btnAddComment.Size = new System.Drawing.Size(118, 36);
             this.btnAddComment.TabIndex = 2;
             this.btnAddComment.Text = "Add";
             this.btnAddComment.UseVisualStyleBackColor = false;
             // 
+            // txtComment
+            // 
+            this.txtComment.Location = new System.Drawing.Point(50, 260);
+            this.txtComment.Margin = new System.Windows.Forms.Padding(4);
+            this.txtComment.Name = "txtComment";
+            this.txtComment.Size = new System.Drawing.Size(422, 31);
+            this.txtComment.TabIndex = 1;
+            this.txtComment.Text = "Comment...";
+            // 
             // WaiterUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(425, 772);
+            this.ClientSize = new System.Drawing.Size(531, 965);
             this.Controls.Add(this.tableNumber);
             this.Controls.Add(this.btnEmployeeName);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pnlPayment);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WaiterUI";
             this.Text = "WaiterUI";
             this.Load += new System.EventHandler(this.WaiterUI_Load);
@@ -1599,5 +1668,6 @@ namespace OrderingSystemUI
         private System.Windows.Forms.TabPage tabPageCommentProdcut;
         private System.Windows.Forms.Button btnAddComment;
         private System.Windows.Forms.TextBox txtComment;
+        private System.Windows.Forms.Label lbl_tip3;
     }
 }

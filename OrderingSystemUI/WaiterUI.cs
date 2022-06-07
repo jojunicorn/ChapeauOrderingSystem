@@ -642,11 +642,13 @@ namespace OrderingSystemUI
                 }
                 float total = 0;
                 float vat = 0;
-
+                
+               
                 foreach (Product product in productsForThisOrder)
                 {
                     total += product.Price;
                     vat = vat + product.Price * product.VAT;
+                   
                     int count = 0;
                     foreach (Product p in productsForThisOrder)
                     {
@@ -669,23 +671,17 @@ namespace OrderingSystemUI
                         alreadyPrinted.Add(product.ProductID);
 
                 }
+                
                 //display price
                 lbl_price1.Text = "€ " + total.ToString("0.00");
                 lbl_price2.Text = "€ " + total.ToString("0.00");
                 lbl_price3.Text = "€ " + total.ToString("0.00");
                 lbl_price4.Text = "€ " + total.ToString("0.00");
 
-                //calculate change
-               // int price = Int32.Parse(lbl_price3.Text);
-               // int amountPaid = Int32.Parse(txtBox_amountPaid.Text);
-
-               // int change = amountPaid - price;
-                //lbl_change.Text = "€ " + change.ToString("0.00");
-
-
                 //display vat
                 lbl_vat_amount.Text = vat.ToString("0.00");
                 lbl_vat_amount2.Text = vat.ToString("0.00");
+                
 
             }
             catch (Exception e)
@@ -693,13 +689,21 @@ namespace OrderingSystemUI
                 MessageBox.Show("Error occured: ", e.Message);
             }
         }
+        private void CalculateChange()
+        {
+            //DOESN'T WORK
+           // int amountPaid = int.Parse(txtBox_amountPaid.Text);
+            //int price = Int32.Parse(lbl_price3.Text);
+
+           // int change = amountPaid - price;
+            //lbl_change.Text = "€ " + change.ToString("0.00");
+        }
         //navigate to Payment UI
         private void btnPay_Click(object sender, EventArgs e)
         {
             tableOrderOverviewTab.Hide();
             tabPagePayment.Show();
             PaymentOrderOverview();
-
         }
         private void radioBtn_DEBIT_CheckedChanged(object sender, EventArgs e)
         {
@@ -720,8 +724,7 @@ namespace OrderingSystemUI
        
         private void btn_SetAmountPaid_Click(object sender, EventArgs e)
         {
-            //PaymentOrderOverview();
-
+            CalculateChange();
         }
         //navigate to "ANY COMMENTS?" page
         private void btn_Pay_Click(object sender, EventArgs e)
@@ -753,11 +756,7 @@ namespace OrderingSystemUI
         //navigate to "SETTLE THE BILL" page
         private void btn_Confirm_Click(object sender, EventArgs e)
         {
-            //store comment in database
-            string comment = txtBox_Comment.Text;
-            //??
-           // orderProductService.GetOrderProduct(currentOrder.OrderNumber, selectedProductsOnAddList.ProductID).Comment = comment;
-
+  
 
             if (txtBox_Comment.Text == "")
             {
@@ -783,6 +782,10 @@ namespace OrderingSystemUI
         //show label "TIP HAS BEEN ADDED" setting a customized tip
         private void btn_SetTip_Click(object sender, EventArgs e)
         {
+            //display tip
+            int customTip = int.Parse(txtBox_CustomTip.Text);
+            lbl_tip3.Text = "€ " + customTip.ToString("0.00");
+
             lbl_HasBeenAdded.Show();
             btn_changeAsTip.Hide();
             lbl5.Hide();

@@ -16,7 +16,6 @@ namespace OrderingSystemDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-
         public Payment GetPayment(int orderNumber)
         {
             try
@@ -37,7 +36,6 @@ namespace OrderingSystemDAL
         }
         private List<Payment> ReadTables(DataTable dataTable)
         {
-
             List<Payment> payments = new List<Payment>();
 
             foreach (DataRow dr in dataTable.Rows)
@@ -55,7 +53,6 @@ namespace OrderingSystemDAL
             }
             return payments;
         }
-
         private Payment ReadTable(DataTable dataTable)
         {
             DataRow dataRow = dataTable.Rows[0];
@@ -71,5 +68,26 @@ namespace OrderingSystemDAL
 
             return payment;
         }
+        //adding entered comment to the database
+        public void AddComment(int OrderNumber, string CustomerComment)
+        {
+            query = "UPDATE [dbo].[PAYMENT] SET CustomerComment=@CustomerComment WHERE orderNumber=@orderNumber;";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+
+            sqlParameters[0] = new SqlParameter("@CustomerComment", CustomerComment);
+            sqlParameters[1] = new SqlParameter("@OrderNumber",OrderNumber);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+        //adding Tip to database
+        public void AddTip(decimal Tip, int OrderNumber)
+        {
+            query = "UPDATE [dbo].[PAYMENT] SET Tip=@Tip WHERE OrderNumber=@OrderNumber;";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+
+            sqlParameters[0] = new SqlParameter("@CustomerComment", Tip);
+            sqlParameters[1] = new SqlParameter("@OrderNumber", OrderNumber);
+        }
+
     }
 }
