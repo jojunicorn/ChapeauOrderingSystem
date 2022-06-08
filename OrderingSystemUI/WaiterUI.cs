@@ -62,6 +62,7 @@ namespace OrderingSystemUI
             pnlPayment.SelectedTab = tableViewTabCommentQ;
 
             pnlTableStatus.Hide();
+            pnlAddComment.Hide();
 
             lunchProducts = productService.GetLunchProducts();
             dinnerProducts = productService.GetDinnerProducts();
@@ -545,6 +546,8 @@ namespace OrderingSystemUI
                 {
                     item.Text = $"{count} x"; //count
                     item.SubItems.Add(product.ProductName);//product name
+                    if(product.TemporaryComment != null)
+                        item.SubItems.Add(product.TemporaryComment.ToString());
                     listViewOrderSummary.Items.Add(item);
                 }
                 item.Tag = product;
@@ -559,22 +562,27 @@ namespace OrderingSystemUI
             //add the created list of orderProducts to the actual order
             if (addingNewOrdersList.Count > 0)
             {
-                //for (int i = 0; i < addingNewOrdersList.Count; i++)
-                //{
-                //    orderProductService.AddOrderItem(currentOrder.OrderNumber, addingNewOrdersList[0].ProductID, "", DateTime.Now, "in preparation");
-                //    //edit stock in db
-                //    int newStock = addingNewOrdersList[0].Stock--;
-                //    productService.EditStock(addingNewOrdersList[0].ProductID, newStock);
-                //    addingNewOrdersList.Remove(addingNewOrdersList[0]);
-                //}
-                foreach (Product product in addingNewOrdersList)
+                for (int i = 0; i < addingNewOrdersList.Count; i++)
                 {
-                    orderProductService.AddOrderItem(currentOrder.OrderNumber, product.ProductID, "", DateTime.Now, "in preparation");
+                    if (addingNewOrdersList[i].TemporaryComment == null)
+                        addingNewOrdersList[i].TemporaryComment = "";
+                    orderProductService.AddOrderItem(currentOrder.OrderNumber, addingNewOrdersList[i].ProductID, addingNewOrdersList[i].TemporaryComment, DateTime.Now, "in preparation");
                     //edit stock in db
-                    int newStock = product.Stock--;
-                    productService.EditStock(product.ProductID, newStock);
-                    addingNewOrdersList.Remove(product);
+                    int newStock = addingNewOrdersList[i].Stock--;
+                    productService.EditStock(addingNewOrdersList[i].ProductID, newStock);
                 }
+                for (int i = 0; i < addingNewOrdersList.Count; i++)
+                {
+                    addingNewOrdersList.Remove(addingNewOrdersList[i]);
+                }
+                //foreach (Product product in addingNewOrdersList)
+                //{
+                //    orderProductService.AddOrderItem(currentOrder.OrderNumber, product.ProductID, product.TemporaryComment, DateTime.Now, "in preparation");
+                //    //edit stock in db
+                //    int newStock = product.Stock--;
+                //    productService.EditStock(product.ProductID, newStock);
+                //    addingNewOrdersList.Remove(product);
+                //}
 
             }
 
@@ -816,7 +824,7 @@ namespace OrderingSystemUI
         private void listViewOrderSummary_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnComment.Show();
-            btnRemove.Show();
+            btnRemoveNew.Show();
 
             if (listViewOrderSummary.SelectedItems.Count > 0)
             {
@@ -828,20 +836,27 @@ namespace OrderingSystemUI
         private void btnRemoveNew_Click(object sender, EventArgs e)
         {
             addingNewOrdersList.Remove(selectedProductsOnAddList);
+            DisplaySelectedItemsForOrder();
         }
 
         private void btnComment_Click_1(object sender, EventArgs e)
         {
-            pnlPayment.SelectedTab = tabPageCommentProdcut;
+            pnlAddComment.Show();
         }
 
-        private void btnAddComment_Click_1(object sender, EventArgs e)
+
+        private void btnpnlAddComment_Click(object sender, EventArgs e)
         {
-            string comment = txtComment.Text;
-            OrderProduct product = orderProductService.GetOrderProduct(currentOrder.OrderNumber, selectedProductsOnAddList.ProductID);
-            product.Comment = comment;
-            orderProductService.AddComment(product.ItemID, comment);
-            MessageBox.Show("comment added");
+            string comment = txtboxComment.Text;
+            selectedProductsOnAddList.TemporaryComment = comment;
+            pnlAddComment.Hide();
+            listViewOrderSummary.Items.Clear();
+            DisplaySelectedItemsForOrder();
+        }
+
+        private void btnGoBack_Click(object sender, EventArgs e)
+        {
+            pnlAddComment.Hide();
         }
     }
 }

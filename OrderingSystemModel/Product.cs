@@ -15,6 +15,7 @@ namespace OrderingSystemModel
         public int ProductCategory { get; set; }
 
 
+        public string TemporaryComment { get; set; }
         public string Status { get; set; }
 
     }

@@ -30,8 +30,8 @@ namespace OrderingSystemUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WaiterUI));
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.btnEmployeeName = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
@@ -53,6 +53,10 @@ namespace OrderingSystemUI
             this.lbl_total = new System.Windows.Forms.Label();
             this.lbl_bill = new System.Windows.Forms.Label();
             this.addOrderView = new System.Windows.Forms.TabPage();
+            this.pnlAddComment = new System.Windows.Forms.Panel();
+            this.btnGoBack = new System.Windows.Forms.Button();
+            this.btnpnlAddComment = new System.Windows.Forms.Button();
+            this.txtboxComment = new System.Windows.Forms.TextBox();
             this.btnRemoveNew = new System.Windows.Forms.Button();
             this.btnComment = new System.Windows.Forms.Button();
             this.listViewAddOrder = new System.Windows.Forms.ListView();
@@ -63,6 +67,7 @@ namespace OrderingSystemUI
             this.listViewOrderSummary = new System.Windows.Forms.ListView();
             this.CHCount = new System.Windows.Forms.ColumnHeader();
             this.CHItemname = new System.Windows.Forms.ColumnHeader();
+            this.comment = new System.Windows.Forms.ColumnHeader();
             this.btnDrinksMenu = new System.Windows.Forms.Button();
             this.btnDinnerMenu = new System.Windows.Forms.Button();
             this.btnLunchMenu = new System.Windows.Forms.Button();
@@ -148,6 +153,7 @@ namespace OrderingSystemUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPagePayment.SuspendLayout();
             this.addOrderView.SuspendLayout();
+            this.pnlAddComment.SuspendLayout();
             this.tableOrderOverviewTab.SuspendLayout();
             this.tableViewTabCommentQ.SuspendLayout();
             this.pnlTableStatus.SuspendLayout();
@@ -383,6 +389,7 @@ namespace OrderingSystemUI
             // 
             // addOrderView
             // 
+            this.addOrderView.Controls.Add(this.pnlAddComment);
             this.addOrderView.Controls.Add(this.btnRemoveNew);
             this.addOrderView.Controls.Add(this.btnComment);
             this.addOrderView.Controls.Add(this.listViewAddOrder);
@@ -399,6 +406,45 @@ namespace OrderingSystemUI
             this.addOrderView.TabIndex = 3;
             this.addOrderView.Text = "AddOrderView";
             this.addOrderView.UseVisualStyleBackColor = true;
+            // 
+            // pnlAddComment
+            // 
+            this.pnlAddComment.Controls.Add(this.btnGoBack);
+            this.pnlAddComment.Controls.Add(this.btnpnlAddComment);
+            this.pnlAddComment.Controls.Add(this.txtboxComment);
+            this.pnlAddComment.Location = new System.Drawing.Point(3, 3);
+            this.pnlAddComment.Name = "pnlAddComment";
+            this.pnlAddComment.Size = new System.Drawing.Size(404, 681);
+            this.pnlAddComment.TabIndex = 13;
+            // 
+            // btnGoBack
+            // 
+            this.btnGoBack.BackColor = System.Drawing.Color.DarkGray;
+            this.btnGoBack.Location = new System.Drawing.Point(0, 0);
+            this.btnGoBack.Name = "btnGoBack";
+            this.btnGoBack.Size = new System.Drawing.Size(94, 29);
+            this.btnGoBack.TabIndex = 2;
+            this.btnGoBack.Text = "back";
+            this.btnGoBack.UseVisualStyleBackColor = false;
+            this.btnGoBack.Click += new System.EventHandler(this.btnGoBack_Click);
+            // 
+            // btnpnlAddComment
+            // 
+            this.btnpnlAddComment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnpnlAddComment.Location = new System.Drawing.Point(144, 321);
+            this.btnpnlAddComment.Name = "btnpnlAddComment";
+            this.btnpnlAddComment.Size = new System.Drawing.Size(102, 42);
+            this.btnpnlAddComment.TabIndex = 1;
+            this.btnpnlAddComment.Text = "Add";
+            this.btnpnlAddComment.UseVisualStyleBackColor = false;
+            this.btnpnlAddComment.Click += new System.EventHandler(this.btnpnlAddComment_Click);
+            // 
+            // txtboxComment
+            // 
+            this.txtboxComment.Location = new System.Drawing.Point(66, 264);
+            this.txtboxComment.Name = "txtboxComment";
+            this.txtboxComment.Size = new System.Drawing.Size(264, 27);
+            this.txtboxComment.TabIndex = 0;
             // 
             // btnRemoveNew
             // 
@@ -427,8 +473,8 @@ namespace OrderingSystemUI
             this.chPrice});
             this.listViewAddOrder.HideSelection = false;
             this.listViewAddOrder.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3,
-            listViewItem4});
+            listViewItem1,
+            listViewItem2});
             this.listViewAddOrder.Location = new System.Drawing.Point(7, 62);
             this.listViewAddOrder.Name = "listViewAddOrder";
             this.listViewAddOrder.Size = new System.Drawing.Size(400, 346);
@@ -473,7 +519,8 @@ namespace OrderingSystemUI
             // 
             this.listViewOrderSummary.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.CHCount,
-            this.CHItemname});
+            this.CHItemname,
+            this.comment});
             this.listViewOrderSummary.FullRowSelect = true;
             this.listViewOrderSummary.HideSelection = false;
             this.listViewOrderSummary.Location = new System.Drawing.Point(7, 431);
@@ -493,7 +540,12 @@ namespace OrderingSystemUI
             // CHItemname
             // 
             this.CHItemname.Text = "Name";
-            this.CHItemname.Width = 350;
+            this.CHItemname.Width = 300;
+            // 
+            // comment
+            // 
+            this.comment.Text = "Comment";
+            this.comment.Width = 200;
             // 
             // btnDrinksMenu
             // 
@@ -1464,7 +1516,6 @@ namespace OrderingSystemUI
             this.btnAddComment.TabIndex = 2;
             this.btnAddComment.Text = "Add";
             this.btnAddComment.UseVisualStyleBackColor = false;
-            this.btnAddComment.Click += new System.EventHandler(this.btnAddComment_Click_1);
             // 
             // txtComment
             // 
@@ -1492,6 +1543,8 @@ namespace OrderingSystemUI
             this.tabPagePayment.PerformLayout();
             this.addOrderView.ResumeLayout(false);
             this.addOrderView.PerformLayout();
+            this.pnlAddComment.ResumeLayout(false);
+            this.pnlAddComment.PerformLayout();
             this.tableOrderOverviewTab.ResumeLayout(false);
             this.tableOrderOverviewTab.PerformLayout();
             this.tableViewTabCommentQ.ResumeLayout(false);
@@ -1628,5 +1681,10 @@ namespace OrderingSystemUI
         private System.Windows.Forms.TextBox txtComment;
         private System.Windows.Forms.Label lbl_tip3;
         private System.Windows.Forms.Button btnRemoveNew;
+        private System.Windows.Forms.Panel pnlAddComment;
+        private System.Windows.Forms.Button btnpnlAddComment;
+        private System.Windows.Forms.TextBox txtboxComment;
+        private System.Windows.Forms.Button btnGoBack;
+        private System.Windows.Forms.ColumnHeader comment;
     }
 }
