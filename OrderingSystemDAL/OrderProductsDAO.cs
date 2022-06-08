@@ -30,6 +30,7 @@ namespace OrderingSystemDAL
 
             return order;
         }
+
         public void AddComment(int itemId, string comment)
         {
             query = "UPDATE [dbo].[ORDERPRODUCTS] SET Comment=@comment WHERE ItemId=@itemId;";

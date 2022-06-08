@@ -23,6 +23,12 @@ namespace OrderingSystemUI
 
         List<Product> addingNewOrdersList;
         List<int> alreadyPrinted = new List<int>();
+        List<Product> lunchProducts;
+        List<Product> dinnerProducts;
+        List<Product> drinkProducts;
+
+
+
 
         Table currentTable = null;
         Employee currentEmployee = null;
@@ -56,6 +62,10 @@ namespace OrderingSystemUI
             pnlPayment.SelectedTab = tableViewTabCommentQ;
 
             pnlTableStatus.Hide();
+
+            lunchProducts = productService.GetLunchProducts();
+            dinnerProducts = productService.GetDinnerProducts();
+            drinkProducts = productService.GetDrinkProducts();
 
         }
         private void OrderOverview()
@@ -132,42 +142,52 @@ namespace OrderingSystemUI
             }
         }
 
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to discontinue the current process and go back to the table overview?", $"Going to table view", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                currentTable = null;
+                tableNumber.Text = "TABLE#...";
+                pnlTableStatus.Hide();
+                pnlPayment.SelectedTab = tableViewTabCommentQ;
+            }
+            else
+            {
+                return;
+            }
+        }
         private void btnLunch_Click(object sender, EventArgs e)
         {
             LunchMenuDisplay();
-            btnAddComment.Hide();
+
         }
 
         private void btnDinner_Click(object sender, EventArgs e)
         {
             DinnerMenuDisplay();
-            btnAddComment.Hide();
 
         }
 
         private void btnDrinks_Click(object sender, EventArgs e)
         {
             DrinksMenuDisplay();
-            btnAddComment.Hide();
+
         }
         private void btnDinnerMenu_Click(object sender, EventArgs e)
         {
             DinnerMenuDisplay();
-            btnAddComment.Hide();
 
         }
         private void btnLunchMenu_Click(object sender, EventArgs e)
         {
             LunchMenuDisplay();
-            btnAddComment.Hide();
 
         }
 
         private void btnDrinksMenu_Click(object sender, EventArgs e)
         {
             DrinksMenuDisplay();
-            btnAddComment.Hide();
-
         }
 
         private void LunchMenuDisplay()
@@ -176,6 +196,8 @@ namespace OrderingSystemUI
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
             btnComment.Hide();
+            btnRemoveNew.Hide();
+
 
             //List groups
 
@@ -183,7 +205,6 @@ namespace OrderingSystemUI
             ListViewGroup lunchMains = new ListViewGroup("Mains", HorizontalAlignment.Center);
             ListViewGroup lunchDeserts = new ListViewGroup("Deserts", HorizontalAlignment.Center);
 
-            List<Product> lunchProducts = productService.GetLunchProducts();
             foreach (Product product in lunchProducts)
             {
                 ListViewGroup group;
@@ -209,10 +230,14 @@ namespace OrderingSystemUI
         }
         private void DinnerMenuDisplay()
         {
+            listViewAddOrder.Clear();
+
             pnlPayment.SelectedTab = addOrderView;
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
             btnComment.Hide();
+            btnRemoveNew.Hide();
+
 
 
             //List groups
@@ -221,7 +246,6 @@ namespace OrderingSystemUI
             ListViewGroup dinnerMains = new ListViewGroup("Mains", HorizontalAlignment.Center);
             ListViewGroup dinnerDeserts = new ListViewGroup("Deserts", HorizontalAlignment.Center);
 
-            List<Product> dinnerProducts = productService.GetDinnerProducts();
             foreach (Product product in dinnerProducts)
             {
                 ListViewGroup group;
@@ -250,10 +274,14 @@ namespace OrderingSystemUI
         }
         private void DrinksMenuDisplay()
         {
+            listViewAddOrder.Clear();
+
             pnlPayment.SelectedTab = addOrderView;
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
             btnComment.Hide();
+            btnRemoveNew.Hide();
+
             //List groups
             ListViewGroup softDrinks = new ListViewGroup("Soft Drinks", HorizontalAlignment.Center);
             ListViewGroup beers = new ListViewGroup("Beers", HorizontalAlignment.Center);
@@ -261,7 +289,6 @@ namespace OrderingSystemUI
             ListViewGroup spirits = new ListViewGroup("Spirits", HorizontalAlignment.Center);
             ListViewGroup hotDrinks = new ListViewGroup("Hot Drinks", HorizontalAlignment.Center);
 
-            List<Product> drinkProducts = productService.GetDrinkProducts();
             foreach (Product product in drinkProducts)
             {
                 ListViewGroup group;
@@ -485,22 +512,6 @@ namespace OrderingSystemUI
             }
         }
 
-        private void tableNumber_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure you want to discontinue the current process?", $"Going to table view", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
-            {
-                currentTable = null;
-                tableNumber.Text = "TABLE#...";
-                pnlTableStatus.Hide();
-                pnlPayment.SelectedTab = tableViewTabCommentQ;
-            }
-            else
-            {
-                return;
-            }
-        }
-
         private void listViewAddOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewAddOrder.SelectedItems.Count > 0)
@@ -548,6 +559,14 @@ namespace OrderingSystemUI
             //add the created list of orderProducts to the actual order
             if (addingNewOrdersList.Count > 0)
             {
+                //for (int i = 0; i < addingNewOrdersList.Count; i++)
+                //{
+                //    orderProductService.AddOrderItem(currentOrder.OrderNumber, addingNewOrdersList[0].ProductID, "", DateTime.Now, "in preparation");
+                //    //edit stock in db
+                //    int newStock = addingNewOrdersList[0].Stock--;
+                //    productService.EditStock(addingNewOrdersList[0].ProductID, newStock);
+                //    addingNewOrdersList.Remove(addingNewOrdersList[0]);
+                //}
                 foreach (Product product in addingNewOrdersList)
                 {
                     orderProductService.AddOrderItem(currentOrder.OrderNumber, product.ProductID, "", DateTime.Now, "in preparation");
@@ -599,20 +618,6 @@ namespace OrderingSystemUI
 
 
         }
-
-        private void btnComment_Click(object sender, EventArgs e)
-        {
-            tabPageCommentProdcut.Show();
-        }
-
-        private void btnAddComment_Click(object sender, EventArgs e)
-        {
-            string comment = txtComment.Text;
-            OrderProduct product = orderProductService.GetOrderProduct(currentOrder.OrderNumber, selectedProductsOnAddList.ProductID);
-            product.Comment = comment;
-        }
-
-
 
         //PAYMENT UI
 
@@ -811,6 +816,7 @@ namespace OrderingSystemUI
         private void listViewOrderSummary_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnComment.Show();
+            btnRemove.Show();
 
             if (listViewOrderSummary.SelectedItems.Count > 0)
             {
@@ -819,6 +825,24 @@ namespace OrderingSystemUI
             }
         }
 
+        private void btnRemoveNew_Click(object sender, EventArgs e)
+        {
+            addingNewOrdersList.Remove(selectedProductsOnAddList);
+        }
+
+        private void btnComment_Click_1(object sender, EventArgs e)
+        {
+            pnlPayment.SelectedTab = tabPageCommentProdcut;
+        }
+
+        private void btnAddComment_Click_1(object sender, EventArgs e)
+        {
+            string comment = txtComment.Text;
+            OrderProduct product = orderProductService.GetOrderProduct(currentOrder.OrderNumber, selectedProductsOnAddList.ProductID);
+            product.Comment = comment;
+            orderProductService.AddComment(product.ItemID, comment);
+            MessageBox.Show("comment added");
+        }
     }
 }
 
