@@ -66,8 +66,16 @@ namespace OrderingSystemDAL
             sqlParameters[1] = new SqlParameter("@productId", productId);
 
             ExecuteEditQuery(query, sqlParameters);
-        } 
-        
+        }
+        public void RemoveOneOrderItem(int itemId)
+        {
+            query = "DELETE [dbo].[ORDERPRODUCTS] WHERE ItemId=@itemId;";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+
+            sqlParameters[0] = new SqlParameter("@itemId", itemId);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
 
         private List<OrderProduct> ReadTables(DataTable dataTable)
         {

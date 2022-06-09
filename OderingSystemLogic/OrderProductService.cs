@@ -21,6 +21,10 @@ namespace OrderingSystemLogic
         {
             orderProductDao.RemoveOrderItem(productId, orderId);
         }
+        public void RemoveOneOrderItem(int itemId)
+        {
+            orderProductDao.RemoveOneOrderItem(itemId);
+        }
         public void AddOrderItem(int orderNumber, int productId, string comment, DateTime time, string status)
         {
             orderProductDao.AddOrderItem(orderNumber, productId, comment, time, status);

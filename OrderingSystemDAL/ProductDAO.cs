@@ -41,7 +41,7 @@ namespace OrderingSystemDAL
             SqlParameter[] sqlParameters = new SqlParameter[2];
 
             sqlParameters[0] = new SqlParameter("@productId", productId);
-            sqlParameters[1] = new SqlParameter("@productStock", 50);
+            sqlParameters[1] = new SqlParameter("@productStock", newStock);
 
 
             ExecuteEditQuery(query, sqlParameters);

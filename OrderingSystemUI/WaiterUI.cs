@@ -26,7 +26,7 @@ namespace OrderingSystemUI
         List<Product> lunchProducts;
         List<Product> dinnerProducts;
         List<Product> drinkProducts;
-
+        int temporaryCountVariable = 0;
 
 
 
@@ -74,6 +74,8 @@ namespace OrderingSystemUI
             pnlPayment.SelectedTab = tableOrderOverviewTab;
             btnRemove.Hide();
             btnEdit.Hide();
+            btnConfirm.Hide();
+            txtboxEdit.Hide();
 
             try
             {
@@ -518,8 +520,15 @@ namespace OrderingSystemUI
             if (listViewAddOrder.SelectedItems.Count > 0)
             {
                 ListViewItem selectedItem = listViewAddOrder.SelectedItems[0];
-                selectedProduct = (Product)selectedItem.Tag; 
-                addingNewOrdersList.Add(selectedProduct);
+                selectedProduct = (Product)selectedItem.Tag;
+                if (selectedProduct.Stock <= 0)
+                {
+                    MessageBox.Show("Product is out of Stock please choose something else!");
+                }
+                else
+                {
+                    addingNewOrdersList.Add(selectedProduct);
+                }
 
                 DisplaySelectedItemsForOrder();
             }
@@ -568,7 +577,8 @@ namespace OrderingSystemUI
                         addingNewOrdersList[i].TemporaryComment = "";
                     orderProductService.AddOrderItem(currentOrder.OrderNumber, addingNewOrdersList[i].ProductID, addingNewOrdersList[i].TemporaryComment, DateTime.Now, "in preparation");
                     //edit stock in db
-                    int newStock = addingNewOrdersList[i].Stock--;
+                    int newStock = 0;
+                    newStock = addingNewOrdersList[i].Stock - 1;
                     productService.EditStock(addingNewOrdersList[i].ProductID, newStock);
                 }
                 for (int i = 0; i < addingNewOrdersList.Count; i++)
@@ -607,7 +617,8 @@ namespace OrderingSystemUI
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            txtboxEdit.Show();
+            btnConfirm.Show();
         }
 
         private void listViewTableOrder_SelectedIndexChanged(object sender, EventArgs e)
@@ -618,7 +629,11 @@ namespace OrderingSystemUI
             {
 
                 ListViewItem selectedItem = listViewTableOrder.SelectedItems[0];
+                string[] split = selectedItem.Text.Split(" ");
+                txtboxEdit.Text = split[0];
+                temporaryCountVariable = int.Parse(split[0]);
                 Product currentProduct = (Product)selectedItem.Tag;
+                
                 currentOrderItem = orderProductService.GetOrderProduct(currentOrder.OrderNumber, currentProduct.ProductID);
 
                 if (listViewTableOrder.SelectedItems.Count > 1) btnEdit.Hide();
@@ -857,6 +872,38 @@ namespace OrderingSystemUI
         private void btnGoBack_Click(object sender, EventArgs e)
         {
             pnlAddComment.Hide();
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            int newCount = int.Parse(txtboxEdit.Text);
+            
+            if(newCount > temporaryCountVariable)
+            {
+                int itemsToAdd = newCount - temporaryCountVariable;
+                for (int i = 0; i < itemsToAdd; i++)
+                {
+                    orderProductService.AddOrderItem(currentOrder.OrderNumber, currentOrderItem.ProductID, "", DateTime.Now, "in preparation");
+                }
+            }
+            else if(newCount < temporaryCountVariable)
+            {
+                int itemsToRemove = temporaryCountVariable - newCount;
+
+                for (int i = 0; i < itemsToRemove; i++)
+                {
+                    OrderProduct productToRemove = orderProductService.GetOrderProduct(currentOrder.OrderNumber, currentOrderItem.ProductID);
+                    orderProductService.RemoveOneOrderItem(productToRemove.ItemID);
+                }
+            }
+            temporaryCountVariable = 0;
+            listViewTableOrder.SelectedItems.Clear();
+            btnRemove.Hide();
+            btnEdit.Hide();
+            btnConfirm.Hide();
+            txtboxEdit.Hide();
+
+            OrderOverview();
         }
     }
 }

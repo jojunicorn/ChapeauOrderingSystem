@@ -72,6 +72,8 @@ namespace OrderingSystemUI
             this.btnDinnerMenu = new System.Windows.Forms.Button();
             this.btnLunchMenu = new System.Windows.Forms.Button();
             this.tableOrderOverviewTab = new System.Windows.Forms.TabPage();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.txtboxEdit = new System.Windows.Forms.TextBox();
             this.lblDisplayVAT = new System.Windows.Forms.Label();
             this.lblDisplayTotal = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -150,6 +152,7 @@ namespace OrderingSystemUI
             this.tabPageCommentProdcut = new System.Windows.Forms.TabPage();
             this.btnAddComment = new System.Windows.Forms.Button();
             this.txtComment = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPagePayment.SuspendLayout();
             this.addOrderView.SuspendLayout();
@@ -583,6 +586,9 @@ namespace OrderingSystemUI
             // tableOrderOverviewTab
             // 
             this.tableOrderOverviewTab.BackColor = System.Drawing.Color.White;
+            this.tableOrderOverviewTab.Controls.Add(this.label13);
+            this.tableOrderOverviewTab.Controls.Add(this.btnConfirm);
+            this.tableOrderOverviewTab.Controls.Add(this.txtboxEdit);
             this.tableOrderOverviewTab.Controls.Add(this.lblDisplayVAT);
             this.tableOrderOverviewTab.Controls.Add(this.lblDisplayTotal);
             this.tableOrderOverviewTab.Controls.Add(this.btnEdit);
@@ -600,6 +606,23 @@ namespace OrderingSystemUI
             this.tableOrderOverviewTab.Size = new System.Drawing.Size(413, 690);
             this.tableOrderOverviewTab.TabIndex = 2;
             this.tableOrderOverviewTab.Text = "TableOrderVIew";
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Location = new System.Drawing.Point(106, 659);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(94, 29);
+            this.btnConfirm.TabIndex = 12;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // txtboxEdit
+            // 
+            this.txtboxEdit.Location = new System.Drawing.Point(6, 660);
+            this.txtboxEdit.Name = "txtboxEdit";
+            this.txtboxEdit.Size = new System.Drawing.Size(94, 27);
+            this.txtboxEdit.TabIndex = 11;
             // 
             // lblDisplayVAT
             // 
@@ -621,7 +644,7 @@ namespace OrderingSystemUI
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(122, 654);
+            this.btnEdit.Location = new System.Drawing.Point(7, 601);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(94, 29);
             this.btnEdit.TabIndex = 8;
@@ -631,7 +654,7 @@ namespace OrderingSystemUI
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(8, 654);
+            this.btnRemove.Location = new System.Drawing.Point(7, 566);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(94, 29);
             this.btnRemove.TabIndex = 7;
@@ -1525,6 +1548,15 @@ namespace OrderingSystemUI
             this.txtComment.TabIndex = 1;
             this.txtComment.Text = "Comment...";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(7, 637);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(86, 20);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "New Stock: ";
+            // 
             // WaiterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1686,5 +1718,8 @@ namespace OrderingSystemUI
         private System.Windows.Forms.TextBox txtboxComment;
         private System.Windows.Forms.Button btnGoBack;
         private System.Windows.Forms.ColumnHeader comment;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.TextBox txtboxEdit;
+        private System.Windows.Forms.Label label13;
     }
 }
