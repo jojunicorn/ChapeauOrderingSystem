@@ -704,8 +704,8 @@ namespace OrderingSystemUI
                 }
                 float total = 0;
                 float vat = 0;
-                
-               
+              
+
                 foreach (Product product in productsForThisOrder)
                 {
                     total += product.Price;
@@ -753,9 +753,11 @@ namespace OrderingSystemUI
         }
         private void CalculateChange()
         {
-           
+           //convert price to price without euro sign
+           string lblWithoutEuro = lbl_price3.Text.Substring(lbl_price3.Text.LastIndexOf('€') + 1);
+           float price = float.Parse(lblWithoutEuro);
+
            float amountPaid = float.Parse(txtBox_amountPaid.Text);
-           float price = float.Parse(lbl_price3.Text);
 
            float change = amountPaid - price;
            lbl_change.Text = "€ " + change.ToString("0.00");
@@ -787,6 +789,28 @@ namespace OrderingSystemUI
         private void btn_SetAmountPaid_Click(object sender, EventArgs e)
         {
             CalculateChange();
+
+            if (txtBox_amountPaid.Text == " ")
+            {
+                MessageBox.Show("Please, set an amount paid!");
+                return;
+            }
+
+            //check if the amount paid is entered correctly, can't be smaller than order price
+
+            string lblWithoutEuro = lbl_price3.Text.Substring(lbl_price3.Text.LastIndexOf('€') + 1);
+            float price = float.Parse(lblWithoutEuro);
+
+            float amountPaid = float.Parse(txtBox_amountPaid.Text);
+
+            if (amountPaid < price)
+            {
+                lbl_change.Hide();
+                MessageBox.Show("Please, check entered amount again");
+                return;
+            }
+            else lbl_change.Show();
+
         }
         //navigate to "ANY COMMENTS?" page
         private void btn_Pay_Click(object sender, EventArgs e)
@@ -812,25 +836,50 @@ namespace OrderingSystemUI
         //navigate to "SETTLE THE BILL" page
         private void btn_cntinuePayment_Click(object sender, EventArgs e)
         {
+            //display tip and amount paid
+            lbl_tip2.Text = lbl_tip3.Text;
+            lbl_amount_paid.Text = "€ " + txtBox_amountPaid.Text;
+
+            SetPaymentType();
             tabPageAnyComments.Hide();
             tabPageSettledBill.Show();
+        }
+        private void SetPaymentType()
+        {
+            //add payment type
+            if (radioBtn_CASH.Checked)
+            {
+                lbl_paymentType.Text = "CASH";
+            }
+            if (radioBtn_DEBIT.Checked)
+            {
+                lbl_paymentType.Text = "DEBIT";
+            }
+            else lbl_paymentType.Text = "VISA/AMEX";
         }
         //navigate to "SETTLE THE BILL" page
         private void btn_Confirm_Click(object sender, EventArgs e)
         {
-  
+            //display tip and amount paid
+            lbl_tip2.Text = lbl_tip3.Text;
+            lbl_amount_paid.Text = "€ " + txtBox_amountPaid.Text;
 
             if (txtBox_Comment.Text == "")
             {
                 MessageBox.Show("To continue, please fill in the comment section!");
                 return;
             }
+
+            SetPaymentType();
+
             tabPageCustomerComment.Hide();
             tabPageSettledBill.Show();
         }
         //show label "TIP HAS BEEN ADDED" after adding change as a tip
         private void btn_changeAsTip_Click(object sender, EventArgs e)
         {
+            lbl_tip3.Text = lbl_change.Text;
+
             lbl_HasBeenAdded.Show();
             btn_changeAsTip.Hide();
             lbl5.Hide();
@@ -869,7 +918,6 @@ namespace OrderingSystemUI
         {
 
         }
-
         private void listViewOrderSummary_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnComment.Show();
@@ -881,19 +929,15 @@ namespace OrderingSystemUI
                 selectedProductsOnAddList = (Product)selectedItem.Tag;
             }
         }
-
         private void btnRemoveNew_Click(object sender, EventArgs e)
         {
             addingNewOrdersList.Remove(selectedProductsOnAddList);
             DisplaySelectedItemsForOrder();
         }
-
         private void btnComment_Click_1(object sender, EventArgs e)
         {
             pnlAddComment.Show();
         }
-
-
         private void btnpnlAddComment_Click(object sender, EventArgs e)
         {
             string comment = txtboxComment.Text;
@@ -902,12 +946,10 @@ namespace OrderingSystemUI
             listViewOrderSummary.Items.Clear();
             DisplaySelectedItemsForOrder();
         }
-
         private void btnGoBack_Click(object sender, EventArgs e)
         {
             pnlAddComment.Hide();
         }
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             int newCount = int.Parse(txtboxEdit.Text);
