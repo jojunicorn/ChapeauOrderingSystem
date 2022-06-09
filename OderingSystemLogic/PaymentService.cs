@@ -14,7 +14,10 @@ namespace OrderingSystemLogic
         {
             paymentDao = new PaymentDAO();
         }
-
+        public void AddOrderItem(float paymentAmount, string paymentType, float tip, string customerComment, int orderNumber)
+        {
+            paymentDao.AddOrderItem(paymentAmount, paymentType, tip, customerComment, orderNumber);
+        }
         public List<Payment>GetPayment()
         {
             return paymentDao.GetPayment();

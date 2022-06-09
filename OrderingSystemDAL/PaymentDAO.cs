@@ -12,15 +12,29 @@ namespace OrderingSystemDAL
 
         public List<Payment> GetPayment()
         {
-            query = "SELECT PaymentID, PaymentAmount, OrderNumber, Tip, CustomerComment FROM [dbo].[PAYMENT]";
+            query = "SELECT PaymentID, PaymentAmount, PaymentType, OrderNumber, Tip, CustomerComment FROM [dbo].[PAYMENT]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public void AddOrderItem(float paymentAmount, string paymentType, float tip, string customerComment, int orderNumber)
+        {
+
+            query = "INSERT INTO [dbo].[PAYMENT] VALUES (@PaymentAmount, @PaymentType, @Tip, @CustomerComment, @OrderNumber);";
+
+            SqlParameter[] sqlParameters = new SqlParameter[5];
+            sqlParameters[0] = new SqlParameter("@PaymentAmount", paymentAmount);
+            sqlParameters[1] = new SqlParameter("@PaymentType", paymentType);
+            sqlParameters[2] = new SqlParameter("@Tip", tip);
+            sqlParameters[3] = new SqlParameter("@CustomerComment", customerComment);
+            sqlParameters[4] = new SqlParameter("@OrderNumber", orderNumber);
+
+            ExecuteEditQuery(query, sqlParameters);
         }
         public Payment GetPayment(int orderNumber)
         {
             try
             {
-                query = "SELECT PaymentID, PaymentAmount, OrderNumber, Tip, CustomerComment FROM [dbo].[PAYMENT] WHERE OrderNumber = @orderNumber;";
+                query = "SELECT PaymentID, PaymentAmount,PaymentType, OrderNumber, Tip, CustomerComment FROM [dbo].[PAYMENT] WHERE OrderNumber = @orderNumber;";
 
                 SqlParameter[] sqlParameters = new SqlParameter[1];
                 sqlParameters[0] = new SqlParameter("@orderNumber", orderNumber);
@@ -43,9 +57,10 @@ namespace OrderingSystemDAL
                 Payment payment = new Payment()
                 {
                     PaymentID = (int)dr["PaymentID"],
-                    PaymentAmount = (decimal)dr["PaymentAmount"],
+                    PaymentAmount = (float)dr["PaymentAmount"],
+                    PaymentType = (string)dr["PaymentType"],
                     OrderNumber = (int)dr["OrderNumber"],
-                    Tip = (decimal)dr["Tip"],
+                    Tip = (float)dr["Tip"],
                     CustomerComment= (string)dr["CustomerComment"],
 
                 };
@@ -60,33 +75,34 @@ namespace OrderingSystemDAL
             Payment payment = new Payment()
             {
                 PaymentID = (int)dataRow["PaymentID"],
-                PaymentAmount = (decimal)dataRow["PaymentAmount"],
+                PaymentAmount = (float)dataRow["PaymentAmount"],
+                PaymentType = (string)dataRow["PaymentType"],
                 OrderNumber = (int)dataRow["OrderNumber"],
-                Tip = (decimal)dataRow["Tip"],
+                Tip = (float)dataRow["Tip"],
                 CustomerComment = (string)dataRow["CustomerComment"],
             };
 
             return payment;
         }
         //adding entered comment to the database
-        public void AddComment(int OrderNumber, string CustomerComment)
+        public void AddComment(int paymentId, string CustomerComment)
         {
-            query = "UPDATE [dbo].[PAYMENT] SET CustomerComment=@CustomerComment WHERE orderNumber=@orderNumber;";
+            query = "UPDATE [dbo].[PAYMENT] SET CustomerComment=@CustomerComment WHERE PaymentId=@paymentId;";
             SqlParameter[] sqlParameters = new SqlParameter[2];
 
             sqlParameters[0] = new SqlParameter("@CustomerComment", CustomerComment);
-            sqlParameters[1] = new SqlParameter("@OrderNumber",OrderNumber);
+            sqlParameters[1] = new SqlParameter("@paymentId", paymentId);
 
             ExecuteEditQuery(query, sqlParameters);
         }
         //adding Tip to database
-        public void AddTip(decimal Tip, int OrderNumber)
+        public void AddTip(decimal Tip, int paymentId)
         {
-            query = "UPDATE [dbo].[PAYMENT] SET Tip=@Tip WHERE OrderNumber=@OrderNumber;";
+            query = "UPDATE [dbo].[PAYMENT] SET Tip=@Tip WHERE PaymentId=@paymentId;";
             SqlParameter[] sqlParameters = new SqlParameter[2];
 
-            sqlParameters[0] = new SqlParameter("@CustomerComment", Tip);
-            sqlParameters[1] = new SqlParameter("@OrderNumber", OrderNumber);
+            sqlParameters[0] = new SqlParameter("@Tip", Tip);
+            sqlParameters[1] = new SqlParameter("@paymentId", paymentId);
         }
 
     }

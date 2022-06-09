@@ -61,6 +61,7 @@ namespace OrderingSystemUI
 
             pnlTableStatus.Hide();
             pnlAddComment.Hide();
+            lblTableNumber.Text = "";
 
             //creating lists with the Products on the menu, data from DB
             lunchProducts = productService.GetLunchProducts();
@@ -73,6 +74,7 @@ namespace OrderingSystemUI
         //Displaying all items in the current order
         private void OrderOverview()
         {
+            lblTableNumber.Show();
             pnlPayment.SelectedTab = tableOrderOverviewTab;
             btnRemove.Hide();
             btnEdit.Hide();
@@ -151,7 +153,7 @@ namespace OrderingSystemUI
             if (result == DialogResult.OK)
             {
                 currentTable = null;
-                tableNumber.Text = "TABLE#...";
+                tableNumber.Text = "";
                 pnlTableStatus.Hide();
                 pnlPayment.SelectedTab = tableViewTabCommentQ;
             }
@@ -706,12 +708,12 @@ namespace OrderingSystemUI
         }
         private void CalculateChange()
         {
-            //DOESN'T WORK
-           // int amountPaid = int.Parse(txtBox_amountPaid.Text);
-            //int price = Int32.Parse(lbl_price3.Text);
+           
+           float amountPaid = float.Parse(txtBox_amountPaid.Text);
+           float price = float.Parse(lbl_price3.Text);
 
-           // int change = amountPaid - price;
-            //lbl_change.Text = "€ " + change.ToString("0.00");
+           float change = amountPaid - price;
+           lbl_change.Text = "€ " + change.ToString("0.00");
         }
         //navigate to Payment UI
         private void btnPay_Click(object sender, EventArgs e)
