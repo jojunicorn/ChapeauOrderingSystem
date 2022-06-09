@@ -19,5 +19,10 @@ namespace OrderingSystemLogic
         {
             return barmanDAO.GetAllOrders();
         }
+
+        public void UpdateOrderStatus(OrderProduct orderProduct)
+        {
+            barmanDAO.Update(orderProduct);
+        }
     }
 }

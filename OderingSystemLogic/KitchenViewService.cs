@@ -19,5 +19,10 @@ namespace OrderingSystemLogic
         {
             return chefDAO.GetAllOrders();
         }
+
+        public void UpdateOrderStatus(OrderProduct orderProduct) 
+        {
+            chefDAO.Update(orderProduct);
+        }
     }
 }

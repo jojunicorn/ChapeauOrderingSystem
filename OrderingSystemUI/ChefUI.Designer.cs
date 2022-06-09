@@ -29,61 +29,67 @@
         private void InitializeComponent()
         {
             this.lbl_Orders = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.lblChangeOrderStatus = new System.Windows.Forms.Label();
+            this.btnInitialized = new System.Windows.Forms.Button();
+            this.btnInProgress = new System.Windows.Forms.Button();
+            this.btnCompleted = new System.Windows.Forms.Button();
             this.listViewOrdersKitchenView = new System.Windows.Forms.ListView();
             this.lbl_OrdersDisplay = new System.Windows.Forms.Label();
-            this.lbl_OrderStatusDisplay = new System.Windows.Forms.Label();
+            this.lblOrderStatusDisplay = new System.Windows.Forms.Label();
+            this.lblOrderStatus = new System.Windows.Forms.Label();
+            this.lblViewOrderStatus = new System.Windows.Forms.Label();
+            this.listViewKitchenOrderStatus = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // lbl_Orders
             // 
             this.lbl_Orders.AutoSize = true;
-            this.lbl_Orders.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_Orders.BackColor = System.Drawing.Color.DarkOrange;
             this.lbl_Orders.Location = new System.Drawing.Point(616, 31);
             this.lbl_Orders.Name = "lbl_Orders";
             this.lbl_Orders.Size = new System.Drawing.Size(128, 25);
             this.lbl_Orders.TabIndex = 4;
             this.lbl_Orders.Text = "Kitchen Orders";
             // 
-            // label1
+            // lblChangeOrderStatus
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(993, 113);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 25);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Order status";
+            this.lblChangeOrderStatus.AutoSize = true;
+            this.lblChangeOrderStatus.BackColor = System.Drawing.Color.DarkOrange;
+            this.lblChangeOrderStatus.Location = new System.Drawing.Point(973, 116);
+            this.lblChangeOrderStatus.Name = "lblChangeOrderStatus";
+            this.lblChangeOrderStatus.Size = new System.Drawing.Size(172, 25);
+            this.lblChangeOrderStatus.TabIndex = 5;
+            this.lblChangeOrderStatus.Text = "Change order status";
             // 
-            // button1
+            // btnInitialized
             // 
-            this.button1.Location = new System.Drawing.Point(852, 159);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 34);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Initialized";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnInitialized.Location = new System.Drawing.Point(852, 155);
+            this.btnInitialized.Name = "btnInitialized";
+            this.btnInitialized.Size = new System.Drawing.Size(112, 34);
+            this.btnInitialized.TabIndex = 6;
+            this.btnInitialized.Text = "Initialized";
+            this.btnInitialized.UseVisualStyleBackColor = true;
+            this.btnInitialized.Click += new System.EventHandler(this.btnInitialized_Click);
             // 
-            // button2
+            // btnInProgress
             // 
-            this.button2.Location = new System.Drawing.Point(982, 159);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 34);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "In progress";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnInProgress.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnInProgress.Location = new System.Drawing.Point(982, 155);
+            this.btnInProgress.Name = "btnInProgress";
+            this.btnInProgress.Size = new System.Drawing.Size(112, 34);
+            this.btnInProgress.TabIndex = 7;
+            this.btnInProgress.Text = "In progress";
+            this.btnInProgress.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btnCompleted
             // 
-            this.button3.Location = new System.Drawing.Point(1110, 159);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 34);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Completed";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCompleted.BackColor = System.Drawing.Color.LightGreen;
+            this.btnCompleted.Location = new System.Drawing.Point(1110, 155);
+            this.btnCompleted.Name = "btnCompleted";
+            this.btnCompleted.Size = new System.Drawing.Size(112, 34);
+            this.btnCompleted.TabIndex = 8;
+            this.btnCompleted.Text = "Completed";
+            this.btnCompleted.UseVisualStyleBackColor = false;
             // 
             // listViewOrdersKitchenView
             // 
@@ -97,36 +103,68 @@
             // lbl_OrdersDisplay
             // 
             this.lbl_OrdersDisplay.AutoSize = true;
-            this.lbl_OrdersDisplay.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_OrdersDisplay.BackColor = System.Drawing.Color.DarkOrange;
             this.lbl_OrdersDisplay.Location = new System.Drawing.Point(12, 9);
             this.lbl_OrdersDisplay.MinimumSize = new System.Drawing.Size(1210, 70);
             this.lbl_OrdersDisplay.Name = "lbl_OrdersDisplay";
             this.lbl_OrdersDisplay.Size = new System.Drawing.Size(1210, 70);
             this.lbl_OrdersDisplay.TabIndex = 10;
             // 
-            // lbl_OrderStatusDisplay
+            // lblOrderStatusDisplay
             // 
-            this.lbl_OrderStatusDisplay.AutoSize = true;
-            this.lbl_OrderStatusDisplay.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_OrderStatusDisplay.Location = new System.Drawing.Point(852, 102);
-            this.lbl_OrderStatusDisplay.MinimumSize = new System.Drawing.Size(370, 50);
-            this.lbl_OrderStatusDisplay.Name = "lbl_OrderStatusDisplay";
-            this.lbl_OrderStatusDisplay.Size = new System.Drawing.Size(370, 50);
-            this.lbl_OrderStatusDisplay.TabIndex = 11;
+            this.lblOrderStatusDisplay.AutoSize = true;
+            this.lblOrderStatusDisplay.BackColor = System.Drawing.Color.DarkOrange;
+            this.lblOrderStatusDisplay.Location = new System.Drawing.Point(852, 102);
+            this.lblOrderStatusDisplay.MinimumSize = new System.Drawing.Size(370, 50);
+            this.lblOrderStatusDisplay.Name = "lblOrderStatusDisplay";
+            this.lblOrderStatusDisplay.Size = new System.Drawing.Size(370, 50);
+            this.lblOrderStatusDisplay.TabIndex = 11;
+            // 
+            // lblOrderStatus
+            // 
+            this.lblOrderStatus.AutoSize = true;
+            this.lblOrderStatus.BackColor = System.Drawing.Color.DarkOrange;
+            this.lblOrderStatus.Location = new System.Drawing.Point(852, 196);
+            this.lblOrderStatus.MinimumSize = new System.Drawing.Size(370, 50);
+            this.lblOrderStatus.Name = "lblOrderStatus";
+            this.lblOrderStatus.Size = new System.Drawing.Size(370, 50);
+            this.lblOrderStatus.TabIndex = 12;
+            // 
+            // lblViewOrderStatus
+            // 
+            this.lblViewOrderStatus.AutoSize = true;
+            this.lblViewOrderStatus.BackColor = System.Drawing.Color.DarkOrange;
+            this.lblViewOrderStatus.Location = new System.Drawing.Point(982, 207);
+            this.lblViewOrderStatus.Name = "lblViewOrderStatus";
+            this.lblViewOrderStatus.Size = new System.Drawing.Size(149, 25);
+            this.lblViewOrderStatus.TabIndex = 13;
+            this.lblViewOrderStatus.Text = "View order status";
+            // 
+            // listViewKitchenOrderStatus
+            // 
+            this.listViewKitchenOrderStatus.HideSelection = false;
+            this.listViewKitchenOrderStatus.Location = new System.Drawing.Point(851, 253);
+            this.listViewKitchenOrderStatus.Name = "listViewKitchenOrderStatus";
+            this.listViewKitchenOrderStatus.Size = new System.Drawing.Size(371, 131);
+            this.listViewKitchenOrderStatus.TabIndex = 14;
+            this.listViewKitchenOrderStatus.UseCompatibleStateImageBehavior = false;
             // 
             // ChefUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1236, 495);
+            this.Controls.Add(this.listViewKitchenOrderStatus);
+            this.Controls.Add(this.lblViewOrderStatus);
+            this.Controls.Add(this.lblOrderStatus);
             this.Controls.Add(this.listViewOrdersKitchenView);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnCompleted);
+            this.Controls.Add(this.btnInProgress);
+            this.Controls.Add(this.btnInitialized);
+            this.Controls.Add(this.lblChangeOrderStatus);
             this.Controls.Add(this.lbl_Orders);
             this.Controls.Add(this.lbl_OrdersDisplay);
-            this.Controls.Add(this.lbl_OrderStatusDisplay);
+            this.Controls.Add(this.lblOrderStatusDisplay);
             this.Name = "ChefUI";
             this.Text = "ChefUI";
             this.Load += new System.EventHandler(this.ChefUI_Load);
@@ -137,12 +175,15 @@
 
         #endregion
         private System.Windows.Forms.Label lbl_Orders;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label lblChangeOrderStatus;
+        private System.Windows.Forms.Button btnInitialized;
+        private System.Windows.Forms.Button btnInProgress;
+        private System.Windows.Forms.Button btnCompleted;
         private System.Windows.Forms.ListView listViewOrdersKitchenView;
         private System.Windows.Forms.Label lbl_OrdersDisplay;
-        private System.Windows.Forms.Label lbl_OrderStatusDisplay;
+        private System.Windows.Forms.Label lblOrderStatusDisplay;
+        private System.Windows.Forms.Label lblOrderStatus;
+        private System.Windows.Forms.Label lblViewOrderStatus;
+        private System.Windows.Forms.ListView listViewKitchenOrderStatus;
     }
 }
