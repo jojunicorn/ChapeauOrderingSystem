@@ -15,10 +15,12 @@ namespace OrderingSystemLogic
             chefDAO = new ChefDAO();
         }
 
+
         public List<OrderProduct> GetOrders()
         {
             return chefDAO.GetAllOrders();
         }
+
 
         public void UpdateOrderStatus(OrderProduct orderProduct) 
         {
