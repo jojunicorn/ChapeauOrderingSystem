@@ -53,6 +53,8 @@ namespace OrderingSystemUI
 
             currentOrderItem = null;
             SetTablesColor();
+            HideButtons();
+            SetOrderDisplay();
 
             //displaying the logged in Employee in the upper right corner
             btnEmployeeName.Text = currentEmployee.EmployeeName;
@@ -67,6 +69,8 @@ namespace OrderingSystemUI
             lunchProducts = productService.GetLunchProducts();
             dinnerProducts = productService.GetDinnerProducts();
             drinkProducts = productService.GetDrinkProducts();
+
+            
 
         }
 
@@ -389,6 +393,47 @@ namespace OrderingSystemUI
             TableColor(tableService.GetTable(8), btnTable8);
             TableColor(tableService.GetTable(9), btnTable9);
             TableColor(tableService.GetTable(10), btnTable10);
+        }
+
+        public void SetOrderButton(Table table, Button btn)
+        {
+            //table = tableService.GetTable(table.TableNumber);
+            //if (table.TableStatus == "occupied")
+            //{
+            //    orderProductService.GetOrderProduct(table.CurrentOrder, );
+            //    if (.Count > 0)
+            //    {
+            //        foreach (OrderProduct product in orderProductService.GetAllOrderProducts())
+            //        {
+            //            if (product.Status == "prepared")
+            //            {
+            //                btn.BackColor = Color.Gold;
+            //                btn.Show();
+            //            }
+            //            else
+            //            {
+            //                btn.Show();
+            //            }
+            //        }
+            //    }
+
+
+            //}  
+        }
+
+        public void SetOrderDisplay()
+        {
+            SetOrderButton(tableService.GetTable(1), btnD1);
+            SetOrderButton(tableService.GetTable(2), btnD2);
+            SetOrderButton(tableService.GetTable(3), btnD3);
+            SetOrderButton(tableService.GetTable(4), btnD4);
+            SetOrderButton(tableService.GetTable(5), btnD5);
+            SetOrderButton(tableService.GetTable(6), btnD6);
+            SetOrderButton(tableService.GetTable(7), btnD7);
+            SetOrderButton(tableService.GetTable(8), btnD8);
+            SetOrderButton(tableService.GetTable(9), btnD9);
+            SetOrderButton(tableService.GetTable(10), btnD10);
+
         }
 
         public void TableColor(Table table, Button btn)
@@ -893,6 +938,26 @@ namespace OrderingSystemUI
             txtboxEdit.Hide();
 
             OrderOverview();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void HideButtons()
+        {
+            btnD1.Hide(); btnF1.Hide();
+            btnD2.Hide(); btnF2.Hide();
+            btnD3.Hide(); btnF3.Hide();
+            btnD4.Hide(); btnF4.Hide();
+            btnD5.Hide(); btnF5.Hide();
+            btnD6.Hide(); btnF6.Hide();
+            btnD7.Hide(); btnF7.Hide();
+            btnD8.Hide(); btnF8.Hide();
+            btnD9.Hide(); btnF9.Hide();
+            btnD10.Hide(); btnF10.Hide();
+
         }
     }
 }

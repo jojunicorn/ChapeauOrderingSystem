@@ -90,6 +90,28 @@ namespace OrderingSystemUI
             this.itemName = new System.Windows.Forms.ColumnHeader();
             this.Price = new System.Windows.Forms.ColumnHeader();
             this.tableViewTabCommentQ = new System.Windows.Forms.TabPage();
+            this.btnF2 = new System.Windows.Forms.Button();
+            this.btnD2 = new System.Windows.Forms.Button();
+            this.btnF4 = new System.Windows.Forms.Button();
+            this.btnD4 = new System.Windows.Forms.Button();
+            this.btnF6 = new System.Windows.Forms.Button();
+            this.btnD6 = new System.Windows.Forms.Button();
+            this.btnF8 = new System.Windows.Forms.Button();
+            this.btnD8 = new System.Windows.Forms.Button();
+            this.btnF10 = new System.Windows.Forms.Button();
+            this.btnD10 = new System.Windows.Forms.Button();
+            this.btnF9 = new System.Windows.Forms.Button();
+            this.btnD9 = new System.Windows.Forms.Button();
+            this.btnF7 = new System.Windows.Forms.Button();
+            this.btnD7 = new System.Windows.Forms.Button();
+            this.btnF5 = new System.Windows.Forms.Button();
+            this.btnD5 = new System.Windows.Forms.Button();
+            this.btnF3 = new System.Windows.Forms.Button();
+            this.btnD3 = new System.Windows.Forms.Button();
+            this.btnF1 = new System.Windows.Forms.Button();
+            this.btnD1 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.pnlTableStatus = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnGoToTable = new System.Windows.Forms.Button();
@@ -773,6 +795,28 @@ namespace OrderingSystemUI
             // 
             this.tableViewTabCommentQ.BackColor = System.Drawing.Color.White;
             this.tableViewTabCommentQ.Controls.Add(this.pnlTableStatus);
+            this.tableViewTabCommentQ.Controls.Add(this.btnF2);
+            this.tableViewTabCommentQ.Controls.Add(this.btnD2);
+            this.tableViewTabCommentQ.Controls.Add(this.btnF4);
+            this.tableViewTabCommentQ.Controls.Add(this.btnD4);
+            this.tableViewTabCommentQ.Controls.Add(this.btnF6);
+            this.tableViewTabCommentQ.Controls.Add(this.btnD6);
+            this.tableViewTabCommentQ.Controls.Add(this.btnF8);
+            this.tableViewTabCommentQ.Controls.Add(this.btnD8);
+            this.tableViewTabCommentQ.Controls.Add(this.btnF10);
+            this.tableViewTabCommentQ.Controls.Add(this.btnD10);
+            this.tableViewTabCommentQ.Controls.Add(this.btnF9);
+            this.tableViewTabCommentQ.Controls.Add(this.btnD9);
+            this.tableViewTabCommentQ.Controls.Add(this.btnF7);
+            this.tableViewTabCommentQ.Controls.Add(this.btnD7);
+            this.tableViewTabCommentQ.Controls.Add(this.btnF5);
+            this.tableViewTabCommentQ.Controls.Add(this.btnD5);
+            this.tableViewTabCommentQ.Controls.Add(this.btnF3);
+            this.tableViewTabCommentQ.Controls.Add(this.btnD3);
+            this.tableViewTabCommentQ.Controls.Add(this.btnF1);
+            this.tableViewTabCommentQ.Controls.Add(this.btnD1);
+            this.tableViewTabCommentQ.Controls.Add(this.label15);
+            this.tableViewTabCommentQ.Controls.Add(this.label14);
             this.tableViewTabCommentQ.Controls.Add(this.label7);
             this.tableViewTabCommentQ.Controls.Add(this.label6);
             this.tableViewTabCommentQ.Controls.Add(this.label5);
@@ -796,6 +840,203 @@ namespace OrderingSystemUI
             this.tableViewTabCommentQ.TabIndex = 0;
             this.tableViewTabCommentQ.Text = "TableView";
             // 
+            // btnF2
+            // 
+            this.btnF2.Location = new System.Drawing.Point(330, 119);
+            this.btnF2.Name = "btnF2";
+            this.btnF2.Size = new System.Drawing.Size(19, 38);
+            this.btnF2.TabIndex = 39;
+            this.btnF2.Text = "F";
+            this.btnF2.UseVisualStyleBackColor = true;
+            // 
+            // btnD2
+            // 
+            this.btnD2.Location = new System.Drawing.Point(330, 84);
+            this.btnD2.Name = "btnD2";
+            this.btnD2.Size = new System.Drawing.Size(19, 38);
+            this.btnD2.TabIndex = 38;
+            this.btnD2.Text = "D";
+            this.btnD2.UseVisualStyleBackColor = true;
+            // 
+            // btnF4
+            // 
+            this.btnF4.Location = new System.Drawing.Point(330, 209);
+            this.btnF4.Name = "btnF4";
+            this.btnF4.Size = new System.Drawing.Size(19, 38);
+            this.btnF4.TabIndex = 37;
+            this.btnF4.Text = "F";
+            this.btnF4.UseVisualStyleBackColor = true;
+            // 
+            // btnD4
+            // 
+            this.btnD4.Location = new System.Drawing.Point(330, 174);
+            this.btnD4.Name = "btnD4";
+            this.btnD4.Size = new System.Drawing.Size(19, 38);
+            this.btnD4.TabIndex = 36;
+            this.btnD4.Text = "D";
+            this.btnD4.UseVisualStyleBackColor = true;
+            // 
+            // btnF6
+            // 
+            this.btnF6.Location = new System.Drawing.Point(330, 302);
+            this.btnF6.Name = "btnF6";
+            this.btnF6.Size = new System.Drawing.Size(19, 38);
+            this.btnF6.TabIndex = 35;
+            this.btnF6.Text = "F";
+            this.btnF6.UseVisualStyleBackColor = true;
+            // 
+            // btnD6
+            // 
+            this.btnD6.Location = new System.Drawing.Point(330, 267);
+            this.btnD6.Name = "btnD6";
+            this.btnD6.Size = new System.Drawing.Size(19, 38);
+            this.btnD6.TabIndex = 34;
+            this.btnD6.Text = "D";
+            this.btnD6.UseVisualStyleBackColor = true;
+            // 
+            // btnF8
+            // 
+            this.btnF8.Location = new System.Drawing.Point(330, 395);
+            this.btnF8.Name = "btnF8";
+            this.btnF8.Size = new System.Drawing.Size(19, 38);
+            this.btnF8.TabIndex = 33;
+            this.btnF8.Text = "F";
+            this.btnF8.UseVisualStyleBackColor = true;
+            // 
+            // btnD8
+            // 
+            this.btnD8.Location = new System.Drawing.Point(330, 361);
+            this.btnD8.Name = "btnD8";
+            this.btnD8.Size = new System.Drawing.Size(19, 38);
+            this.btnD8.TabIndex = 32;
+            this.btnD8.Text = "D";
+            this.btnD8.UseVisualStyleBackColor = true;
+            // 
+            // btnF10
+            // 
+            this.btnF10.Location = new System.Drawing.Point(330, 488);
+            this.btnF10.Name = "btnF10";
+            this.btnF10.Size = new System.Drawing.Size(19, 38);
+            this.btnF10.TabIndex = 31;
+            this.btnF10.Text = "F";
+            this.btnF10.UseVisualStyleBackColor = true;
+            // 
+            // btnD10
+            // 
+            this.btnD10.Location = new System.Drawing.Point(330, 453);
+            this.btnD10.Name = "btnD10";
+            this.btnD10.Size = new System.Drawing.Size(19, 38);
+            this.btnD10.TabIndex = 30;
+            this.btnD10.Text = "D";
+            this.btnD10.UseVisualStyleBackColor = true;
+            // 
+            // btnF9
+            // 
+            this.btnF9.Location = new System.Drawing.Point(160, 488);
+            this.btnF9.Name = "btnF9";
+            this.btnF9.Size = new System.Drawing.Size(19, 38);
+            this.btnF9.TabIndex = 29;
+            this.btnF9.Text = "F";
+            this.btnF9.UseVisualStyleBackColor = true;
+            // 
+            // btnD9
+            // 
+            this.btnD9.Location = new System.Drawing.Point(160, 453);
+            this.btnD9.Name = "btnD9";
+            this.btnD9.Size = new System.Drawing.Size(19, 38);
+            this.btnD9.TabIndex = 28;
+            this.btnD9.Text = "D";
+            this.btnD9.UseVisualStyleBackColor = true;
+            // 
+            // btnF7
+            // 
+            this.btnF7.Location = new System.Drawing.Point(160, 396);
+            this.btnF7.Name = "btnF7";
+            this.btnF7.Size = new System.Drawing.Size(19, 38);
+            this.btnF7.TabIndex = 27;
+            this.btnF7.Text = "F";
+            this.btnF7.UseVisualStyleBackColor = true;
+            // 
+            // btnD7
+            // 
+            this.btnD7.Location = new System.Drawing.Point(160, 361);
+            this.btnD7.Name = "btnD7";
+            this.btnD7.Size = new System.Drawing.Size(19, 38);
+            this.btnD7.TabIndex = 26;
+            this.btnD7.Text = "D";
+            this.btnD7.UseVisualStyleBackColor = true;
+            // 
+            // btnF5
+            // 
+            this.btnF5.Location = new System.Drawing.Point(160, 302);
+            this.btnF5.Name = "btnF5";
+            this.btnF5.Size = new System.Drawing.Size(19, 38);
+            this.btnF5.TabIndex = 25;
+            this.btnF5.Text = "F";
+            this.btnF5.UseVisualStyleBackColor = true;
+            // 
+            // btnD5
+            // 
+            this.btnD5.Location = new System.Drawing.Point(160, 267);
+            this.btnD5.Name = "btnD5";
+            this.btnD5.Size = new System.Drawing.Size(19, 38);
+            this.btnD5.TabIndex = 24;
+            this.btnD5.Text = "D";
+            this.btnD5.UseVisualStyleBackColor = true;
+            // 
+            // btnF3
+            // 
+            this.btnF3.Location = new System.Drawing.Point(160, 209);
+            this.btnF3.Name = "btnF3";
+            this.btnF3.Size = new System.Drawing.Size(19, 38);
+            this.btnF3.TabIndex = 23;
+            this.btnF3.Text = "F";
+            this.btnF3.UseVisualStyleBackColor = true;
+            // 
+            // btnD3
+            // 
+            this.btnD3.Location = new System.Drawing.Point(160, 174);
+            this.btnD3.Name = "btnD3";
+            this.btnD3.Size = new System.Drawing.Size(19, 38);
+            this.btnD3.TabIndex = 22;
+            this.btnD3.Text = "D";
+            this.btnD3.UseVisualStyleBackColor = true;
+            // 
+            // btnF1
+            // 
+            this.btnF1.Location = new System.Drawing.Point(160, 119);
+            this.btnF1.Name = "btnF1";
+            this.btnF1.Size = new System.Drawing.Size(19, 38);
+            this.btnF1.TabIndex = 21;
+            this.btnF1.Text = "F";
+            this.btnF1.UseVisualStyleBackColor = true;
+            // 
+            // btnD1
+            // 
+            this.btnD1.Location = new System.Drawing.Point(160, 84);
+            this.btnD1.Name = "btnD1";
+            this.btnD1.Size = new System.Drawing.Size(19, 38);
+            this.btnD1.TabIndex = 18;
+            this.btnD1.Text = "D";
+            this.btnD1.UseVisualStyleBackColor = true;
+            this.btnD1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(191, 30);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(0, 20);
+            this.label15.TabIndex = 17;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(46, 42);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(0, 20);
+            this.label14.TabIndex = 16;
+            // 
             // pnlTableStatus
             // 
             this.pnlTableStatus.Controls.Add(this.btnBack);
@@ -804,7 +1045,7 @@ namespace OrderingSystemUI
             this.pnlTableStatus.Controls.Add(this.RBoccupied);
             this.pnlTableStatus.Controls.Add(this.RBfree);
             this.pnlTableStatus.Controls.Add(this.lblTableNumber);
-            this.pnlTableStatus.Location = new System.Drawing.Point(19, 84);
+            this.pnlTableStatus.Location = new System.Drawing.Point(22, 84);
             this.pnlTableStatus.Name = "pnlTableStatus";
             this.pnlTableStatus.Size = new System.Drawing.Size(374, 587);
             this.pnlTableStatus.TabIndex = 10;
@@ -1721,5 +1962,27 @@ namespace OrderingSystemUI
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.TextBox txtboxEdit;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnD1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnF1;
+        private System.Windows.Forms.Button btnF2;
+        private System.Windows.Forms.Button btnD2;
+        private System.Windows.Forms.Button btnF4;
+        private System.Windows.Forms.Button btnD4;
+        private System.Windows.Forms.Button btnF6;
+        private System.Windows.Forms.Button btnD6;
+        private System.Windows.Forms.Button btnF8;
+        private System.Windows.Forms.Button btnD8;
+        private System.Windows.Forms.Button btnF10;
+        private System.Windows.Forms.Button btnD10;
+        private System.Windows.Forms.Button btnF9;
+        private System.Windows.Forms.Button btnD9;
+        private System.Windows.Forms.Button btnF7;
+        private System.Windows.Forms.Button btnD7;
+        private System.Windows.Forms.Button btnF5;
+        private System.Windows.Forms.Button btnD5;
+        private System.Windows.Forms.Button btnF3;
+        private System.Windows.Forms.Button btnD3;
     }
 }
