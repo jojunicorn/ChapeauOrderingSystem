@@ -110,7 +110,7 @@ namespace OrderingSystemUI
         {
             OrderProduct orderProduct = (OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag;
 
-            orderProduct.Status = "order status";
+            orderProduct.Status = "in preparation";
 
             barViewService.UpdateOrderStatus((OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag);
 
@@ -118,6 +118,35 @@ namespace OrderingSystemUI
             item.Text = orderProduct.ItemID.ToString();
             item.SubItems.Add(orderProduct.Status.ToString());
             listViewBarOrderStatus.Items.Add(item);
+        }
+
+        private void InProgress_Click(object sender, EventArgs e)
+        {
+            OrderProduct orderProduct = (OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag;
+
+            orderProduct.Status = "prepared";
+
+            barViewService.UpdateOrderStatus((OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag);
+
+            ListViewItem item = new ListViewItem(orderProduct.ToString());
+            item.Text = orderProduct.ItemID.ToString();
+            item.SubItems.Add(orderProduct.Status.ToString());
+            listViewBarOrderStatus.Items.Add(item);
+        }
+
+        private void Completed_Click(object sender, EventArgs e)
+        {
+            OrderProduct orderProduct = (OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag;
+
+            orderProduct.Status = "served";
+
+            barViewService.UpdateOrderStatus((OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag);
+
+            ListViewItem item = new ListViewItem(orderProduct.ToString());
+            item.Text = orderProduct.ItemID.ToString();
+            item.SubItems.Add(orderProduct.Status.ToString());
+            listViewBarOrderStatus.Items.Add(item);
+
         }
     }
 }

@@ -109,9 +109,37 @@ namespace OrderingSystemUI
         {
             OrderProduct orderProduct = (OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag;
 
-            orderProduct.Status = "order status";
+            orderProduct.Status = "in preparation";
 
-            kitchenViewService.UpdateOrderStatus(orderProduct);//(OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag);
+            kitchenViewService.UpdateOrderStatus(orderProduct);
+
+            ListViewItem item = new ListViewItem(orderProduct.ToString());
+            item.Text = orderProduct.ItemID.ToString();
+            item.SubItems.Add(orderProduct.Status.ToString());
+            listViewKitchenOrderStatus.Items.Add(item);
+        }
+
+        private void btnInProgress_Click(object sender, EventArgs e)
+        {
+            OrderProduct orderProduct = (OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag;
+
+            orderProduct.Status = "prepared";
+
+            kitchenViewService.UpdateOrderStatus((OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag);
+
+            ListViewItem item = new ListViewItem(orderProduct.ToString());
+            item.Text = orderProduct.ItemID.ToString();
+            item.SubItems.Add(orderProduct.Status.ToString());
+            listViewKitchenOrderStatus.Items.Add(item);
+        }
+
+        private void btnCompleted_Click(object sender, EventArgs e)
+        {
+            OrderProduct orderProduct = (OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag;
+
+            orderProduct.Status = "served";
+
+            kitchenViewService.UpdateOrderStatus((OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag);
 
             ListViewItem item = new ListViewItem(orderProduct.ToString());
             item.Text = orderProduct.ItemID.ToString();

@@ -77,8 +77,9 @@
             this.InProgress.Name = "InProgress";
             this.InProgress.Size = new System.Drawing.Size(112, 34);
             this.InProgress.TabIndex = 5;
-            this.InProgress.Text = "In progress";
+            this.InProgress.Text = "Prepared";
             this.InProgress.UseVisualStyleBackColor = false;
+            this.InProgress.Click += new System.EventHandler(this.InProgress_Click);
             // 
             // Completed
             // 
@@ -87,8 +88,9 @@
             this.Completed.Name = "Completed";
             this.Completed.Size = new System.Drawing.Size(112, 34);
             this.Completed.TabIndex = 6;
-            this.Completed.Text = "Completed";
+            this.Completed.Text = "Served";
             this.Completed.UseVisualStyleBackColor = false;
+            this.Completed.Click += new System.EventHandler(this.Completed_Click);
             // 
             // lblChangeOrderStatus
             // 

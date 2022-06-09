@@ -50,28 +50,10 @@ namespace OrderingSystemDAL
 
         public void Update(OrderProduct orderProduct)
         {
-            try
-            {
-                dbConnection.Open();
-                SqlCommand command = new SqlCommand("UPDATE ORDERPRODUCTS SET ItemId=@ItemID, OrderNumber=@OrderNumber, ProductID=@ProductID, Comment=@Comment, OrderTime=@OrderTime, OrderStatus=@OrderStatus WHERE ItemID=@ItemID", dbConnection);
-                command.Parameters.AddWithValue("@ItemID", orderProduct.ItemID);
-                command.Parameters.AddWithValue("@OrderNumber", orderProduct.OrderNumber);
-                command.Parameters.AddWithValue("@ProductID", orderProduct.ProductID);
-                command.Parameters.AddWithValue("@Comment", orderProduct.Comment);
-                command.Parameters.AddWithValue("@OrderTime", orderProduct.OrderTime);
-                command.Parameters.AddWithValue("@OrderStatus", orderProduct.Status);
-
-                int nrOfRowsAffected = command.ExecuteNonQuery();
-                dbConnection.Close();
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            dbConnection.Close();
+            //change the activity details
+            string query = $"UPDATE ORDERPRODUCTS SET OrderStatus='{orderProduct.Status}' WHERE ItemID={orderProduct.ItemID}";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
         }
-
     }
 }

@@ -78,8 +78,9 @@
             this.btnInProgress.Name = "btnInProgress";
             this.btnInProgress.Size = new System.Drawing.Size(112, 34);
             this.btnInProgress.TabIndex = 7;
-            this.btnInProgress.Text = "In progress";
+            this.btnInProgress.Text = "Prepared";
             this.btnInProgress.UseVisualStyleBackColor = false;
+            this.btnInProgress.Click += new System.EventHandler(this.btnInProgress_Click);
             // 
             // btnCompleted
             // 
@@ -88,8 +89,9 @@
             this.btnCompleted.Name = "btnCompleted";
             this.btnCompleted.Size = new System.Drawing.Size(112, 34);
             this.btnCompleted.TabIndex = 8;
-            this.btnCompleted.Text = "Completed";
+            this.btnCompleted.Text = "Served";
             this.btnCompleted.UseVisualStyleBackColor = false;
+            this.btnCompleted.Click += new System.EventHandler(this.btnCompleted_Click);
             // 
             // listViewOrdersKitchenView
             // 
