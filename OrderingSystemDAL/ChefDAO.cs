@@ -52,7 +52,6 @@ namespace OrderingSystemDAL
 
         public void Update(OrderProduct orderProduct)
         {
-            //change the activity details
             string query = $"UPDATE ORDERPRODUCTS SET OrderStatus='{orderProduct.Status}' WHERE ItemID={orderProduct.ItemID}";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
