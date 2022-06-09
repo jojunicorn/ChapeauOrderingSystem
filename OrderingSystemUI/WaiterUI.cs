@@ -20,15 +20,13 @@ namespace OrderingSystemUI
         TableService tableService = new TableService();
         OrderService orderService = new OrderService();
 
-
+        //creating all kinds of Object which are needed
         List<Product> addingNewOrdersList;
         List<int> alreadyPrinted = new List<int>();
         List<Product> lunchProducts;
         List<Product> dinnerProducts;
         List<Product> drinkProducts;
         int temporaryCountVariable = 0;
-
-
 
         Table currentTable = null;
         Employee currentEmployee = null;
@@ -44,7 +42,6 @@ namespace OrderingSystemUI
             InitializeComponent();
             this.currentEmployee = currentEmployee;
             addingNewOrdersList = new List<Product>();
-
         }
 
         private void WaiterUI_Load(object sender, EventArgs e)
@@ -57,6 +54,7 @@ namespace OrderingSystemUI
             currentOrderItem = null;
             SetTablesColor();
 
+            //displaying the logged in Employee in the upper right corner
             btnEmployeeName.Text = currentEmployee.EmployeeName;
 
             pnlPayment.SelectedTab = tableViewTabCommentQ;
@@ -64,11 +62,15 @@ namespace OrderingSystemUI
             pnlTableStatus.Hide();
             pnlAddComment.Hide();
 
+            //creating lists with the Products on the menu, data from DB
             lunchProducts = productService.GetLunchProducts();
             dinnerProducts = productService.GetDinnerProducts();
             drinkProducts = productService.GetDrinkProducts();
 
         }
+
+        //After choosing a table to serve
+        //Displaying all items in the current order
         private void OrderOverview()
         {
             pnlPayment.SelectedTab = tableOrderOverviewTab;
@@ -116,8 +118,6 @@ namespace OrderingSystemUI
 
                     if (!alreadyPrinted.Contains(product.ProductID))
                     {
-
-
                         ListViewItem item = new ListViewItem();
 
                         if (product.Status == "prepared")
@@ -133,7 +133,6 @@ namespace OrderingSystemUI
                     }
                     if (count > 1)
                         alreadyPrinted.Add(product.ProductID);
-
                 }
                 lblDisplayTotal.Text = "€ " + total.ToString("0.00");
                 lblDisplayVAT.Text = vat.ToString("0.00");
@@ -145,6 +144,7 @@ namespace OrderingSystemUI
             }
         }
 
+        //go back to the TableOverview
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to discontinue the current process and go back to the table overview?", $"Going to table view", MessageBoxButtons.OKCancel);
@@ -160,39 +160,35 @@ namespace OrderingSystemUI
                 return;
             }
         }
+
+        //giving the expected part of the menu from clicking the buttons
         private void btnLunch_Click(object sender, EventArgs e)
         {
             LunchMenuDisplay();
-
         }
-
         private void btnDinner_Click(object sender, EventArgs e)
         {
             DinnerMenuDisplay();
 
         }
-
         private void btnDrinks_Click(object sender, EventArgs e)
         {
             DrinksMenuDisplay();
-
         }
         private void btnDinnerMenu_Click(object sender, EventArgs e)
         {
             DinnerMenuDisplay();
-
         }
         private void btnLunchMenu_Click(object sender, EventArgs e)
         {
             LunchMenuDisplay();
-
         }
-
         private void btnDrinksMenu_Click(object sender, EventArgs e)
         {
             DrinksMenuDisplay();
         }
 
+        //Lunch Menu after klicking the LUNCH button
         private void LunchMenuDisplay()
         {
             pnlPayment.SelectedTab = addOrderView;
@@ -201,9 +197,7 @@ namespace OrderingSystemUI
             btnComment.Hide();
             btnRemoveNew.Hide();
 
-
             //List groups
-
             ListViewGroup lunchStarters = new ListViewGroup("Starters", HorizontalAlignment.Center);
             ListViewGroup lunchMains = new ListViewGroup("Mains", HorizontalAlignment.Center);
             ListViewGroup lunchDeserts = new ListViewGroup("Deserts", HorizontalAlignment.Center);
@@ -231,6 +225,7 @@ namespace OrderingSystemUI
             listViewAddOrder.Groups.Add(lunchMains);
             listViewAddOrder.Groups.Add(lunchDeserts);
         }
+        //Dinner Menu after klicking the DINNER button
         private void DinnerMenuDisplay()
         {
             listViewAddOrder.Clear();
@@ -240,8 +235,6 @@ namespace OrderingSystemUI
             listViewAddOrder.View = View.Tile;
             btnComment.Hide();
             btnRemoveNew.Hide();
-
-
 
             //List groups
             ListViewGroup dinnerStarters = new ListViewGroup("Starters", HorizontalAlignment.Center);
@@ -275,6 +268,7 @@ namespace OrderingSystemUI
             listViewAddOrder.Groups.Add(dinnerMains);
             listViewAddOrder.Groups.Add(dinnerDeserts);
         }
+        //Drink Menu after klicking the DRINK button
         private void DrinksMenuDisplay()
         {
             listViewAddOrder.Clear();
@@ -514,13 +508,14 @@ namespace OrderingSystemUI
                 return;
             }
         }
-
+        //selecting products from the menu to add to a table order
         private void listViewAddOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewAddOrder.SelectedItems.Count > 0)
             {
                 ListViewItem selectedItem = listViewAddOrder.SelectedItems[0];
                 selectedProduct = (Product)selectedItem.Tag;
+                //check if item is available
                 if (selectedProduct.Stock <= 0)
                 {
                     MessageBox.Show("Product is out of Stock please choose something else!");
@@ -533,6 +528,7 @@ namespace OrderingSystemUI
                 DisplaySelectedItemsForOrder();
             }
         }
+        //overview over the items that will be added to the table order
         private void DisplaySelectedItemsForOrder()
         {
             listViewOrderSummary.Items.Clear();
@@ -565,7 +561,7 @@ namespace OrderingSystemUI
             }
         }
 
-
+        //adding selected items to the table order and DB orderProduct
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
             //add the created list of orderProducts to the actual order
@@ -585,15 +581,6 @@ namespace OrderingSystemUI
                 {
                     addingNewOrdersList.Remove(addingNewOrdersList[i]);
                 }
-                //foreach (Product product in addingNewOrdersList)
-                //{
-                //    orderProductService.AddOrderItem(currentOrder.OrderNumber, product.ProductID, product.TemporaryComment, DateTime.Now, "in preparation");
-                //    //edit stock in db
-                //    int newStock = product.Stock--;
-                //    productService.EditStock(product.ProductID, newStock);
-                //    addingNewOrdersList.Remove(product);
-                //}
-
             }
 
             OrderOverview();
