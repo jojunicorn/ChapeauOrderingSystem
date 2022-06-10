@@ -81,7 +81,7 @@ namespace OrderingSystemDAL
 
         public List<OrderProduct> GetOrderProductsFood(int orderNumber)
         {
-            query = "SELECT ItemId, OrderNumber, ProductId, Comment, OrderTime, OrderStatus, ProductCategory FROM ORDERPRODUCTS WHERE OrderNumber = @orderNumber AND ProductCategory = 1 OR ProductCategory = 2";
+            query = "SELECT ItemId, OrderNumber, ProductId, Comment, OrderTime, OrderStatus, ProductCategory FROM ORDERPRODUCTS WHERE OrderNumber = @orderNumber AND (ProductCategory = 1 OR ProductCategory = 2)";
 
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@orderNumber", orderNumber);
