@@ -50,9 +50,9 @@ namespace OrderingSystemUI
 
             //created the columns for the attributes of the order product
 
-            listViewOrdersBarView.Columns.Add("Item ID", 70, HorizontalAlignment.Center);
+            listViewOrdersBarView.Columns.Add("Item ID", 75, HorizontalAlignment.Center);
 
-            listViewOrdersBarView.Columns.Add("Order nr.", 70, HorizontalAlignment.Left);
+            listViewOrdersBarView.Columns.Add("Order nr.", 110, HorizontalAlignment.Left);
 
             listViewOrdersBarView.Columns.Add("Order description", 470, HorizontalAlignment.Left);
 
@@ -128,10 +128,15 @@ namespace OrderingSystemUI
 
             barViewService.UpdateOrderStatus((OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag);
 
+            ListViewItem processedItem = listViewOrdersBarView.SelectedItems[0];
+            listViewOrdersBarView.Items.Remove(processedItem);
+
             ListViewItem item = new ListViewItem(orderProduct.ToString());
             item.Text = orderProduct.ItemID.ToString();
             item.SubItems.Add(orderProduct.Status.ToString());
             listViewBarOrderStatus.Items.Add(item);
+
+       
         }
 
         private void Completed_Click(object sender, EventArgs e)
@@ -142,11 +147,41 @@ namespace OrderingSystemUI
 
             barViewService.UpdateOrderStatus((OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag);
 
+            ListViewItem processedItem = listViewOrdersBarView.SelectedItems[0];
+            listViewOrdersBarView.Items.Remove(processedItem);
+
             ListViewItem item = new ListViewItem(orderProduct.ToString());
             item.Text = orderProduct.ItemID.ToString();
             item.SubItems.Add(orderProduct.Status.ToString());
             listViewBarOrderStatus.Items.Add(item);
 
+        }
+
+        private void listViewOrdersBarView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewOrdersBarView.SelectedItems.Count == 0) { return; }
+            else
+            {
+                OrderProduct orderProduct = (OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag;
+                lblComment.Text = orderProduct.Comment;
+            }
+        }
+
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", $"See you soon {currentEmployee.EmployeeName}", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                //log out and go back to login form
+                //?currentEmployee == null;
+                Close();
+                LoginForm loginForm = new LoginForm();
+                loginForm.ShowDialog();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

@@ -15,6 +15,8 @@ namespace OrderingSystemUI
     {
         KitchenViewService kitchenViewService = new KitchenViewService();
         List<OrderProduct> orderProducts;
+        public int selectedItem = 0;
+
 
         Employee currentEmployee = null;
 
@@ -55,9 +57,9 @@ namespace OrderingSystemUI
 
 
             //created the columns for the attributes of the order product
-            listViewOrdersKitchenView.Columns.Add("Item ID", 70, HorizontalAlignment.Center);
+            listViewOrdersKitchenView.Columns.Add("Item ID", 75, HorizontalAlignment.Center);
 
-            listViewOrdersKitchenView.Columns.Add("Order nr.", 70, HorizontalAlignment.Center);
+            listViewOrdersKitchenView.Columns.Add("Order nr.", 110, HorizontalAlignment.Center);
 
             listViewOrdersKitchenView.Columns.Add("Order description", 470, HorizontalAlignment.Left);
 
@@ -127,6 +129,9 @@ namespace OrderingSystemUI
 
             kitchenViewService.UpdateOrderStatus((OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag);
 
+            ListViewItem processedItem = listViewOrdersKitchenView.SelectedItems[0];
+            listViewOrdersKitchenView.Items.Remove(processedItem);
+
             ListViewItem item = new ListViewItem(orderProduct.ToString());
             item.Text = orderProduct.ItemID.ToString();
             item.SubItems.Add(orderProduct.Status.ToString());
@@ -141,10 +146,42 @@ namespace OrderingSystemUI
 
             kitchenViewService.UpdateOrderStatus((OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag);
 
+            ListViewItem processedItem = listViewOrdersKitchenView.SelectedItems[0];
+            listViewOrdersKitchenView.Items.Remove(processedItem);
+
             ListViewItem item = new ListViewItem(orderProduct.ToString());
             item.Text = orderProduct.ItemID.ToString();
             item.SubItems.Add(orderProduct.Status.ToString());
             listViewKitchenOrderStatus.Items.Add(item);
+
+         
+        }
+
+        private void listViewOrdersKitchenView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewOrdersKitchenView.SelectedItems.Count == 0) { return; }
+            else 
+            {
+                OrderProduct orderProduct = (OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag;
+                lblComment.Text = orderProduct.Comment;
+            }
+        }
+
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+             DialogResult result = MessageBox.Show("Are you sure you want to log out?", $"See you soon {currentEmployee.EmployeeName}", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                //log out and go back to login form
+                //?currentEmployee == null;
+                Close();
+                LoginForm loginForm = new LoginForm();
+                loginForm.ShowDialog();  
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
