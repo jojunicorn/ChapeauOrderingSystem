@@ -36,6 +36,7 @@ namespace OrderingSystemUI
 
         Product selectedProduct = null;
         Product selectedProductsOnAddList = null;
+        Payment selectedPayment = null;
 
         Button tableButton = null;
         public WaiterUI(Employee currentEmployee)
@@ -844,10 +845,32 @@ namespace OrderingSystemUI
            string lblWithoutEuro = lbl_price3.Text.Substring(lbl_price3.Text.LastIndexOf('€') + 1);
            float price = float.Parse(lblWithoutEuro);
 
+            if (String.IsNullOrEmpty(txtBox_amountPaid.Text))
+            {
+                MessageBox.Show("Please, check entered amount again");
+                return;
+            }
+
            float amountPaid = float.Parse(txtBox_amountPaid.Text);
 
            float change = amountPaid - price;
            lbl_change.Text = "€ " + change.ToString("0.00");
+
+            //check if the amount paid is entered correctly, can't be smaller than order price
+            try
+            {
+             if (amountPaid < price)
+             {
+             lbl_change.Hide();
+            MessageBox.Show("Please, check entered amount again");
+            return;
+            }
+            else lbl_change.Show();
+            }
+            catch (Exception exception)
+            {
+              MessageBox.Show(exception.Message);
+            } 
         }
         //navigate to Payment UI
         private void btnPay_Click(object sender, EventArgs e)
@@ -863,49 +886,42 @@ namespace OrderingSystemUI
         //navigate to "PAYMENT OVERVIEW"
         private void btn_payment_Click(object sender, EventArgs e)
         {
-            if (!radioBtn_CASH.Checked && !radioBtn_DEBIT.Checked && !radioBtn_VISA.Checked)
+            try
             {
-                MessageBox.Show("To continue, please select payment type");
-                return;
+                if (!radioBtn_CASH.Checked && !radioBtn_DEBIT.Checked && !radioBtn_VISA.Checked)
+                {
+                    MessageBox.Show("To continue, please select payment type");
+                    return;
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
             lbl_HasBeenAdded.Hide();
             tabPagePayment.Hide();
             tabPagePaymentView.Show();
         }
-       
+
         private void btn_SetAmountPaid_Click(object sender, EventArgs e)
         {
             CalculateChange();
-
-            if (txtBox_amountPaid.Text == " ")
-            {
-                MessageBox.Show("Please, set an amount paid!");
-                return;
-            }
-
-            //check if the amount paid is entered correctly, can't be smaller than order price
-
-            string lblWithoutEuro = lbl_price3.Text.Substring(lbl_price3.Text.LastIndexOf('€') + 1);
-            float price = float.Parse(lblWithoutEuro);
-
-            float amountPaid = float.Parse(txtBox_amountPaid.Text);
-
-            if (amountPaid < price)
-            {
-                lbl_change.Hide();
-                MessageBox.Show("Please, check entered amount again");
-                return;
-            }
-            else lbl_change.Show();
-
         }
         //navigate to "ANY COMMENTS?" page
         private void btn_Pay_Click(object sender, EventArgs e)
         {
-            if (txtBox_amountPaid.Text == "")
+            try
             {
-                MessageBox.Show("To continue the payment, you must fill in the amount paid by the customer!");
-                return;
+                if (txtBox_amountPaid.Text == "")
+                {
+                    MessageBox.Show("To continue the payment, you must fill in the amount paid by the customer!");
+                    return;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
             tabPagePaymentView.Hide();
             tabPageAnyComments.Show();
@@ -917,6 +933,8 @@ namespace OrderingSystemUI
         //actions for "ANY COMMENTS?"
         private void btn_AddComment_Click(object sender, EventArgs e)
         {
+            string comment = txtboxComment.Text;
+            
             tabPageAnyComments.Hide();
             tabPageCustomerComment.Show();
         }
@@ -950,17 +968,24 @@ namespace OrderingSystemUI
             //display tip and amount paid
             lbl_tip2.Text = lbl_tip3.Text;
             lbl_amount_paid.Text = "€ " + txtBox_amountPaid.Text;
-
-            if (txtBox_Comment.Text == "")
+            try
             {
-                MessageBox.Show("To continue, please fill in the comment section!");
-                return;
+                if (txtBox_Comment.Text == "")
+                {
+                    MessageBox.Show("To continue, please fill in the comment section!");
+                    return;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
 
             SetPaymentType();
 
             tabPageCustomerComment.Hide();
             tabPageSettledBill.Show();
+
         }
         //show label "TIP HAS BEEN ADDED" after adding change as a tip
         private void btn_changeAsTip_Click(object sender, EventArgs e)
@@ -1101,6 +1126,16 @@ namespace OrderingSystemUI
             btnD8.Hide(); btnF8.Hide();
             btnD9.Hide(); btnF9.Hide();
             btnD10.Hide(); btnF10.Hide();
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
 
         }
     }
