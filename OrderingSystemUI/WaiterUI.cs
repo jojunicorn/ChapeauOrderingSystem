@@ -19,6 +19,7 @@ namespace OrderingSystemUI
         ProductService productService = new ProductService();
         TableService tableService = new TableService();
         OrderService orderService = new OrderService();
+        PaymentService paymentService = new PaymentService();
 
         //creating all kinds of Object which are needed
         List<Product> addingNewOrdersList;
@@ -46,32 +47,36 @@ namespace OrderingSystemUI
 
         private void WaiterUI_Load(object sender, EventArgs e)
         {
-            //Disables tabs in tabcontrol
-            pnlPayment.Appearance = TabAppearance.FlatButtons;
-            pnlPayment.ItemSize = new Size(0, 1);
-            pnlPayment.SizeMode = TabSizeMode.Fixed;
+            try
+            {
+                //Disables tabs in tabcontrol
+                pnlPayment.Appearance = TabAppearance.FlatButtons;
+                pnlPayment.ItemSize = new Size(0, 1);
+                pnlPayment.SizeMode = TabSizeMode.Fixed;
 
-            currentOrderItem = null;
-            SetTablesColor();
-            HideButtons();
-            SetOrderDisplay();
+                currentOrderItem = null;
+                SetTablesColor();
+                HideButtons();
+                SetOrderDisplay();
 
-            //displaying the logged in Employee in the upper right corner
-            btnEmployeeName.Text = currentEmployee.EmployeeName;
+                //displaying the logged in Employee in the upper right corner
+                btnEmployeeName.Text = currentEmployee.EmployeeName;
 
-            pnlPayment.SelectedTab = tableViewTabCommentQ;
+                pnlPayment.SelectedTab = tableViewTabCommentQ;
 
-            pnlTableStatus.Hide();
-            pnlAddComment.Hide();
-            lblTableNumber.Text = "";
+                pnlTableStatus.Hide();
+                pnlAddComment.Hide();
+                lblTableNumber.Text = "";
 
-            //creating lists with the Products on the menu, data from DB
-            lunchProducts = productService.GetLunchProducts();
-            dinnerProducts = productService.GetDinnerProducts();
-            drinkProducts = productService.GetDrinkProducts();
-
-            
-
+                //creating lists with the Products on the menu, data from DB
+                lunchProducts = productService.GetLunchProducts();
+                dinnerProducts = productService.GetDinnerProducts();
+                drinkProducts = productService.GetDrinkProducts();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         //After choosing a table to serve
@@ -84,6 +89,7 @@ namespace OrderingSystemUI
             btnEdit.Hide();
             btnConfirm.Hide();
             txtboxEdit.Hide();
+            lblNewStock.Hide();
 
             try
             {
@@ -126,10 +132,10 @@ namespace OrderingSystemUI
                     {
                         ListViewItem item = new ListViewItem();
 
-                        if (product.Status == "prepared")
-                           item.BackColor  = Color.Orange;
-                        else if (product.Status == "served")
-                            item.BackColor = Color.Green;
+                        //if (product.Status == "prepared")
+                        //   item.BackColor  = Color.Orange;
+                        //else if (product.Status == "served")
+                        //    item.BackColor = Color.Green;
 
                         item.Text = $"{count} x"; //count
                         item.SubItems.Add(product.ProductName);//product name
@@ -207,29 +213,36 @@ namespace OrderingSystemUI
             ListViewGroup lunchStarters = new ListViewGroup("Starters", HorizontalAlignment.Center);
             ListViewGroup lunchMains = new ListViewGroup("Mains", HorizontalAlignment.Center);
             ListViewGroup lunchDeserts = new ListViewGroup("Deserts", HorizontalAlignment.Center);
-
-            foreach (Product product in lunchProducts)
+            try
             {
-                ListViewGroup group;
-                if (product.ProductType == "starters")
-                    group = lunchStarters;
-                else if (product.ProductType == "mains")
-                    group = lunchMains;
-                else if (product.ProductType == "deserts")
-                    group = lunchDeserts;
-                else throw new ArgumentException("Mistake in the database with the menu");
+                foreach (Product product in lunchProducts)
+                {
+                    ListViewGroup group;
+                    if (product.ProductType == "starters")
+                        group = lunchStarters;
+                    else if (product.ProductType == "mains")
+                        group = lunchMains;
+                    else if (product.ProductType == "deserts")
+                        group = lunchDeserts;
+                    else throw new ArgumentException("Mistake in the database with the menu");
 
-                ListViewItem item = new ListViewItem(product.ProductName, group);
-                item.Tag = product;
-                //item.Text = product.ProductName;
-                //item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
+                    ListViewItem item = new ListViewItem(product.ProductName, group);
+                    item.Tag = product;
+                    //item.Text = product.ProductName;
+                    //item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
 
-                listViewAddOrder.Items.Add(item);
+                    listViewAddOrder.Items.Add(item);
 
+                }
+                listViewAddOrder.Groups.Add(lunchStarters);
+                listViewAddOrder.Groups.Add(lunchMains);
+                listViewAddOrder.Groups.Add(lunchDeserts);
             }
-            listViewAddOrder.Groups.Add(lunchStarters);
-            listViewAddOrder.Groups.Add(lunchMains);
-            listViewAddOrder.Groups.Add(lunchDeserts);
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
         }
         //Dinner Menu after klicking the DINNER button
         private void DinnerMenuDisplay()
@@ -247,32 +260,40 @@ namespace OrderingSystemUI
             ListViewGroup dinnerEntres = new ListViewGroup("Entres", HorizontalAlignment.Center);
             ListViewGroup dinnerMains = new ListViewGroup("Mains", HorizontalAlignment.Center);
             ListViewGroup dinnerDeserts = new ListViewGroup("Deserts", HorizontalAlignment.Center);
-
-            foreach (Product product in dinnerProducts)
+            try
             {
-                ListViewGroup group;
-                if (product.ProductType == "starters")
-                    group = dinnerStarters;
-                else if (product.ProductType == "entrements")
-                    group = dinnerEntres;
-                else if (product.ProductType == "mains")
-                    group = dinnerMains;
-                else if (product.ProductType == "deserts")
-                    group = dinnerDeserts;
-                else throw new ArgumentException("Mistake in the database with the menu");
 
-                ListViewItem item = new ListViewItem(product.ProductName, group);
-                //item.Text = product.ProductName;
-                //item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
-                item.Tag = product;
+                foreach (Product product in dinnerProducts)
+                {
+                    ListViewGroup group;
+                    if (product.ProductType == "starters")
+                        group = dinnerStarters;
+                    else if (product.ProductType == "entrements")
+                        group = dinnerEntres;
+                    else if (product.ProductType == "mains")
+                        group = dinnerMains;
+                    else if (product.ProductType == "deserts")
+                        group = dinnerDeserts;
+                    else throw new ArgumentException("Mistake in the database with the menu");
 
-                listViewAddOrder.Items.Add(item);
+                    ListViewItem item = new ListViewItem(product.ProductName, group);
+                    //item.Text = product.ProductName;
+                    //item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
+                    item.Tag = product;
 
+                    listViewAddOrder.Items.Add(item);
+
+                }
+                listViewAddOrder.Groups.Add(dinnerStarters);
+                listViewAddOrder.Groups.Add(dinnerEntres);
+                listViewAddOrder.Groups.Add(dinnerMains);
+                listViewAddOrder.Groups.Add(dinnerDeserts);
             }
-            listViewAddOrder.Groups.Add(dinnerStarters);
-            listViewAddOrder.Groups.Add(dinnerEntres);
-            listViewAddOrder.Groups.Add(dinnerMains);
-            listViewAddOrder.Groups.Add(dinnerDeserts);
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
         }
         //Drink Menu after klicking the DRINK button
         private void DrinksMenuDisplay()
@@ -292,38 +313,41 @@ namespace OrderingSystemUI
             ListViewGroup spirits = new ListViewGroup("Spirits", HorizontalAlignment.Center);
             ListViewGroup hotDrinks = new ListViewGroup("Hot Drinks", HorizontalAlignment.Center);
 
-            foreach (Product product in drinkProducts)
+            try
             {
-                ListViewGroup group;
-                if (product.ProductType == "soft drinks")
-                    group = softDrinks;
-                else if (product.ProductType == "beers")
-                    group = beers;
-                else if (product.ProductType == "wines")
-                    group = wines;
-                else if (product.ProductType == "spirits")
-                    group = spirits;
-                else if (product.ProductType == "coffe/tea")
-                    group = hotDrinks;
-                else throw new ArgumentException("Mistake in the database with the menu");
+                foreach (Product product in drinkProducts)
+                {
+                    ListViewGroup group;
+                    if (product.ProductType == "soft drinks")
+                        group = softDrinks;
+                    else if (product.ProductType == "beers")
+                        group = beers;
+                    else if (product.ProductType == "wines")
+                        group = wines;
+                    else if (product.ProductType == "spirits")
+                        group = spirits;
+                    else if (product.ProductType == "coffe/tea")
+                        group = hotDrinks;
+                    else throw new ArgumentException("Mistake in the database with the menu");
 
-                ListViewItem item = new ListViewItem(product.ProductName, group);
-                //item.Text = product.ProductName;
-                //item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
-                item.Tag = product;
+                    ListViewItem item = new ListViewItem(product.ProductName, group);
+                    //item.Text = product.ProductName;
+                    //item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
+                    item.Tag = product;
 
-                listViewAddOrder.Items.Add(item);
+                    listViewAddOrder.Items.Add(item);
 
+                }
+                listViewAddOrder.Groups.Add(softDrinks);
+                listViewAddOrder.Groups.Add(beers);
+                listViewAddOrder.Groups.Add(wines);
+                listViewAddOrder.Groups.Add(spirits);
+                listViewAddOrder.Groups.Add(hotDrinks);
             }
-            listViewAddOrder.Groups.Add(softDrinks);
-            listViewAddOrder.Groups.Add(beers);
-            listViewAddOrder.Groups.Add(wines);
-            listViewAddOrder.Groups.Add(spirits);
-            listViewAddOrder.Groups.Add(hotDrinks);
-        }
-
-        private void lbl_contents_Click(object sender, EventArgs e)
-        {
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
 
         }
 
@@ -558,22 +582,30 @@ namespace OrderingSystemUI
         //selecting products from the menu to add to a table order
         private void listViewAddOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listViewAddOrder.SelectedItems.Count > 0)
+            try
             {
-                ListViewItem selectedItem = listViewAddOrder.SelectedItems[0];
-                selectedProduct = (Product)selectedItem.Tag;
-                //check if item is available
-                if (selectedProduct.Stock <= 0)
+                if (listViewAddOrder.SelectedItems.Count > 0)
                 {
-                    MessageBox.Show("Product is out of Stock please choose something else!");
-                }
-                else
-                {
-                    addingNewOrdersList.Add(selectedProduct);
-                }
+                    ListViewItem selectedItem = listViewAddOrder.SelectedItems[0];
+                    selectedProduct = (Product)selectedItem.Tag;
+                    //check if item is available
+                    if (selectedProduct.Stock <= 0)
+                    {
+                        MessageBox.Show("Product is out of Stock please choose something else!");
+                    }
+                    else
+                    {
+                        addingNewOrdersList.Add(selectedProduct);
+                    }
 
-                DisplaySelectedItemsForOrder();
+                    DisplaySelectedItemsForOrder();
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
         }
         //overview over the items that will be added to the table order
         private void DisplaySelectedItemsForOrder()
@@ -581,97 +613,130 @@ namespace OrderingSystemUI
             listViewOrderSummary.Items.Clear();
             alreadyPrinted = new List<int>();
 
-            foreach (Product product in addingNewOrdersList)
+            try
             {
-                int count = 0;
-                foreach (Product p in addingNewOrdersList)
+                foreach (Product product in addingNewOrdersList)
                 {
-                    if (p.ProductID == product.ProductID)
+                    int count = 0;
+                    foreach (Product p in addingNewOrdersList)
                     {
-                        count++;
+                        if (p.ProductID == product.ProductID)
+                        {
+                            count++;
+                        }
                     }
-                }
 
-                ListViewItem item = new ListViewItem();
+                    ListViewItem item = new ListViewItem();
 
-                if (!alreadyPrinted.Contains(product.ProductID))
-                {
-                    item.Text = $"{count} x"; //count
-                    item.SubItems.Add(product.ProductName);//product name
-                    if(product.TemporaryComment != null)
-                        item.SubItems.Add(product.TemporaryComment.ToString());
-                    listViewOrderSummary.Items.Add(item);
+                    if (!alreadyPrinted.Contains(product.ProductID))
+                    {
+                        item.Text = $"{count} x"; //count
+                        item.SubItems.Add(product.ProductName);//product name
+                        if (product.TemporaryComment != null)
+                            item.SubItems.Add(product.TemporaryComment.ToString());
+                        listViewOrderSummary.Items.Add(item);
+                    }
+                    item.Tag = product;
+                    alreadyPrinted.Add(product.ProductID);
+                    listViewAddOrder.SelectedItems.Clear();
                 }
-                item.Tag = product;
-                alreadyPrinted.Add(product.ProductID);
-                listViewAddOrder.SelectedItems.Clear();
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
         }
 
         //adding selected items to the table order and DB orderProduct
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
-            //add the created list of orderProducts to the actual order
-            if (addingNewOrdersList.Count > 0)
+            try
             {
-                for (int i = 0; i < addingNewOrdersList.Count; i++)
+                //add the created list of orderProducts to the actual order
+                if (addingNewOrdersList.Count > 0)
                 {
-                    if (addingNewOrdersList[i].TemporaryComment == null)
-                        addingNewOrdersList[i].TemporaryComment = "";
-                    orderProductService.AddOrderItem(currentOrder.OrderNumber, addingNewOrdersList[i].ProductID, addingNewOrdersList[i].TemporaryComment, DateTime.Now, "in preparation");
-                    //edit stock in db
-                    int newStock = 0;
-                    newStock = addingNewOrdersList[i].Stock - 1;
-                    productService.EditStock(addingNewOrdersList[i].ProductID, newStock);
+                    for (int i = 0; i < addingNewOrdersList.Count; i++)
+                    {
+                        if (addingNewOrdersList[i].TemporaryComment == null)
+                            addingNewOrdersList[i].TemporaryComment = "";
+                        orderProductService.AddOrderItem(currentOrder.OrderNumber, addingNewOrdersList[i].ProductID, addingNewOrdersList[i].TemporaryComment, DateTime.Now, "in preparation");
+                        //edit stock in db
+                        int newStock = 0;
+                        newStock = addingNewOrdersList[i].Stock - 1;
+                        productService.EditStock(addingNewOrdersList[i].ProductID, newStock);
+                    }
+                    for (int i = 0; i < addingNewOrdersList.Count; i++)
+                    {
+                        addingNewOrdersList.Remove(addingNewOrdersList[i]);
+                    }
                 }
-                for (int i = 0; i < addingNewOrdersList.Count; i++)
-                {
-                    addingNewOrdersList.Remove(addingNewOrdersList[i]);
-                }
+                listViewOrderSummary.Items.Clear();
+                OrderOverview();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
 
-            OrderOverview();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            //remove one item in the list
-            DialogResult result = MessageBox.Show("Are you sure you want to remove this/these order Item(s)?", $"Item(s) removed", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
+            try
             {
-                orderProductService.RemoveOrderItem(currentOrderItem.ProductID, currentOrderItem.OrderNumber);
-                OrderOverview();
+                //remove one item in the list
+                DialogResult result = MessageBox.Show("Are you sure you want to remove this/these order Item(s)?", $"Item(s) removed", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    orderProductService.RemoveOrderItem(currentOrderItem.ProductID, currentOrderItem.OrderNumber);
+                    OrderOverview();
+                }
+                else
+                {
+                    return;
+                }
+                listViewTableOrder.Refresh();
             }
-            else
+            catch (Exception exception)
             {
-                return;
+                MessageBox.Show(exception.Message);
             }
-            listViewTableOrder.Refresh();
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             txtboxEdit.Show();
             btnConfirm.Show();
+            lblNewStock.Show();
         }
 
         private void listViewTableOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btnRemove.Show();
-            btnEdit.Show();
-            if (listViewTableOrder.SelectedItems.Count > 0)
+            try
             {
+                btnRemove.Show();
+                btnEdit.Show();
+                if (listViewTableOrder.SelectedItems.Count > 0)
+                {
 
-                ListViewItem selectedItem = listViewTableOrder.SelectedItems[0];
-                string[] split = selectedItem.Text.Split(" ");
-                txtboxEdit.Text = split[0];
-                temporaryCountVariable = int.Parse(split[0]);
-                Product currentProduct = (Product)selectedItem.Tag;
-                
-                currentOrderItem = orderProductService.GetOrderProduct(currentOrder.OrderNumber, currentProduct.ProductID);
+                    ListViewItem selectedItem = listViewTableOrder.SelectedItems[0];
+                    string[] split = selectedItem.Text.Split(" ");
+                    txtboxEdit.Text = split[0];
+                    temporaryCountVariable = int.Parse(split[0]);
+                    Product currentProduct = (Product)selectedItem.Tag;
 
-                if (listViewTableOrder.SelectedItems.Count > 1) btnEdit.Hide();
+                    currentOrderItem = orderProductService.GetOrderProduct(currentOrder.OrderNumber, currentProduct.ProductID);
+
+                    if (listViewTableOrder.SelectedItems.Count > 1) btnEdit.Hide();
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
 
 
         }
@@ -923,10 +988,17 @@ namespace OrderingSystemUI
             btnComment.Show();
             btnRemoveNew.Show();
 
-            if (listViewOrderSummary.SelectedItems.Count > 0)
+            try
             {
-                ListViewItem selectedItem = listViewOrderSummary.SelectedItems[0];
-                selectedProductsOnAddList = (Product)selectedItem.Tag;
+                if (listViewOrderSummary.SelectedItems.Count > 0)
+                {
+                    ListViewItem selectedItem = listViewOrderSummary.SelectedItems[0];
+                    selectedProductsOnAddList = (Product)selectedItem.Tag;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
         private void btnRemoveNew_Click(object sender, EventArgs e)
@@ -952,34 +1024,42 @@ namespace OrderingSystemUI
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            int newCount = int.Parse(txtboxEdit.Text);
-            
-            if(newCount > temporaryCountVariable)
+            try
             {
-                int itemsToAdd = newCount - temporaryCountVariable;
-                for (int i = 0; i < itemsToAdd; i++)
+                int newCount = int.Parse(txtboxEdit.Text);
+
+                if (newCount > temporaryCountVariable)
                 {
-                    orderProductService.AddOrderItem(currentOrder.OrderNumber, currentOrderItem.ProductID, "", DateTime.Now, "in preparation");
+                    int itemsToAdd = newCount - temporaryCountVariable;
+                    for (int i = 0; i < itemsToAdd; i++)
+                    {
+                        orderProductService.AddOrderItem(currentOrder.OrderNumber, currentOrderItem.ProductID, "", DateTime.Now, "in preparation");
+                    }
                 }
+                else if (newCount < temporaryCountVariable)
+                {
+                    int itemsToRemove = temporaryCountVariable - newCount;
+
+                    for (int i = 0; i < itemsToRemove; i++)
+                    {
+                        OrderProduct productToRemove = orderProductService.GetOrderProduct(currentOrder.OrderNumber, currentOrderItem.ProductID);
+                        orderProductService.RemoveOneOrderItem(productToRemove.ItemID);
+                    }
+                }
+                temporaryCountVariable = 0;
+                listViewTableOrder.SelectedItems.Clear();
+                btnRemove.Hide();
+                btnEdit.Hide();
+                btnConfirm.Hide();
+                txtboxEdit.Hide();
+
+                OrderOverview();
             }
-            else if(newCount < temporaryCountVariable)
+            catch (Exception exception)
             {
-                int itemsToRemove = temporaryCountVariable - newCount;
-
-                for (int i = 0; i < itemsToRemove; i++)
-                {
-                    OrderProduct productToRemove = orderProductService.GetOrderProduct(currentOrder.OrderNumber, currentOrderItem.ProductID);
-                    orderProductService.RemoveOneOrderItem(productToRemove.ItemID);
-                }
+                MessageBox.Show(exception.Message);
             }
-            temporaryCountVariable = 0;
-            listViewTableOrder.SelectedItems.Clear();
-            btnRemove.Hide();
-            btnEdit.Hide();
-            btnConfirm.Hide();
-            txtboxEdit.Hide();
 
-            OrderOverview();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -17,6 +17,26 @@ namespace OrderingSystemDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public List<Product> GetLunchProducts()
+        {
+            query = "SELECT ProductId, ProductName, ProductType, Price, VAT, ProductStock, MenuCategorie FROM [dbo].[PRODUCT] WHERE MenuCategorie = 1";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public List<Product> GetDinnerProducts()
+        {
+            query = "SELECT ProductId, ProductName, ProductType, Price, VAT, ProductStock, MenuCategorie FROM [dbo].[PRODUCT] WHERE MenuCategorie = 2";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public List<Product> GetDrinkProducts()
+        {
+            query = "SELECT ProductId, ProductName, ProductType, Price, VAT, ProductStock, MenuCategorie FROM [dbo].[PRODUCT] WHERE MenuCategorie = 3";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
         public Product GetProduct(int productId)
         {
             try
