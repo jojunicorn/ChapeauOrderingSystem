@@ -426,9 +426,10 @@ namespace OrderingSystemUI
         public void SetOrderButton(Table table, Button btn1, Button btn2)
         {
             table = tableService.GetTable(table.TableNumber);
+            List<OrderProduct> drinProducts = orderProductService.GetOrderProductsDrink(table.CurrentOrder);
             if (table.TableStatus == "occupied")
             {
-                if (orderProductService.GetOrderProductsDrink(table.CurrentOrder).Count > 0)
+                if (drinProducts.Count > 0)
                 {
                     foreach (OrderProduct product in orderProductService.GetOrderProductsDrink(table.CurrentOrder))
                     {
@@ -446,9 +447,11 @@ namespace OrderingSystemUI
                 }
             }
 
+            List<OrderProduct> fooodProducts1 = orderProductService.GetOrderProductsFood(table.CurrentOrder);
+
             if (table.TableStatus == "occupied")
             {
-                if (orderProductService.GetOrderProductsFood(table.CurrentOrder).Count > 0)
+                if (fooodProducts1.Count > 0)
                 {
                     foreach (OrderProduct product in orderProductService.GetOrderProductsFood(table.CurrentOrder))
                     {
