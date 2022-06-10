@@ -15,7 +15,6 @@ namespace OrderingSystemUI
     {
         BarViewService barViewService = new BarViewService();
         List<OrderProduct> orderProducts;
-
         Employee currentEmployee = null;
 
         public BarmanUI(Employee currentEmployee)

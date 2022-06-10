@@ -15,11 +15,8 @@ namespace OrderingSystemUI
     {
         KitchenViewService kitchenViewService = new KitchenViewService();
         List<OrderProduct> orderProducts;
-
-
         Employee currentEmployee = null;
 
-        
         public ChefUI(Employee currentEmployee)
         {
             InitializeComponent();
