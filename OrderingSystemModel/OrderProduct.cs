@@ -17,5 +17,6 @@ namespace OrderingSystemModel
         public DateTime OrderTime { get; set; }
         public int Count { get; set; }
         public string Status { get; set; }
+        public int ProductCategory { get; set; }
     }
 }

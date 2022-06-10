@@ -240,7 +240,7 @@ namespace OrderingSystemUI
             this.tabPagePayment.Controls.Add(this.lbl_bill);
             this.tabPagePayment.Location = new System.Drawing.Point(4, 29);
             this.tabPagePayment.Name = "tabPagePayment";
-            this.tabPagePayment.Size = new System.Drawing.Size(413, 690);
+            this.tabPagePayment.Size = new System.Drawing.Size(413, 278);
             this.tabPagePayment.TabIndex = 6;
             this.tabPagePayment.Text = "Payment";
             // 
@@ -626,7 +626,7 @@ namespace OrderingSystemUI
             this.tableOrderOverviewTab.Location = new System.Drawing.Point(4, 29);
             this.tableOrderOverviewTab.Name = "tableOrderOverviewTab";
             this.tableOrderOverviewTab.Padding = new System.Windows.Forms.Padding(3);
-            this.tableOrderOverviewTab.Size = new System.Drawing.Size(413, 690);
+            this.tableOrderOverviewTab.Size = new System.Drawing.Size(413, 278);
             this.tableOrderOverviewTab.TabIndex = 2;
             this.tableOrderOverviewTab.Text = "TableOrderVIew";
             // 
@@ -1348,7 +1348,7 @@ namespace OrderingSystemUI
             this.tabPagePaymentView.Margin = new System.Windows.Forms.Padding(2);
             this.tabPagePaymentView.Name = "tabPagePaymentView";
             this.tabPagePaymentView.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPagePaymentView.Size = new System.Drawing.Size(413, 690);
+            this.tabPagePaymentView.Size = new System.Drawing.Size(413, 278);
             this.tabPagePaymentView.TabIndex = 8;
             this.tabPagePaymentView.Text = "PaymentView";
             // 
@@ -1542,7 +1542,7 @@ namespace OrderingSystemUI
             this.tabPageAnyComments.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageAnyComments.Name = "tabPageAnyComments";
             this.tabPageAnyComments.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageAnyComments.Size = new System.Drawing.Size(413, 690);
+            this.tabPageAnyComments.Size = new System.Drawing.Size(413, 278);
             this.tabPageAnyComments.TabIndex = 9;
             this.tabPageAnyComments.Text = "AnyComments?";
             // 
@@ -1596,7 +1596,7 @@ namespace OrderingSystemUI
             this.tabPageCustomerComment.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageCustomerComment.Name = "tabPageCustomerComment";
             this.tabPageCustomerComment.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageCustomerComment.Size = new System.Drawing.Size(413, 690);
+            this.tabPageCustomerComment.Size = new System.Drawing.Size(413, 278);
             this.tabPageCustomerComment.TabIndex = 10;
             this.tabPageCustomerComment.Text = "CustomersComment";
             // 
@@ -1666,7 +1666,7 @@ namespace OrderingSystemUI
             this.tabPageSettledBill.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageSettledBill.Name = "tabPageSettledBill";
             this.tabPageSettledBill.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageSettledBill.Size = new System.Drawing.Size(413, 690);
+            this.tabPageSettledBill.Size = new System.Drawing.Size(413, 278);
             this.tabPageSettledBill.TabIndex = 11;
             this.tabPageSettledBill.Text = "Settled_bill";
             // 
@@ -1799,7 +1799,7 @@ namespace OrderingSystemUI
             this.tabPageCommentProdcut.Controls.Add(this.txtComment);
             this.tabPageCommentProdcut.Location = new System.Drawing.Point(4, 29);
             this.tabPageCommentProdcut.Name = "tabPageCommentProdcut";
-            this.tabPageCommentProdcut.Size = new System.Drawing.Size(413, 690);
+            this.tabPageCommentProdcut.Size = new System.Drawing.Size(413, 278);
             this.tabPageCommentProdcut.TabIndex = 12;
             this.tabPageCommentProdcut.Text = "Comment";
             this.tabPageCommentProdcut.UseVisualStyleBackColor = true;

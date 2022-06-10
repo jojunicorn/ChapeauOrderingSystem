@@ -90,6 +90,7 @@ namespace OrderingSystemUI
             btnConfirm.Hide();
             txtboxEdit.Hide();
             lblNewStock.Hide();
+            addingNewOrdersList = new List<Product>();
 
             try
             {
@@ -163,6 +164,8 @@ namespace OrderingSystemUI
             if (result == DialogResult.OK)
             {
                 currentTable = null;
+                addingNewOrdersList = null;
+                listViewOrderSummary.Items.Clear();
                 tableNumber.Text = "";
                 pnlTableStatus.Hide();
                 pnlPayment.SelectedTab = tableViewTabCommentQ;
@@ -611,6 +614,7 @@ namespace OrderingSystemUI
         private void DisplaySelectedItemsForOrder()
         {
             listViewOrderSummary.Items.Clear();
+
             alreadyPrinted = new List<int>();
 
             try
@@ -660,21 +664,17 @@ namespace OrderingSystemUI
                     {
                         if (addingNewOrdersList[i].TemporaryComment == null)
                             addingNewOrdersList[i].TemporaryComment = "";
-                        orderProductService.AddOrderItem(currentOrder.OrderNumber, addingNewOrdersList[i].ProductID, addingNewOrdersList[i].TemporaryComment, DateTime.Now, "in preparation");
+                        orderProductService.AddOrderItem(currentOrder.OrderNumber, addingNewOrdersList[i].ProductID, addingNewOrdersList[i].TemporaryComment, DateTime.Now, "in preparation", addingNewOrdersList[i].ProductCategory);
                         //edit stock in db
                         int newStock = 0;
                         newStock = addingNewOrdersList[i].Stock - 1;
                         productService.EditStock(addingNewOrdersList[i].ProductID, newStock);
                     }
-                    for (int i = 0; i < addingNewOrdersList.Count; i++)
-                    {
-                        addingNewOrdersList.Remove(addingNewOrdersList[i]);
-                    }
+                    addingNewOrdersList = null;
                 }
                 listViewOrderSummary.Items.Clear();
                 OrderOverview();
-            }
-            catch (Exception exception)
+            }catch(Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -1033,7 +1033,7 @@ namespace OrderingSystemUI
                     int itemsToAdd = newCount - temporaryCountVariable;
                     for (int i = 0; i < itemsToAdd; i++)
                     {
-                        orderProductService.AddOrderItem(currentOrder.OrderNumber, currentOrderItem.ProductID, "", DateTime.Now, "in preparation");
+                        orderProductService.AddOrderItem(currentOrder.OrderNumber, currentOrderItem.ProductID, "", DateTime.Now, "in preparation", currentOrderItem.ProductCategory);
                     }
                 }
                 else if (newCount < temporaryCountVariable)

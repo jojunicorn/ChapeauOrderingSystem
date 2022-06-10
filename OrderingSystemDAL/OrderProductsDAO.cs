@@ -12,14 +12,14 @@ namespace OrderingSystemDAL
         string query;
         public List<OrderProduct> GetAllOrderProducts()
         {
-            query = "SELECT ItemId, OrderNumber, ProductId, Comment, OrderTime, OrderStatus FROM [dbo].[ORDERPRODUCTS]";
+            query = "SELECT ItemId, OrderNumber, ProductId, Comment, OrderTime, OrderStatus, ProductCategory FROM [dbo].[ORDERPRODUCTS]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public OrderProduct GetOrderProduct(int orderNumber, int productNumber)
         {
-            query = "SELECT ItemId, OrderNumber, ProductId, Comment, OrderTime, OrderStatus FROM [dbo].[ORDERPRODUCTS] WHERE OrderNumber = @orderNumber AND ProductId = @productId;";
+            query = "SELECT ItemId, OrderNumber, ProductId, Comment, OrderTime, OrderStatus, ProductCategory FROM [dbo].[ORDERPRODUCTS] WHERE OrderNumber = @orderNumber AND ProductId = @productId;";
 
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@orderNumber", orderNumber);
@@ -42,17 +42,19 @@ namespace OrderingSystemDAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
-        public void AddOrderItem(int orderNumber, int productId, string comment, DateTime time, string status)
+        public void AddOrderItem(int orderNumber, int productId, string comment, DateTime time, string status, int category)
         {
 
-            query = "INSERT INTO [dbo].[ORDERPRODUCTS] VALUES (@OrderNumber, @ProductId, @Comment, @OrderTime, @Status);";
+            query = "INSERT INTO [dbo].[ORDERPRODUCTS] VALUES (@OrderNumber, @ProductId, @Comment, @OrderTime, @Status ,@ProductCategory);";
 
-            SqlParameter[] sqlParameters = new SqlParameter[5];
+            SqlParameter[] sqlParameters = new SqlParameter[6];
             sqlParameters[0] = new SqlParameter("@OrderNumber", orderNumber);
             sqlParameters[1] = new SqlParameter("@ProductId", productId);
             sqlParameters[2] = new SqlParameter("@Comment", comment);
             sqlParameters[3] = new SqlParameter("@OrderTime", time);
             sqlParameters[4] = new SqlParameter("@Status", status);
+            sqlParameters[5] = new SqlParameter("@ProductCategory", category);
+
 
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -92,6 +94,7 @@ namespace OrderingSystemDAL
                     Comment = (string)dr["Comment"],
                     OrderTime = (DateTime)dr["OrderTime"],
                     Status = (string)dr["OrderStatus"],
+                    ProductCategory = (int)dr["ProductCategory"]
                 };
                 orderProducts.Add(orderProduct);
             }
@@ -110,6 +113,7 @@ namespace OrderingSystemDAL
                 Comment = (string)dataRow["Comment"],
                 OrderTime = (DateTime)dataRow["OrderTime"],
                 Status = (string)dataRow["OrderStatus"],
+                ProductCategory = (int)dataRow["ProductCategory"]
             };
 
             return product;
