@@ -15,11 +15,11 @@ namespace OrderingSystemUI
     {
         KitchenViewService kitchenViewService = new KitchenViewService();
         List<OrderProduct> orderProducts;
-        public int selectedItem = 0;
 
 
         Employee currentEmployee = null;
 
+        
         public ChefUI(Employee currentEmployee)
         {
             InitializeComponent();
@@ -39,6 +39,7 @@ namespace OrderingSystemUI
 
         private void DisplayOrders()
         {
+
             orderProducts = kitchenViewService.GetOrders();
             // clear the listview before filling it again
 
@@ -109,52 +110,75 @@ namespace OrderingSystemUI
 
         private void btnInitialized_Click(object sender, EventArgs e)
         {
-            OrderProduct orderProduct = (OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag;
+            bool initialized = false;
+            
+            try
+            { 
+                OrderProduct orderProduct = (OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag;
 
-            orderProduct.Status = "in preparation";
+                if (orderProduct.Status == "in preparation")
+                { initialized = true;
+                  throw new Exception();
+                }
 
-            kitchenViewService.UpdateOrderStatus(orderProduct);
+                orderProduct.Status = "in preparation";
 
-            ListViewItem item = new ListViewItem(orderProduct.ToString());
-            item.Text = orderProduct.ItemID.ToString();
-            item.SubItems.Add(orderProduct.Status.ToString());
-            listViewKitchenOrderStatus.Items.Add(item);
+                kitchenViewService.UpdateOrderStatus(orderProduct);
+
+                ListViewItem item = new ListViewItem(orderProduct.ToString());
+                item.Text = orderProduct.ItemID.ToString();
+                item.SubItems.Add(orderProduct.Status.ToString());
+                listViewKitchenOrderStatus.Items.Add(item);
+
+            }
+            catch (Exception exception)
+            {
+                if (initialized == true)
+                { MessageBox.Show("Order product status is 'initialized'"); }
+                else
+                { MessageBox.Show("Order product status is 'prepared'"); }
+            }
         }
 
         private void btnInProgress_Click(object sender, EventArgs e)
         {
-            OrderProduct orderProduct = (OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag;
 
-            orderProduct.Status = "prepared";
+            try
+            {
+                OrderProduct orderProduct = (OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag;
 
-            kitchenViewService.UpdateOrderStatus((OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag);
+                orderProduct.Status = "prepared";
 
-            ListViewItem processedItem = listViewOrdersKitchenView.SelectedItems[0];
-            listViewOrdersKitchenView.Items.Remove(processedItem);
+                kitchenViewService.UpdateOrderStatus((OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag);
 
-            ListViewItem item = new ListViewItem(orderProduct.ToString());
-            item.Text = orderProduct.ItemID.ToString();
-            item.SubItems.Add(orderProduct.Status.ToString());
-            listViewKitchenOrderStatus.Items.Add(item);
+                ListViewItem processedItem = listViewOrdersKitchenView.SelectedItems[0];
+                listViewOrdersKitchenView.Items.Remove(processedItem);
+
+                listViewKitchenOrderStatus.Items.Clear();
+
+                ListViewItem item = new ListViewItem(orderProduct.ItemID.ToString());
+                item.Tag = orderProduct;
+
+                item.SubItems.Add(orderProduct.Status.ToString());
+                listViewKitchenOrderStatus.Items.Add(item);
+            }
+            catch (Exception exception)
+            { MessageBox.Show("Order product status is 'prepared'"); }
         }
 
-        private void btnCompleted_Click(object sender, EventArgs e)
+            private void btnCompleted_Click(object sender, EventArgs e)
         {
-            OrderProduct orderProduct = (OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag;
+            OrderProduct orderProduct = (OrderProduct)listViewKitchenOrderStatus.SelectedItems[0].Tag;
 
             orderProduct.Status = "served";
 
-            kitchenViewService.UpdateOrderStatus((OrderProduct)listViewOrdersKitchenView.SelectedItems[0].Tag);
+            kitchenViewService.UpdateOrderStatus((OrderProduct)listViewKitchenOrderStatus.SelectedItems[0].Tag);
 
-            ListViewItem processedItem = listViewOrdersKitchenView.SelectedItems[0];
-            listViewOrdersKitchenView.Items.Remove(processedItem);
+            ListViewItem processedItem = listViewKitchenOrderStatus.SelectedItems[0];
+            listViewKitchenOrderStatus.Items.Clear();
 
-            ListViewItem item = new ListViewItem(orderProduct.ToString());
-            item.Text = orderProduct.ItemID.ToString();
-            item.SubItems.Add(orderProduct.Status.ToString());
-            listViewKitchenOrderStatus.Items.Add(item);
+            lblComment.Text = "";
 
-         
         }
 
         private void listViewOrdersKitchenView_SelectedIndexChanged(object sender, EventArgs e)

@@ -108,52 +108,73 @@ namespace OrderingSystemUI
 
         private void Initialized_Click(object sender, EventArgs e)
         {
-            OrderProduct orderProduct = (OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag;
+                bool initialized = false;
 
-            orderProduct.Status = "in preparation";
+                try
+                {
+                    OrderProduct orderProduct = (OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag;
 
-            barViewService.UpdateOrderStatus((OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag);
+                    if (orderProduct.Status == "in preparation")
+                    {
+                        initialized = true;
+                        throw new Exception();
+                    }
+                    
+                orderProduct.Status = "in preparation";
 
-            ListViewItem item = new ListViewItem(orderProduct.ToString());
-            item.Text = orderProduct.ItemID.ToString();
-            item.SubItems.Add(orderProduct.Status.ToString());
-            listViewBarOrderStatus.Items.Add(item);
+                barViewService.UpdateOrderStatus((OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag);
+
+                ListViewItem item = new ListViewItem(orderProduct.ToString());
+                item.Text = orderProduct.ItemID.ToString();
+                item.SubItems.Add(orderProduct.Status.ToString());
+                listViewBarOrderStatus.Items.Add(item);
+            }
+            catch (Exception exception)
+            {
+                if (initialized == true)
+                { MessageBox.Show("Order product status is 'initialized'"); }
+                else
+                { MessageBox.Show("Order product status is 'prepared'"); }
+            }
         }
 
         private void InProgress_Click(object sender, EventArgs e)
         {
-            OrderProduct orderProduct = (OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag;
+            try
+            {
+                OrderProduct orderProduct = (OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag;
 
-            orderProduct.Status = "prepared";
+                orderProduct.Status = "prepared";
 
-            barViewService.UpdateOrderStatus((OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag);
+                barViewService.UpdateOrderStatus((OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag);
 
-            ListViewItem processedItem = listViewOrdersBarView.SelectedItems[0];
-            listViewOrdersBarView.Items.Remove(processedItem);
+                ListViewItem processedItem = listViewOrdersBarView.SelectedItems[0];
+                listViewOrdersBarView.Items.Remove(processedItem);
 
-            ListViewItem item = new ListViewItem(orderProduct.ToString());
-            item.Text = orderProduct.ItemID.ToString();
-            item.SubItems.Add(orderProduct.Status.ToString());
-            listViewBarOrderStatus.Items.Add(item);
+                listViewBarOrderStatus.Items.Clear();
 
-       
+                ListViewItem item = new ListViewItem(orderProduct.ItemID.ToString());
+                item.Tag = orderProduct;
+                item.SubItems.Add(orderProduct.Status.ToString());
+                listViewBarOrderStatus.Items.Add(item);
+            }
+            catch (Exception exception)
+            { MessageBox.Show("Order product status is 'prepared'"); }
+
         }
 
         private void Completed_Click(object sender, EventArgs e)
         {
-            OrderProduct orderProduct = (OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag;
+            OrderProduct orderProduct = (OrderProduct)listViewBarOrderStatus.SelectedItems[0].Tag;
 
             orderProduct.Status = "served";
 
-            barViewService.UpdateOrderStatus((OrderProduct)listViewOrdersBarView.SelectedItems[0].Tag);
+            barViewService.UpdateOrderStatus((OrderProduct)listViewBarOrderStatus.SelectedItems[0].Tag);
 
-            ListViewItem processedItem = listViewOrdersBarView.SelectedItems[0];
-            listViewOrdersBarView.Items.Remove(processedItem);
+            ListViewItem processedItem = listViewBarOrderStatus.SelectedItems[0];
+            listViewBarOrderStatus.Items.Clear();
 
-            ListViewItem item = new ListViewItem(orderProduct.ToString());
-            item.Text = orderProduct.ItemID.ToString();
-            item.SubItems.Add(orderProduct.Status.ToString());
-            listViewBarOrderStatus.Items.Add(item);
+            lblComment.Text = "";
 
         }
 

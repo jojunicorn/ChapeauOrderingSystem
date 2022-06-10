@@ -219,6 +219,8 @@
             this.Controls.Add(this.lbl_OrdersDisplay);
             this.Controls.Add(this.lblOrderStatusDisplay);
             this.Controls.Add(this.panelChefUI);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ChefUI";
             this.Text = "ChefUI";
             this.Load += new System.EventHandler(this.ChefUI_Load);

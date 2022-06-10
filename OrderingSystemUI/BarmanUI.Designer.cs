@@ -42,8 +42,8 @@
             this.listViewBarOrderStatus = new System.Windows.Forms.ListView();
             this.lblComment = new System.Windows.Forms.Label();
             this.panelBarmanUI = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnEmployee = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelBarmanUI.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -183,16 +183,6 @@
             this.panelBarmanUI.Size = new System.Drawing.Size(1214, 543);
             this.panelBarmanUI.TabIndex = 17;
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(4, 12);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(101, 60);
-            this.pictureBox3.TabIndex = 9;
-            this.pictureBox3.TabStop = false;
-            // 
             // btnEmployee
             // 
             this.btnEmployee.BackColor = System.Drawing.Color.DarkOrange;
@@ -203,6 +193,16 @@
             this.btnEmployee.Text = "Aisha";
             this.btnEmployee.UseVisualStyleBackColor = false;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(4, 12);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(101, 60);
+            this.pictureBox3.TabIndex = 9;
+            this.pictureBox3.TabStop = false;
             // 
             // BarmanUI
             // 
@@ -220,6 +220,8 @@
             this.Controls.Add(this.lbl_Orders);
             this.Controls.Add(this.lblOrderStatusDisplay);
             this.Controls.Add(this.panelBarmanUI);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "BarmanUI";
             this.Text = "BarmanUI";
             this.Load += new System.EventHandler(this.BarmanUI_Load);
