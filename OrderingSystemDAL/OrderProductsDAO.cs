@@ -79,6 +79,25 @@ namespace OrderingSystemDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        public List<OrderProduct> GetOrderProductsFood(int orderNumber)
+        {
+            query = "SELECT ItemId, OrderNumber, ProductId, Comment, OrderTime, OrderStatus, ProductCategory FROM ORDERPRODUCTS WHERE OrderNumber = @orderNumber AND ProductCategory = 1 OR ProductCategory = 2";
+
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@orderNumber", orderNumber);
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<OrderProduct> GetOrderProductsDrink(int orderNumber)
+        {
+            query = "SELECT ItemId, OrderNumber, ProductId, Comment, OrderTime, OrderStatus, ProductCategory FROM ORDERPRODUCTS WHERE OrderNumber = @orderNumber AND ProductCategory = 3";
+
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@orderNumber", orderNumber);
+
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
         private List<OrderProduct> ReadTables(DataTable dataTable)
         {
 

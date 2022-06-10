@@ -59,6 +59,7 @@ namespace OrderingSystemUI
                 HideButtons();
                 SetOrderDisplay();
 
+
                 //displaying the logged in Employee in the upper right corner
                 btnEmployeeName.Text = currentEmployee.EmployeeName;
 
@@ -422,44 +423,62 @@ namespace OrderingSystemUI
             TableColor(tableService.GetTable(10), btnTable10);
         }
 
-        public void SetOrderButton(Table table, Button btn)
+        public void SetOrderButton(Table table, Button btn1, Button btn2)
         {
-            //table = tableService.GetTable(table.TableNumber);
-            //if (table.TableStatus == "occupied")
-            //{
-            //    orderProductService.GetOrderProduct(table.CurrentOrder, );
-            //    if (.Count > 0)
-            //    {
-            //        foreach (OrderProduct product in orderProductService.GetAllOrderProducts())
-            //        {
-            //            if (product.Status == "prepared")
-            //            {
-            //                btn.BackColor = Color.Gold;
-            //                btn.Show();
-            //            }
-            //            else
-            //            {
-            //                btn.Show();
-            //            }
-            //        }
-            //    }
+            table = tableService.GetTable(table.TableNumber);
+            if (table.TableStatus == "occupied")
+            {
+                if (orderProductService.GetOrderProductsDrink(table.CurrentOrder).Count > 0)
+                {
+                    foreach (OrderProduct product in orderProductService.GetOrderProductsDrink(table.CurrentOrder))
+                    {
+                        if (product.Status == "prepared")
+                        {
+                            btn1.BackColor = Color.Gold;
+                            btn1.Show();
+                            break;
+                        }
+                        else
+                        {
+                            btn1.Show();
+                        }
+                    }
+                }
+            }
 
-
-            //}  
+            if (table.TableStatus == "occupied")
+            {
+                if (orderProductService.GetOrderProductsFood(table.CurrentOrder).Count > 0)
+                {
+                    foreach (OrderProduct product in orderProductService.GetOrderProductsFood(table.CurrentOrder))
+                    {
+                        if (product.Status == "prepared")
+                        {
+                            btn2.BackColor = Color.Gold;
+                            btn2.Show();
+                            break;
+                        }
+                        else
+                        {
+                            btn2.Show();
+                        }
+                    }
+                }
+            }
         }
 
         public void SetOrderDisplay()
         {
-            SetOrderButton(tableService.GetTable(1), btnD1);
-            SetOrderButton(tableService.GetTable(2), btnD2);
-            SetOrderButton(tableService.GetTable(3), btnD3);
-            SetOrderButton(tableService.GetTable(4), btnD4);
-            SetOrderButton(tableService.GetTable(5), btnD5);
-            SetOrderButton(tableService.GetTable(6), btnD6);
-            SetOrderButton(tableService.GetTable(7), btnD7);
-            SetOrderButton(tableService.GetTable(8), btnD8);
-            SetOrderButton(tableService.GetTable(9), btnD9);
-            SetOrderButton(tableService.GetTable(10), btnD10);
+            SetOrderButton(tableService.GetTable(1), btnD1, btnF1);
+            SetOrderButton(tableService.GetTable(2), btnD2, btnF2);
+            SetOrderButton(tableService.GetTable(3), btnD3, btnF3);
+            SetOrderButton(tableService.GetTable(4), btnD4, btnF4);
+            SetOrderButton(tableService.GetTable(5), btnD5, btnF5);
+            SetOrderButton(tableService.GetTable(6), btnD6, btnF6);
+            SetOrderButton(tableService.GetTable(7), btnD7, btnF7);
+            SetOrderButton(tableService.GetTable(8), btnD8, btnF8);
+            SetOrderButton(tableService.GetTable(9), btnD9, btnF9);
+            SetOrderButton(tableService.GetTable(10), btnD10, btnF10);
 
         }
 
@@ -573,9 +592,9 @@ namespace OrderingSystemUI
             {
                 //log out and go back to login form
                 //?currentEmployee == null;
+                Close();
                 LoginForm loginForm = new LoginForm();
-                loginForm.ShowDialog();
-                this.Close();
+                loginForm.ShowDialog();  
             }
             else
             {

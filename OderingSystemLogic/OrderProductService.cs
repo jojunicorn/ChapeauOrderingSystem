@@ -39,6 +39,17 @@ namespace OrderingSystemLogic
             return orderProductDao.GetAllOrderProducts();
 
         }
-        
+
+        public List<OrderProduct> GetOrderProductsDrink(int orderNumber)
+        {
+            return orderProductDao.GetOrderProductsDrink(orderNumber);
+
+        }
+
+        public List<OrderProduct> GetOrderProductsFood(int orderNumber)
+        {
+            return orderProductDao.GetOrderProductsFood(orderNumber);
+
+        }
     }
 }
