@@ -360,7 +360,10 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(1);
+            if (currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
+            tableButton = btnTable1;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
         }
 
@@ -400,7 +403,6 @@ namespace OrderingSystemUI
                 int newCurrentOrder = orderService.CreateNewOrder(newOrder);
                 currentTable.CurrentOrder = newCurrentOrder;
                 tableService.UpdateTableWithCurrentOrder(currentTable, currentTable.CurrentOrder);
-                MessageBox.Show("a new order has been creates");
             }
             else if (RBreserved.Checked)
             {
@@ -408,6 +410,8 @@ namespace OrderingSystemUI
                 tableService.ChangeTableStatus(tableNumber, tableStatus);
                 btn.BackColor = Color.DarkGray;
             }
+            if (currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
         }
 
         public void SetTablesColor()
@@ -511,6 +515,8 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(2);
+            if (currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
             tableButton = btnTable2;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
@@ -520,6 +526,8 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(3);
+            if (currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable3;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
@@ -529,6 +537,8 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(4);
+            if (currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable4;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
@@ -539,6 +549,8 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(5);
+            if (currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable5;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
@@ -548,6 +560,8 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(6);
+            if (currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable6;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
@@ -557,6 +571,8 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(7);
+            if (currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable7;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
@@ -566,6 +582,8 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(8);
+            if(currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable8;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
@@ -575,6 +593,8 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(9);
+            if (currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable9;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
@@ -584,6 +604,8 @@ namespace OrderingSystemUI
         {
             pnlTableStatus.Show();
             currentTable = tableService.GetTable(10);
+            if (currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             tableButton = btnTable10;
             lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
@@ -1137,6 +1159,28 @@ namespace OrderingSystemUI
         private void label13_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            SetTablesColor();
+            HideButtons();
+            SetOrderDisplay();
+        }
+
+        private void RBoccupied_CheckedChanged(object sender, EventArgs e)
+        {
+            btnGoToTable.Enabled = true;
+        }
+
+        private void RBfree_CheckedChanged(object sender, EventArgs e)
+        {
+            btnGoToTable.Enabled = false;
+        }
+
+        private void RBreserved_CheckedChanged(object sender, EventArgs e)
+        {
+            btnGoToTable.Enabled = false;
         }
     }
 }
