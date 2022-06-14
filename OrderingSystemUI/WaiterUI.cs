@@ -1200,6 +1200,8 @@ namespace OrderingSystemUI
             string tableStatus = "free";
             tableService.ChangeTableStatus(currentTable.TableNumber, tableStatus);
             SetTablesColor();
+            HideButtons();
+            SetOrderDisplay();
             tabPageSettledBill.Hide();
             pnlTableStatus.Hide();
             pnlPayment.SelectedTab = tableViewTabCommentQ;
