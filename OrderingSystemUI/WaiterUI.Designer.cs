@@ -30,8 +30,8 @@ namespace OrderingSystemUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WaiterUI));
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.btnEmployeeName = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
@@ -179,6 +179,7 @@ namespace OrderingSystemUI
             this.btnAddComment = new System.Windows.Forms.Button();
             this.txtComment = new System.Windows.Forms.TextBox();
             this.PayPartly = new System.Windows.Forms.TabPage();
+            this.btn_done = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPagePayment.SuspendLayout();
             this.addOrderView.SuspendLayout();
@@ -501,8 +502,8 @@ namespace OrderingSystemUI
             this.chPrice});
             this.listViewAddOrder.HideSelection = false;
             this.listViewAddOrder.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3,
-            listViewItem4});
+            listViewItem1,
+            listViewItem2});
             this.listViewAddOrder.Location = new System.Drawing.Point(7, 62);
             this.listViewAddOrder.Name = "listViewAddOrder";
             this.listViewAddOrder.Size = new System.Drawing.Size(400, 346);
@@ -1671,6 +1672,7 @@ namespace OrderingSystemUI
             // tabPageSettledBill
             // 
             this.tabPageSettledBill.BackColor = System.Drawing.Color.White;
+            this.tabPageSettledBill.Controls.Add(this.btn_done);
             this.tabPageSettledBill.Controls.Add(this.lbl_paymentType);
             this.tabPageSettledBill.Controls.Add(this.label16);
             this.tabPageSettledBill.Controls.Add(this.lbl_tip2);
@@ -1852,6 +1854,18 @@ namespace OrderingSystemUI
             this.PayPartly.TabIndex = 13;
             this.PayPartly.Text = "PayPartly";
             this.PayPartly.UseVisualStyleBackColor = true;
+            // 
+            // btn_done
+            // 
+            this.btn_done.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_done.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_done.Location = new System.Drawing.Point(167, 441);
+            this.btn_done.Name = "btn_done";
+            this.btn_done.Size = new System.Drawing.Size(94, 29);
+            this.btn_done.TabIndex = 15;
+            this.btn_done.Text = "DONE";
+            this.btn_done.UseVisualStyleBackColor = false;
+            this.btn_done.Click += new System.EventHandler(this.btn_done_Click);
             // 
             // WaiterUI
             // 
@@ -2043,5 +2057,6 @@ namespace OrderingSystemUI
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TabPage PayPartly;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btn_done;
     }
 }

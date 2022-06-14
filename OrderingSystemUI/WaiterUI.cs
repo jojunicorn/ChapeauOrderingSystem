@@ -795,19 +795,20 @@ namespace OrderingSystemUI
            
             try
             {
-                listViewTableOrder.Items.Clear();
+                listViewPaymentOrder.Items.Clear();
 
                 List<OrderProduct> products = orderProductService.GetAllOrderProducts();
 
                 List<Product> productsForThisOrder = new List<Product>();
                 List<int> alreadyPrinted = new List<int>();
 
+
                 foreach (OrderProduct orderProduct in products)
                 {
                     Order order = orderService.GetOrder(currentOrder.OrderNumber);
                     Product product = productService.GetProduct(orderProduct.ProductID);
 
-                    if (order.OrderNumber == currentOrder.OrderNumber)
+                    if (orderProduct.OrderNumber == currentOrder.OrderNumber)
                     {
                         productsForThisOrder.Add(product);
                     }
@@ -1181,6 +1182,17 @@ namespace OrderingSystemUI
         private void RBreserved_CheckedChanged(object sender, EventArgs e)
         {
             btnGoToTable.Enabled = false;
+        }
+        //go back to table overview
+        private void btn_done_Click(object sender, EventArgs e)
+        {
+            pnlPayment.SelectedTab = tableViewTabCommentQ;
+            string tableStatus = "free";
+            tableService.ChangeTableStatus(currentTable.TableNumber, tableStatus);
+            SetTablesColor();
+            tabPageSettledBill.Hide();
+            pnlTableStatus.Hide();
+            pnlPayment.SelectedTab = tableViewTabCommentQ;
         }
     }
 }

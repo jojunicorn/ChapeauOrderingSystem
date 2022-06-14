@@ -163,7 +163,7 @@ namespace OrderingSystemUI
             { MessageBox.Show("Order product status is 'prepared'"); }
         }
 
-            private void btnCompleted_Click(object sender, EventArgs e)
+        private void btnCompleted_Click(object sender, EventArgs e)
         {
             OrderProduct orderProduct = (OrderProduct)listViewKitchenOrderStatus.SelectedItems[0].Tag;
 
