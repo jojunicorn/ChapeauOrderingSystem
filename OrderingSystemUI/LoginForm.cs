@@ -69,5 +69,10 @@ namespace OrderingSystemUI
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Please contact to the manager.");
+        }
     }
 }
