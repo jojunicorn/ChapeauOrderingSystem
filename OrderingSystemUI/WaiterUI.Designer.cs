@@ -164,6 +164,7 @@ namespace OrderingSystemUI
             this.txtBox_Comment = new System.Windows.Forms.TextBox();
             this.lbl9 = new System.Windows.Forms.Label();
             this.tabPageSettledBill = new System.Windows.Forms.TabPage();
+            this.btn_done = new System.Windows.Forms.Button();
             this.lbl_paymentType = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.lbl_tip2 = new System.Windows.Forms.Label();
@@ -179,7 +180,6 @@ namespace OrderingSystemUI
             this.btnAddComment = new System.Windows.Forms.Button();
             this.txtComment = new System.Windows.Forms.TextBox();
             this.PayPartly = new System.Windows.Forms.TabPage();
-            this.btn_done = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPagePayment.SuspendLayout();
             this.addOrderView.SuspendLayout();
@@ -848,13 +848,13 @@ namespace OrderingSystemUI
             // btnRefresh
             // 
             this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRefresh.Font = new System.Drawing.Font("Broadway", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(314, 6);
+            this.btnRefresh.Location = new System.Drawing.Point(362, 0);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(82, 27);
+            this.btnRefresh.Size = new System.Drawing.Size(51, 50);
             this.btnRefresh.TabIndex = 40;
-            this.btnRefresh.Text = "REFRESH";
+            this.btnRefresh.Text = "↻";
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.button1_Click_2);
             // 
@@ -1692,6 +1692,18 @@ namespace OrderingSystemUI
             this.tabPageSettledBill.TabIndex = 11;
             this.tabPageSettledBill.Text = "Settled_bill";
             // 
+            // btn_done
+            // 
+            this.btn_done.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_done.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_done.Location = new System.Drawing.Point(167, 441);
+            this.btn_done.Name = "btn_done";
+            this.btn_done.Size = new System.Drawing.Size(94, 29);
+            this.btn_done.TabIndex = 15;
+            this.btn_done.Text = "DONE";
+            this.btn_done.UseVisualStyleBackColor = false;
+            this.btn_done.Click += new System.EventHandler(this.btn_done_Click);
+            // 
             // lbl_paymentType
             // 
             this.lbl_paymentType.AutoSize = true;
@@ -1854,18 +1866,6 @@ namespace OrderingSystemUI
             this.PayPartly.TabIndex = 13;
             this.PayPartly.Text = "PayPartly";
             this.PayPartly.UseVisualStyleBackColor = true;
-            // 
-            // btn_done
-            // 
-            this.btn_done.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_done.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_done.Location = new System.Drawing.Point(167, 441);
-            this.btn_done.Name = "btn_done";
-            this.btn_done.Size = new System.Drawing.Size(94, 29);
-            this.btn_done.TabIndex = 15;
-            this.btn_done.Text = "DONE";
-            this.btn_done.UseVisualStyleBackColor = false;
-            this.btn_done.Click += new System.EventHandler(this.btn_done_Click);
             // 
             // WaiterUI
             // 
