@@ -42,21 +42,13 @@ namespace OrderingSystemUI
                     Hide();
                 }
 
-                //added form for each employee to display the orders for bar and kitchen
 
-                else if (employee.EmployeePosition == "bartender") 
+                else if (employee.EmployeePosition == "bartender" || employee.EmployeePosition == "chef") 
                 {
-                    BarmanUI barman = new BarmanUI(employee);
-                    barman.Show();
+                    BartenderAndChefUI bartenderAndChef = new BartenderAndChefUI(employee);
+                    bartenderAndChef.Show();
                     Hide();
                 }
-                else 
-                {
-                    ChefUI chef = new ChefUI(employee);
-                    chef.Show();
-                    Hide();
-                }
-               
             }
 
             else
@@ -65,10 +57,6 @@ namespace OrderingSystemUI
             }
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void label3_Click(object sender, EventArgs e)
         {
