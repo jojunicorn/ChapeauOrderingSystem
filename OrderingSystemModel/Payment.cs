@@ -12,6 +12,8 @@ namespace OrderingSystemModel
         public int OrderNumber { get; set; }
         public float Tip { get; set; }
         public string CustomerComment { get; set; }
+        public float PaymentVat { get; set;  }
+
     }
 
 }

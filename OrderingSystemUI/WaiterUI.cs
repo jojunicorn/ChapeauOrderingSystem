@@ -56,6 +56,7 @@ namespace OrderingSystemUI
                 pnlOrderingSystem.SizeMode = TabSizeMode.Fixed;
 
                 currentOrderItem = null;
+                currentPayment = new Payment();
                 SetTablesColor();
                 HideButtons();
                 SetOrderDisplay();
@@ -853,6 +854,9 @@ namespace OrderingSystemUI
                         alreadyPrinted.Add(product.ProductID);
 
                 }
+                //storing total and vat to database
+                currentPayment.PaymentAmount = total;
+                currentPayment.PaymentVat = vat;
                 
                 //display price
                 lbl_price1.Text = "€ " + total.ToString("0.00");
@@ -973,6 +977,8 @@ namespace OrderingSystemUI
         //navigate to "SETTLE THE BILL" page
         private void btn_cntinuePayment_Click(object sender, EventArgs e)
         {
+            currentPayment.CustomerComment = "";
+
             //display tip and amount paid
             lbl_tip2.Text = lbl_tip3.Text;
             lbl_amount_paid.Text = "€ " + txtBox_amountPaid.Text;
@@ -987,12 +993,18 @@ namespace OrderingSystemUI
             if (radioBtn_CASH.Checked)
             {
                 lbl_paymentType.Text = "CASH";
+                currentPayment.PaymentType = "cash";
             }
             if (radioBtn_DEBIT.Checked)
             {
                 lbl_paymentType.Text = "DEBIT";
+                currentPayment.PaymentType = "debit";
             }
-            else lbl_paymentType.Text = "VISA/AMEX";
+            else
+            {
+                lbl_paymentType.Text = "VISA/AMEX";
+                currentPayment.PaymentType = "visa/amex";
+            }
         }
         //navigate to "SETTLE THE BILL" page
         private void btn_Confirm_Click(object sender, EventArgs e)
@@ -1000,29 +1012,30 @@ namespace OrderingSystemUI
             //display tip and amount paid
             lbl_tip2.Text = lbl_tip3.Text;
             lbl_amount_paid.Text = "€ " + txtBox_amountPaid.Text;
-            try
-            {
+            
                 if (txtBox_Comment.Text == "")
                 {
                     MessageBox.Show("To continue, please fill in the comment section!");
                     return;
                 }
-            }
-            catch (Exception exception)
+            else
             {
-                MessageBox.Show(exception.Message);
+                currentPayment.CustomerComment = txtBox_Comment.Text;
             }
 
             SetPaymentType();
 
             tabPageCustomerComment.Hide();
             tabPageSettledBill.Show();
-
         }
+           
         //show label "TIP HAS BEEN ADDED" after adding change as a tip
         private void btn_changeAsTip_Click(object sender, EventArgs e)
         {
             lbl_tip3.Text = lbl_change.Text;
+            string tip = lbl_change.Text;
+            string[] split = tip.Split(" ");
+            currentPayment.Tip = float.Parse(split[1]);
 
             lbl_HasBeenAdded.Show();
             btn_changeAsTip.Hide();
@@ -1040,6 +1053,9 @@ namespace OrderingSystemUI
             //display tip
             int customTip = int.Parse(txtBox_CustomTip.Text);
             lbl_tip3.Text = "€ " + customTip.ToString("0.00");
+
+            //adding tip to database
+            currentPayment.Tip = customTip;
 
             lbl_HasBeenAdded.Show();
             btn_changeAsTip.Hide();
@@ -1195,6 +1211,11 @@ namespace OrderingSystemUI
         //go back to table overview
         private void btn_done_Click(object sender, EventArgs e)
         {
+            //giving current payment number of current order
+            currentPayment.OrderNumber = currentOrder.OrderNumber;
+            //adding everything to the database
+            paymentService.AddPayment(currentPayment.PaymentAmount, currentPayment.PaymentVat, currentPayment.PaymentType, currentPayment.Tip, currentPayment.CustomerComment, currentPayment.OrderNumber);
+
             pnlOrderingSystem.SelectedTab = tableViewTabCommentQ;
             string tableStatus = "free";
             tableService.ChangeTableStatus(currentTable.TableNumber, tableStatus);

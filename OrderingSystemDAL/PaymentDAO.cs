@@ -12,21 +12,22 @@ namespace OrderingSystemDAL
 
         public List<Payment> GetPayment()
         {
-            query = "SELECT PaymentID, PaymentAmount, PaymentType, OrderNumber, Tip, CustomerComment FROM [dbo].[PAYMENT]";
+            query = "SELECT PaymentID, PaymentAmount, PaymentVAT, PaymentType, OrderNumber, Tip, CustomerComment FROM [dbo].[PAYMENT]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-        public void AddOrderItem(float paymentAmount, string paymentType, float tip, string customerComment, int orderNumber)
+        public void AddPayment(float paymentAmount, float vat, string paymentType, float tip, string customerComment, int orderNumber)
         {
 
-            query = "INSERT INTO [dbo].[PAYMENT] VALUES (@PaymentAmount, @PaymentType, @Tip, @CustomerComment, @OrderNumber);";
+            query = "INSERT INTO [dbo].[PAYMENT] VALUES (@PaymentAmount, @PaymentVAT, @PaymentType, @Tip, @CustomerComment, @OrderNumber);";
 
-            SqlParameter[] sqlParameters = new SqlParameter[5];
+            SqlParameter[] sqlParameters = new SqlParameter[6];
             sqlParameters[0] = new SqlParameter("@PaymentAmount", paymentAmount);
-            sqlParameters[1] = new SqlParameter("@PaymentType", paymentType);
-            sqlParameters[2] = new SqlParameter("@Tip", tip);
-            sqlParameters[3] = new SqlParameter("@CustomerComment", customerComment);
-            sqlParameters[4] = new SqlParameter("@OrderNumber", orderNumber);
+            sqlParameters[1] = new SqlParameter("@PaymentVAT", vat);
+            sqlParameters[2] = new SqlParameter("@PaymentType", paymentType);
+            sqlParameters[3] = new SqlParameter("@Tip", tip);
+            sqlParameters[4] = new SqlParameter("@CustomerComment", customerComment);
+            sqlParameters[5] = new SqlParameter("@OrderNumber", orderNumber);
 
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -58,6 +59,7 @@ namespace OrderingSystemDAL
                 {
                     PaymentID = (int)dr["PaymentID"],
                     PaymentAmount = (float)dr["PaymentAmount"],
+                    PaymentVat = (float)dr["PaymentVAT"],
                     PaymentType = (string)dr["PaymentType"],
                     OrderNumber = (int)dr["OrderNumber"],
                     Tip = (float)dr["Tip"],
@@ -76,6 +78,7 @@ namespace OrderingSystemDAL
             {
                 PaymentID = (int)dataRow["PaymentID"],
                 PaymentAmount = (float)dataRow["PaymentAmount"],
+                PaymentVat = (float)dataRow["PaymentVAT"],
                 PaymentType = (string)dataRow["PaymentType"],
                 OrderNumber = (int)dataRow["OrderNumber"],
                 Tip = (float)dataRow["Tip"],
@@ -84,26 +87,7 @@ namespace OrderingSystemDAL
 
             return payment;
         }
-        //adding entered comment to the database
-        public void AddComment(int paymentId, string CustomerComment)
-        {
-            query = "UPDATE [dbo].[PAYMENT] SET CustomerComment=@CustomerComment WHERE PaymentId=@paymentId;";
-            SqlParameter[] sqlParameters = new SqlParameter[2];
-
-            sqlParameters[0] = new SqlParameter("@CustomerComment", CustomerComment);
-            sqlParameters[1] = new SqlParameter("@paymentId", paymentId);
-
-            ExecuteEditQuery(query, sqlParameters);
-        }
-        //adding Tip to database
-        public void AddTip(decimal Tip, int paymentId)
-        {
-            query = "UPDATE [dbo].[PAYMENT] SET Tip=@Tip WHERE PaymentId=@paymentId;";
-            SqlParameter[] sqlParameters = new SqlParameter[2];
-
-            sqlParameters[0] = new SqlParameter("@Tip", Tip);
-            sqlParameters[1] = new SqlParameter("@paymentId", paymentId);
-        }
+       
 
     }
 }
