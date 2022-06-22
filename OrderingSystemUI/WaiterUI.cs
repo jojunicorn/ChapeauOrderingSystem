@@ -892,23 +892,20 @@ namespace OrderingSystemUI
 
            float change = amountPaid - price;
            lbl_change.Text = "€ " + change.ToString("0.00");
+            
 
             //check if the amount paid is entered correctly, can't be smaller than order price
-            try
+
+            if (amountPaid < price)
             {
-             if (amountPaid < price)
-             {
-             lbl_change.Hide();
+            lbl_change.Hide();
             MessageBox.Show("Please, check entered amount again");
             return;
             }
             else lbl_change.Show();
             }
-            catch (Exception exception)
-            {
-              MessageBox.Show(exception.Message);
-            } 
-        }
+            
+        
         //navigate to Payment UI
         private void btnPay_Click(object sender, EventArgs e)
         {
@@ -923,19 +920,13 @@ namespace OrderingSystemUI
         //navigate to "PAYMENT OVERVIEW"
         private void btn_payment_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!radioBtn_CASH.Checked && !radioBtn_DEBIT.Checked && !radioBtn_VISA.Checked)
-                {
-                    MessageBox.Show("To continue, please select payment type");
-                    return;
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-
+           
+          if (!radioBtn_CASH.Checked && !radioBtn_DEBIT.Checked && !radioBtn_VISA.Checked)
+          {
+            MessageBox.Show("To continue, please select payment type");
+            return;
+          }
+            
             lbl_HasBeenAdded.Hide();
             tabPagePayment.Hide();
             tabPagePaymentView.Show();
@@ -948,18 +939,12 @@ namespace OrderingSystemUI
         //navigate to "ANY COMMENTS?" page
         private void btn_Pay_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (txtBox_amountPaid.Text == "")
-                {
-                    MessageBox.Show("To continue the payment, you must fill in the amount paid by the customer!");
-                    return;
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
+           if (txtBox_amountPaid.Text == "")
+           {
+                MessageBox.Show("To continue the payment, you must fill in the amount paid by the customer!");
+                return;
+           }
+              
             tabPagePaymentView.Hide();
             tabPageAnyComments.Show();
         }
@@ -1001,7 +986,7 @@ namespace OrderingSystemUI
                 lbl_paymentType.Text = "DEBIT";
                 currentPayment.PaymentType = "debit";
             }
-            else
+            else if (radioBtn_VISA.Checked)
             {
                 lbl_paymentType.Text = "VISA/AMEX";
                 currentPayment.PaymentType = "visa/amex";
@@ -1014,11 +999,11 @@ namespace OrderingSystemUI
             lbl_tip2.Text = lbl_tip3.Text;
             lbl_amount_paid.Text = "€ " + txtBox_amountPaid.Text;
             
-                if (txtBox_Comment.Text == "")
-                {
-                    MessageBox.Show("To continue, please fill in the comment section!");
-                    return;
-                }
+            if (txtBox_Comment.Text == "")
+            {
+               MessageBox.Show("To continue, please fill in the comment section!");
+               return;
+            }
             else
             {
                 currentPayment.CustomerComment = txtBox_Comment.Text;
@@ -1038,6 +1023,10 @@ namespace OrderingSystemUI
             string[] split = tip.Split(" ");
             currentPayment.Tip = float.Parse(split[1]);
 
+            //changing change amount when customised tip has been added
+            lbl_change.Text = "-";
+
+
             lbl_HasBeenAdded.Show();
             btn_changeAsTip.Hide();
             lbl5.Hide();
@@ -1054,6 +1043,12 @@ namespace OrderingSystemUI
             //display tip
             int customTip = int.Parse(txtBox_CustomTip.Text);
             lbl_tip3.Text = "€ " + customTip.ToString("0.00");
+
+            //changing change amount based on entered tip
+            int change = int.Parse(lbl_change.Text);
+
+            int newChange = change - customTip;
+            lbl_change.Text = newChange.ToString();
 
             //adding tip to database
             currentPayment.Tip = customTip;
