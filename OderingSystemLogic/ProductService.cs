@@ -28,6 +28,10 @@ namespace OrderingSystemLogic
         {
             return productDao.GetProduct(productId);
         }
+        public List<Product> GetProductByCategory(int categoryId)
+        {
+            return productDao.GetProductByCategory(categoryId);
+        }
         public List<Product> GetLunchProducts()
         {
             return productDao.GetLunchProducts();

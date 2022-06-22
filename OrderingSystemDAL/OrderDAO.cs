@@ -43,7 +43,15 @@ namespace OrderingSystemDAL
 
             ExecuteEditQuery(query, sqlParameters);
 
-            return GetAllOrders().Count;
+            return GetOrderNumber().OrderNumber;
+        }
+
+        public Order GetOrderNumber()
+        {    
+            query = "SELECT OrderNumber FROM [dbo].[ORDER] WHERE OrderNumber = (SELECT Max(OrderNumber) FROM [dbo].[ORDER])";
+
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }
 
         private List<Order> ReadTables(DataTable dataTable)

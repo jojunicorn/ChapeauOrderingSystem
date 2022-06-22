@@ -71,9 +71,9 @@ namespace OrderingSystemUI
                 lblTableNumber.Text = "";
 
                 //creating lists with the Products on the menu, data from DB
-                lunchProducts = productService.GetLunchProducts();
-                dinnerProducts = productService.GetDinnerProducts();
-                drinkProducts = productService.GetDrinkProducts();
+                lunchProducts = productService.GetProductByCategory(1);
+                dinnerProducts = productService.GetProductByCategory(2);
+                drinkProducts = productService.GetProductByCategory(3);
             }
             catch (Exception exception)
             {
