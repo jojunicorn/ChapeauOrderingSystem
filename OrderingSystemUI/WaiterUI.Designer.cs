@@ -30,8 +30,8 @@ namespace OrderingSystemUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WaiterUI));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
             this.btnEmployeeName = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableNumber = new System.Windows.Forms.Label();
@@ -136,7 +136,7 @@ namespace OrderingSystemUI
             this.btnTable3 = new System.Windows.Forms.Button();
             this.btnTable2 = new System.Windows.Forms.Button();
             this.btnTable1 = new System.Windows.Forms.Button();
-            this.pnlPayment = new System.Windows.Forms.TabControl();
+            this.pnlOrderingSystem = new System.Windows.Forms.TabControl();
             this.tabPagePaymentView = new System.Windows.Forms.TabPage();
             this.lbl_tip3 = new System.Windows.Forms.Label();
             this.lbl_change = new System.Windows.Forms.Label();
@@ -187,7 +187,7 @@ namespace OrderingSystemUI
             this.tableOrderOverviewTab.SuspendLayout();
             this.tableViewTabCommentQ.SuspendLayout();
             this.pnlTableStatus.SuspendLayout();
-            this.pnlPayment.SuspendLayout();
+            this.pnlOrderingSystem.SuspendLayout();
             this.tabPagePaymentView.SuspendLayout();
             this.tabPageAnyComments.SuspendLayout();
             this.tabPageCustomerComment.SuspendLayout();
@@ -502,8 +502,8 @@ namespace OrderingSystemUI
             this.chPrice});
             this.listViewAddOrder.HideSelection = false;
             this.listViewAddOrder.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
+            listViewItem3,
+            listViewItem4});
             this.listViewAddOrder.Location = new System.Drawing.Point(7, 62);
             this.listViewAddOrder.Name = "listViewAddOrder";
             this.listViewAddOrder.Size = new System.Drawing.Size(400, 346);
@@ -1327,24 +1327,24 @@ namespace OrderingSystemUI
             this.btnTable1.UseVisualStyleBackColor = false;
             this.btnTable1.Click += new System.EventHandler(this.btnTable1_Click);
             // 
-            // pnlPayment
+            // pnlOrderingSystem
             // 
-            this.pnlPayment.AccessibleName = "TableView";
-            this.pnlPayment.Controls.Add(this.tableViewTabCommentQ);
-            this.pnlPayment.Controls.Add(this.tableOrderOverviewTab);
-            this.pnlPayment.Controls.Add(this.addOrderView);
-            this.pnlPayment.Controls.Add(this.tabPagePayment);
-            this.pnlPayment.Controls.Add(this.tabPagePaymentView);
-            this.pnlPayment.Controls.Add(this.tabPageAnyComments);
-            this.pnlPayment.Controls.Add(this.tabPageCustomerComment);
-            this.pnlPayment.Controls.Add(this.tabPageSettledBill);
-            this.pnlPayment.Controls.Add(this.tabPageCommentProdcut);
-            this.pnlPayment.Controls.Add(this.PayPartly);
-            this.pnlPayment.Location = new System.Drawing.Point(1, 47);
-            this.pnlPayment.Name = "pnlPayment";
-            this.pnlPayment.SelectedIndex = 0;
-            this.pnlPayment.Size = new System.Drawing.Size(421, 723);
-            this.pnlPayment.TabIndex = 0;
+            this.pnlOrderingSystem.AccessibleName = "TableView";
+            this.pnlOrderingSystem.Controls.Add(this.tableViewTabCommentQ);
+            this.pnlOrderingSystem.Controls.Add(this.tableOrderOverviewTab);
+            this.pnlOrderingSystem.Controls.Add(this.addOrderView);
+            this.pnlOrderingSystem.Controls.Add(this.tabPagePayment);
+            this.pnlOrderingSystem.Controls.Add(this.tabPagePaymentView);
+            this.pnlOrderingSystem.Controls.Add(this.tabPageAnyComments);
+            this.pnlOrderingSystem.Controls.Add(this.tabPageCustomerComment);
+            this.pnlOrderingSystem.Controls.Add(this.tabPageSettledBill);
+            this.pnlOrderingSystem.Controls.Add(this.tabPageCommentProdcut);
+            this.pnlOrderingSystem.Controls.Add(this.PayPartly);
+            this.pnlOrderingSystem.Location = new System.Drawing.Point(1, 47);
+            this.pnlOrderingSystem.Name = "pnlOrderingSystem";
+            this.pnlOrderingSystem.SelectedIndex = 0;
+            this.pnlOrderingSystem.Size = new System.Drawing.Size(421, 723);
+            this.pnlOrderingSystem.TabIndex = 0;
             // 
             // tabPagePaymentView
             // 
@@ -1876,7 +1876,7 @@ namespace OrderingSystemUI
             this.Controls.Add(this.tableNumber);
             this.Controls.Add(this.btnEmployeeName);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pnlPayment);
+            this.Controls.Add(this.pnlOrderingSystem);
             this.Name = "WaiterUI";
             this.Text = "WaiterUI";
             this.Load += new System.EventHandler(this.WaiterUI_Load);
@@ -1893,7 +1893,7 @@ namespace OrderingSystemUI
             this.tableViewTabCommentQ.PerformLayout();
             this.pnlTableStatus.ResumeLayout(false);
             this.pnlTableStatus.PerformLayout();
-            this.pnlPayment.ResumeLayout(false);
+            this.pnlOrderingSystem.ResumeLayout(false);
             this.tabPagePaymentView.ResumeLayout(false);
             this.tabPagePaymentView.PerformLayout();
             this.tabPageAnyComments.ResumeLayout(false);
@@ -1975,7 +1975,7 @@ namespace OrderingSystemUI
         private System.Windows.Forms.Button btnTable3;
         private System.Windows.Forms.Button btnTable2;
         private System.Windows.Forms.Button btnTable1;
-        private System.Windows.Forms.TabControl pnlPayment;
+        private System.Windows.Forms.TabControl pnlOrderingSystem;
         private System.Windows.Forms.RadioButton radioBtn_CASH;
         private System.Windows.Forms.RadioButton radioBtn_VISA;
         private System.Windows.Forms.RadioButton radioBtn_DEBIT;

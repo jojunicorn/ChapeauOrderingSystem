@@ -32,20 +32,5 @@ namespace OrderingSystemLogic
         {
             return productDao.GetProductByCategory(categoryId);
         }
-        public List<Product> GetLunchProducts()
-        {
-            return productDao.GetLunchProducts();
-        }
-        public List<Product> GetDinnerProducts()
-        {
-            return productDao.GetDinnerProducts();
-        }
-        public List<Product> GetDrinkProducts()
-        {
-            return productDao.GetDrinkProducts();
-        }
-
-        
-
     }
 }

@@ -36,7 +36,7 @@ namespace OrderingSystemUI
 
         Product selectedProduct = null;
         Product selectedProductsOnAddList = null;
-        Payment selectedPayment = null;
+        Payment currentPayment = null;
 
         Button tableButton = null;
         public WaiterUI(Employee currentEmployee)
@@ -51,9 +51,9 @@ namespace OrderingSystemUI
             try
             {
                 //Disables tabs in tabcontrol
-                pnlPayment.Appearance = TabAppearance.FlatButtons;
-                pnlPayment.ItemSize = new Size(0, 1);
-                pnlPayment.SizeMode = TabSizeMode.Fixed;
+                pnlOrderingSystem.Appearance = TabAppearance.FlatButtons;
+                pnlOrderingSystem.ItemSize = new Size(0, 1);
+                pnlOrderingSystem.SizeMode = TabSizeMode.Fixed;
 
                 currentOrderItem = null;
                 SetTablesColor();
@@ -64,7 +64,7 @@ namespace OrderingSystemUI
                 //displaying the logged in Employee in the upper right corner
                 btnEmployeeName.Text = currentEmployee.EmployeeName;
 
-                pnlPayment.SelectedTab = tableViewTabCommentQ;
+                pnlOrderingSystem.SelectedTab = tableViewTabCommentQ;
 
                 pnlTableStatus.Hide();
                 pnlAddComment.Hide();
@@ -86,14 +86,13 @@ namespace OrderingSystemUI
         private void OrderOverview()
         {
             lblTableNumber.Show();
-            pnlPayment.SelectedTab = tableOrderOverviewTab;
+            pnlOrderingSystem.SelectedTab = tableOrderOverviewTab;
             btnRemove.Hide();
             btnEdit.Hide();
             btnConfirm.Hide();
             txtboxEdit.Hide();
             lblNewStock.Hide();
             addingNewOrdersList = new List<Product>();
-
             try
             {
                 listViewTableOrder.Items.Clear();
@@ -170,7 +169,7 @@ namespace OrderingSystemUI
                 listViewOrderSummary.Items.Clear();
                 tableNumber.Text = "";
                 pnlTableStatus.Hide();
-                pnlPayment.SelectedTab = tableViewTabCommentQ;
+                pnlOrderingSystem.SelectedTab = tableViewTabCommentQ;
             }
             else
             {
@@ -208,7 +207,7 @@ namespace OrderingSystemUI
         //Lunch Menu after klicking the LUNCH button
         private void LunchMenuDisplay()
         {
-            pnlPayment.SelectedTab = addOrderView;
+            pnlOrderingSystem.SelectedTab = addOrderView;
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
             btnComment.Hide();
@@ -254,7 +253,7 @@ namespace OrderingSystemUI
         {
             listViewAddOrder.Clear();
 
-            pnlPayment.SelectedTab = addOrderView;
+            pnlOrderingSystem.SelectedTab = addOrderView;
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
             btnComment.Hide();
@@ -305,7 +304,7 @@ namespace OrderingSystemUI
         {
             listViewAddOrder.Clear();
 
-            pnlPayment.SelectedTab = addOrderView;
+            pnlOrderingSystem.SelectedTab = addOrderView;
             listViewAddOrder.Items.Clear();
             listViewAddOrder.View = View.Tile;
             btnComment.Hide();
@@ -801,7 +800,7 @@ namespace OrderingSystemUI
         //method for displaying list of orders & price & VAT
         private void PaymentOrderOverview()
         {
-            pnlPayment.SelectedTab = tabPagePayment;
+            pnlOrderingSystem.SelectedTab = tabPagePayment;
            
             try
             {
@@ -1196,7 +1195,7 @@ namespace OrderingSystemUI
         //go back to table overview
         private void btn_done_Click(object sender, EventArgs e)
         {
-            pnlPayment.SelectedTab = tableViewTabCommentQ;
+            pnlOrderingSystem.SelectedTab = tableViewTabCommentQ;
             string tableStatus = "free";
             tableService.ChangeTableStatus(currentTable.TableNumber, tableStatus);
             SetTablesColor();
@@ -1204,7 +1203,7 @@ namespace OrderingSystemUI
             SetOrderDisplay();
             tabPageSettledBill.Hide();
             pnlTableStatus.Hide();
-            pnlPayment.SelectedTab = tableViewTabCommentQ;
+            pnlOrderingSystem.SelectedTab = tableViewTabCommentQ;
         }
     }
 }
