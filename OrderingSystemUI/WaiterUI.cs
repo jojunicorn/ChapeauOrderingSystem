@@ -401,7 +401,8 @@ namespace OrderingSystemUI
                 Order newOrder = new Order();
                 newOrder.EmployeeNumber = currentEmployee.EmployeNumber;
                 newOrder.OrderTime = DateTime.Now;
-                int newCurrentOrder = orderService.CreateNewOrder(newOrder);
+                orderService.CreateNewOrder(newOrder);
+                int newCurrentOrder = orderService.GetOrderNumber().OrderNumber;
                 currentTable.CurrentOrder = newCurrentOrder;
                 tableService.UpdateTableWithCurrentOrder(currentTable, currentTable.CurrentOrder);
             }

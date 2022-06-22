@@ -33,7 +33,7 @@ namespace OrderingSystemDAL
                 throw ex;
             }
         }
-        public int CreateNewOrder(Order order)
+        public void CreateNewOrder(Order order)
         {
             query = "INSERT INTO [dbo].[ORDER] VALUES (@orderTime, @employeeNumber);";
 
@@ -42,13 +42,11 @@ namespace OrderingSystemDAL
             sqlParameters[1] = new SqlParameter("@orderTime", order.OrderTime);
 
             ExecuteEditQuery(query, sqlParameters);
-
-            return GetOrderNumber().OrderNumber;
         }
 
         public Order GetOrderNumber()
         {    
-            query = "SELECT OrderNumber FROM [dbo].[ORDER] WHERE OrderNumber = (SELECT Max(OrderNumber) FROM [dbo].[ORDER])";
+            query = "SELECT OrderNumber, EmployeeNumber FROM [dbo].[ORDER] WHERE OrderNumber = (SELECT Max(OrderNumber) FROM [dbo].[ORDER])";
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
@@ -65,7 +63,6 @@ namespace OrderingSystemDAL
                 {
                     OrderNumber = (int)dr["OrderNumber"],
                     EmployeeNumber = (int)dr["EmployeeNumber"],
-                    //TableNumber = (int)dr["TableNumber"],
                 };
                 orders.Add(order);
             }
