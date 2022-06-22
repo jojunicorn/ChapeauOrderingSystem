@@ -30,6 +30,7 @@ namespace OrderingSystemUI
         private void DisplayBarOrders()
         {
             orderProducts = kitchenViewService.GetBarOrders();
+
             // clear the listview before filling it again
             listViewOrders.Clear();
 
@@ -42,7 +43,6 @@ namespace OrderingSystemUI
 
             // Display grid lines.
             listViewOrders.GridLines = true;
-
 
             //created the columns for the attributes of the order product
             listViewOrders.Columns.Add("Item ID", 75, HorizontalAlignment.Center);
@@ -84,7 +84,6 @@ namespace OrderingSystemUI
 
             // Display grid lines.
             listViewOrdersStatus.GridLines = true;
-
 
             //created the columns for the attributes of the order product
 
@@ -143,20 +142,33 @@ namespace OrderingSystemUI
         private void btnInitialized_Click(object sender, EventArgs e)
         {
             bool initialized = false;
+            bool selected = true;
             
             try
-            { 
+            {
+                //checking if the user doesn't select one order and tries to set one order's status
+                if (!(listViewOrders.SelectedItems.Count > 0))
+                {
+                    selected = false;
+                    throw new Exception();
+                }
+                
                 //save the order product that is selected
                 OrderProduct orderProduct = (OrderProduct)listViewOrders.SelectedItems[0].Tag;
 
+                //checking if the user has already set the status to 'in preparation'
                 if (orderProduct.Status == "in preparation")
-                { initialized = true;
+                { 
+                  initialized = true;
                   throw new Exception();
                 }
-
+              
                 orderProduct.Status = "in preparation";
 
                 kitchenViewService.UpdateOrderStatus(orderProduct);
+
+                //removing previous item from the list with orders status
+                listViewOrdersStatus.Items.Clear();
 
                 //displaying that the order status was changed to 'in preparation'
                 ListViewItem item = new ListViewItem(orderProduct.ToString());
@@ -169,17 +181,26 @@ namespace OrderingSystemUI
             catch 
             {
                 //display error message if the user doesn't set correctly the order status
-                if (initialized == true)
+                if(initialized == true)
                 { MessageBox.Show("Order product status is 'initialized'"); }
-                else
-                { MessageBox.Show("Order product status is 'prepared'"); }
+                else if(selected == false) 
+                { MessageBox.Show("No order from the orders list was selected "); }
             }
         }
 
         private void btnInProgress_Click(object sender, EventArgs e)
         {
+            bool selected = true;
+
             try
-            {
+            {   
+                //checking if the user doesn't select one order and tries to set one order's status
+                if (!(listViewOrders.SelectedItems.Count > 0))
+                {
+                    selected = false;
+                    throw new Exception();
+                }
+
                 OrderProduct orderProduct = (OrderProduct)listViewOrders.SelectedItems[0].Tag;
 
                 orderProduct.Status = "prepared";
@@ -202,10 +223,11 @@ namespace OrderingSystemUI
 
                 lblComment.Text = "";
             }
-            catch 
+            catch
             {
                 //display error message if the user doesn't set correctly the order status
-                MessageBox.Show("Order product status is 'prepared'"); 
+                 if (selected == false)
+                { MessageBox.Show("No order from the orders list was selected "); }
             }
         }
 
@@ -224,7 +246,7 @@ namespace OrderingSystemUI
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
-             DialogResult result = MessageBox.Show("Are you sure you want to log out?", $"See you soon {currentEmployee.EmployeeName}", MessageBoxButtons.OKCancel);
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", $"See you soon {currentEmployee.EmployeeName}", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
                 //log out and go back to login form
