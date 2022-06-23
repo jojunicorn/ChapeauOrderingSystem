@@ -864,6 +864,7 @@ namespace OrderingSystemUI
                 lbl_price2.Text = "€ " + total.ToString("0.00");
                 lbl_price3.Text = "€ " + total.ToString("0.00");
                 lbl_price4.Text = "€ " + total.ToString("0.00");
+                lbl_pricePartly.Text = "€ " + total.ToString("0.00");
 
                 //display vat
                 lbl_vat_amount.Text = vat.ToString("0.00");
@@ -876,6 +877,7 @@ namespace OrderingSystemUI
                 MessageBox.Show("Error occured: ", e.Message);
             }
         }
+        //change calculations
         private void CalculateChange()
         {
            //convert price to price without euro sign
@@ -892,7 +894,8 @@ namespace OrderingSystemUI
 
            float change = amountPaid - price;
            lbl_change.Text = "€ " + change.ToString("0.00");
-            
+           
+          
 
             //check if the amount paid is entered correctly, can't be smaller than order price
 
@@ -903,9 +906,23 @@ namespace OrderingSystemUI
             return;
             }
             else lbl_change.Show();
-            }
+        }
+        private void CalculateChangeCustomisedTip()
+        {
+            //changing change amount based on entered tip
+
+            string lblWithoutEuro = lbl_change.Text.Substring(lbl_change.Text.LastIndexOf('€') + 1);
+            float change = float.Parse(lblWithoutEuro);
+            float customTip = float.Parse(txtBox_CustomTip.Text);
             
-        
+
+            float newChange = change - customTip;
+            lbl_change.Text = "€ " + newChange.ToString("0.00");
+            lbl_billChange.Text = "€ " + newChange.ToString("0.00");
+
+        }
+
+
         //navigate to Payment UI
         private void btnPay_Click(object sender, EventArgs e)
         {
@@ -969,13 +986,14 @@ namespace OrderingSystemUI
             lbl_tip2.Text = lbl_tip3.Text;
             lbl_amount_paid.Text = "€ " + txtBox_amountPaid.Text;
 
+          
             SetPaymentType();
             tabPageAnyComments.Hide();
             tabPageSettledBill.Show();
         }
         private void SetPaymentType()
         {
-            //add payment type
+            //add payment type + storing to database
             if (radioBtn_CASH.Checked)
             {
                 lbl_paymentType.Text = "CASH";
@@ -985,6 +1003,18 @@ namespace OrderingSystemUI
             {
                 lbl_paymentType.Text = "DEBIT";
                 currentPayment.PaymentType = "debit";
+            }
+            if (radiobtn_DEBITpartly.Checked)
+            {
+                lbl_paymentType.Text = "DEBIT and CASH";
+                currentPayment.PaymentType = "cash";
+                currentPayment.PaymentType = "debit";
+            }
+            if (radiobtn_VISApartly.Checked)
+            {
+                lbl_paymentType.Text = "VISA and CASH";
+                currentPayment.PaymentType = "cash";
+                currentPayment.PaymentType = "visa/amex";
             }
             else if (radioBtn_VISA.Checked)
             {
@@ -1008,9 +1038,8 @@ namespace OrderingSystemUI
             {
                 currentPayment.CustomerComment = txtBox_Comment.Text;
             }
-
+            
             SetPaymentType();
-
             tabPageCustomerComment.Hide();
             tabPageSettledBill.Show();
         }
@@ -1019,6 +1048,9 @@ namespace OrderingSystemUI
         private void btn_changeAsTip_Click(object sender, EventArgs e)
         {
             lbl_tip3.Text = lbl_change.Text;
+            //if change is added as a tip, then change will always be 0
+            lbl_billChange.Text = "-";
+            
             string tip = lbl_change.Text;
             string[] split = tip.Split(" ");
             currentPayment.Tip = float.Parse(split[1]);
@@ -1044,15 +1076,11 @@ namespace OrderingSystemUI
             int customTip = int.Parse(txtBox_CustomTip.Text);
             lbl_tip3.Text = "€ " + customTip.ToString("0.00");
 
-            //changing change amount based on entered tip
-            int change = int.Parse(lbl_change.Text);
-
-            int newChange = change - customTip;
-            lbl_change.Text = newChange.ToString();
 
             //adding tip to database
             currentPayment.Tip = customTip;
 
+            CalculateChangeCustomisedTip();
             lbl_HasBeenAdded.Show();
             btn_changeAsTip.Hide();
             lbl5.Hide();
@@ -1221,6 +1249,54 @@ namespace OrderingSystemUI
             tabPageSettledBill.Hide();
             pnlTableStatus.Hide();
             pnlOrderingSystem.SelectedTab = tableViewTabCommentQ;
+        }
+
+        private void btn_payPartly_Click(object sender, EventArgs e)
+        {
+            lbl_tipAddedPartly.Hide();
+            lbl_tipPartlyAdded.Hide();
+            tabPagePayment.Hide();
+            PayPartly.Show();
+        }
+
+        private void btn_SetCash_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btn_SetCard_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btn_payCashandCard_Click(object sender, EventArgs e)
+        {
+
+            if ((txtBox_cardAmount.Text == "") || (txtBox_Cash.Text == "")){
+
+                MessageBox.Show("To continue the payment, you must fill in everything!");
+                return;
+            }
+            PayPartly.Hide();
+            tabPageAnyComments.Show();
+        }
+
+        private void btn_setTipPartly_Click(object sender, EventArgs e)
+        {
+
+            //display tip
+            int customTipParlty = int.Parse(txtBox_tipPartly.Text);
+            lbl_tipPartlyAdded.Text = "€ " + customTipParlty.ToString("0.00");
+
+            //adding tip to database
+            currentPayment.Tip = customTipParlty;
+            
+
+            label24.Hide();
+            txtBox_tipPartly.Hide();
+            btn_setTipPartly.Hide();
+            lbl_tipAddedPartly.Show();
+            lbl_tipPartlyAdded.Show();
         }
     }
 }
