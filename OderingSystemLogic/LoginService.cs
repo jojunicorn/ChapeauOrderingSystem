@@ -25,10 +25,21 @@ namespace OrderingSystemLogic
             }
             catch (Exception)
             {
-
-                throw new Exception("The system couldn't connect to the database");
+                throw new Exception("Something went wrong while loading the user.");
             }
 
+        }
+
+        public List<Employee> GetAllUsers()
+        {
+            try
+            {
+                return loginDB.GetAllUsers();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Something went wrong while loading the users.");
+            }
         }
     }
 }

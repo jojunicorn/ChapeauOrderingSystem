@@ -9,13 +9,7 @@ namespace OrderingSystemDAL
 {
     public class TableDAO : BaseDAO
     {
-        public List<Table> GetAllTables()
-        {
-            string query = "SELECT TableNumber, TableStatus, OrderNumber FROM [dbo].[TABLE]";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        }
-
+      
         public Table GetTable(int tableNumber)
         {
             string query = "SELECT TableNumber, TableStatus, OrderNumber FROM [dbo].[TABLE] WHERE TableNumber = @TableNumber";
@@ -41,24 +35,6 @@ namespace OrderingSystemDAL
             sqlParameters[0] = new SqlParameter("@TableNumber", tableNumber);
             sqlParameters[1] = new SqlParameter("@TableStatus", tableStatus);
             ExecuteEditQuery(query, sqlParameters);
-        }
-
-        private List<Table> ReadTables(DataTable dataTable)
-        {
-
-            List<Table> tables = new List<Table>();
-
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                Table table = new Table()
-                {
-                    TableNumber = (int)dr["TableNumber"],
-                    TableStatus = (string)dr["TableStatus"],
-                    CurrentOrder = (int)dr["OrderNumber"],
-                };
-                tables.Add(table);
-            }
-            return tables;
         }
 
         private Table ReadTable(DataTable dataTable)

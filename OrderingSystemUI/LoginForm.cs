@@ -13,48 +13,65 @@ namespace OrderingSystemUI
     public partial class LoginForm : Form
     {
         Employee employee;
+        LoginService loginService = new LoginService();
+        List<Employee> employees;
+        SaltedPasswordService passwordService = new SaltedPasswordService();
         public LoginForm()
         {
             InitializeComponent();
-            txtPassword.PasswordChar = '*';
-
+            txtPassword.UseSystemPasswordChar = true;
         }
 
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            LoginService loginService = new LoginService();
 
+            employees = loginService.GetAllUsers();
             if (txtUsername.Text == "" || txtPassword.Text == "")
             {
                 MessageBox.Show("Please enter Username and Password");
             }
 
             employee = loginService.GetUser(txtUsername.Text);
-
-            if (employee.EmployeeUsername == txtUsername.Text && employee.EmployeePassword == int.Parse(txtPassword.Text))
+            if (employees.Contains(employee))
             {
-
-                if (employee.EmployeePosition == "waiter" || employee.EmployeePosition == "manager")
+                if (passwordService.VerifyPassword(txtPassword.Text, employee.EmployeePassword, employee.Salt))
                 {
-                    WaiterUI waiter = new WaiterUI(employee);
-                    waiter.Show();
-                    Hide();
+                    try
+                    {
+
+                        if (employee.EmployeePosition == "waiter" || employee.EmployeePosition == "manager")
+                        {
+                            WaiterUI waiter = new WaiterUI(employee);
+                            waiter.Show();
+                            Hide();
+                        }
+
+                        else if (employee.EmployeePosition == "bartender" || employee.EmployeePosition == "chef")
+                        {
+                            BartenderAndChefUI bartenderAndChef = new BartenderAndChefUI(employee);
+                            bartenderAndChef.Show();
+                            Hide();
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        MessageBox.Show("Something wrong with the employee position");
+                    }
+
                 }
-
-
-                else if (employee.EmployeePosition == "bartender" || employee.EmployeePosition == "chef") 
+                else
                 {
-                    BartenderAndChefUI bartenderAndChef = new BartenderAndChefUI(employee);
-                    bartenderAndChef.Show();
-                    Hide();
+                    MessageBox.Show("Password is not correct please try again!");
                 }
             }
-
             else
             {
-                MessageBox.Show("Username or password is not correct please try again!");
+                MessageBox.Show("There is no user with this username.");
             }
+
+
         }
 
 

@@ -14,23 +14,39 @@ namespace OrderingSystemLogic
             tabledao = new TableDAO();
         }
 
-        public List<Table> GetTables()
-        {
-            return tabledao.GetAllTables();
-
-        }
         public void UpdateTableWithCurrentOrder(Table table, int orderNumber)
         {
-            tabledao.UpdateTableWithCurrentOrder(table, orderNumber);
+            try
+            {
+                tabledao.UpdateTableWithCurrentOrder(table, orderNumber);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Something went wrong while updating the table.");
+            }
         }
         public Table GetTable(int tableNumber)
         {
-            return tabledao.GetTable(tableNumber);
+            try
+            {
+                return tabledao.GetTable(tableNumber);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Something went wrong while loading the table.");
+            }
         }
 
         public void ChangeTableStatus(int tableNumber, string tableStatus)
         {
-            tabledao.ChangeTableStatus(tableNumber, tableStatus);
+            try
+            {
+                tabledao.ChangeTableStatus(tableNumber, tableStatus);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Something went wrong while changing the status.");
+            }
         }
     }
 }

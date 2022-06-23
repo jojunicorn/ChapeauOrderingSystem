@@ -358,26 +358,19 @@ namespace OrderingSystemUI
 
         private void btnTable1_Click(object sender, EventArgs e)
         {
-            pnlTableStatus.Show();
-            currentTable = tableService.GetTable(1);
-            if (currentTable.TableStatus != "occupied")
-                btnGoToTable.Enabled = false;
-            else btnGoToTable.Enabled = true;
-            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
-            tableButton = btnTable1;
-            lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
+            ButtonsClick(1);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            ChangeStatus(currentTable.TableNumber, tableButton);
+            ChangeStatus(currentTable.TableNumber);
             pnlTableStatus.Hide();
             RBfree.Checked = false;
             RBoccupied.Checked = false;
             RBreserved.Checked = false;
         }
 
-        public void ChangeStatus(int tableNumber, Button btn)
+        public void ChangeStatus(int tableNumber)
         {
             lblTableNumber.Text = tableNumber.ToString();
             Table table = tableService.GetTable(tableNumber);
@@ -388,13 +381,11 @@ namespace OrderingSystemUI
             {
                 tableStatus = "free";
                 tableService.ChangeTableStatus(tableNumber, tableStatus);
-                btn.BackColor = Color.PaleGreen;
             }
             else if (RBoccupied.Checked)
             {
                 tableStatus = "occupied";
                 tableService.ChangeTableStatus(tableNumber, tableStatus);
-                btn.BackColor = Color.FromArgb(255, 128, 0);
 
 
                 //code for creating new order every time a table is newly occupied so a new group of people can order with that ordernumber
@@ -410,10 +401,11 @@ namespace OrderingSystemUI
             {
                 tableStatus = "reserved";
                 tableService.ChangeTableStatus(tableNumber, tableStatus);
-                btn.BackColor = Color.DarkGray;
             }
             if (currentTable.TableStatus != "occupied")
                 btnGoToTable.Enabled = false;
+
+            SetTablesColor();
         }
 
         public void SetTablesColor()
@@ -501,10 +493,19 @@ namespace OrderingSystemUI
             else if (table.TableStatus == "reserved")
                 btn.BackColor = Color.DarkGray;
         }
-
+        public void ButtonsClick(int tableNumber)
+        {
+            pnlTableStatus.Show();
+            currentTable = tableService.GetTable(tableNumber);
+            if (currentTable.TableStatus != "occupied")
+                btnGoToTable.Enabled = false;
+            else btnGoToTable.Enabled = true;
+            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
+            lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
+        }
         private void btnGoToTable_Click(object sender, EventArgs e)
         {
-            ChangeStatus(currentTable.TableNumber, tableButton);
+            ChangeStatus(currentTable.TableNumber);
             tableNumber.Text = "TABLE " + currentTable.TableNumber;
             currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
             OrderOverview();
@@ -515,111 +516,47 @@ namespace OrderingSystemUI
 
         private void btnTable2_Click(object sender, EventArgs e)
         {
-            pnlTableStatus.Show();
-            currentTable = tableService.GetTable(2);
-            if (currentTable.TableStatus != "occupied")
-                btnGoToTable.Enabled = false;
-            else btnGoToTable.Enabled = true;
-            tableButton = btnTable2;
-            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
-            lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
+            ButtonsClick(2);
         }
 
         private void btnTable3_Click(object sender, EventArgs e)
         {
-            pnlTableStatus.Show();
-            currentTable = tableService.GetTable(3);
-            if (currentTable.TableStatus != "occupied")
-                btnGoToTable.Enabled = false;
-            else btnGoToTable.Enabled = true;
-            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
-            tableButton = btnTable3;
-            lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
+            ButtonsClick(3);
         }
 
         private void btnTable4_Click(object sender, EventArgs e)
         {
-            pnlTableStatus.Show();
-            currentTable = tableService.GetTable(4);
-            if (currentTable.TableStatus != "occupied")
-                btnGoToTable.Enabled = false;
-            else btnGoToTable.Enabled = true;
-            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
-            tableButton = btnTable4;
-            lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
-
+            ButtonsClick(4);
         }
 
         private void btnTable5_Click(object sender, EventArgs e)
         {
-            pnlTableStatus.Show();
-            currentTable = tableService.GetTable(5);
-            if (currentTable.TableStatus != "occupied")
-                btnGoToTable.Enabled = false;
-            else btnGoToTable.Enabled = true;
-            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
-            tableButton = btnTable5;
-            lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
+            ButtonsClick(5);
         }
 
         private void btnTable6_Click(object sender, EventArgs e)
         {
-            pnlTableStatus.Show();
-            currentTable = tableService.GetTable(6);
-            if (currentTable.TableStatus != "occupied")
-                btnGoToTable.Enabled = false;
-            else btnGoToTable.Enabled = true;
-            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
-            tableButton = btnTable6;
-            lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
+            ButtonsClick(6);
         }
 
         private void btnTable7_Click(object sender, EventArgs e)
         {
-            pnlTableStatus.Show();
-            currentTable = tableService.GetTable(7);
-            if (currentTable.TableStatus != "occupied")
-                btnGoToTable.Enabled = false;
-            else btnGoToTable.Enabled = true;
-            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
-            tableButton = btnTable7;
-            lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
+            ButtonsClick(7);
         }
 
         private void btnTable8_Click(object sender, EventArgs e)
         {
-            pnlTableStatus.Show();
-            currentTable = tableService.GetTable(8);
-            if(currentTable.TableStatus != "occupied")
-                btnGoToTable.Enabled = false;
-            else btnGoToTable.Enabled = true;
-            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
-            tableButton = btnTable8;
-            lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
+            ButtonsClick(8);
         }
 
         private void btnTable9_Click(object sender, EventArgs e)
         {
-            pnlTableStatus.Show();
-            currentTable = tableService.GetTable(9);
-            if (currentTable.TableStatus != "occupied")
-                btnGoToTable.Enabled = false;
-            else btnGoToTable.Enabled = true;
-            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
-            tableButton = btnTable9;
-            lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
+            ButtonsClick(9);
         }
 
         private void btnTable10_Click(object sender, EventArgs e)
         {
-            pnlTableStatus.Show();
-            currentTable = tableService.GetTable(10);
-            if (currentTable.TableStatus != "occupied")
-                btnGoToTable.Enabled = false;
-            else btnGoToTable.Enabled = true;
-            currentOrder = orderService.GetOrder(currentTable.CurrentOrder);
-            tableButton = btnTable10;
-            lblTableNumber.Text = "TABLE " + currentTable.TableNumber;
+            ButtonsClick(10);
         }
 
         private void btnEmployeeName_Click(object sender, EventArgs e)
