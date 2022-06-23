@@ -814,7 +814,7 @@ namespace OrderingSystemUI
                 MessageBox.Show("Error occured: ", e.Message);
             }
         }
-        //change calculations
+        //CALCULATIONS
         private void CalculateChange()
         {
            //convert price to price without euro sign
@@ -832,8 +832,6 @@ namespace OrderingSystemUI
            float change = amountPaid - price;
            lbl_change.Text = "€ " + change.ToString("0.00");
            
-          
-
             //check if the amount paid is entered correctly, can't be smaller than order price
 
             if (amountPaid < price)
@@ -848,9 +846,11 @@ namespace OrderingSystemUI
         {
             //changing change amount based on entered tip
 
-            string lblWithoutEuro = lbl_change.Text.Substring(lbl_change.Text.LastIndexOf('€') + 1);
-            float change = float.Parse(lblWithoutEuro);
-            float customTip = float.Parse(txtBox_CustomTip.Text);
+            string changeWithoutEuro = lbl_change.Text.Substring(lbl_change.Text.LastIndexOf('€') + 1);
+            float change = float.Parse(changeWithoutEuro);
+
+            string tipWithoutEuro = txtBox_CustomTip.Text.Substring(txtBox_CustomTip.Text.LastIndexOf('€') + 1);
+            float customTip = float.Parse(tipWithoutEuro);
             
 
             float newChange = change - customTip;
@@ -859,9 +859,29 @@ namespace OrderingSystemUI
 
         }
 
+        /*private void CalculateTotalAmount()
+        {
+            //calculate amount paid when paying partly
+            string paidCashWithoutEuro = txtBox_Cash.Text.Substring(txtBox_Cash.Text.LastIndexOf('€') + 1);
+            int paidCash = int.Parse(paidCashWithoutEuro);
 
-        //navigate to Payment UI
-        private void btnPay_Click(object sender, EventArgs e)
+            string paidCardWithoutEuro = txtBox_cardAmount.Text.Substring(txtBox_cardAmount.Text.LastIndexOf('€') + 1);
+            int paidCard = int.Parse(paidCardWithoutEuro);
+
+            int totalAmount = paidCard + paidCash;
+            if (txtBox_Cash.Text != " ")
+            {
+                lbl_amount_paid.Text = "€ " + totalAmount.ToString("0.00");
+            }
+            else
+            {
+                lbl_amount_paid.Text = txtBox_amountPaid.Text;
+            }
+        }
+        */
+
+            //navigate to Payment UI
+            private void btnPay_Click(object sender, EventArgs e)
         {
             tableOrderOverviewTab.Hide();
             tabPagePayment.Show();
@@ -920,10 +940,25 @@ namespace OrderingSystemUI
             currentPayment.CustomerComment = "";
 
             //display tip and amount paid
-            lbl_tip2.Text = lbl_tip3.Text;
-            lbl_amount_paid.Text = "€ " + txtBox_amountPaid.Text;
 
-          
+            if (txtBox_tipPartly.Text == "")
+            {
+                lbl_tip2.Text = lbl_tip3.Text;
+                lbl_amount_paid.Text = "€ " + txtBox_amountPaid.Text;
+            }
+            else
+            {
+                lbl_tip2.Text = lbl_tipPartlyAdded.Text;
+                int cashPaid = int.Parse(txtBox_Cash.Text);
+                int cardPaid = int.Parse(txtBox_cardAmount.Text);
+                int amountPartly = cardPaid + cashPaid;
+                lbl_amount_paid.Text = "€ " + amountPartly.ToString("0.00");
+
+            }
+
+            
+           // CalculateTotalAmount();
+            
             SetPaymentType();
             tabPageAnyComments.Hide();
             tabPageSettledBill.Show();
@@ -959,13 +994,29 @@ namespace OrderingSystemUI
                 currentPayment.PaymentType = "visa/amex";
             }
         }
+
+
         //navigate to "SETTLE THE BILL" page
         private void btn_Confirm_Click(object sender, EventArgs e)
         {
             //display tip and amount paid
-            lbl_tip2.Text = lbl_tip3.Text;
-            lbl_amount_paid.Text = "€ " + txtBox_amountPaid.Text;
-            
+           
+            if (txtBox_tipPartly.Text == "")
+            {
+                lbl_tip2.Text = lbl_tip3.Text;
+                lbl_amount_paid.Text = "€ " + txtBox_amountPaid.Text;
+            }
+            else
+            {
+                lbl_tip2.Text = lbl_tipPartlyAdded.Text;
+                int cashPaid = int.Parse(txtBox_Cash.Text);
+                int cardPaid = int.Parse(txtBox_cardAmount.Text);
+                int amountPartly = cardPaid + cashPaid;
+                lbl_amount_paid.Text = "€ " + amountPartly.ToString("0.00");
+            }
+
+            //CalculateTotalAmount();
+
             if (txtBox_Comment.Text == "")
             {
                MessageBox.Show("To continue, please fill in the comment section!");
@@ -975,7 +1026,7 @@ namespace OrderingSystemUI
             {
                 currentPayment.CustomerComment = txtBox_Comment.Text;
             }
-            
+
             SetPaymentType();
             tabPageCustomerComment.Hide();
             tabPageSettledBill.Show();
@@ -988,13 +1039,13 @@ namespace OrderingSystemUI
             //if change is added as a tip, then change will always be 0
             lbl_billChange.Text = "-";
             
+            //adding tip to database
             string tip = lbl_change.Text;
             string[] split = tip.Split(" ");
             currentPayment.Tip = float.Parse(split[1]);
 
             //changing change amount when customised tip has been added
             lbl_change.Text = "-";
-
 
             lbl_HasBeenAdded.Show();
             btn_changeAsTip.Hide();
@@ -1208,7 +1259,6 @@ namespace OrderingSystemUI
 
         private void btn_payCashandCard_Click(object sender, EventArgs e)
         {
-
             if ((txtBox_cardAmount.Text == "") || (txtBox_Cash.Text == "")){
 
                 MessageBox.Show("To continue the payment, you must fill in everything!");
@@ -1227,8 +1277,8 @@ namespace OrderingSystemUI
 
             //adding tip to database
             currentPayment.Tip = customTipParlty;
-            
 
+           
             label24.Hide();
             txtBox_tipPartly.Hide();
             btn_setTipPartly.Hide();
