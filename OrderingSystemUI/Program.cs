@@ -16,12 +16,18 @@ namespace OrderingSystemUI
         [STAThread]
         static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Employee employee = null;
-            //Application.Run(new WaiterUI(employee));
-            Application.Run(new LoginForm());
+            try
+            {
+                Application.SetHighDpiMode(HighDpiMode.SystemAware);
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new LoginForm());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                //Application.Run(new LoginForm());
+            }
         }
     }
 }

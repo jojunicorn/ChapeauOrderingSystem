@@ -42,7 +42,7 @@ namespace OrderingSystemDAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
-        public void AddOrderItem(int orderNumber, int productId, string comment, DateTime time, string status, int category)
+        public void AddOrderItem(int orderNumber, int productId, string comment, int category)
         {
 
             query = "INSERT INTO [dbo].[ORDERPRODUCTS] VALUES (@OrderNumber, @ProductId, @Comment, @OrderTime, @Status ,@ProductCategory);";
@@ -51,8 +51,8 @@ namespace OrderingSystemDAL
             sqlParameters[0] = new SqlParameter("@OrderNumber", orderNumber);
             sqlParameters[1] = new SqlParameter("@ProductId", productId);
             sqlParameters[2] = new SqlParameter("@Comment", comment);
-            sqlParameters[3] = new SqlParameter("@OrderTime", time);
-            sqlParameters[4] = new SqlParameter("@Status", status);
+            sqlParameters[3] = new SqlParameter("@OrderTime", DateTime.Now);
+            sqlParameters[4] = new SqlParameter("@Status", "ordered");
             sqlParameters[5] = new SqlParameter("@ProductCategory", category);
 
 

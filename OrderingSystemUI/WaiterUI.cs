@@ -43,7 +43,6 @@ namespace OrderingSystemUI
         {
             InitializeComponent();
             this.currentEmployee = currentEmployee;
-            addingNewOrdersList = new List<Product>();
         }
 
         private void WaiterUI_Load(object sender, EventArgs e)
@@ -57,6 +56,8 @@ namespace OrderingSystemUI
 
                 currentOrderItem = null;
                 currentPayment = new Payment();
+                addingNewOrdersList = new List<Product>();
+
                 SetTablesColor();
                 HideButtons();
                 SetOrderDisplay();
@@ -115,48 +116,47 @@ namespace OrderingSystemUI
                     }
 
                 }
-
-                float total = 0;
-                float vat = 0;
-                foreach (Product product in productsForThisOrder)
-                {
-                    total += product.Price;
-                    vat = vat + product.Price * product.VAT;
-                    int count = 0;
-                    foreach (Product p in productsForThisOrder)
-                    {
-                        if (p.ProductID == product.ProductID)
-                        {
-                            count++;
-                        }
-                    }
-
-                    if (!alreadyPrinted.Contains(product.ProductID))
-                    {
-                        ListViewItem item = new ListViewItem();
-
-                        //if (product.Status == "prepared")
-                        //   item.BackColor  = Color.Orange;
-                        //else if (product.Status == "served")
-                        //    item.BackColor = Color.Green;
-
-                        item.Text = $"{count} x"; //count
-                        item.SubItems.Add(product.ProductName);//product name
-                        item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
-                        item.Tag = product;
-                        listViewTableOrder.Items.Add(item);
-                    }
-                    if (count > 1)
-                        alreadyPrinted.Add(product.ProductID);
-                }
-                lblDisplayTotal.Text = "€ " + total.ToString("0.00");
-                lblDisplayVAT.Text = vat.ToString("0.00");
+                DisplayItemsWithCount(productsForThisOrder);
 
             }
             catch (Exception e)
             {
                 MessageBox.Show("Error occured: ", e.Message);
             }
+        }
+        private float CalculateTotal(float total, Product product)
+        {
+            return total + product.Price;
+        }
+        private void DisplayItemsWithCount(List<Product>productsForThisOrder)
+        {
+            float total = 0;
+            foreach (Product product in productsForThisOrder)
+            {
+                total = CalculateTotal(total, product);
+                int count = 0;
+                foreach (Product p in productsForThisOrder)
+                {
+                    if (p.ProductID == product.ProductID)
+                    {
+                        count++;
+                    }
+                }
+
+                if (!alreadyPrinted.Contains(product.ProductID))
+                {
+                    ListViewItem item = new ListViewItem();
+
+                    item.Text = $"{count} x"; //count
+                    item.SubItems.Add(product.ProductName);//product name
+                    item.SubItems.Add($"€ {product.Price.ToString("0.00")}");//price
+                    item.Tag = product;
+                    listViewTableOrder.Items.Add(item);
+                }
+                if (count > 1)
+                    alreadyPrinted.Add(product.ProductID);
+            }
+            lblDisplayTotal.Text = "€ " + total.ToString("0.00");
         }
 
         //go back to the TableOverview
@@ -657,7 +657,7 @@ namespace OrderingSystemUI
                     {
                         if (addingNewOrdersList[i].TemporaryComment == null)
                             addingNewOrdersList[i].TemporaryComment = "";
-                        orderProductService.AddOrderItem(currentOrder.OrderNumber, addingNewOrdersList[i].ProductID, addingNewOrdersList[i].TemporaryComment, DateTime.Now, "in preparation", addingNewOrdersList[i].ProductCategory);
+                        orderProductService.AddOrderItem(currentOrder.OrderNumber, addingNewOrdersList[i].ProductID, addingNewOrdersList[i].TemporaryComment, addingNewOrdersList[i].ProductCategory);
                         //edit stock in db
                         int newStock = 0;
                         newStock = addingNewOrdersList[i].Stock - 1;
@@ -1140,7 +1140,7 @@ namespace OrderingSystemUI
                     int itemsToAdd = newCount - temporaryCountVariable;
                     for (int i = 0; i < itemsToAdd; i++)
                     {
-                        orderProductService.AddOrderItem(currentOrder.OrderNumber, currentOrderItem.ProductID, "", DateTime.Now, "in preparation", currentOrderItem.ProductCategory);
+                        orderProductService.AddOrderItem(currentOrder.OrderNumber, currentOrderItem.ProductID, "", currentOrderItem.ProductCategory);
                     }
                 }
                 else if (newCount < temporaryCountVariable)
