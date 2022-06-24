@@ -128,8 +128,10 @@ namespace OrderingSystemUI
         {
             return total + product.Price;
         }
-        private void DisplayItemsWithCount(List<Product>productsForThisOrder)
+        private void DisplayItemsWithCount(List<Product> productsForThisOrder)
         {
+            List<int> alreadyPrinted = new List<int>();
+
             float total = 0;
             foreach (Product product in productsForThisOrder)
             {
